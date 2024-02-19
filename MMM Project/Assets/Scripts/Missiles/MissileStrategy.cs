@@ -11,10 +11,10 @@ public abstract class MissileStrategy : ScriptableObject
     public float minStability;
     public float maxStability;
     public GameObject prefab;
-    public abstract void CreateMissile(); 
+    public abstract GameObject CreateMissile(Transform origin); 
     //public abstract void Drag();
 
-    //public abstract void Shoot();
+    public abstract void Shoot();
     
 }
 
