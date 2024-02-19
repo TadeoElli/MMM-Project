@@ -1,0 +1,465 @@
+fileFormatVersion: 2
+guid: a68a11490fa719e4c83e7f3bf7bb286f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 639
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a93779fa1e33c4a9e93434719e598f
+      internalID: 1086833474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_1
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 639
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a467f0dacb772d749aa3fc46c6f29732
+      internalID: 743619183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_2
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 639
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77d0afb2d3b2b4a4ba730bac52412850
+      internalID: -471875020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_3
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 639
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ddf40a804fe22a49b69c2af52d2fadc
+      internalID: 1304471354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 433
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74fbdd35c1f395f43b51697b600473ca
+      internalID: 1401954894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_5
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 433
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ab190b7268a464b85947cc87ad6ee5
+      internalID: 2017260891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_6
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 433
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75822ef9aef42144c8dba80f582b6ecf
+      internalID: 1484089864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_7
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 433
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b42f5b0be83c224c9c854c431d554bd
+      internalID: 1674951985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 227
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24c0111e24bdebf49af9a6f17918d621
+      internalID: 73568330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_9
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 227
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2b75bdf69533874891e1cf4726f78a7
+      internalID: -63978657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_10
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 227
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f4788f906ee9f4b9f144cf2c78cef7
+      internalID: -117507685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_11
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 227
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22bd3a45e74758748bed151663679704
+      internalID: -101601302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 21
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd4eff4c6e20164aabd25444109acbe
+      internalID: -220914934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_13
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 21
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deb0c119ba8e906499228acecd75dacd
+      internalID: -524406373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 88216-blue-animation-portal-sprite-point-free-png-hq_14
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 21
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c03150f5b127544986c8aa9f733db57
+      internalID: 1658617063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      88216-blue-animation-portal-sprite-point-free-png-hq_13: -524406373
+      88216-blue-animation-portal-sprite-point-free-png-hq_9: -63978657
+      88216-blue-animation-portal-sprite-point-free-png-hq_7: 1674951985
+      88216-blue-animation-portal-sprite-point-free-png-hq_8: 73568330
+      88216-blue-animation-portal-sprite-point-free-png-hq_11: -101601302
+      88216-blue-animation-portal-sprite-point-free-png-hq_4: 1401954894
+      88216-blue-animation-portal-sprite-point-free-png-hq_10: -117507685
+      88216-blue-animation-portal-sprite-point-free-png-hq_5: 2017260891
+      88216-blue-animation-portal-sprite-point-free-png-hq_0: 1086833474
+      88216-blue-animation-portal-sprite-point-free-png-hq_12: -220914934
+      88216-blue-animation-portal-sprite-point-free-png-hq_6: 1484089864
+      88216-blue-animation-portal-sprite-point-free-png-hq_14: 1658617063
+      88216-blue-animation-portal-sprite-point-free-png-hq_3: 1304471354
+      88216-blue-animation-portal-sprite-point-free-png-hq_1: 743619183
+      88216-blue-animation-portal-sprite-point-free-png-hq_2: -471875020
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
