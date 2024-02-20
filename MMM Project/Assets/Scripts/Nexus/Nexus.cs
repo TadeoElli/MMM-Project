@@ -24,20 +24,19 @@ public class Nexus : MonoBehaviour
     }
     void Start()
     {
+        haveMissile = false;
         mouseOverMissile.SetActive(false);
         index = 0;
-        missilePrefab = missiles[index].CreateMissile(transform);
-        haveMissile = true;
         collider2.enabled = false;
+        StartCoroutine(DelayForSpawn());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(!haveMissile){
-            missilePrefab = missiles[index].CreateMissile(transform);
-            haveMissile = true;
-        }
+
+
+    IEnumerator DelayForSpawn(){
+        yield return new WaitForSeconds(2);
+        missilePrefab = missiles[index].CreateMissile(transform);
+        haveMissile = true;
     }
 
     private void OnMouseOver() {
@@ -51,6 +50,7 @@ public class Nexus : MonoBehaviour
                 Vector3 curreentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
                 curreentPoint.z = 0;
                 missilePrefab.transform.position = curreentPoint;
+                mouseOverMissile.transform.position = curreentPoint;
                 collider2.enabled = true;
                 tl.RenderLine(startPoint, curreentPoint);
             }
@@ -59,10 +59,12 @@ public class Nexus : MonoBehaviour
                 endPoint.z = 0;
 
                 force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
-                missilePrefab.rigidbody.AddForce(force * 1, ForceMode2D.Impulse);
+                missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * 5, ForceMode2D.Impulse);
                 tl.EndLine();
                 collider2.enabled = false;
                 haveMissile = false;
+                mouseOverMissile.transform.position = transform.position;
+                StartCoroutine(DelayForSpawn());
             }
         }
     }
