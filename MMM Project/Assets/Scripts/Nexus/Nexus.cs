@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nexus : MonoBehaviour
+public class Nexus : MonoBehaviour, IObserver
 {
+    [SerializeField] Subject _inputController;
     [SerializeField] private MissileStrategy [] missiles;
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
     [SerializeField] private int index = 0;
@@ -14,7 +15,7 @@ public class Nexus : MonoBehaviour
     public TrajectoryLine tl;
     Camera cam;
     Vector2 force;
-    public Vector2 minPower, maxPower;
+    [SerializeField] private Vector2 minPower, maxPower;
     Vector3 startPoint, endPoint;
 
 
@@ -71,5 +72,17 @@ public class Nexus : MonoBehaviour
 
     private void OnMouseExit() {
         mouseOverMissile.SetActive(false);
+    }
+
+    public void OnNotify(){
+
+    }
+
+    private void OnEnable() {
+        _inputController.AddObserver(this);
+    }
+
+    private void OnDisable() {
+        _inputController.RemoveObserver(this);
     }
 }
