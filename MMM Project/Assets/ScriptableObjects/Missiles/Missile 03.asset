@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeccf8ab3343a849b2c418638a10656, type: 3}
   m_Name: Missile 03
   m_EditorClassIdentifier: 
-  id: 0
-  energyConsumption: 0
-  minDamage: 0
-  maxDamage: 0
-  velocity: 0
+  id: 3
+  energyConsumption: 500
+  minDamage: 1
+  maxDamage: 1000
+  velocity: 20
   minStability: 0
   maxStability: 0
-  prefab: {fileID: 0}
+  prefab: {fileID: 2464879535626842570, guid: 619f5e0954a32a142b874200d9aea1b8, type: 3}

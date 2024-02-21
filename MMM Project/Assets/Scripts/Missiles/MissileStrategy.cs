@@ -5,6 +5,8 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
 {
     public int id;
     public int energyConsumption;
+    public int maxLife;
+    public int minLife;
     public int minDamage;
     public int maxDamage;
     public float velocity;
@@ -14,7 +16,6 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
     public abstract GameObject CreateMissile(Transform origin); 
     //public abstract void Drag();
 
-    public abstract void Shoot();
     
 }
 

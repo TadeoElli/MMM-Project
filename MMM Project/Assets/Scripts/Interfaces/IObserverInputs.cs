@@ -1,4 +1,6 @@
 public interface IObserver{
     //subject use this method to comunicate with the observer
-    public void OnNotify();
+    public void OnNotify(int index);
+
+
 }

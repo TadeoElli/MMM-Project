@@ -74,9 +74,11 @@ public class Nexus : MonoBehaviour, IObserver
         mouseOverMissile.SetActive(false);
     }
 
-    public void OnNotify(){
-
+    public void OnNotify(int newIndex){
+        index = newIndex;
     }
+
+
 
     private void OnEnable() {
         _inputController.AddObserver(this);

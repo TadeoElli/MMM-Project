@@ -18,9 +18,10 @@ public abstract class Subject : MonoBehaviour
     }
 
     //notify each observer that an event has occurred
-    protected void NotifyObservers(){
+    protected void NotifyObservers(int index){
         _observers.ForEach((_observers) => {
-            _observers.OnNotify();
+            _observers.OnNotify(index);
         });
     }
+
 }

@@ -13,9 +13,6 @@ public class BasicMissilesStrategy : MissileStrategy
         return  missile;
     }
 
-    public override void Shoot(){
-        Debug.Log("Shoot");
-    }
 
 
 }
