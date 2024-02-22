@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   energyConsumption: 300
+  maxLife: 800
   minDamage: 200
   maxDamage: 800
   velocity: 20

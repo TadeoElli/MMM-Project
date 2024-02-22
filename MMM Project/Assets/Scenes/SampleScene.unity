@@ -880,7 +880,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2864353294054373692, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: damages.Array.data[1]
-      value: 2000
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2864353294054373693, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: m_Name
