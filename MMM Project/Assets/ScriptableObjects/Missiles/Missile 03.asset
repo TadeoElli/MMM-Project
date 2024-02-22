@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Missile 03
   m_EditorClassIdentifier: 
   id: 3
-  energyConsumption: 500
+  energyConsumption: 550
   maxLife: 1200
   minDamage: 1
   maxDamage: 1000
-  velocity: 20
-  minStability: 0
-  maxStability: 0
+  velocity: 30
+  minStability: 50
+  maxStability: 80
   prefab: {fileID: 2464879535626842570, guid: 619f5e0954a32a142b874200d9aea1b8, type: 3}

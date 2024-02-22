@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Missile 02
   m_EditorClassIdentifier: 
   id: 2
-  energyConsumption: 300
+  energyConsumption: 200
   maxLife: 800
   minDamage: 200
   maxDamage: 800
   velocity: 20
-  minStability: 0
-  maxStability: 0
+  minStability: 80
+  maxStability: 100
   prefab: {fileID: 2464879535626842570, guid: f4f420d41b8aca54aa02c7f956027bf1, type: 3}

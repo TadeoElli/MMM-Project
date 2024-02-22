@@ -15,7 +15,6 @@ MonoBehaviour:
   id: 1
   energyConsumption: 250
   maxLife: 1000
-  minLife: 200
   minDamage: 1
   maxDamage: 800
   velocity: 15

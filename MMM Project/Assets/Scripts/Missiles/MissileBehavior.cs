@@ -65,7 +65,6 @@ public class MissileBehavior : MonoBehaviour
         if(probability > maxProbability){
             CreateExplosion();
         }
-       // maxProbability = (distance / 2f) * 
     }
     private void OnCollisionEnter2D(Collision2D other) {
         switch (other.gameObject.layer)

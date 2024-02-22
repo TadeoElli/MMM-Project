@@ -77,6 +77,10 @@ public class Nexus : MonoBehaviour, IObserver
 
     public void OnNotify(int newIndex){
         index = newIndex;
+        if(haveMissile){
+            missilePrefab.SetActive(false);
+            missilePrefab = missiles[index].CreateMissile(transform);
+        }
     }
 
 
