@@ -14,10 +14,10 @@ TagManager:
   - UI
   - Missiles
   - Walls
-  - Enemies
-  - 
-  - 
-  - 
+  - SmallEnemies
+  - MediumEnemies
+  - BigEnemies
+  - Boss
   - 
   - 
   - 
