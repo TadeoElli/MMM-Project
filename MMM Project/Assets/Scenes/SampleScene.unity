@@ -123,6 +123,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &194625896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 194625898}
+  - component: {fileID: 194625897}
+  m_Layer: 0
+  m_Name: DamageTypes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &194625897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194625896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1aaaa8e1e5b5c4f882752983c1ce96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  types:
+  - Walls
+  - SmallEnemies
+  - MediumEnemies
+  - BigEnemies
+  - Boss
+  damages: 64000000c80000002c010000f4010000e8030000
+--- !u!4 &194625898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194625896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +463,7 @@ GameObject:
   - component: {fileID: 700198351}
   - component: {fileID: 700198350}
   - component: {fileID: 700198349}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoxTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,6 +692,8 @@ MonoBehaviour:
   _inputController: {fileID: 2026206535}
   missiles:
   - {fileID: 11400000, guid: 05a46abc4f5aa364bb3b0c5386464328, type: 2}
+  - {fileID: 11400000, guid: e6a3b0b6251e8bc4e90a5b6737fa366d, type: 2}
+  - {fileID: 11400000, guid: f54b02c1afacac7499f64616059fe95a, type: 2}
   mouseOverMissile: {fileID: 1560354090}
   missilePrefab: {fileID: 0}
   index: 0
@@ -813,7 +866,7 @@ GameObject:
   - component: {fileID: 1866099266}
   - component: {fileID: 1866099265}
   - component: {fileID: 1866099264}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +885,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -947,7 +1000,7 @@ GameObject:
   - component: {fileID: 1913210196}
   - component: {fileID: 1913210195}
   - component: {fileID: 1913210194}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoxBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

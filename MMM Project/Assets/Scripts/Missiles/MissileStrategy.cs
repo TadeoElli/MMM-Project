@@ -5,10 +5,10 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
 {
     public int id;
     public int energyConsumption;
-    public int maxLife;
-    public int minLife;
-    public int minDamage;
-    public int maxDamage;
+    public float maxLife;
+    public float minLife;
+    public float minDamage;
+    public float maxDamage;
     public float velocity;
     public float minStability;
     public float maxStability;

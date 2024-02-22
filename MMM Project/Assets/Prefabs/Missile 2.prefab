@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2464879535626842575}
   - component: {fileID: 2464879535626842568}
   - component: {fileID: 2464879535626842569}
+  - component: {fileID: 2769597986703773441}
   m_Layer: 2
   m_Name: Missile 2
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.04711747, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.96559095, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -123,3 +124,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2769597986703773441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464879535626842570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b4108f944c6b549bfc2dc92707a4de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missile: {fileID: 11400000, guid: e6a3b0b6251e8bc4e90a5b6737fa366d, type: 2}
+  life: 0
+  minDamage: 0
+  maxDamage: 0
