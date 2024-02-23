@@ -8,6 +8,7 @@ public class MissileBehavior : MonoBehaviour
 
     [SerializeField] private float life, distance, maxProbability;
     private bool oneChance = true;
+    [SerializeField] private bool isSpecial = false;
     [SerializeField] private Vector2 originPosition;
     private int damage;
     public float energyConsumption;
@@ -23,6 +24,9 @@ public class MissileBehavior : MonoBehaviour
         maxStability = missile.maxStability;
         oneChance = true;
         originPosition = this.transform.position;
+    }
+    private void Update() {
+        this.gameObject.GetComponent<Rigidbody2D>().rotation += 30f;
     }
 
     private void CreateExplosion(){
@@ -59,6 +63,9 @@ public class MissileBehavior : MonoBehaviour
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {
+        if(isSpecial){
+            missile.SpecialBehaviour(this.gameObject.GetComponent<Rigidbody2D>());
+        }
         switch (other.gameObject.layer)
         {
             case 7:

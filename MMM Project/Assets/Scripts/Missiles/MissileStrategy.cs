@@ -13,6 +13,7 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
     public float maxStability;
     public GameObject prefab;
     public abstract GameObject CreateMissile(Transform origin); 
+    public abstract void SpecialBehaviour(Rigidbody2D rigidbody2D); 
     //public abstract void Drag();
 
     
