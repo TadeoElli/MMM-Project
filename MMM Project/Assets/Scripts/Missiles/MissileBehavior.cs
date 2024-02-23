@@ -10,11 +10,13 @@ public class MissileBehavior : MonoBehaviour
     private bool oneChance = true;
     [SerializeField] private Vector2 originPosition;
     private int damage;
+    public float energyConsumption;
     private float minDamage, maxDamage, minStability, maxStability;
 
 
     private void OnEnable() {
         life = missile.maxLife;
+        energyConsumption = missile.energyConsumption;
         minDamage = missile.minDamage;
         maxDamage = missile.maxDamage;
         minStability = missile.minStability;
@@ -23,17 +25,6 @@ public class MissileBehavior : MonoBehaviour
         originPosition = this.transform.position;
     }
 
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void CreateExplosion(){
         GameObject explosion = ExplosionPool.Instance.RequestExplosion();
         explosion.transform.position = transform.position;

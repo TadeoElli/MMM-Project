@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Nexus : MonoBehaviour, IObserver
 {
+    public Observer<float> currentEnergy = new Observer<float>(0f);
     [SerializeField] Subject _inputController;
+    [SerializeField] Subject _nexusStats;
     [SerializeField] private MissileStrategy [] missiles;
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
     [SerializeField] private int index = 0;
@@ -32,7 +34,7 @@ public class Nexus : MonoBehaviour, IObserver
         StartCoroutine(DelayForSpawn());
     }
 
-
+    
 
     IEnumerator DelayForSpawn(){
         yield return new WaitForSeconds(2);
@@ -56,21 +58,36 @@ public class Nexus : MonoBehaviour, IObserver
                 tl.RenderLine(startPoint, curreentPoint);       //hago el renderizado del trail
             }
             if(Input.GetMouseButtonUp(0)){      //Marco el punto donde se solto para calcular el disparo
-                endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-                endPoint.z = 0;
-                //Fuerza = distancia entre el punto de inicio y el punto final, clampeado a los valores minimos y maximos de distancia
-                force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
-                missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * 5, ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
-                missilePrefab.GetComponent<MissileBehavior>().TryToShoot(startPoint,endPoint);
-                tl.EndLine();
-                collider2.enabled = false;
-                haveMissile = false;
-                mouseOverMissile.transform.position = transform.position;
-                StartCoroutine(DelayForSpawn());
+                float energyConsumption = missiles[index].energyConsumption;
+                if(UseEnergy(energyConsumption)){
+                    endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+                    endPoint.z = 0;
+                    //Fuerza = distancia entre el punto de inicio y el punto final, clampeado a los valores minimos y maximos de distancia
+                    force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
+                    missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * 5, ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
+                    missilePrefab.GetComponent<MissileBehavior>().TryToShoot(startPoint,endPoint);
+                    tl.EndLine();
+                    collider2.enabled = false;
+                    haveMissile = false;
+                    mouseOverMissile.transform.position = transform.position;
+                    StartCoroutine(DelayForSpawn());
+                }
             }
         }
     }
-
+    private bool UseEnergy(float amount){
+        if(currentEnergy.Value >= amount ){
+            currentEnergy.Value -= amount;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public void SetEnergyValue(float amount){
+        currentEnergy.Value = amount;
+    }
+    
     private void OnMouseExit() {
         mouseOverMissile.SetActive(false);
     }

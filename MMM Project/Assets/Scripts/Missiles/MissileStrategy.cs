@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class MissileStrategy : ScriptableObject        //Strategy para todos los tipos de missiles
 {
     public int id;
-    public int energyConsumption;
+    public float energyConsumption;
     public float maxLife;
     public float minDamage;
     public float maxDamage;
