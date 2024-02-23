@@ -8,7 +8,6 @@ public class BasicMissilesStrategy : MissileStrategy
 {
     public override GameObject CreateMissile(Transform origin){
         GameObject missile = BasicMissilePool.Instance.RequestMissile(prefab);
-        Debug.Log(id);
         missile.transform.position = origin.position;
         return  missile;
     }

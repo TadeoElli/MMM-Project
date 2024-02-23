@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 2345792218122456912}
   - component: {fileID: 2345792218122456915}
   - component: {fileID: 2345792218122456914}
+  - component: {fileID: 1890146689}
   m_Layer: 0
   m_Name: Nexus
-  m_TagString: Untagged
+  m_TagString: Nexus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +102,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e87b005f0631d45afa55cbb9183153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEnergy:
+    value: 1000
+    onValueChanged:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: NexusStats, Assembly-CSharp
+          m_MethodName: SetEnergyValue
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   _inputController: {fileID: 0}
   missiles:
   - {fileID: 11400000, guid: 05a46abc4f5aa364bb3b0c5386464328, type: 2}
@@ -266,3 +284,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lr: {fileID: 0}
+--- !u!114 &1890146689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345792218122456921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbfe5e3914c842d44862a37e7dc3cfd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStructure:
+    value: 3000
+    onValueChanged:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: NexusStats, Assembly-CSharp
+          m_MethodName: SetStructureValue
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  damage: 0

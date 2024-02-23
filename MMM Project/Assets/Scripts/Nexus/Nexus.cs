@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Nexus : MonoBehaviour, IObserver
 {
-    public Observer<float> currentEnergy = new Observer<float>(0f);
+    public Observer<float> currentEnergy = new Observer<float>(1000f);
     [SerializeField] Subject _inputController;
-    [SerializeField] Subject _nexusStats;
     [SerializeField] private MissileStrategy [] missiles;
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
     [SerializeField] private int index = 0;
@@ -55,6 +54,7 @@ public class Nexus : MonoBehaviour, IObserver
                 missilePrefab.transform.position = curreentPoint;
                 mouseOverMissile.transform.position = curreentPoint;
                 collider2.enabled = true;           //Agrando el area del collider para que se mantenga en el mouseOver
+                collider1.enabled = false;
                 tl.RenderLine(startPoint, curreentPoint);       //hago el renderizado del trail
             }
             if(Input.GetMouseButtonUp(0)){      //Marco el punto donde se solto para calcular el disparo
@@ -67,6 +67,7 @@ public class Nexus : MonoBehaviour, IObserver
                     missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * 5, ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
                     missilePrefab.GetComponent<MissileBehavior>().TryToShoot(startPoint,endPoint);
                     tl.EndLine();
+                    collider1.enabled = true;
                     collider2.enabled = false;
                     haveMissile = false;
                     mouseOverMissile.transform.position = transform.position;

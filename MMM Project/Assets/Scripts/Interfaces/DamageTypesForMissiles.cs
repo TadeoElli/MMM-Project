@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DamageTypes : MonoBehaviour 
+public class DamageTypesForMissiles : MonoBehaviour 
 {
     public Dictionary<string, int> damageDictionary = new Dictionary<string, int>();   
     [SerializeField] private List<string> types;
     [SerializeField] private List<int> damages;
-    private static DamageTypes instance;
-    public static DamageTypes Instance { get {return instance; } }
+    private static DamageTypesForMissiles instance;
+    public static DamageTypesForMissiles Instance { get {return instance; } }
 
     private void Awake() {
         if(instance == null){

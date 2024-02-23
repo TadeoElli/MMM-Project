@@ -14,7 +14,11 @@ public class Explosion : MonoBehaviour
         Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radius);
 
         foreach (Collider2D collisions in objetos){
-            if(collisions.gameObject.layer != 6){
+
+            if(collisions.gameObject.tag == "Nexus"){
+                collisions.GetComponent<NexusCollisions>().TakeDamage(800);
+            }
+            else if(collisions.gameObject.layer != 2){
                 Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
                 if(rb2D != null){
                     Vector2 direction = collisions.transform.position - transform.position;

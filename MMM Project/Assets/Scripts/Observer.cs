@@ -25,7 +25,7 @@ public class Observer<T> {
     }
 
     public void Invoke(){
-        Debug.Log($"Invoking{onValueChanged.GetPersistentEventCount()} listeners");
+        //Debug.Log($"Invoking{onValueChanged.GetPersistentEventCount()} listeners");
         onValueChanged.Invoke(value);
     }
 

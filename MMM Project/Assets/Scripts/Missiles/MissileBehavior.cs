@@ -61,23 +61,23 @@ public class MissileBehavior : MonoBehaviour
         switch (other.gameObject.layer)
         {
             case 7:
-                damage = DamageTypes.Instance.damageDictionary["Walls"];
+                damage = DamageTypesForMissiles.Instance.damageDictionary["Walls"];
                 TakeDamage();
                 break;
             case 8:
-                damage = DamageTypes.Instance.damageDictionary["SmallEnemies"];
+                damage = DamageTypesForMissiles.Instance.damageDictionary["SmallEnemies"];
                 TakeDamage();
                 break;
             case 9:
-                damage = DamageTypes.Instance.damageDictionary["MediumEnemies"];
+                damage = DamageTypesForMissiles.Instance.damageDictionary["MediumEnemies"];
                 TakeDamage();
                 break;
             case 10:
-                damage = DamageTypes.Instance.damageDictionary["BigEnemies"];
+                damage = DamageTypesForMissiles.Instance.damageDictionary["BigEnemies"];
                 TakeDamage();
                 break;
             case 11:
-                damage = DamageTypes.Instance.damageDictionary["Bosses"];
+                damage = DamageTypesForMissiles.Instance.damageDictionary["Bosses"];
                 TakeDamage();
                 break;
             default:
