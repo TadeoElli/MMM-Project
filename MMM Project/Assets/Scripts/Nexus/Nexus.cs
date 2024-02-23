@@ -5,6 +5,7 @@ using UnityEngine;
 public class Nexus : MonoBehaviour, IObserver
 {
     public Observer<float> currentEnergy = new Observer<float>(1000f);
+    [SerializeField] private NexusPosition nexusPosition;
     [SerializeField] Subject _inputController;
     [SerializeField] private MissileStrategy [] missiles;
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
@@ -23,11 +24,14 @@ public class Nexus : MonoBehaviour, IObserver
     private void Awake() {
         cam = Camera.main;
         tl = GetComponent<TrajectoryLine>();
+        nexusPosition = FindObjectOfType<NexusPosition>();
     }
     void Start()
     {
+        this.transform.position = nexusPosition.SetPosition();
         haveMissile = false;
         mouseOverMissile.SetActive(false);
+        mouseOverMissile.transform.position = transform.position;
         index = 0;
         StartCoroutine(DelayForSpawn());
     }
