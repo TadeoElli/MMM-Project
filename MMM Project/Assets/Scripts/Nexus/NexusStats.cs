@@ -13,16 +13,24 @@ public class NexusStats : MonoBehaviour
     [SerializeField] private float baseStability;
     [SerializeField] private int missilesUnlocked;
     [SerializeField] private int maxLives;
+    private bool isDestroyed = false;
 
     private void Start() {
         currentEnergy.Invoke();
         currentStructure.Invoke();
     }
     private void Update() {
-        currentStructure.Value = currentStructure.Value + 20 * Time.deltaTime;
-        currentStructure.Value = Mathf.Clamp(currentStructure.Value,0,maxStructure);
-        currentEnergy.Value = currentEnergy.Value + 40 * Time.deltaTime;
-        currentEnergy.Value = Mathf.Clamp(currentEnergy.Value,0,maxEnergy);
+        if(!isDestroyed){
+            currentStructure.Value = currentStructure.Value + 20 * Time.deltaTime;
+            currentStructure.Value = Mathf.Clamp(currentStructure.Value,-500f,maxStructure);
+            currentEnergy.Value = currentEnergy.Value + 40 * Time.deltaTime;
+            currentEnergy.Value = Mathf.Clamp(currentEnergy.Value,0,maxEnergy);
+            if(currentStructure.Value <= 0 ){
+                currentEnergy.RemoveAllListener();
+                currentStructure.RemoveAllListener();
+                isDestroyed = true;
+            }
+        }
     }
     public void SetEnergyValue(float amount){
         currentEnergy.Value = amount;

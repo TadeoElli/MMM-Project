@@ -1,6 +1,11 @@
 using System;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
+
+#if UNITY_EDITOR
+using UnityEditor.Events;
+#endif
 
 [Serializable]
 public class Observer<T> {
@@ -33,15 +38,44 @@ public class Observer<T> {
         if(callback == null) return;
         if(onValueChanged == null) onValueChanged = new UnityEvent<T>();
 
+#if UNITY_EDITOR
+        UnityEventTools.AddPersistentListener(onValueChanged, callback);
+#else
         onValueChanged.AddListener(callback);
+#endif
     }
 
     public void RemoveListener(UnityAction<T> callback){
         if(callback == null) return;
         if(onValueChanged == null) onValueChanged = new UnityEvent<T>();
 
+#if UNITY_EDITOR
+        UnityEventTools.RemovePersistentListener(onValueChanged, callback);
+#else
         onValueChanged.RemoveListener(callback);
+#endif
+
     }
+
+
+    public void RemoveAllListener(){
+        if(onValueChanged == null) return;
+
+#if UNITY_EDITOR
+        FieldInfo fieldInfo = typeof(UnityEventBase).GetField("m_PersistentCalls", BindingFlags.Instance | BindingFlags.NonPublic);
+        object value = fieldInfo.GetValue(onValueChanged);
+        value.GetType().GetMethod("Clear").Invoke(value,null);
+#else
+        onValueChanged.RemoveAllListener();
+#endif
+    }
+
+    public void Dispose(){
+        RemoveAllListener();
+        onValueChanged = null;
+        value = default;
+    }
+    
     
 }
 

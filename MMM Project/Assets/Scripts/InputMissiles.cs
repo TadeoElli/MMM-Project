@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class InputMissiles : Subject
-{
-    // Start is called before the first frame update
-    [SerializeField] private int missileIndex;
 
+public class InputMissiles : MonoBehaviour 
+{
+    public Observer<int> missileIndex = new Observer<int>(0);
+    //[SerializeField] private int missileIndex;
+
+    private void Start() {
+        missileIndex.Invoke();
+    }
     public void SetMissileIndex(int index){
-        missileIndex = index;
-        NotifyObservers(missileIndex);
+        missileIndex.Value = index;
     }
 }

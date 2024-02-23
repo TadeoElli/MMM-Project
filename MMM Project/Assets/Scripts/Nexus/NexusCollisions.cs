@@ -8,18 +8,27 @@ public class NexusCollisions : MonoBehaviour
     [SerializeField] private float damage;
 
 
-    private void OnTriggerEnter2D(Collider2D other) {
 
-    }
 
     public void TakeDamage(MissileStrategy creator){
         damage = DamageTypesForNexus.Instance.missilesDictionary[creator];
         Debug.Log("Recibi "+ damage+ " de dano" );
         currentStructure.Value -= damage;
+        if(currentStructure.Value <= 0){
+            DestroyNexus();
+        }
     }
 
     public void SetStructureValue(float amount){
         currentStructure.Value = amount;
+    }
+
+    private void DestroyNexus() {
+        this.gameObject.SetActive(false);
+    }
+
+    private void OnDisable() {
+        currentStructure.RemoveAllListener();
     }
         
 }

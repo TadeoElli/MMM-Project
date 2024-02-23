@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nexus : MonoBehaviour, IObserver
+public class Nexus : MonoBehaviour
 {
     public Observer<float> currentEnergy = new Observer<float>(1000f);
     [SerializeField] private NexusPosition nexusPosition;
@@ -96,7 +96,7 @@ public class Nexus : MonoBehaviour, IObserver
         mouseOverMissile.SetActive(false);
     }
 
-    public void OnNotify(int newIndex){
+    public void SetMissileIndex(int newIndex){
         index = newIndex;
         if(haveMissile){
             missilePrefab.SetActive(false);
@@ -107,11 +107,8 @@ public class Nexus : MonoBehaviour, IObserver
 
 
 
-    private void OnEnable() {
-        _inputController.AddObserver(this);
-    }
 
     private void OnDisable() {
-        _inputController.RemoveObserver(this);
+        currentEnergy.RemoveAllListener();
     }
 }
