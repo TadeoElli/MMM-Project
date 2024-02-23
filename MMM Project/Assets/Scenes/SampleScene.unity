@@ -693,7 +693,7 @@ MonoBehaviour:
   - {fileID: 1447187277}
   - {fileID: 57604483}
   - {fileID: 487698246}
-  index: 0
+  index: 1
 --- !u!4 &1076150616
 Transform:
   m_ObjectHideFlags: 0

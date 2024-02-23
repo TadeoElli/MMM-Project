@@ -6,7 +6,6 @@ public class Nexus : MonoBehaviour
 {
     public Observer<float> currentEnergy = new Observer<float>(1000f);
     [SerializeField] private NexusPosition nexusPosition;
-    [SerializeField] Subject _inputController;
     [SerializeField] private MissileStrategy [] missiles;
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
     [SerializeField] private int index = 0;

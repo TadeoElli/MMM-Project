@@ -66,30 +66,10 @@ public class MissileBehavior : MonoBehaviour
         if(isSpecial){
             missile.SpecialBehaviour(this.gameObject.GetComponent<Rigidbody2D>());
         }
-        switch (other.gameObject.layer)
-        {
-            case 7:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["Walls"];
-                TakeDamage();
-                break;
-            case 8:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["SmallEnemies"];
-                TakeDamage();
-                break;
-            case 9:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["MediumEnemies"];
-                TakeDamage();
-                break;
-            case 10:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["BigEnemies"];
-                TakeDamage();
-                break;
-            case 11:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["Bosses"];
-                TakeDamage();
-                break;
-            default:
-                break;
+        damage = missile.CollisionBehaviour(other.gameObject.layer);
+        if(damage > 0){
+            TakeDamage();
         }
+        
     }
 }
