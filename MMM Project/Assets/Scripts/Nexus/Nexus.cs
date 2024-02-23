@@ -10,7 +10,7 @@ public class Nexus : MonoBehaviour, IObserver
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
     [SerializeField] private int index = 0;
     [SerializeField] private bool haveMissile;
-    [SerializeField] private Collider2D collider1, collider2;
+    [SerializeField] private CircleCollider2D collider1;
 
     [Header("Trail")]
     public TrajectoryLine tl;
@@ -29,7 +29,6 @@ public class Nexus : MonoBehaviour, IObserver
         haveMissile = false;
         mouseOverMissile.SetActive(false);
         index = 0;
-        collider2.enabled = false;
         StartCoroutine(DelayForSpawn());
     }
 
@@ -38,6 +37,7 @@ public class Nexus : MonoBehaviour, IObserver
     IEnumerator DelayForSpawn(){
         yield return new WaitForSeconds(2);
         missilePrefab = missiles[index].CreateMissile(transform);
+        missilePrefab.GetComponent<Collider2D>().enabled = false;
         haveMissile = true;
     }
 
@@ -53,8 +53,7 @@ public class Nexus : MonoBehaviour, IObserver
                 curreentPoint.z = 0;
                 missilePrefab.transform.position = curreentPoint;
                 mouseOverMissile.transform.position = curreentPoint;
-                collider2.enabled = true;           //Agrando el area del collider para que se mantenga en el mouseOver
-                collider1.enabled = false;
+                collider1.radius = 1f;
                 tl.RenderLine(startPoint, curreentPoint);       //hago el renderizado del trail
             }
             if(Input.GetMouseButtonUp(0)){      //Marco el punto donde se solto para calcular el disparo
@@ -66,9 +65,9 @@ public class Nexus : MonoBehaviour, IObserver
                     force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
                     missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * 5, ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
                     missilePrefab.GetComponent<MissileBehavior>().TryToShoot(startPoint,endPoint);
+                    missilePrefab.GetComponent<Collider2D>().enabled = true;
                     tl.EndLine();
-                    collider1.enabled = true;
-                    collider2.enabled = false;
+                    collider1.radius = 0.2f;
                     haveMissile = false;
                     mouseOverMissile.transform.position = transform.position;
                     StartCoroutine(DelayForSpawn());
@@ -98,6 +97,7 @@ public class Nexus : MonoBehaviour, IObserver
         if(haveMissile){
             missilePrefab.SetActive(false);
             missilePrefab = missiles[index].CreateMissile(transform);
+            missilePrefab.GetComponent<Collider2D>().enabled = false;
         }
     }
 

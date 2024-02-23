@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Missiles
   - Explosion
+  - Nexus
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - MediumEnemies
   - BigEnemies
   - Boss
-  - 
+  - Explosion
   - 
   - 
   - 

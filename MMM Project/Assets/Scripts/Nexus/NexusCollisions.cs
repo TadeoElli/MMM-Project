@@ -5,22 +5,16 @@ using UnityEngine;
 public class NexusCollisions : MonoBehaviour
 {
     public Observer<float> currentStructure = new Observer<float>(3000);
+    [SerializeField] private float damage;
 
 
     private void OnTriggerEnter2D(Collider2D other) {
-        switch (other.gameObject.tag)
-        {
-            case "Nexus":
-                //damage = DamageTypesForNexus.Instance.damageDictionary["Missile01"];
-                Debug.Log("Explosion");
-                TakeDamage(200);
-                break;
-            default:
-                break;
-        }
+
     }
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(MissileStrategy creator){
+        damage = DamageTypesForNexus.Instance.missilesDictionary[creator];
+        Debug.Log("Recibi "+ damage+ " de dano" );
         currentStructure.Value -= damage;
     }
 

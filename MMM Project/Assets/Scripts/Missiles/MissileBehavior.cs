@@ -27,6 +27,7 @@ public class MissileBehavior : MonoBehaviour
 
     private void CreateExplosion(){
         GameObject explosion = ExplosionPool.Instance.RequestExplosion();
+        explosion.GetComponent<Explosion>().creator =  missile;
         explosion.transform.position = transform.position;
         this.gameObject.SetActive(false);
     }
