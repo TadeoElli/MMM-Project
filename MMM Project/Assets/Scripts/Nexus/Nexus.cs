@@ -66,7 +66,7 @@ public class Nexus : MonoBehaviour
                     endPoint.z = 0;
                     //Fuerza = distancia entre el punto de inicio y el punto final, clampeado a los valores minimos y maximos de distancia
                     force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
-                    missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * 5, ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
+                    missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * (missiles[index].velocity / 3), ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
                     missilePrefab.GetComponent<MissileBehavior>().TryToShoot(startPoint,endPoint);
                     missilePrefab.GetComponent<Collider2D>().enabled = true;
                     tl.EndLine();
