@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4c8eee9c7bd90408e6dc6d3422a728, type: 3}
+  m_Name: Missile 07
+  m_EditorClassIdentifier: 
+  id: 7
+  energyConsumption: 1000
+  maxLife: 10000
+  minDamage: 0
+  maxDamage: 0
+  velocity: 5
+  minStability: 1
+  maxStability: 30
+  prefab: {fileID: 2464879535626842570, guid: 3af3060297ed40247948c1b7cc2a2ae5, type: 3}

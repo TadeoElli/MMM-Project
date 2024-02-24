@@ -1650,6 +1650,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1941670156}
     - target: {fileID: 2345792218122456916, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
+      propertyPath: missilePrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345792218122456916, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
       propertyPath: _inputController
       value: 
       objectReference: {fileID: 0}
@@ -1659,7 +1663,7 @@ PrefabInstance:
       objectReference: {fileID: 1560354090}
     - target: {fileID: 2345792218122456916, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
       propertyPath: missiles.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2345792218122456916, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
       propertyPath: missiles.Array.data[3]
@@ -1673,6 +1677,10 @@ PrefabInstance:
       propertyPath: missiles.Array.data[5]
       value: 
       objectReference: {fileID: 11400000, guid: 4ebb68ac37c39c2489836fcc2d0d0862, type: 2}
+    - target: {fileID: 2345792218122456916, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
+      propertyPath: missiles.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1444a89d03c24e749b0f3a340c9577de, type: 2}
     - target: {fileID: 2345792218122456916, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
       propertyPath: currentEnergy.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1784,11 +1792,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3789532036913698441, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: types.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3789532036913698441, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: damages.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3789532036913698441, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: types.Array.data[0]
@@ -1817,7 +1825,7 @@ PrefabInstance:
     - target: {fileID: 3789532036913698441, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: types.Array.data[6]
       value: 
-      objectReference: {fileID: 2464879535626842570, guid: 619f5e0954a32a142b874200d9aea1b8, type: 3}
+      objectReference: {fileID: 11400000, guid: 1444a89d03c24e749b0f3a340c9577de, type: 2}
     - target: {fileID: 3789532036913698441, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: types.Array.data[7]
       value: 
@@ -1852,11 +1860,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3789532036913698441, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: damages.Array.data[4]
-      value: 1000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 3789532036913698441, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: damages.Array.data[5]
       value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789532036913698441, guid: c776751babd40974daed40024652ce69, type: 3}
+      propertyPath: damages.Array.data[6]
+      value: 2500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c776751babd40974daed40024652ce69, type: 3}
@@ -1921,7 +1933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5343215689144773079, guid: d02f615f06307b2469060f3714cf25ac, type: 3}
       propertyPath: missilePrefab.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5343215689144773079, guid: d02f615f06307b2469060f3714cf25ac, type: 3}
       propertyPath: missilePrefab.Array.data[3]
@@ -1935,6 +1947,10 @@ PrefabInstance:
       propertyPath: missilePrefab.Array.data[5]
       value: 
       objectReference: {fileID: 2464879535626842570, guid: 755f9bad73593454fbe97ffb3124ec09, type: 3}
+    - target: {fileID: 5343215689144773079, guid: d02f615f06307b2469060f3714cf25ac, type: 3}
+      propertyPath: missilePrefab.Array.data[6]
+      value: 
+      objectReference: {fileID: 2464879535626842570, guid: 3af3060297ed40247948c1b7cc2a2ae5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d02f615f06307b2469060f3714cf25ac, type: 3}
 --- !u!1001 &5721627408293230580

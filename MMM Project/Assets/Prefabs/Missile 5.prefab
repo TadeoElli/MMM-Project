@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missile: {fileID: 11400000, guid: 164b3874e8736eb4ba83b478f8350476, type: 2}
   life: 0
-  isSpecial: 1
+  isSpecial: 0
 --- !u!114 &-8561820899340404949
 MonoBehaviour:
   m_ObjectHideFlags: 0

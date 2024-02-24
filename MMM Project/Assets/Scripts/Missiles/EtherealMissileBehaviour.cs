@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Sticky", order = 2)]
-public class StickyMissileBehaviour : MissileStrategy
+[CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Ethereal", order = 2)]
+public class EtherealMissileBehaviour : MissileStrategy
 {
     public override GameObject CreateMissile(Transform origin){
         GameObject missile = BasicMissilePool.Instance.RequestMissile(prefab);
