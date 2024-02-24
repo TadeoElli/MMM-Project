@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Angle", order = 1)]
-public class RandomAngleMissileBehaviour : MissileStrategy
+[CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Sticky", order = 2)]
+public class StickyMissileBehaviour : MissileStrategy
 {
     public override GameObject CreateMissile(Transform origin){
         GameObject missile = BasicMissilePool.Instance.RequestMissile(prefab);
@@ -12,12 +12,7 @@ public class RandomAngleMissileBehaviour : MissileStrategy
         return  missile;
     }
     public override void SpecialBehaviour(GameObject prefab){
-        Rigidbody2D rigidbody2D = prefab.GetComponent<Rigidbody2D>();
-        float actualAngle = Mathf.Atan2(rigidbody2D.velocity.y, rigidbody2D.velocity.x);
-        float newAngle = actualAngle + Random.Range(-Mathf.PI / 2f, Mathf.PI / 2f);
-        Vector2 newDirection = new Vector2(Mathf.Cos(newAngle), Mathf.Sin(newAngle));
-        //Debug.Log(newDirection);
-        rigidbody2D.velocity = newDirection * 5;
+        
     }
     
     public override int CollisionBehaviour(int layer){

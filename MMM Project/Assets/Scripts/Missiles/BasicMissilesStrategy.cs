@@ -11,7 +11,7 @@ public class BasicMissilesStrategy : MissileStrategy
         missile.transform.position = origin.position;
         return  missile;
     }
-    public override void SpecialBehaviour(Rigidbody2D rigidbody2D){
+    public override void SpecialBehaviour(GameObject prefab){
     }
 
     public override int CollisionBehaviour(int layer){

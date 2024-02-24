@@ -5,28 +5,18 @@ using UnityEngine;
 public class MissileBehavior : MonoBehaviour
 {
     [SerializeField] private MissileStrategy missile;
-
-    [SerializeField] private float life, distance, maxProbability;
+    [SerializeField] private float life;
     private bool oneChance = true;
     [SerializeField] private bool isSpecial = false;
-    [SerializeField] private Vector2 originPosition;
-    private int damage;
-    public float energyConsumption;
-    private float minDamage, maxDamage, minStability, maxStability;
+    //private int damage;
+    private float  minStability, maxStability;
 
 
     private void OnEnable() {
         life = missile.maxLife;
-        energyConsumption = missile.energyConsumption;
-        minDamage = missile.minDamage;
-        maxDamage = missile.maxDamage;
         minStability = missile.minStability;
         maxStability = missile.maxStability;
         oneChance = true;
-        originPosition = this.transform.position;
-    }
-    private void Update() {
-        this.gameObject.GetComponent<Rigidbody2D>().rotation += 30f;
     }
 
     private void CreateExplosion(){
@@ -35,7 +25,7 @@ public class MissileBehavior : MonoBehaviour
         explosion.transform.position = transform.position;
         this.gameObject.SetActive(false);
     }
-    private void TakeDamage(){
+    public void TakeDamage(float damage){
         life -= damage;
         if(life<= 0 && oneChance){
             oneChance = false;
@@ -47,8 +37,9 @@ public class MissileBehavior : MonoBehaviour
     }
 
     public void TryToShoot(Vector2 startPoint, Vector2 endPoint){
-        distance = Vector2.Distance(startPoint, endPoint);
+        float distance = Vector2.Distance(startPoint, endPoint);
         float probability = Random.Range(0,100);
+        float maxProbability;
         if(distance <= 1){
             maxProbability = maxStability;
         }
@@ -63,13 +54,17 @@ public class MissileBehavior : MonoBehaviour
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        if(isSpecial){
-            missile.SpecialBehaviour(this.gameObject.GetComponent<Rigidbody2D>());
-        }
-        damage = missile.CollisionBehaviour(other.gameObject.layer);
+        float damage = missile.CollisionBehaviour(other.gameObject.layer);
         if(damage > 0){
-            TakeDamage();
+            TakeDamage(damage);
+        }
+        if(other.gameObject.layer != 7){
+            if(isSpecial){
+                missile.SpecialBehaviour(this.gameObject);
+            }
         }
         
     }
+
+
 }
