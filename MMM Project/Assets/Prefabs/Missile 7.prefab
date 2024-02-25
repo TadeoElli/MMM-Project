@@ -152,8 +152,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42baeb30cd51b0b4a95e756510197610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 11400000, guid: 1444a89d03c24e749b0f3a340c9577de, type: 2}
-  radius: 0.7
-  force: 2
-  bounceCoef: 0.6
-  isActive: 0
+  radius: 1
+  force: 3

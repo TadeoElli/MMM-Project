@@ -5,10 +5,8 @@ using UnityEngine;
 public class SingularityMissile : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private MissileStrategy missile;
     [SerializeField] private float radius, force;
-    [SerializeField] private bool isActive = false;
-    private Vector2 direction;
+    private bool isActive;
 
     // Update is called once per frame
     private void OnEnable() {
@@ -17,25 +15,25 @@ public class SingularityMissile : MonoBehaviour
     void Update()
     {
         if(isActive){
-
-            Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radius);
-
-            foreach (Collider2D collisions in objetos){
-
-                if(collisions.gameObject.tag == "Enemy"){
-                    Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
-                    if(rb2D != null){
-                        Vector2 direction = collisions.transform.position - transform.position;
-                        float distance = 1 + direction.magnitude;
-                        float finalForce = force / distance;
-                        rb2D.AddForce((direction * -1) * finalForce);   
-                    }
-                }
-            }
+            AtractEnemies();
         }
         else{
             if(gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero){
+
                 isActive = true;
+            }
+        }
+    }
+
+    private void AtractEnemies(){
+        Collider2D[] nearEnemies = Physics2D.OverlapCircleAll(transform.position, radius);
+
+        foreach (Collider2D enemy in nearEnemies)
+        {
+            if(enemy.CompareTag("Enemy")){
+                Vector2 direction = (transform.position - enemy.transform.position).normalized;
+
+                enemy.transform.position = Vector2.Lerp(enemy.transform.position, transform.position, force * Time.deltaTime);
             }
         }
     }
