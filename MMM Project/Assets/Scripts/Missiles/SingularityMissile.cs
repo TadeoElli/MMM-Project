@@ -6,7 +6,7 @@ public class SingularityMissile : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private MissileStrategy missile;
-    [SerializeField] private float radius, force, bounceCoef;
+    [SerializeField] private float radius, force;
     [SerializeField] private bool isActive = false;
     private Vector2 direction;
 
@@ -37,15 +37,6 @@ public class SingularityMissile : MonoBehaviour
             if(gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero){
                 isActive = true;
             }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.layer == 7){
-            Vector2 bounceDirection = (Vector2)transform.position - (Vector2)other.transform.position;
-            bounceDirection = Vector2.Reflect(bounceDirection.normalized, Vector2.zero);
-
-            GetComponent<Rigidbody2D>().velocity = bounceDirection * (missile.velocity / 2) * bounceCoef;
         }
     }
 }

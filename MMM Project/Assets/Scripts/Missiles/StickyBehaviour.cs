@@ -7,7 +7,7 @@ public class StickyBehaviour : MonoBehaviour
     [SerializeField] private GameObject enemyPierced;
     [SerializeField] private MissileStrategy missile;
     [SerializeField] private MissileBehavior missileBehavior;
-    [SerializeField] private float force, bounceCoef;
+    [SerializeField] private float force;
     private int damage;
     private Vector2 direction;
 
@@ -24,12 +24,6 @@ public class StickyBehaviour : MonoBehaviour
                     float finalForce = force / distance;
                     rb2D.AddForce(direction * finalForce);
                 }
-        }
-        else if(other.gameObject.layer == 7){
-            Vector2 bounceDirection = (Vector2)transform.position - (Vector2)other.transform.position;
-            bounceDirection = Vector2.Reflect(bounceDirection.normalized, Vector2.zero);
-
-            GetComponent<Rigidbody2D>().velocity = bounceDirection * (missile.velocity / 3) * bounceCoef;
         }
     }
 

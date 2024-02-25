@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b4108f944c6b549bfc2dc92707a4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 11400000, guid: 164b3874e8736eb4ba83b478f8350476, type: 2}
+  missile: {fileID: 11400000, guid: aed87e1cb39fbbd4583860b954eabfb6, type: 2}
   life: 0
   isSpecial: 0
 --- !u!114 &-8561820899340404949
@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPierced: {fileID: 0}
-  missile: {fileID: 11400000, guid: 164b3874e8736eb4ba83b478f8350476, type: 2}
+  missile: {fileID: 11400000, guid: aed87e1cb39fbbd4583860b954eabfb6, type: 2}
   missileBehavior: {fileID: -9113666254138274782}
   force: 1000
-  bounceCoef: 0.6

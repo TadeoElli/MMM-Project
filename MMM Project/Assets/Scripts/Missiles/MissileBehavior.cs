@@ -66,5 +66,14 @@ public class MissileBehavior : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        CircleCollider2D circleCollider2D = GetComponent<CircleCollider2D>();
+        if(circleCollider2D.isTrigger){
+            if(other.gameObject.layer == 7){
+                missile.SpecialBehaviour(this.gameObject);
+            }
+        }
+    }
+
 
 }

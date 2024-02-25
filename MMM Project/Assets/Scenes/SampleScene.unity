@@ -691,7 +691,7 @@ MonoBehaviour:
   - {fileID: 1447187277}
   - {fileID: 57604483}
   - {fileID: 487698246}
-  index: 1
+  index: 0
 --- !u!4 &1076150616
 Transform:
   m_ObjectHideFlags: 0
@@ -1672,7 +1672,7 @@ PrefabInstance:
     - target: {fileID: 2345792218122456916, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
       propertyPath: missiles.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 164b3874e8736eb4ba83b478f8350476, type: 2}
+      objectReference: {fileID: 11400000, guid: aed87e1cb39fbbd4583860b954eabfb6, type: 2}
     - target: {fileID: 2345792218122456916, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
       propertyPath: missiles.Array.data[5]
       value: 
@@ -1817,7 +1817,7 @@ PrefabInstance:
     - target: {fileID: 3789532036913698441, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: types.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 164b3874e8736eb4ba83b478f8350476, type: 2}
+      objectReference: {fileID: 11400000, guid: aed87e1cb39fbbd4583860b954eabfb6, type: 2}
     - target: {fileID: 3789532036913698441, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: types.Array.data[5]
       value: 

@@ -12,7 +12,11 @@ public class EtherealMissileBehaviour : MissileStrategy
         return  missile;
     }
     public override void SpecialBehaviour(GameObject prefab){
+        Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
+        Vector2 bounceDirection = rb2D.velocity;
+        bounceDirection.y = bounceDirection.y * -1;
 
+        rb2D.velocity = bounceDirection;
     }
     
     public override int CollisionBehaviour(int layer){
