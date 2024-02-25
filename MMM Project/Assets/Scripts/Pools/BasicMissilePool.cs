@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicMissilePool : MonoBehaviour
+public class MissilePool : MonoBehaviour
 {
     [SerializeField] private List<GameObject> missilePrefab;        //Lista de misiles
     [SerializeField] private int poolSize = 5;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> missileDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada
-    private static BasicMissilePool instance;
-    public static BasicMissilePool Instance { get {return instance; } }
+    private static MissilePool instance;
+    public static MissilePool Instance { get {return instance; } }
 
     private void Awake() {
         if(instance == null){
