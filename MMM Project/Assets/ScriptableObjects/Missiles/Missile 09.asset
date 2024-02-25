@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb4263a02a808604c8947b0ad46650fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b4c8eee9c7bd90408e6dc6d3422a728, type: 3}
   m_Name: Missile 09
   m_EditorClassIdentifier: 
   id: 9
-  energyConsumption: 0
-  maxLife: 1
+  energyConsumption: 1
+  maxLife: 2
   minDamage: 0
   maxDamage: 0
   velocity: 30
   minStability: 100
   maxStability: 100
-  prefab: {fileID: 0}
+  prefab: {fileID: 2464879535626842570, guid: 7f41f57c63a3cd44d8705ac761ca2524, type: 3}
+  explosion: {fileID: 1864665300318508979, guid: 68afaef436148ee45966d204c5400463, type: 3}

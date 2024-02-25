@@ -10,7 +10,7 @@ public class NexusCollisions : MonoBehaviour
 
 
 
-    public void TakeDamage(MissileStrategy creator){
+    public void TakeDamageForMissile(MissileStrategy creator){
         damage = DamageTypesForNexus.Instance.missilesDictionary[creator];
         Debug.Log("Recibi "+ damage+ " de dano" );
         currentStructure.Value -= damage;

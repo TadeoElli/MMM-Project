@@ -118,11 +118,16 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  _inputController: {fileID: 0}
+  nexusPosition: {fileID: 0}
   missiles:
   - {fileID: 11400000, guid: 05a46abc4f5aa364bb3b0c5386464328, type: 2}
   - {fileID: 11400000, guid: e6a3b0b6251e8bc4e90a5b6737fa366d, type: 2}
   - {fileID: 11400000, guid: f54b02c1afacac7499f64616059fe95a, type: 2}
+  - {fileID: 11400000, guid: 4371c0a35fb83f24db96205759fb04a3, type: 2}
+  - {fileID: 11400000, guid: aed87e1cb39fbbd4583860b954eabfb6, type: 2}
+  - {fileID: 11400000, guid: 4ebb68ac37c39c2489836fcc2d0d0862, type: 2}
+  - {fileID: 11400000, guid: 1444a89d03c24e749b0f3a340c9577de, type: 2}
+  - {fileID: 11400000, guid: 688f5e418d062b24fa7379d113887fcf, type: 2}
   mouseOverMissile: {fileID: 0}
   missilePrefab: {fileID: 0}
   index: 0
@@ -295,3 +300,4 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  damage: 0

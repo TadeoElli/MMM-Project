@@ -7,7 +7,7 @@ using UnityEngine;
 public class BasicMissilesStrategy : MissileStrategy
 {
     public override GameObject CreateMissile(Transform origin){
-        GameObject missile = BasicMissilePool.Instance.RequestMissile(prefab);
+        GameObject missile = MissilePool.Instance.RequestMissile(prefab);
         missile.transform.position = origin.position;
         return  missile;
     }

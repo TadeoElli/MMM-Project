@@ -19,7 +19,9 @@ public class Explosion : MonoBehaviour
         foreach (Collider2D collisions in objetos){
 
             if(collisions.gameObject.tag == "Nexus"){
-                collisions.GetComponent<NexusCollisions>().TakeDamage(creator);
+                if(creator != null){
+                    collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(creator);
+                }
             }
             if(collisions.gameObject.layer != 2){
                 Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();

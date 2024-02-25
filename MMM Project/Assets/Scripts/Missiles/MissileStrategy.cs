@@ -12,6 +12,7 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
     public float minStability;
     public float maxStability;
     public GameObject prefab;
+    public GameObject explosion;
     public abstract GameObject CreateMissile(Transform origin); 
     public abstract void SpecialBehaviour(GameObject prefab); 
     public abstract int CollisionBehaviour(int layer);

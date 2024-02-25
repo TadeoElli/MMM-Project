@@ -65,16 +65,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   types:
-  - Missile01
-  - Missile02
-  - Missile03
-  - Missile04
-  - Missile05
-  - Missile06
-  - Missile07
-  - Missile08
-  - SmallEnemies
-  - MediumEnemies
-  - BigEnemies
-  - Bosses
-  damages: 2003000020030000200300002003000020030000200300002003000020030000960000002c010000f4010000e8030000
+  - {fileID: 11400000, guid: 05a46abc4f5aa364bb3b0c5386464328, type: 2}
+  - {fileID: 11400000, guid: e6a3b0b6251e8bc4e90a5b6737fa366d, type: 2}
+  - {fileID: 11400000, guid: f54b02c1afacac7499f64616059fe95a, type: 2}
+  - {fileID: 11400000, guid: 4371c0a35fb83f24db96205759fb04a3, type: 2}
+  - {fileID: 11400000, guid: aed87e1cb39fbbd4583860b954eabfb6, type: 2}
+  - {fileID: 11400000, guid: 4ebb68ac37c39c2489836fcc2d0d0862, type: 2}
+  - {fileID: 11400000, guid: 1444a89d03c24e749b0f3a340c9577de, type: 2}
+  damages: bc020000bc020000bc020000bc020000bc020000bc020000bc020000
