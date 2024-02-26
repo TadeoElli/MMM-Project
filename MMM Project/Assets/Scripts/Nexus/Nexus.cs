@@ -8,7 +8,7 @@ public class Nexus : MonoBehaviour
     [SerializeField] private NexusPosition nexusPosition;
     [SerializeField] private MissileStrategy [] missiles;
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
-    [SerializeField] private int index = 0;
+    [SerializeField] private int index = 0, baseStability;
     [SerializeField] private bool haveMissile;
     [SerializeField] private CircleCollider2D collider1;
 
@@ -67,7 +67,7 @@ public class Nexus : MonoBehaviour
                     //Fuerza = distancia entre el punto de inicio y el punto final, clampeado a los valores minimos y maximos de distancia
                     force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
                     missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * (missiles[index].velocity / 3), ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
-                    missilePrefab.GetComponent<MissileBehavior>().TryToShoot(startPoint,endPoint);
+                    missilePrefab.GetComponent<MissileBehavior>().TryToShoot(startPoint,endPoint, baseStability);
                     missilePrefab.GetComponent<Collider2D>().enabled = true;
                     tl.EndLine();
                     collider1.radius = 0.2f;
@@ -89,6 +89,9 @@ public class Nexus : MonoBehaviour
     }
     public void SetEnergyValue(float amount){
         currentEnergy.Value = amount;
+    }
+    public void SetStabilityValue(int amount){
+        baseStability = amount;
     }
     
     private void OnMouseExit() {

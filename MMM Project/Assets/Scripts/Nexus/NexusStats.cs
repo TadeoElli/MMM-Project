@@ -7,10 +7,11 @@ public class NexusStats : MonoBehaviour
     public Observer<float> currentEnergy = new Observer<float>(1000f);
     public Observer<float> currentStructure = new Observer<float>(3000f);
     public Observer<int> currentLives = new Observer<int>(35);
+    public Observer<int> currentBaseStability = new Observer<int>(0);
     //public float currentEnergy;
     [SerializeField] private float maxEnergy;
     [SerializeField] private float maxStructure;
-    [SerializeField] private float baseStability;
+    [SerializeField] private int baseStability;
     [SerializeField] private int missilesUnlocked;
     [SerializeField] private int maxLives;
     private bool isDestroyed = false;
@@ -18,6 +19,7 @@ public class NexusStats : MonoBehaviour
     private void Start() {
         currentEnergy.Invoke();
         currentStructure.Invoke();
+        currentBaseStability.Invoke();
     }
     private void Update() {
         if(!isDestroyed){

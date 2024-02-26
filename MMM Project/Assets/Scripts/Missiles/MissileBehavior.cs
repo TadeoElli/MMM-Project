@@ -36,18 +36,19 @@ public class MissileBehavior : MonoBehaviour
         }
     }
 
-    public void TryToShoot(Vector2 startPoint, Vector2 endPoint){
+    public void TryToShoot(Vector2 startPoint, Vector2 endPoint, int baseStability){
         float distance = Vector2.Distance(startPoint, endPoint);
         float probability = Random.Range(0,100);
         float maxProbability;
         if(distance <= 1){
             maxProbability = maxStability;
+            maxProbability = maxProbability * (baseStability * 3.5f);
         }
         else{
             distance  = distance - 1;
             maxProbability = maxStability + (minStability - maxStability) * distance;
             maxProbability = Mathf.Clamp(maxProbability, minStability, maxStability);
-            
+            maxProbability = maxProbability * (baseStability * 3.5f);
         }
         if(probability > maxProbability){
             CreateExplosion();
@@ -74,6 +75,8 @@ public class MissileBehavior : MonoBehaviour
             }
         }
     }
+
+
 
 
 }

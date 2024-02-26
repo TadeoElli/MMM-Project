@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2464879535626842569}
   - component: {fileID: 2769597986703773441}
   m_Layer: 2
-  m_Name: Missile 6
+  m_Name: Missile 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.42096138, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.010103226, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,7 +99,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -136,6 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b4108f944c6b549bfc2dc92707a4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 11400000, guid: 4ebb68ac37c39c2489836fcc2d0d0862, type: 2}
+  missile: {fileID: 11400000, guid: 6f712553cb0e5c141b698498b1bc9f59, type: 2}
   life: 0
   isSpecial: 0
