@@ -2,7 +2,7 @@
     "name": "Inputs",
     "maps": [
         {
-            "name": "Missiles",
+            "name": "InputsIngame",
             "id": "584e134d-c8c8-4baa-8966-4c70ec920fd2",
             "actions": [
                 {
@@ -81,6 +81,33 @@
                     "name": "SetMissile9",
                     "type": "Button",
                     "id": "587a2875-0797-43c0-8a2b-7a0e7033fc2e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tower1",
+                    "type": "Button",
+                    "id": "351166c2-eab0-4af4-8fac-19ac5bfddb2d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tower2",
+                    "type": "Button",
+                    "id": "cb24b9dc-e32c-499a-a2ca-f6ac4bb7a3c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tower3",
+                    "type": "Button",
+                    "id": "9b58dfd2-08a6-4455-a8b5-03f74a333ef0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -184,6 +211,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "SetMissile9",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0fc1c03d-10d3-4de1-8b5a-20cfb520ff70",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tower1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d1a005b-b329-457b-a8a8-e3fad1984372",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tower2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "91e7c37f-a126-46b0-a1da-00e180cb2733",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tower3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

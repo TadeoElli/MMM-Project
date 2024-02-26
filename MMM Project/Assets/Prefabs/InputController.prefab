@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7800152699855545223
+--- !u!1 &4141485675463591602
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7800152699855545225}
-  - component: {fileID: 7800152699855545222}
-  - component: {fileID: 7800152699855545224}
+  - component: {fileID: 4141485675463591612}
+  - component: {fileID: 4141485675463591613}
+  - component: {fileID: 5749252901835563808}
   m_Layer: 0
-  m_Name: InputSystem
+  m_Name: InputController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7800152699855545225
+--- !u!4 &4141485675463591612
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7800152699855545223}
+  m_GameObject: {fileID: 4141485675463591602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,42 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7800152699855545222
+--- !u!114 &4141485675463591613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7800152699855545223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d46ec6ac54dd58418e30228508802f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missileIndex:
-    value: 0
-    onValueChanged:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Nexus, Assembly-CSharp
-          m_MethodName: SetMissileIndex
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &7800152699855545224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7800152699855545223}
+  m_GameObject: {fileID: 4141485675463591602}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
@@ -89,8 +60,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7800152699855545222}
-        m_TargetAssemblyTypeName: InputMissiles, Assembly-CSharp
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
         m_MethodName: SetMissileIndex
         m_Mode: 3
         m_Arguments:
@@ -105,8 +76,8 @@ MonoBehaviour:
     m_ActionName: Missiles/SetMissile1[/Keyboard/1]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7800152699855545222}
-        m_TargetAssemblyTypeName: InputMissiles, Assembly-CSharp
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
         m_MethodName: SetMissileIndex
         m_Mode: 3
         m_Arguments:
@@ -121,8 +92,8 @@ MonoBehaviour:
     m_ActionName: Missiles/SetMissile2[/Keyboard/2]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7800152699855545222}
-        m_TargetAssemblyTypeName: InputMissiles, Assembly-CSharp
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
         m_MethodName: SetMissileIndex
         m_Mode: 3
         m_Arguments:
@@ -137,8 +108,8 @@ MonoBehaviour:
     m_ActionName: Missiles/SetMissile3[/Keyboard/3]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7800152699855545222}
-        m_TargetAssemblyTypeName: InputMissiles, Assembly-CSharp
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
         m_MethodName: SetMissileIndex
         m_Mode: 3
         m_Arguments:
@@ -153,8 +124,8 @@ MonoBehaviour:
     m_ActionName: Missiles/SetMissile4[/Keyboard/4]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7800152699855545222}
-        m_TargetAssemblyTypeName: InputMissiles, Assembly-CSharp
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
         m_MethodName: SetMissileIndex
         m_Mode: 3
         m_Arguments:
@@ -169,8 +140,8 @@ MonoBehaviour:
     m_ActionName: Missiles/SetMissile5[/Keyboard/5]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7800152699855545222}
-        m_TargetAssemblyTypeName: InputMissiles, Assembly-CSharp
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
         m_MethodName: SetMissileIndex
         m_Mode: 3
         m_Arguments:
@@ -185,8 +156,8 @@ MonoBehaviour:
     m_ActionName: Missiles/SetMissile6[/Keyboard/6]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7800152699855545222}
-        m_TargetAssemblyTypeName: InputMissiles, Assembly-CSharp
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
         m_MethodName: SetMissileIndex
         m_Mode: 3
         m_Arguments:
@@ -201,8 +172,8 @@ MonoBehaviour:
     m_ActionName: Missiles/SetMissile7[/Keyboard/7]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7800152699855545222}
-        m_TargetAssemblyTypeName: InputMissiles, Assembly-CSharp
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
         m_MethodName: SetMissileIndex
         m_Mode: 3
         m_Arguments:
@@ -217,8 +188,8 @@ MonoBehaviour:
     m_ActionName: Missiles/SetMissile8[/Keyboard/8]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7800152699855545222}
-        m_TargetAssemblyTypeName: InputMissiles, Assembly-CSharp
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
         m_MethodName: SetMissileIndex
         m_Mode: 3
         m_Arguments:
@@ -231,8 +202,90 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 587a2875-0797-43c0-8a2b-7a0e7033fc2e
     m_ActionName: Missiles/SetMissile9[/Keyboard/9]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: SetTowerIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 351166c2-eab0-4af4-8fac-19ac5bfddb2d
+    m_ActionName: InputsIngame/Tower1[/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: SetTowerIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cb24b9dc-e32c-499a-a2ca-f6ac4bb7a3c7
+    m_ActionName: InputsIngame/Tower2[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5749252901835563808}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: SetTowerIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9b58dfd2-08a6-4455-a8b5-03f74a333ef0
+    m_ActionName: InputsIngame/Tower3[/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Missiles
+  m_DefaultActionMap: InputsIngame
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5749252901835563808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141485675463591602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70921a080028104d804866294947eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missileIndex:
+    value: 0
+    onValueChanged:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Nexus, Assembly-CSharp
+          m_MethodName: SetMissileIndex
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  towerIndex:
+    value: 0
+    onValueChanged:
+      m_PersistentCalls:
+        m_Calls: []

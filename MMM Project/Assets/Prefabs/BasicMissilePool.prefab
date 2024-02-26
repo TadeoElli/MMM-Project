@@ -52,5 +52,6 @@ MonoBehaviour:
   - {fileID: 2464879535626842570, guid: 079e59474797ee740b9ef914ce462cdb, type: 3}
   - {fileID: 2464879535626842570, guid: 755f9bad73593454fbe97ffb3124ec09, type: 3}
   - {fileID: 2464879535626842570, guid: 3af3060297ed40247948c1b7cc2a2ae5, type: 3}
+  - {fileID: 2464879535626842570, guid: d49fb5bb67bc8144cbd5c1d350edc2ac, type: 3}
   - {fileID: 2464879535626842570, guid: 7f41f57c63a3cd44d8705ac761ca2524, type: 3}
   poolSize: 3

@@ -127,10 +127,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aed87e1cb39fbbd4583860b954eabfb6, type: 2}
   - {fileID: 11400000, guid: 4ebb68ac37c39c2489836fcc2d0d0862, type: 2}
   - {fileID: 11400000, guid: 1444a89d03c24e749b0f3a340c9577de, type: 2}
-  - {fileID: 11400000, guid: 688f5e418d062b24fa7379d113887fcf, type: 2}
+  - {fileID: 11400000, guid: 6f712553cb0e5c141b698498b1bc9f59, type: 2}
+  - {fileID: 11400000, guid: e179d8cada3ca434c9c4ec09e8b7a7c9, type: 2}
   mouseOverMissile: {fileID: 0}
   missilePrefab: {fileID: 0}
   index: 0
+  baseStability: 0
   haveMissile: 1
   collider1: {fileID: 2345792218122456917}
   tl: {fileID: 0}

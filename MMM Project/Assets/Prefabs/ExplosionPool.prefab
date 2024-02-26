@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86be76e7330b760428927a5aef6cd467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 1864665300318508979, guid: 53431b636cb94854d84d4fc688b74055, type: 3}
+  explosionPrefab:
+  - {fileID: 1864665300318508979, guid: 53431b636cb94854d84d4fc688b74055, type: 3}
+  - {fileID: 1864665300318508979, guid: 68afaef436148ee45966d204c5400463, type: 3}
   poolSize: 5
-  explosionList: []
