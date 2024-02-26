@@ -12,13 +12,17 @@ public class NexusStats : MonoBehaviour
     [SerializeField] private float maxEnergy;
     [SerializeField] private float maxStructure;
     [SerializeField] private int baseStability;
+    [SerializeField] private int baseEnergy;
     [SerializeField] private int missilesUnlocked;
     [SerializeField] private int maxLives;
     private bool isDestroyed = false;
 
     private void Start() {
+        maxEnergy = maxEnergy + (baseEnergy * 35);
+        currentEnergy.Value = maxEnergy;
         currentEnergy.Invoke();
         currentStructure.Invoke();
+        currentBaseStability.Value = baseStability;
         currentBaseStability.Invoke();
     }
     private void Update() {

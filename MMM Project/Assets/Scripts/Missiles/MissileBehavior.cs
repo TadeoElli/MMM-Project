@@ -42,13 +42,13 @@ public class MissileBehavior : MonoBehaviour
         float maxProbability;
         if(distance <= 1){
             maxProbability = maxStability;
-            maxProbability = maxProbability * (baseStability * 3.5f);
+            maxProbability = maxProbability + (baseStability * 3.5f);
         }
         else{
             distance  = distance - 1;
             maxProbability = maxStability + (minStability - maxStability) * distance;
             maxProbability = Mathf.Clamp(maxProbability, minStability, maxStability);
-            maxProbability = maxProbability * (baseStability * 3.5f);
+            maxProbability = maxProbability + (baseStability * 3.5f);
         }
         if(probability > maxProbability){
             CreateExplosion();

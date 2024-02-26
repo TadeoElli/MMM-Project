@@ -33,7 +33,7 @@ public class TowerController : MonoBehaviour
 
     public void SetTowerIndex(int index){
         if(!isReady[index]){
-            currentIndex.Value = 4;
+            currentIndex.Value = 0;
         }
         else{
             currentIndex.Value = index;
