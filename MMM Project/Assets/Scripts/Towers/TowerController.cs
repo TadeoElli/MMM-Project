@@ -15,7 +15,7 @@ public class TowerController : MonoBehaviour
         for (int i = 0; i < towers.Length; i++)
         {
             if(i == 0){
-                cooldowns.Add(null);
+                cooldowns.Add(0);
                 isReady.Add(false);
             }
             else{
