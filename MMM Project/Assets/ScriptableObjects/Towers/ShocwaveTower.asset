@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   energyConsumption: 10
-  maxEnergy: 1000
+  maxEnergy: 150
   radius: 0.5
-  force: 100
-  cooldown: 25
+  force: 10000
+  cooldown: 150
   prefab: {fileID: 9079249599195923740, guid: 13a58475e52f6a744b218e7f171579cb, type: 3}
   explosion: {fileID: 1864665300318508979, guid: 68afaef436148ee45966d204c5400463, type: 3}

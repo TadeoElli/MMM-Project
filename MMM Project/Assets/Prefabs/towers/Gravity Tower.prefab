@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 9079249599195923808}
   - component: {fileID: 9079249599195923809}
   - component: {fileID: 9079249599195923811}
-  - component: {fileID: 5336064668155514236}
-  - component: {fileID: 2158762928102406578}
-  m_Layer: 13
-  m_Name: Triangle
+  - component: {fileID: -3835447991770680796}
+  - component: {fileID: -1143152831484762886}
+  m_Layer: 8
+  m_Name: Gravity Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.09620863, g: 0.11537013, b: 0.8867924, a: 1}
+  m_Color: {r: 0.8862745, g: 0.09803923, b: 0.19008957, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -108,7 +108,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5336064668155514236
+--- !u!114 &-3835447991770680796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079249599195923740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441fd2146c440934093cbe103a7a57e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 11400000, guid: dbed0009ce47f894699566b9434d9ebb, type: 2}
+  radius: 0
+  energy: 0
+--- !u!58 &-1143152831484762886
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,21 +136,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.21133333}
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &2158762928102406578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9079249599195923740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441fd2146c440934093cbe103a7a57e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tower: {fileID: 11400000, guid: e68fff7ad9b20bd49aa3182cc5f55f18, type: 2}
-  radius: 0.5
-  energy: 1000
+  m_Radius: 2

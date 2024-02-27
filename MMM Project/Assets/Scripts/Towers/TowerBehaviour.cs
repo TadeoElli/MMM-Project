@@ -20,6 +20,7 @@ public class TowerBehaviour : MonoBehaviour
         }
         else{
             energy = energy - 1 * Time.deltaTime;
+            
         }
 
     }
@@ -27,6 +28,10 @@ public class TowerBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         tower.ColliderBehaviour(this.gameObject,other.gameObject);
         ReduceEnergy();
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        tower.SpecialBehaviour(this.gameObject);
     }
     private void ReduceEnergy(){
         energy -= tower.energyConsumption;

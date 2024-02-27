@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObject/Tower/Shockwave", order = 0)]
+[CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObject/Tower/Shockwave", order = 1)]
 public class ShockwaveTowerBehaviour : TowerStrategy
 {
+    [SerializeField] private float force;
     public override void CreateTower(Vector2 origin){
         GameObject tower = TowersPool.Instance.RequestTower(prefab);
         tower.transform.position = origin;
@@ -26,5 +27,6 @@ public class ShockwaveTowerBehaviour : TowerStrategy
                 }
         }
     }
+
     
 }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2655c3b848867b9459660f2f1ebd7830, type: 3}
+  m_Name: Gravity Tower
+  m_EditorClassIdentifier: 
+  id: 0
+  energyConsumption: 10
+  maxEnergy: 150
+  radius: 2
+  cooldown: 150
+  prefab: {fileID: 9079249599195923740, guid: b6f99ed29293a2d47a8aaad2ba94bd33, type: 3}
+  explosion: {fileID: 1864665300318508979, guid: 53431b636cb94854d84d4fc688b74055, type: 3}
+  repulsionRadius: 0.5
+  repulsionStrength: 10
+  attractionStrength: 5

@@ -6,7 +6,6 @@ public abstract class TowerStrategy : ScriptableObject        //Strategy para to
     public float energyConsumption;
     public float maxEnergy;
     public float radius;
-    public float force;
     public float cooldown;
     public GameObject prefab;
     public GameObject explosion;
