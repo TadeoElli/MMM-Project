@@ -18,7 +18,7 @@ public class Explosion : MonoBehaviour
 
         foreach (Collider2D collisions in objetos){
 
-            if(collisions.gameObject.tag == "Nexus"){
+            if(collisions.CompareTag("Nexus")){
                 if(creator != null){
                     collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(creator);
                 }
