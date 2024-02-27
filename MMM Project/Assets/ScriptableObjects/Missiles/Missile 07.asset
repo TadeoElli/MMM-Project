@@ -18,7 +18,7 @@ MonoBehaviour:
   minDamage: 0
   maxDamage: 0
   velocity: 5
-  minStability: 100
-  maxStability: 100
+  minStability: 1
+  maxStability: 30
   prefab: {fileID: 2464879535626842570, guid: 3af3060297ed40247948c1b7cc2a2ae5, type: 3}
   explosion: {fileID: 1864665300318508979, guid: 53431b636cb94854d84d4fc688b74055, type: 3}

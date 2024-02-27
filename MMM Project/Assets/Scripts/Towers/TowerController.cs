@@ -6,10 +6,20 @@ public class TowerController : MonoBehaviour
 {
     // Start is called before the first frame update
     public Observer<int> currentIndex = new Observer<int>(0);
+    Camera cam;
+    [SerializeField] private int index;
+
     [SerializeField] private TowerStrategy [] towers;
     
     [SerializeField] private List<float> cooldowns;
     [SerializeField] private List<bool> isReady;
+
+    [SerializeField] private GameObject towerPrefab;
+
+
+    private void Awake() {
+        cam = Camera.main;
+    }
     void Start()
     {
         for (int i = 0; i < towers.Length; i++)
@@ -31,12 +41,17 @@ public class TowerController : MonoBehaviour
         
     }
 
-    public void SetTowerIndex(int index){
-        if(!isReady[index]){
+    public void SetTowerIndex(int newIndex){
+        if(!isReady[newIndex]){
             currentIndex.Value = 0;
         }
         else{
-            currentIndex.Value = index;
+            index = newIndex;
+            CreateTower();
         }
+    }
+
+    private void CreateTower(){
+        towers[index].CreateTower(cam.ScreenToWorldPoint(Input.mousePosition));
     }
 }
