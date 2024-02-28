@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -9113666254138274782}
   m_Layer: 2
   m_Name: Missile 3
-  m_TagString: Untagged
+  m_TagString: Missiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missile: {fileID: 11400000, guid: f54b02c1afacac7499f64616059fe95a, type: 2}
   life: 0
+  isSpecial: 0

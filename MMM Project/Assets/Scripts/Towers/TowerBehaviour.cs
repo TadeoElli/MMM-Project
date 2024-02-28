@@ -6,6 +6,7 @@ public class TowerBehaviour : MonoBehaviour
 {
     [SerializeField] private TowerStrategy tower;
     [SerializeField] private float radius, energy;
+    [SerializeField] private bool hasEnemyInside = false;
     
 
     private void OnEnable() {
@@ -19,19 +20,30 @@ public class TowerBehaviour : MonoBehaviour
             this.gameObject.SetActive(false);
         }
         else{
-            energy = energy - 1 * Time.deltaTime;
+            if(hasEnemyInside){
+                energy = energy - 3 * Time.deltaTime;
+            }
+            else{
+                energy = energy - 1 * Time.deltaTime;
+            }
             
         }
 
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        tower.ColliderBehaviour(this.gameObject,other.gameObject);
-        ReduceEnergy();
+        if(tower.ColliderBehaviour(this.gameObject,other.gameObject)){
+            hasEnemyInside = true;
+            ReduceEnergy();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        tower.SpecialBehaviour(this.gameObject);
+        tower.SpecialBehaviour(this.gameObject, other.gameObject);
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        hasEnemyInside = false;
+        
     }
     private void ReduceEnergy(){
         energy -= tower.energyConsumption;
