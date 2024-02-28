@@ -10,6 +10,8 @@ public class MissileBehavior : MonoBehaviour
     [SerializeField] private bool isSpecial = false;
     //private int damage;
     private float  minStability, maxStability;
+    public bool hasBeenAtracted = false;
+    public float rotationSpeed = 100f;
 
 
     private void OnEnable() {

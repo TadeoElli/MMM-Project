@@ -120,9 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441fd2146c440934093cbe103a7a57e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 0}
-  radius: 0
+  tower: {fileID: 11400000, guid: bace137992a7a584ca6c0afeca98c120, type: 2}
   energy: 0
+  hasEnemyInside: 0
 --- !u!58 &5667839829420075765
 CircleCollider2D:
   m_ObjectHideFlags: 0

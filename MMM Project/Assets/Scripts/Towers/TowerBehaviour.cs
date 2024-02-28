@@ -5,12 +5,11 @@ using UnityEngine;
 public class TowerBehaviour : MonoBehaviour
 {
     [SerializeField] private TowerStrategy tower;
-    [SerializeField] private float radius, energy;
+    [SerializeField] private float energy;
     [SerializeField] private bool hasEnemyInside = false;
     
 
     private void OnEnable() {
-        radius = tower.radius;
         energy = tower.maxEnergy;
     }
     // Update is called once per frame
@@ -43,14 +42,9 @@ public class TowerBehaviour : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other) {
         hasEnemyInside = false;
-        
     }
     private void ReduceEnergy(){
         energy -= tower.energyConsumption;
         
-    }
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

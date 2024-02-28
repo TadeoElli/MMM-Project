@@ -23,7 +23,7 @@ public class Explosion : MonoBehaviour
                     collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(creator);
                 }
             }
-            if(collisions.gameObject.layer != 2){
+            if(collisions.CompareTag("Enemy")){
                 Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
                 if(rb2D != null){
                     Vector2 direction = collisions.transform.position - transform.position;
