@@ -12,6 +12,7 @@ public class MissileBehavior : MonoBehaviour
     private float  minStability, maxStability;
     public bool hasBeenAtracted = false;
     public float rotationSpeed = 100f;
+    public float rotationDirection;
 
 
     private void OnEnable() {

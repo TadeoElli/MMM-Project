@@ -39,6 +39,9 @@ public class TowerBehaviour : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other) {
         tower.SpecialBehaviour(this.gameObject, other.gameObject);
+        if(tower.ColliderBehaviour(this.gameObject,other.gameObject)){
+            hasEnemyInside = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D other) {
         hasEnemyInside = false;

@@ -139,3 +139,5 @@ MonoBehaviour:
   missile: {fileID: 11400000, guid: 6f712553cb0e5c141b698498b1bc9f59, type: 2}
   life: 0
   isSpecial: 0
+  hasBeenAtracted: 0
+  rotationSpeed: 100
