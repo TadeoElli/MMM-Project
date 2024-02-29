@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5de5ce4d8685046a8d200e6f4f74b3, type: 3}
   m_Name: Acceleration Tower
   m_EditorClassIdentifier: 
-  id: 2
+  id: 12
   energyConsumption: 0
   maxEnergy: 150
   cooldown: 150
   prefab: {fileID: 9079249599195923740, guid: a6d610d0aa38a874db6394b57b125652, type: 3}
-  explosion: {fileID: 1864665300318508979, guid: 53431b636cb94854d84d4fc688b74055, type: 3}
+  explosion: {fileID: 1864665300318508979, guid: 68afaef436148ee45966d204c5400463, type: 3}
   attractionStrength: 400
   repulsionStrength: 100
   repulsionRadius: 0.5

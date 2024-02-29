@@ -16,7 +16,7 @@ public class TowerBehaviour : MonoBehaviour
     void Update()
     {
         if(energy <= 0){
-            this.gameObject.SetActive(false);
+            DestroyTower();
         }
         else{
             if(hasEnemyInside){
@@ -29,7 +29,14 @@ public class TowerBehaviour : MonoBehaviour
         }
 
     }
+    private void DestroyTower(){
+        GameObject explosion = ExplosionPool.Instance.RequestExplosion(tower.explosion);
+        explosion.GetComponent<Explosion>().creatorId =  tower.id;
+        explosion.transform.position = transform.position;
+        tower.DestroyTower(this.gameObject);
+        this.gameObject.SetActive(false);
 
+    }
     private void OnTriggerEnter2D(Collider2D other) {
         if(tower.ColliderBehaviour(this.gameObject,other.gameObject)){
             hasEnemyInside = true;

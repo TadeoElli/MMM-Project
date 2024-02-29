@@ -6,7 +6,7 @@ public class Explosion : MonoBehaviour
 {
     [SerializeField] private float radius, force;
     [SerializeField] public AnimEvents events;
-    [SerializeField] public MissileStrategy creator;
+    [SerializeField] public int creatorId;
 
     private void Start() {
         events.ADD_EVENT("dealDamage", DealDamage);
@@ -19,9 +19,8 @@ public class Explosion : MonoBehaviour
         foreach (Collider2D collisions in objetos){
 
             if(collisions.CompareTag("Nexus")){
-                if(creator != null){
-                    collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(creator);
-                }
+                collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(creatorId);
+                
             }
             if(collisions.CompareTag("Enemy")){
                 Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();

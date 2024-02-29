@@ -31,5 +31,9 @@ public class ShockwaveTowerBehaviour : TowerStrategy
         return false;
     }
 
+    public override void DestroyTower(GameObject prefab){
+        
+    }
+
     
 }

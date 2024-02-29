@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5dcc1b48405fc4dabb4f1ce9a5302b, type: 3}
   m_Name: ShocwaveTower
   m_EditorClassIdentifier: 
-  id: 1
+  id: 11
   energyConsumption: 10
   maxEnergy: 150
-  radius: 0.5
-  force: 10000
   cooldown: 150
   prefab: {fileID: 9079249599195923740, guid: 13a58475e52f6a744b218e7f171579cb, type: 3}
   explosion: {fileID: 1864665300318508979, guid: 68afaef436148ee45966d204c5400463, type: 3}
+  force: 10000

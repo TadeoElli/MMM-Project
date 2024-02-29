@@ -9,6 +9,7 @@ public class GravityTowerBehaviour : TowerStrategy
     [SerializeField] private float repulsionRadius;
     [SerializeField] private float repulsionStrength;
     [SerializeField] private float attractionStrength;
+    [SerializeField] private float radius;
 
     public override void CreateTower(Vector2 origin){
         GameObject tower = TowersPool.Instance.RequestTower(prefab);
@@ -51,6 +52,22 @@ public class GravityTowerBehaviour : TowerStrategy
         }
         return false;
         
+    }
+
+    public override void DestroyTower(GameObject prefab){
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(prefab.transform.position, radius);
+
+        foreach (Collider2D collisions in objetos){
+            if(collisions.CompareTag("Enemy")){
+                Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
+                if(rb2D != null){
+                    Vector2 direction = collisions.transform.position - prefab.transform.position;
+                    float distance = 1 + direction.magnitude;
+                    float finalForce = repulsionStrength / distance;
+                    rb2D.AddForce(direction * finalForce);
+                }
+            }
+        }
     }
 
     

@@ -7,6 +7,7 @@ public class MissileBehavior : MonoBehaviour
     [SerializeField] private MissileStrategy missile;
     [SerializeField] private float life;
     private bool oneChance = true;
+    private int id;
     [SerializeField] private bool isSpecial = false;
     //private int damage;
     private float  minStability, maxStability;
@@ -16,6 +17,7 @@ public class MissileBehavior : MonoBehaviour
 
 
     private void OnEnable() {
+        id = missile.id;
         life = missile.maxLife;
         minStability = missile.minStability;
         maxStability = missile.maxStability;
@@ -24,7 +26,7 @@ public class MissileBehavior : MonoBehaviour
 
     private void CreateExplosion(){
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(missile.explosion);
-        explosion.GetComponent<Explosion>().creator =  missile;
+        explosion.GetComponent<Explosion>().creatorId =  id;
         explosion.transform.position = transform.position;
         this.gameObject.SetActive(false);
     }

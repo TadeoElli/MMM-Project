@@ -26,7 +26,7 @@ public class AccelerationTowerBehaviour : TowerStrategy
                 Vector2 direction = prefab.transform.position - other.transform.position;
                 float distance = direction.magnitude;
 
-                if (distance <= radius)
+                if (distance < radius)
                 {
                     if(distance > repulsionRadius && !missile.hasBeenAtracted){
                         // Fuerza de atracción proporcional a la distancia
@@ -49,23 +49,22 @@ public class AccelerationTowerBehaviour : TowerStrategy
                             other.transform.RotateAround(prefab.transform.position, Vector3.forward, (missile.rotationSpeed * missile.rotationDirection) * Time.deltaTime);
                             // Aumentar velocidad angular con el tiempo
                             missile.rotationSpeed = missile.rotationSpeed + angularAcceleration * Time.deltaTime;
-                            missile.rotationSpeed = Mathf.Clamp(missile.rotationSpeed, 100f, 1000f);
+                            missile.rotationSpeed = Mathf.Clamp(missile.rotationSpeed, 100f, 700f);
                             float repulsionForce = repulsionStrength * (distance / radius);
 
                             projectileRigidbody.AddForce(direction.normalized * repulsionForce, ForceMode2D.Force);
-                            projectileRigidbody.angularVelocity = missile.rotationSpeed;
-                        }
-                        else{
-                            /*// Mantener la distancia máxima girando alrededor de la torre
-                            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                            Vector2 maxRadiusPosition = prefab.transform.position + Quaternion.Euler(0f, 0f, angle) * new Vector2(radius - 0.1f, 0f);
-                            other.transform.position = maxRadiusPosition;
-                            other.transform.RotateAround(prefab.transform.position, Vector3.forward, (missile.rotationSpeed * rotationDirection) * Time.deltaTime);
-*/
                         }
                     }
                 }
-                else{
+                else if(distance >= radius && missile.hasBeenAtracted){
+                    if(direction.x < 0){
+                        Debug.Log("adelante");
+                        projectileRigidbody.AddForce(-direction.normalized * repulsionStrength * 10f, ForceMode2D.Force);
+                    }
+                    else{
+                        Debug.Log("atras");
+                        projectileRigidbody.AddForce(direction.normalized * repulsionStrength * 100f, ForceMode2D.Force);
+                    }
                     missile.hasBeenAtracted = false;
                 }
                 
@@ -81,5 +80,20 @@ public class AccelerationTowerBehaviour : TowerStrategy
         return false;
     }
 
+    public override void DestroyTower(GameObject prefab){
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(prefab.transform.position, radius);
+
+        foreach (Collider2D collisions in objetos){
+            if(collisions.CompareTag("Missiles")){
+                Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
+                if(rb2D != null){
+                    Vector2 direction = collisions.transform.position - prefab.transform.position;
+                    float distance = 1 + direction.magnitude;
+                    float finalForce = (repulsionStrength * 100f) / distance;
+                    rb2D.AddForce(direction * finalForce);
+                }
+            }
+        }
+    }
     
 }

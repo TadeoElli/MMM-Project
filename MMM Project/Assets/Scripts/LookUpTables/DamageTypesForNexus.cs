@@ -6,8 +6,8 @@ using UnityEngine;
 public class DamageTypesForNexus : MonoBehaviour 
 {
     [Header("Damage of explosions of missiles")]
-    public Dictionary<MissileStrategy, int> missilesDictionary = new Dictionary<MissileStrategy, int>(); 
-    [SerializeField] private List<MissileStrategy> types;
+    public Dictionary<int, int> missilesDictionary = new Dictionary<int, int>(); 
+    [SerializeField] private List<int> id;
     [SerializeField] private List<int> damages;
     //public Dictionary<MissileStrategy, int> missilesDictionary = new Dictionary<MissileStrategy, int>();  
     private static DamageTypesForNexus instance;
@@ -26,7 +26,7 @@ public class DamageTypesForNexus : MonoBehaviour
     private void Start() {
         for (int i = 0; i < damages.Count; i++)
         {
-            missilesDictionary.Add(types[i],damages[i]);
+            missilesDictionary.Add(i,damages[i]);
         }
     }
 }

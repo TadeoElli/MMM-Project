@@ -12,6 +12,8 @@ public abstract class TowerStrategy : ScriptableObject        //Strategy para to
     public abstract void SpecialBehaviour(GameObject prefab, GameObject other); 
 
     public abstract bool ColliderBehaviour(GameObject prefab, GameObject other); 
+
+    public abstract void DestroyTower(GameObject prefab);
     
 
     
