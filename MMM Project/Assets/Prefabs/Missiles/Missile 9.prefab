@@ -137,9 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b4108f944c6b549bfc2dc92707a4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 11400000, guid: e179d8cada3ca434c9c4ec09e8b7a7c9, type: 2}
+  missile: {fileID: 11400000, guid: 82879ff389c152a4187be8129db01494, type: 2}
   life: 0
-  isSpecial: 1
+  isSpecial: 0
   hasBeenAtracted: 0
   rotationSpeed: 100
   rotationDirection: 0

@@ -1935,6 +1935,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d2fc796096dde5247ac283f5caabd41a, type: 2}
     - target: {fileID: 2345792218122456916, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
+      propertyPath: missiles.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 82879ff389c152a4187be8129db01494, type: 2}
+    - target: {fileID: 2345792218122456916, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
       propertyPath: currentEnergy.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1941670156}
