@@ -14,6 +14,7 @@ public class MissileBehavior : MonoBehaviour
     public bool hasBeenAtracted = false;
     public float rotationSpeed = 100f;
     public float rotationDirection;
+    private CircleCollider2D circleCollider2D;
 
 
     private void OnEnable() {
@@ -22,6 +23,7 @@ public class MissileBehavior : MonoBehaviour
         minStability = missile.minStability;
         maxStability = missile.maxStability;
         oneChance = true;
+        circleCollider2D = GetComponent<CircleCollider2D>();
     }
 
     private void CreateExplosion(){
@@ -60,23 +62,50 @@ public class MissileBehavior : MonoBehaviour
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        float damage = missile.CollisionBehaviour(other.gameObject.layer);
+        float damage = missile.CollisionBehaviour(other.gameObject, this.gameObject);
         if(damage > 0){
             TakeDamage(damage);
         }
         if(other.gameObject.layer != 7){
             if(isSpecial){
-                missile.SpecialBehaviour(this.gameObject);
+                missile.SpecialBehaviourEnter(other.gameObject, this.gameObject);
             }
         }
         
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        CircleCollider2D circleCollider2D = GetComponent<CircleCollider2D>();
         if(circleCollider2D.isTrigger){
+            float damage = missile.CollisionBehaviour(other.gameObject, this.gameObject);
+            TakeDamage(damage);
+
             if(other.gameObject.layer == 7){
-                missile.SpecialBehaviour(this.gameObject);
+                //missile.SpecialBehaviour(this.gameObject);
+            }
+            if(other.CompareTag("Enemy") && isSpecial){
+                missile.SpecialBehaviourEnter(other.gameObject,this.gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if(circleCollider2D.isTrigger){
+            if(isSpecial){
+                if (other.CompareTag("Enemy"))
+                {
+                    missile.SpecialBehaviourStay(other.gameObject, this.gameObject);
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if(circleCollider2D.isTrigger){
+            if(isSpecial){
+                if (other.CompareTag("Enemy"))
+                {
+                    missile.SpecialBehaviourExit(other.gameObject, this.gameObject);
+                }
             }
         }
     }

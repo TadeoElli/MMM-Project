@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2464879535626842568}
   - component: {fileID: 2464879535626842569}
   - component: {fileID: -9113666254138274782}
-  - component: {fileID: -8561820899340404949}
   m_Layer: 2
   m_Name: Missile 5
   m_TagString: Missiles
@@ -137,25 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b4108f944c6b549bfc2dc92707a4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 11400000, guid: aed87e1cb39fbbd4583860b954eabfb6, type: 2}
+  missile: {fileID: 11400000, guid: 277a5ede862234743b8d378af1f25142, type: 2}
   life: 0
-  isSpecial: 0
+  isSpecial: 1
   hasBeenAtracted: 0
   rotationSpeed: 100
   rotationDirection: 0
---- !u!114 &-8561820899340404949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2464879535626842570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 436fae7b87d9ca64f93a9b8b76341088, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPierced: {fileID: 0}
-  missile: {fileID: 11400000, guid: aed87e1cb39fbbd4583860b954eabfb6, type: 2}
-  missileBehavior: {fileID: -9113666254138274782}
-  force: 1000

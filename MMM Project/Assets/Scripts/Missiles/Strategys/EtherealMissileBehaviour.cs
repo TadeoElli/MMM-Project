@@ -11,7 +11,7 @@ public class EtherealMissileBehaviour : MissileStrategy
         missile.transform.position = origin.position;
         return  missile;
     }
-    public override void SpecialBehaviour(GameObject prefab){
+    public override void SpecialBehaviourEnter(GameObject other, GameObject prefab){
         Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
         Vector2 bounceDirection = rb2D.velocity;
         bounceDirection.y = bounceDirection.y * -1;
@@ -19,7 +19,8 @@ public class EtherealMissileBehaviour : MissileStrategy
         rb2D.velocity = bounceDirection;
     }
     
-    public override int CollisionBehaviour(int layer){
+    public override int CollisionBehaviour(GameObject other, GameObject prefab){
+        int layer = other.layer;
         int damage;
         switch (layer)
         {
@@ -42,6 +43,13 @@ public class EtherealMissileBehaviour : MissileStrategy
                 damage = 0;
                 return damage;
         }
+    }
+
+    public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
+
+    }
+    public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
+
     }
 
 

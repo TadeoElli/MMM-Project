@@ -11,11 +11,12 @@ public class AntimatterMissileBehaviour : MissileStrategy
         missile.transform.position = origin.position;
         return  missile;
     }
-    public override void SpecialBehaviour(GameObject prefab){
+    public override void SpecialBehaviourEnter(GameObject other, GameObject prefab){
         
     }
     
-    public override int CollisionBehaviour(int layer){
+    public override int CollisionBehaviour(GameObject other, GameObject prefab){
+        int layer = other.layer;
         int damage;
         switch (layer)
         {
@@ -39,6 +40,11 @@ public class AntimatterMissileBehaviour : MissileStrategy
                 return damage;
         }
     }
+    public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
 
+    }
+    public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
+
+    }
 
 }

@@ -14,8 +14,10 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
     public GameObject prefab;
     public GameObject explosion;
     public abstract GameObject CreateMissile(Transform origin); 
-    public abstract void SpecialBehaviour(GameObject prefab); 
-    public abstract int CollisionBehaviour(int layer);
+    public abstract void SpecialBehaviourEnter(GameObject other,GameObject prefab); 
+    public abstract void SpecialBehaviourStay(GameObject other,GameObject prefab); 
+    public abstract void SpecialBehaviourExit(GameObject other,GameObject prefab); 
+    public abstract int CollisionBehaviour(GameObject other, GameObject prefab);
     
 
     

@@ -11,7 +11,9 @@ public class RandomAngleMissileBehaviour : MissileStrategy
         missile.transform.position = origin.position;
         return  missile;
     }
-    public override void SpecialBehaviour(GameObject prefab){
+    public override void SpecialBehaviourEnter(GameObject other, GameObject prefab){
+    }
+    private void OnEnter(GameObject prefab){
         Rigidbody2D rigidbody2D = prefab.GetComponent<Rigidbody2D>();
         float actualAngle = Mathf.Atan2(rigidbody2D.velocity.y, rigidbody2D.velocity.x);
         float newAngle = actualAngle + Random.Range(-Mathf.PI / 2f, Mathf.PI / 2f);
@@ -19,8 +21,8 @@ public class RandomAngleMissileBehaviour : MissileStrategy
         //Debug.Log(newDirection);
         rigidbody2D.velocity = newDirection * 5;
     }
-    
-    public override int CollisionBehaviour(int layer){
+    public override int CollisionBehaviour(GameObject other, GameObject prefab){
+        int layer = other.layer;
         int damage;
         switch (layer)
         {
@@ -29,15 +31,19 @@ public class RandomAngleMissileBehaviour : MissileStrategy
                 return damage;
             case 8:
                 damage = DamageTypesForMissiles.Instance.damageDictionary["SmallEnemies"];
+                OnEnter(prefab);
                 return damage;
             case 9:
                 damage = DamageTypesForMissiles.Instance.damageDictionary["MediumEnemies"];
+                OnEnter(prefab);
                 return damage;
             case 10:
                 damage = DamageTypesForMissiles.Instance.damageDictionary["BigEnemies"];
+                OnEnter(prefab);
                 return damage;
             case 11:
                 damage = DamageTypesForMissiles.Instance.damageDictionary["Bosses"];
+                OnEnter(prefab);
                 return damage;
             default:
                 damage = 0;
@@ -45,5 +51,10 @@ public class RandomAngleMissileBehaviour : MissileStrategy
         }
     }
 
+    public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
 
+    }
+    public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
+
+    }
 }

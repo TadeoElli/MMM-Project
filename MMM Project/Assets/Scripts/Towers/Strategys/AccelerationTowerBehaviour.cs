@@ -12,7 +12,6 @@ public class AccelerationTowerBehaviour : TowerStrategy
     [SerializeField] private float repulsionRadius;
     [SerializeField] private float radius;
     [SerializeField] private float angularAcceleration;
-
     public override void CreateTower(Vector2 origin){
         GameObject tower = TowersPool.Instance.RequestTower(prefab);
         tower.transform.position = origin;
@@ -63,9 +62,10 @@ public class AccelerationTowerBehaviour : TowerStrategy
                     }
                     else{
                         Debug.Log("atras");
-                        projectileRigidbody.AddForce(direction.normalized * repulsionStrength * 100f, ForceMode2D.Force);
+                        projectileRigidbody.AddForce(direction.normalized * repulsionStrength * 10f, ForceMode2D.Force);
                     }
                     missile.hasBeenAtracted = false;
+                    missile.rotationSpeed = missile.rotationSpeed / 2;
                 }
                 
             }

@@ -11,7 +11,7 @@ public class StickyBehaviour : MonoBehaviour
     private int damage;
     private Vector2 direction;
 
-    private void OnTriggerEnter2D(Collider2D other) {
+   /* private void OnTriggerEnter2D(Collider2D other) {
         damage = missile.CollisionBehaviour(other.gameObject.layer);
         missileBehavior.TakeDamage(damage);
         if (other.gameObject.tag == "Enemy")
@@ -42,5 +42,5 @@ public class StickyBehaviour : MonoBehaviour
             
         }
     }
-
+*/
 }
