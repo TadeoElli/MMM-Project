@@ -5,8 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Singularity", order = 4)]
 public class SingularityMissileBehaviour : MissileStrategy
 {
-    [SerializeField] private float radius, force;
-    [SerializeField] private bool isActive;
+    [SerializeField] private float force;
+
+
     public override GameObject CreateMissile(Transform origin){
         GameObject missile = MissilePool.Instance.RequestMissile(prefab);
         missile.transform.position = origin.position;
@@ -15,43 +16,28 @@ public class SingularityMissileBehaviour : MissileStrategy
     public override void SpecialBehaviourEnter(GameObject other, GameObject prefab){
 
     }
-    private void OnEnable() {
-        isActive = false;
-    }
+
+
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         int layer = other.layer;
         int damage;
-        switch (layer)
-        {
-            case 7:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["Walls"];
-                Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
-                Vector2 bounceDirection = rb2D.velocity;
-                bounceDirection.y = bounceDirection.y * -1;
+        if(layer == 7){
+            damage = DamageTypesForMissiles.Instance.damageDictionary["Walls"];
+            Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
+            Vector2 bounceDirection = rb2D.velocity;
+            bounceDirection.y = bounceDirection.y * -1;
 
-                rb2D.velocity = bounceDirection;
-                return damage;
-            case 8:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["SmallEnemies"];
-                return damage;
-            case 9:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["MediumEnemies"];
-                return damage;
-            case 10:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["BigEnemies"];
-                return damage;
-            case 11:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["Bosses"];
-                return damage;
-            default:
-                damage = 0;
-                return damage;
+            rb2D.velocity = bounceDirection;
+            return damage;
+        }
+        else{
+            return 0;
         }
     }
     public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
-
+        Vector2 direction = (prefab.transform.position - other.transform.position).normalized;
+        other.transform.position = Vector2.Lerp(other.transform.position, prefab.transform.position, force * Time.deltaTime);
     }
     public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
-
     }
 }
