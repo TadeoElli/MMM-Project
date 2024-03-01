@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b4108f944c6b549bfc2dc92707a4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 11400000, guid: 1444a89d03c24e749b0f3a340c9577de, type: 2}
+  missile: {fileID: 11400000, guid: d2fc796096dde5247ac283f5caabd41a, type: 2}
   life: 0
   isSpecial: 1
   hasBeenAtracted: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2464879535626842570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42baeb30cd51b0b4a95e756510197610, type: 3}
   m_Name: 

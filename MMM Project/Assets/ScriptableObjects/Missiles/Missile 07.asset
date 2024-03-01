@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b4c8eee9c7bd90408e6dc6d3422a728, type: 3}
+  m_Script: {fileID: 11500000, guid: d2cab32ddde7400459ba872d79ece556, type: 3}
   m_Name: Missile 07
   m_EditorClassIdentifier: 
-  id: 7
+  id: 0
   energyConsumption: 1000
   maxLife: 10000
   minDamage: 0
@@ -22,3 +22,6 @@ MonoBehaviour:
   maxStability: 30
   prefab: {fileID: 2464879535626842570, guid: 3af3060297ed40247948c1b7cc2a2ae5, type: 3}
   explosion: {fileID: 1864665300318508979, guid: 53431b636cb94854d84d4fc688b74055, type: 3}
+  radius: 1
+  force: 3
+  isActive: 0
