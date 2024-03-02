@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2464879535626842568}
   - component: {fileID: 2464879535626842569}
   - component: {fileID: 2769597986703773441}
-  - component: {fileID: -4663369250713111023}
   m_Layer: 2
   m_Name: Missile 9
   m_TagString: Missiles
@@ -143,15 +142,3 @@ MonoBehaviour:
   hasBeenAtracted: 0
   rotationSpeed: 100
   rotationDirection: 0
---- !u!114 &-4663369250713111023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2464879535626842570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c6779271c400b49927e9a7471c63d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
