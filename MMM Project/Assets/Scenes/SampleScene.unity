@@ -998,11 +998,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd391319cfc83b498a9c4eb13169b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
   life: 100
-  rotationSpeed: 4
-  speed: 0.1
+  rotationSpeed: 1
+  speed: 0.25
   direction: 90
-  isRotating: 0
+  canMove: 1
 --- !u!50 &1506054271
 Rigidbody2D:
   serializedVersion: 4
@@ -1016,13 +1017,13 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 5
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.5
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: caefbad59256867478b62ec5f3a56e88, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &1506054273
 BoxCollider2D:
@@ -1876,6 +1877,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 756438130069636187, guid: 300992a2ff258e444bcda21a6167abb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075314080505741816, guid: 300992a2ff258e444bcda21a6167abb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707416410008751224, guid: 300992a2ff258e444bcda21a6167abb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1938728866565086198, guid: 300992a2ff258e444bcda21a6167abb9, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1936,9 +1949,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3795511138515309742, guid: 300992a2ff258e444bcda21a6167abb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6977943382409910557, guid: 300992a2ff258e444bcda21a6167abb9, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977943382409910557, guid: 300992a2ff258e444bcda21a6167abb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6977943382409910557, guid: 300992a2ff258e444bcda21a6167abb9, type: 3}
       propertyPath: m_IsActive
@@ -2262,7 +2283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8692608147653118574, guid: 0b410aaf099d00a49af538da99a67b32, type: 3}
       propertyPath: baseStability
-      value: 0
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8692608147653118574, guid: 0b410aaf099d00a49af538da99a67b32, type: 3}
       propertyPath: currentEnergy.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
