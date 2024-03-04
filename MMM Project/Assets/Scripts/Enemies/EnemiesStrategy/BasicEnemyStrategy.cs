@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Basic", order = 0)]
-public class BasicMissilesStrategy : MissileStrategy
+[CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Basic", order = 0)]
+public class BasicEnemyStrategy : EnemyStrategy
 {
-    public override GameObject CreateMissile(Transform origin){
-        GameObject missile = MissilePool.Instance.RequestMissile(prefab);
-        missile.transform.position = origin.position;
-        return  missile;
+    public override GameObject CreateEnemy(Transform origin){
+        GameObject enemy = MissilePool.Instance.RequestMissile(prefab);
+        enemy.transform.position = origin.position;
+        return  enemy;
     }
-    public override void SpecialBehaviourEnter(GameObject other, GameObject prefab){
-    }
-
-    public override int CollisionBehaviour(GameObject other, GameObject prefab){
+    
+    public override int CollisionBehaviour(GameObject other, GameObject prefab){            
         int layer = other.layer;
         int damage;
         switch (layer)
         {
             case 7:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+                damage = 0;
                 return damage;
             case 8:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
@@ -39,14 +37,6 @@ public class BasicMissilesStrategy : MissileStrategy
                 return damage;
         }
     }
-    public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
-
-    }
-    public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
-
-    }
-        
-    
-
 
 }
+

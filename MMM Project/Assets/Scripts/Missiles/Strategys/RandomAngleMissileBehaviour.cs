@@ -27,22 +27,22 @@ public class RandomAngleMissileBehaviour : MissileStrategy
         switch (layer)
         {
             case 7:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["Walls"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 return damage;
             case 8:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["SmallEnemies"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
                 return damage;
             case 9:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["MediumEnemies"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
                 return damage;
             case 10:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["BigEnemies"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
                 return damage;
             case 11:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["Bosses"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
                 return damage;
             default:

@@ -31,22 +31,22 @@ public class AntimatterMissileBehaviour : MissileStrategy
                 rb2D.velocity = bounceDirection;
                 return damage;
             case 8:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["SmallEnemies"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 missileBehaviour.TakeDamage(10);
                 missileBehaviour.TakeDamage(10);
                 return damage;
             case 9:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["MediumEnemies"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 missileBehaviour.TakeDamage(10);
                 missileBehaviour.TakeDamage(10);
                 return damage;
             case 10:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["BigEnemies"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 missileBehaviour.TakeDamage(10);
                 missileBehaviour.TakeDamage(10);
                 return damage;
             case 11:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["Bosses"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 missileBehaviour.TakeDamage(10);
                 missileBehaviour.TakeDamage(10);
                 return damage;

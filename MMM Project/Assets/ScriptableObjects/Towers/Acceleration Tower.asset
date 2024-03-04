@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 12
   energyConsumption: 0
   maxEnergy: 150
-  cooldown: 150
+  cooldown: 1
   prefab: {fileID: 9079249599195923740, guid: a6d610d0aa38a874db6394b57b125652, type: 3}
   explosion: {fileID: 1864665300318508979, guid: 68afaef436148ee45966d204c5400463, type: 3}
   attractionStrength: 400

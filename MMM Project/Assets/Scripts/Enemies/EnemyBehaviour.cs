@@ -26,7 +26,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Update() {
         // Aplica la estrategia de movimiento actual
-        Debug.Log(transform.eulerAngles.z);
+        //Debug.Log(transform.eulerAngles.z);
         movementStrategy.Rotate(rotationSpeed, direction, rigidbody2D);
         if(transform.eulerAngles.z > (direction - 10) && transform.eulerAngles.z < (direction + 10)){
             if(timer > 1){

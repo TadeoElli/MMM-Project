@@ -22,7 +22,7 @@ public class SingularityMissileBehaviour : MissileStrategy
         int layer = other.layer;
         int damage;
         if(layer == 7){
-            damage = DamageTypesForMissiles.Instance.damageDictionary["Walls"];
+            damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
             Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
             Vector2 bounceDirection = rb2D.velocity;
             bounceDirection.y = bounceDirection.y * -1;

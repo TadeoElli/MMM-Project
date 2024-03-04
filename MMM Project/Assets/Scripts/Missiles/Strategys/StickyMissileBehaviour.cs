@@ -38,7 +38,7 @@ public class StickyMissileBehaviour : MissileStrategy
         switch (layer)
         {
             case 7:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["Walls"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
                 Vector2 bounceDirection = rb2D.velocity;
                 bounceDirection.y = bounceDirection.y * -1;
@@ -46,22 +46,22 @@ public class StickyMissileBehaviour : MissileStrategy
                 rb2D.velocity = bounceDirection;
                 return damage;
             case 8:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["SmallEnemies"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
                 return damage;
             case 9:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["MediumEnemies"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
                 return damage;
             case 10:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["BigEnemies"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
                 return damage;
             case 11:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["Bosses"];
+                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
                 return damage;

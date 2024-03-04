@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3789532036673456581
+--- !u!1 &329438037567822526
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3789532036673456583}
-  - component: {fileID: 3789532036913698440}
-  - component: {fileID: 3789532036913698441}
+  - component: {fileID: 329438037567822524}
+  - component: {fileID: 329438036501525743}
   m_Layer: 0
   m_Name: DamageTypes
   m_TagString: Untagged
@@ -18,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3789532036673456583
+--- !u!4 &329438037567822524
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3789532036673456581}
+  m_GameObject: {fileID: 329438037567822526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,45 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3789532036913698440
+--- !u!114 &329438036501525743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3789532036673456581}
+  m_GameObject: {fileID: 329438037567822526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac1a89424644b774b9ca38b9584afbcf, type: 3}
+  m_Script: {fileID: 11500000, guid: d5924b067f61cfd4b9e787a810c2756c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  types:
-  - Walls
-  - SmallEnemies
-  - MediumEnemies
-  - BigEnemies
-  - Bosses
-  damages: 64000000c80000002c010000f4010000e8030000
---- !u!114 &3789532036913698441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3789532036673456581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de90d52cb0734545871b314630452ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  types:
-  - {fileID: 11400000, guid: 05a46abc4f5aa364bb3b0c5386464328, type: 2}
-  - {fileID: 11400000, guid: e6a3b0b6251e8bc4e90a5b6737fa366d, type: 2}
-  - {fileID: 11400000, guid: f54b02c1afacac7499f64616059fe95a, type: 2}
-  - {fileID: 11400000, guid: 4371c0a35fb83f24db96205759fb04a3, type: 2}
-  - {fileID: 11400000, guid: aed87e1cb39fbbd4583860b954eabfb6, type: 2}
-  - {fileID: 11400000, guid: 4ebb68ac37c39c2489836fcc2d0d0862, type: 2}
-  - {fileID: 11400000, guid: 1444a89d03c24e749b0f3a340c9577de, type: 2}
-  - {fileID: 11400000, guid: 6f712553cb0e5c141b698498b1bc9f59, type: 2}
-  - {fileID: 11400000, guid: e179d8cada3ca434c9c4ec09e8b7a7c9, type: 2}
-  damages: bc020000bc020000bc020000bc020000bc020000bc020000bc020000bc020000bc020000
+  id: 
+  damagesOfExplosions: bc020000bc020000bc020000bc020000bc020000bc020000bc020000bc020000bc020000bc020000e2040000e2040000e2040000
+  types: 0700000008000000090000000a0000000b000000
+  damagesOfCollisions: 64000000c80000002c010000f4010000e8030000

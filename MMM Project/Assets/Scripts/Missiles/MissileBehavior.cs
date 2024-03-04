@@ -15,6 +15,7 @@ public class MissileBehavior : MonoBehaviour
     public float rotationSpeed = 100f;
     public float rotationDirection;
     private CircleCollider2D circleCollider2D;
+    private Rigidbody2D rb2D;
 
 
     private void OnEnable() {
@@ -24,6 +25,7 @@ public class MissileBehavior : MonoBehaviour
         maxStability = missile.maxStability;
         oneChance = true;
         circleCollider2D = GetComponent<CircleCollider2D>();
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     private void CreateExplosion(){
@@ -71,7 +73,7 @@ public class MissileBehavior : MonoBehaviour
                 missile.SpecialBehaviourEnter(other.gameObject, this.gameObject);
             }
         }
-        
+        //Debug.Log(rb2D.velocity.magnitude);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -85,6 +87,7 @@ public class MissileBehavior : MonoBehaviour
             if(other.CompareTag("Enemy") && isSpecial){
                 missile.SpecialBehaviourEnter(other.gameObject,this.gameObject);
             }*/
+        //Debug.Log(rb2D.velocity.magnitude);
         }
     }
 
