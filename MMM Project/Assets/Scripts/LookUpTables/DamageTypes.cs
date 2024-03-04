@@ -42,7 +42,7 @@ public class DamageTypes : MonoBehaviour
         }
         for (int i = 0; i < damagesOfCollisionsForEnemies.Count; i++)
         {
-            collisionMissilesDictionary.Add(types[i],damagesOfCollisionsForEnemies[i]);
+            collisionEnemiesDictionary.Add(types[i],damagesOfCollisionsForEnemies[i]);
         }
     }
 }

@@ -1594,6 +1594,26 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
+      propertyPath: typesForEnemies.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
+      propertyPath: typesForEnemies.Array.data[1]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
+      propertyPath: typesForEnemies.Array.data[2]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
+      propertyPath: typesForEnemies.Array.data[3]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
+      propertyPath: typesForEnemies.Array.data[4]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: typesForMissiles.Array.data[0]
       value: 7
       objectReference: {fileID: 0}
