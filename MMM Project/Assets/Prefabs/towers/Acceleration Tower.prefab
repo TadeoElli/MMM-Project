@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9079249599195923811}
   - component: {fileID: 5171903768533079179}
   - component: {fileID: 5667839829420075765}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Acceleration Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,6 +6,7 @@ public class ConstantMovementStrategy : IMovementStrategy {
         rigidbody2D.AddForce(rigidbody2D.transform.up * speed);
         Vector3 clampedVelocity = rigidbody2D.velocity;
         clampedVelocity.x = Mathf.Clamp(rigidbody2D.velocity.x, -speed, speed);
+        clampedVelocity.y = Mathf.Clamp(rigidbody2D.velocity.y, -speed * 2, speed * 2);
         rigidbody2D.velocity = clampedVelocity;
     }
 

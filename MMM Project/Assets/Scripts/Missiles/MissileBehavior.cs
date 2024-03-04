@@ -78,13 +78,13 @@ public class MissileBehavior : MonoBehaviour
         if(circleCollider2D.isTrigger){
             float damage = missile.CollisionBehaviour(other.gameObject, this.gameObject);
             TakeDamage(damage);
-
+/*
             if(other.gameObject.layer == 7){
                 //missile.SpecialBehaviour(this.gameObject);
             }
             if(other.CompareTag("Enemy") && isSpecial){
                 missile.SpecialBehaviourEnter(other.gameObject,this.gameObject);
-            }
+            }*/
         }
     }
 

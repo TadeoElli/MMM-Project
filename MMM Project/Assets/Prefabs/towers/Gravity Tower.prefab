@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9079249599195923811}
   - component: {fileID: -3835447991770680796}
   - component: {fileID: -1143152831484762886}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Gravity Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.8862745, g: 0.09803923, b: 0.19008957, a: 1}
   m_FlipX: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 11400000, guid: dbed0009ce47f894699566b9434d9ebb, type: 2}
-  radius: 0
   energy: 0
+  hasEnemyInside: 0
 --- !u!58 &-1143152831484762886
 CircleCollider2D:
   m_ObjectHideFlags: 0

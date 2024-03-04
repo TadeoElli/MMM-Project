@@ -66,6 +66,7 @@ public class TowerController : MonoBehaviour
     public void ActivateTower(){
         if(hasTower){
             CreateTower();
+            currentIndex.Value = 0;
         }
     }
     public void DesactivateTower(){

@@ -23,7 +23,12 @@ public class AntimatterMissileBehaviour : MissileStrategy
         switch (layer)
         {
             case 7:
-                damage = DamageTypesForMissiles.Instance.damageDictionary["Walls"];
+                damage = 0;
+                Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
+                Vector2 bounceDirection = rb2D.velocity;
+                bounceDirection.y = bounceDirection.y * -1;
+
+                rb2D.velocity = bounceDirection;
                 return damage;
             case 8:
                 damage = DamageTypesForMissiles.Instance.damageDictionary["SmallEnemies"];

@@ -15,7 +15,7 @@ public class StickyMissileBehaviour : MissileStrategy
     }
     public override void SpecialBehaviourEnter(GameObject other, GameObject prefab){
         enemyPierced = other.gameObject;
-        Rigidbody2D rb2D = enemyPierced.GetComponent<Rigidbody2D>();
+        Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
         if(rb2D != null){
             Vector2 direction = enemyPierced.transform.position - prefab.transform.position;
             float distance = 1 + direction.magnitude;
@@ -23,10 +23,10 @@ public class StickyMissileBehaviour : MissileStrategy
             rb2D.AddForce(direction * finalForce);
         }
     }
-    private void OnEnter(){
-        Rigidbody2D rb2D = enemyPierced.GetComponent<Rigidbody2D>();
+    private void OnEnter(GameObject other, GameObject prefab){
+        Rigidbody2D rb2D = other.GetComponent<Rigidbody2D>();
         if(rb2D != null){
-            Vector2 direction = enemyPierced.transform.position - prefab.transform.position;
+            Vector2 direction = other.transform.position - prefab.transform.position;
             float distance = 1 + direction.magnitude;
             float finalForce = force / distance;
             rb2D.AddForce(direction * finalForce);
@@ -48,22 +48,22 @@ public class StickyMissileBehaviour : MissileStrategy
             case 8:
                 damage = DamageTypesForMissiles.Instance.damageDictionary["SmallEnemies"];
                 enemyPierced = other.gameObject;
-                OnEnter();
+                OnEnter(other.gameObject, prefab.gameObject);
                 return damage;
             case 9:
                 damage = DamageTypesForMissiles.Instance.damageDictionary["MediumEnemies"];
                 enemyPierced = other.gameObject;
-                OnEnter();
+                OnEnter(other.gameObject, prefab.gameObject);
                 return damage;
             case 10:
                 damage = DamageTypesForMissiles.Instance.damageDictionary["BigEnemies"];
                 enemyPierced = other.gameObject;
-                OnEnter();
+                OnEnter(other.gameObject, prefab.gameObject);
                 return damage;
             case 11:
                 damage = DamageTypesForMissiles.Instance.damageDictionary["Bosses"];
                 enemyPierced = other.gameObject;
-                OnEnter();
+                OnEnter(other.gameObject, prefab.gameObject);
                 return damage;
             default:
                 damage = 0;
@@ -73,7 +73,7 @@ public class StickyMissileBehaviour : MissileStrategy
     public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
         if (other.gameObject == enemyPierced)
         {
-            direction = ((Vector2)enemyPierced.transform.position - (Vector2)prefab.transform.position).normalized;
+            direction = ((Vector2)other.transform.position - (Vector2)prefab.transform.position).normalized;
         }
     }
     public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
