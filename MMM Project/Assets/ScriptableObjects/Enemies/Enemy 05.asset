@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67513bfb623a9e46a5f69f48fb2bc90, type: 3}
-  m_Name: Enemy 01
+  m_Script: {fileID: 11500000, guid: d12931319e3b3b0458efa40acf3340b7, type: 3}
+  m_Name: Enemy 05
   m_EditorClassIdentifier: 
-  id: 13
-  maxLife: 3000
+  id: 17
+  maxLife: 4500
   rotationSpeed: 1
   velocity: 0.25
-  prefab: {fileID: 855174888988566979, guid: baba9597a840f6a4b9e082a11d2b7582, type: 3}
+  prefab: {fileID: 7668285399957107595, guid: a83429a06acf2084389e6f2d0c44d9b8, type: 3}
   explosion: {fileID: 1864665300318508979, guid: 53431b636cb94854d84d4fc688b74055, type: 3}
+  nuclearExplosion: {fileID: 1864665300318508979, guid: 68afaef436148ee45966d204c5400463, type: 3}

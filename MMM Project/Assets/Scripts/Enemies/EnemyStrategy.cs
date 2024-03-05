@@ -5,13 +5,16 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
 {
     public int id;
     public float maxLife;
-    public float damageOnCollision;
     public float rotationSpeed;
     public float velocity;
     public GameObject prefab;
     public GameObject explosion;
 
-    public abstract GameObject CreateEnemy(Transform origin); 
-    public abstract int CollisionBehaviour(GameObject other,GameObject prefab);
+    public GameObject CreateEnemy(Transform origin){
+        GameObject enemy = MissilePool.Instance.RequestMissile(prefab);
+        enemy.transform.position = origin.position;
+        return  enemy;
+    }
+    public abstract int CollisionBehaviour(GameObject other,EnemyBehaviour prefab);
     
 }

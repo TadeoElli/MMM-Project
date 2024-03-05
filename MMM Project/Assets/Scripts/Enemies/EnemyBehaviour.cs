@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    [SerializeField] private EnemyStrategy enemy;
+    [SerializeField] public EnemyStrategy enemy;
     [SerializeField] private float life;
     private float rotationSpeed, speed;
-    [SerializeField] private float direction;
+    private float direction;
     [SerializeField] private bool canMove = true;
+    [SerializeField] public bool dirRight = false;
+    [SerializeField] public bool absorb = false;
+
     private float timer;
 
 
@@ -16,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
         life = enemy.maxLife;
         rotationSpeed = enemy.rotationSpeed;
         speed = enemy.velocity;
+        direction = dirRight ? 270:90;
     }
 
     void Update() {
@@ -35,7 +39,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        int damage = enemy.CollisionBehaviour(other.gameObject, gameObject);
+        int damage = enemy.CollisionBehaviour(other.gameObject, this);
         timer = 0;
         TakeDamage(damage);
         
@@ -44,6 +48,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(float damage){
         Debug.Log("Enemigo recibio "+ damage+ " de dano" );
         life -= damage;
+        life = Mathf.Clamp(life, -100f, enemy.maxLife);
         if(life<= 0){
             Death(); 
         }
@@ -62,11 +67,17 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     public void MoveForward() {
-        transform.Translate(transform.right * speed * Time.deltaTime);
+        if(dirRight){
+            transform.Translate(-transform.right * speed * Time.deltaTime);
+        }
+        else{
+            transform.Translate(transform.right * speed * Time.deltaTime);
+        }
     }
 
     private void Rotate() {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, direction), rotationSpeed * Time.deltaTime);
+        //Debug.Log(transform.rotation);
     }
 
 

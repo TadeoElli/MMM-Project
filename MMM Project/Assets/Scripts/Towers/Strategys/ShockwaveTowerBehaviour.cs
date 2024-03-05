@@ -7,10 +7,6 @@ using UnityEngine;
 public class ShockwaveTowerBehaviour : TowerStrategy
 {
     [SerializeField] private float force;
-    public override void CreateTower(Vector2 origin){
-        GameObject tower = TowersPool.Instance.RequestTower(prefab);
-        tower.transform.position = origin;
-    }
     public override void SpecialBehaviour(GameObject prefab, GameObject other){
 
     }

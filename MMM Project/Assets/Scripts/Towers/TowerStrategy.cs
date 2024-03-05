@@ -8,7 +8,10 @@ public abstract class TowerStrategy : ScriptableObject        //Strategy para to
     public float cooldown;
     public GameObject prefab;
     public GameObject explosion;
-    public abstract void CreateTower(Vector2 origin); 
+    public void CreateTower(Vector2 origin){
+        GameObject tower = TowersPool.Instance.RequestTower(prefab);
+        tower.transform.position = origin;
+    }
     public abstract void SpecialBehaviour(GameObject prefab, GameObject other); 
 
     public abstract bool ColliderBehaviour(GameObject prefab, GameObject other); 

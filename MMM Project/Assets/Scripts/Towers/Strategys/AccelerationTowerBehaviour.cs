@@ -12,10 +12,6 @@ public class AccelerationTowerBehaviour : TowerStrategy
     [SerializeField] private float repulsionRadius;
     [SerializeField] private float radius;
     [SerializeField] private float angularAcceleration;
-    public override void CreateTower(Vector2 origin){
-        GameObject tower = TowersPool.Instance.RequestTower(prefab);
-        tower.transform.position = origin;
-    }
     public override void SpecialBehaviour(GameObject prefab, GameObject other){
         if(other.CompareTag("Missiles")){
             Rigidbody2D projectileRigidbody = other.GetComponent<Rigidbody2D>();

@@ -26,6 +26,9 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
         float damage = Random.Range(minDamage,maxDamage);
         if (other.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy))
         {
+            if(enemy.absorb){
+                damage = damage * -1;
+            }
             enemy.TakeDamage(damage);
         }
     }

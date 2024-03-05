@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Basic", order = 0)]
-public class BasicEnemyStrategy : EnemyStrategy
+[CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Volatil", order = 0)]
+public class VolatilEnemyBehaviour : EnemyStrategy
 {
-    
+    [SerializeField] GameObject nuclearExplosion;
     public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){            
         int layer = other.layer;
         int damage;
@@ -17,12 +17,15 @@ public class BasicEnemyStrategy : EnemyStrategy
                 return damage;
             case 8:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
+                CollisionAction(other, prefab);
                 return damage;
             case 9:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
+                CollisionAction(other, prefab);
                 return damage;
             case 10:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
+                CollisionAction(other, prefab);
                 return damage;
             case 11:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
@@ -33,7 +36,21 @@ public class BasicEnemyStrategy : EnemyStrategy
         }
     }
 
+    private void CollisionAction(GameObject other, EnemyBehaviour prefab){
+        if(other.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy)){
+            if(enemy.enemy == prefab.enemy){
+                if(enemy.dirRight != prefab.dirRight){
+                    CreateExplosion(other);
+                }
+            }
+        }
+        
+    }
 
+    private void CreateExplosion(GameObject other){
+        GameObject explosion = ExplosionPool.Instance.RequestExplosion(nuclearExplosion);
+        explosion.transform.position = other.transform.position;
+    }
 
 
     

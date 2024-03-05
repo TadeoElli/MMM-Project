@@ -11,10 +11,6 @@ public class GravityTowerBehaviour : TowerStrategy
     [SerializeField] private float attractionStrength;
     [SerializeField] private float radius;
 
-    public override void CreateTower(Vector2 origin){
-        GameObject tower = TowersPool.Instance.RequestTower(prefab);
-        tower.transform.position = origin;
-    }
     public override void SpecialBehaviour(GameObject prefab, GameObject other){
 
         if(other.CompareTag("Enemy")){
