@@ -18,19 +18,19 @@ public class BasicEnemyStrategy : EnemyStrategy
         switch (layer)
         {
             case 7:
-                damage = 0;
+                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 return damage;
             case 8:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 return damage;
             case 9:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 return damage;
             case 10:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 return damage;
             case 11:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 return damage;
             default:
                 damage = 0;

@@ -19,7 +19,13 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
     public abstract void SpecialBehaviourExit(GameObject other,GameObject prefab); 
     public abstract int CollisionBehaviour(GameObject other, GameObject prefab);
     
-
+    public void DealDamage(GameObject other){
+        float damage = Random.Range(minDamage,maxDamage);
+        if (other.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy))
+        {
+            enemy.TakeDamage(damage);
+        }
+    }
     
 }
 

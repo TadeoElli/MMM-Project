@@ -32,18 +32,22 @@ public class RandomAngleMissileBehaviour : MissileStrategy
             case 8:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
+                DealDamage(other);
                 return damage;
             case 9:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
+                DealDamage(other);
                 return damage;
             case 10:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
+                DealDamage(other);
                 return damage;
             case 11:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
+                DealDamage(other);
                 return damage;
             default:
                 damage = 0;

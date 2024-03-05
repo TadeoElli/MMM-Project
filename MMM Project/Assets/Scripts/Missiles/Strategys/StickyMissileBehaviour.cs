@@ -49,21 +49,25 @@ public class StickyMissileBehaviour : MissileStrategy
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
+                DealDamage(other);
                 return damage;
             case 9:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
+                DealDamage(other);
                 return damage;
             case 10:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
+                DealDamage(other);
                 return damage;
             case 11:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
+                DealDamage(other);
                 return damage;
             default:
                 damage = 0;

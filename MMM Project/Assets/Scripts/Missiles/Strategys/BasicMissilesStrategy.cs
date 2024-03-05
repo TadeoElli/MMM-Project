@@ -24,21 +24,33 @@ public class BasicMissilesStrategy : MissileStrategy
                 return damage;
             case 8:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+                DealDamage(other);
                 return damage;
             case 9:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+                DealDamage(other);
                 return damage;
             case 10:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+                DealDamage(other);
                 return damage;
             case 11:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+                DealDamage(other);
                 return damage;
             default:
                 damage = 0;
                 return damage;
         }
     }
+
+    /*private void DealDamage(GameObject other){
+        float damage = Random.Range(minDamage,maxDamage);
+        if (other.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy))
+        {
+            enemy.TakeDamage(damage);
+        }
+    }*/
     public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
 
     }
