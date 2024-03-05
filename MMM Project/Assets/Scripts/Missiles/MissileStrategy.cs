@@ -13,8 +13,11 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
     public float maxStability;
     public GameObject prefab;
     public GameObject explosion;
-    public abstract GameObject CreateMissile(Transform origin); 
-    public abstract void SpecialBehaviourEnter(GameObject other,GameObject prefab); 
+    public GameObject CreateMissile(Transform origin){
+        GameObject missile = MissilePool.Instance.RequestMissile(prefab);
+        missile.transform.position = origin.position;
+        return  missile;
+    } 
     public abstract void SpecialBehaviourStay(GameObject other,GameObject prefab); 
     public abstract void SpecialBehaviourExit(GameObject other,GameObject prefab); 
     public abstract int CollisionBehaviour(GameObject other, GameObject prefab);

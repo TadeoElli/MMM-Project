@@ -7,17 +7,6 @@ public class SingularityMissileBehaviour : MissileStrategy
 {
     [SerializeField] private float force;
 
-
-    public override GameObject CreateMissile(Transform origin){
-        GameObject missile = MissilePool.Instance.RequestMissile(prefab);
-        missile.transform.position = origin.position;
-        return  missile;
-    }
-    public override void SpecialBehaviourEnter(GameObject other, GameObject prefab){
-
-    }
-
-
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         int layer = other.layer;
         int damage;

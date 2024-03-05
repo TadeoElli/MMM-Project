@@ -6,14 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Antimatter", order = 4)]
 public class AntimatterMissileBehaviour : MissileStrategy
 {
-    public override GameObject CreateMissile(Transform origin){
-        GameObject missile = MissilePool.Instance.RequestMissile(prefab);
-        missile.transform.position = origin.position;
-        return  missile;
-    }
-    public override void SpecialBehaviourEnter(GameObject other, GameObject prefab){
-        
-    }
+
     
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         MissileBehavior missileBehaviour = prefab.GetComponent<MissileBehavior>();
@@ -31,20 +24,8 @@ public class AntimatterMissileBehaviour : MissileStrategy
                 rb2D.velocity = bounceDirection;
                 return damage;
             case 8:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
-                missileBehaviour.TakeDamage(10);
-                missileBehaviour.TakeDamage(10);
-                return damage;
             case 9:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
-                missileBehaviour.TakeDamage(10);
-                missileBehaviour.TakeDamage(10);
-                return damage;
             case 10:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
-                missileBehaviour.TakeDamage(10);
-                missileBehaviour.TakeDamage(10);
-                return damage;
             case 11:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 missileBehaviour.TakeDamage(10);

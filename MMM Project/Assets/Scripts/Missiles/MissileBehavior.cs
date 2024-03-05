@@ -68,11 +68,6 @@ public class MissileBehavior : MonoBehaviour
         if(damage > 0){
             TakeDamage(damage);
         }
-        if(other.gameObject.layer != 7){
-            if(isSpecial){
-                missile.SpecialBehaviourEnter(other.gameObject, this.gameObject);
-            }
-        }
         //Debug.Log(rb2D.velocity.magnitude);
     }
 

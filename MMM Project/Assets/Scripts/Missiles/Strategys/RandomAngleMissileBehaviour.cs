@@ -6,13 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Angle", order = 1)]
 public class RandomAngleMissileBehaviour : MissileStrategy
 {
-    public override GameObject CreateMissile(Transform origin){
-        GameObject missile = MissilePool.Instance.RequestMissile(prefab);
-        missile.transform.position = origin.position;
-        return  missile;
-    }
-    public override void SpecialBehaviourEnter(GameObject other, GameObject prefab){
-    }
+
     private void OnEnter(GameObject prefab){
         Rigidbody2D rigidbody2D = prefab.GetComponent<Rigidbody2D>();
         float actualAngle = Mathf.Atan2(rigidbody2D.velocity.y, rigidbody2D.velocity.x);
@@ -30,20 +24,8 @@ public class RandomAngleMissileBehaviour : MissileStrategy
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 return damage;
             case 8:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
-                OnEnter(prefab);
-                DealDamage(other);
-                return damage;
             case 9:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
-                OnEnter(prefab);
-                DealDamage(other);
-                return damage;
             case 10:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
-                OnEnter(prefab);
-                DealDamage(other);
-                return damage;
             case 11:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
