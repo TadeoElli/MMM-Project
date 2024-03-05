@@ -17,21 +17,27 @@ public class BasicEnemyStrategy : EnemyStrategy
                 return damage;
             case 8:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
+                CollisionForce(other, prefab);
                 return damage;
             case 9:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
+                CollisionForce(other, prefab);
                 return damage;
             case 10:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
+                CollisionForce(other, prefab);
                 return damage;
             case 11:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
+                CollisionForce(other, prefab);
                 return damage;
             default:
                 damage = 0;
                 return damage;
         }
     }
+
+
 
 
 
