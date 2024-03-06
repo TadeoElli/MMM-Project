@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy 01
   m_EditorClassIdentifier: 
   id: 13
-  maxLife: 3000
+  maxLife: 1000
   rotationSpeed: 1
   collisionForce: 50
   velocity: 0.25

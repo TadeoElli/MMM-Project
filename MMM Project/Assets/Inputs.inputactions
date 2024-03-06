@@ -114,7 +114,52 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DesactivateTower",
+                    "name": "Power1",
+                    "type": "Button",
+                    "id": "a3d347e2-39ab-40e1-8f34-96954675d8a8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Power2",
+                    "type": "Button",
+                    "id": "91fd6194-38c8-4fc8-86ff-d090331a1c6a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Power3",
+                    "type": "Button",
+                    "id": "0b9f5bf9-798c-42a4-b0b5-9db301c151f7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Power4",
+                    "type": "Button",
+                    "id": "c1b32c14-d881-4b5b-b3f1-863061c0903f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Power5",
+                    "type": "Button",
+                    "id": "0e15409e-b4c4-453b-9c6c-ce9d74a44993",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Desactivate",
                     "type": "Button",
                     "id": "2f18270c-ca98-4b5a-bab1-45b391561f2c",
                     "expectedControlType": "Button",
@@ -123,7 +168,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ActivateTower",
+                    "name": "Activate",
                     "type": "Button",
                     "id": "e350db2a-ec1e-4f14-a6b3-9b5e6af77858",
                     "expectedControlType": "Button",
@@ -272,7 +317,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DesactivateTower",
+                    "action": "Desactivate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -283,7 +328,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DesactivateTower",
+                    "action": "Desactivate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -294,7 +339,62 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ActivateTower",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f7ef698-1a20-489e-8c6a-a42fea120d14",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Power1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a3ede51-1763-466e-8436-54613ba9e49c",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Power2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ba19628-1a2f-4918-ba68-ff46ddad7131",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Power3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fce9c1b0-643f-41d6-9a3e-cd65c2ac4939",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Power4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c8964304-3982-4dc3-a4e8-968024232209",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Power5",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

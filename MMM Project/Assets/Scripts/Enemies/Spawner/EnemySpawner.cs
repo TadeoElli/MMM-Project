@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]private List<Wave> _waves;       //A list of all waves in the game
-    private int _currentWaveCount;       //The index of the current wave [Remember, a list starts from 0]
+    [SerializeField]private int _currentWaveCount;       //The index of the current wave [Remember, a list starts from 0]
 
     [Header("Spawner Attributes")]
     float _spawnTimerForEnemies; //timer use to determine whe to spawn the next enemy
@@ -112,5 +112,10 @@ public class EnemySpawner : MonoBehaviour
 
         _waves[_currentWaveCount]._waveEnemyQuota = _currentWaveQuota;
         Debug.Log("Cantidad de enemigos en esta oleada:" + _currentWaveQuota);
+    }
+
+    private void ChangeCurrentWave(int wave){
+        _currentWaveCount = wave;
+        CalculateWaveQuota();
     }
 }
