@@ -99,8 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 5da3a22668e954d46b9a66e73bfb1ed8, type: 2}
   life: 100
-  direction: 90
   canMove: 1
+  normalDir: 0
+  absorb: 0
 --- !u!1 &6891860703969650800
 GameObject:
   m_ObjectHideFlags: 0

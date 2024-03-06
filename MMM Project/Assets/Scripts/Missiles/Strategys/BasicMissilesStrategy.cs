@@ -20,7 +20,7 @@ public class BasicMissilesStrategy : MissileStrategy
             case 10:
             case 11:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
-                DealDamage(other);
+                DealDamage(other, prefab);
                 return damage;
             default:
                 damage = 0;

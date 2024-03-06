@@ -38,7 +38,7 @@ public class StickyMissileBehaviour : MissileStrategy
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
-                DealDamage(other);
+                DealDamage(other, prefab);
                 return damage;
             default:
                 damage = 0;

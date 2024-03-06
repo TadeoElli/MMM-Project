@@ -1407,7 +1407,23 @@ MonoBehaviour:
       _spawnCount: 0
       _enemyDirection: 1
     - enemyPrefab: {fileID: 7668285399957107595, guid: a83429a06acf2084389e6f2d0c44d9b8, type: 3}
-      _enemyCount: 5
+      _enemyCount: 2
+      _spawnCount: 0
+      _enemyDirection: 1
+    - enemyPrefab: {fileID: 855174888988566979, guid: baba9597a840f6a4b9e082a11d2b7582, type: 3}
+      _enemyCount: 20
+      _spawnCount: 0
+      _enemyDirection: 1
+    _waveEnemyQuota: 0
+    _waveGroupQuota: 2
+    _spawnIntervalForEnemy: 5
+    _spawnIntervalForGroup: 33
+    _spawnEnemyCount: 0
+    _spawnGroupCount: 0
+  - _waveName: Wave 2
+    _enemyGroups:
+    - enemyPrefab: {fileID: 855174888988566979, guid: baba9597a840f6a4b9e082a11d2b7582, type: 3}
+      _enemyCount: 30
       _spawnCount: 0
       _enemyDirection: 1
     _waveEnemyQuota: 0
@@ -1416,10 +1432,8 @@ MonoBehaviour:
     _spawnIntervalForGroup: 30
     _spawnEnemyCount: 0
     _spawnGroupCount: 0
-  _currentWaveCount: 0
   _enemiesAlive: 0
-  _maxEnemiesAllowed: 35
-  _maxEnemiesReached: 0
+  _maxEnemiesAllowed: 12
   _basicSpawnPoints:
   - {fileID: 1020592365}
   - {fileID: 840716910}
