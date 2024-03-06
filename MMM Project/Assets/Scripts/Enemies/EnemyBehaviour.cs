@@ -9,7 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
     private float rotationSpeed, speed;
     private float direction;
     [SerializeField] private bool canMove = true;
-    [SerializeField] public bool dirRight = false;
+    [SerializeField] public bool normalDir = false;
     [SerializeField] public bool absorb = false;
 
     private float timer;
@@ -19,10 +19,10 @@ public class EnemyBehaviour : MonoBehaviour
         life = enemy.maxLife;
         rotationSpeed = enemy.rotationSpeed;
         speed = enemy.velocity;
-        direction = dirRight ? 270:90;
     }
 
     void Update() {
+        direction = normalDir ? 90:270;
         // Aplica la estrategia de movimiento actual
         //Debug.Log(transform.eulerAngles.z);
         if(canMove){
@@ -67,11 +67,11 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     public void MoveForward() {
-        if(dirRight){
-            transform.Translate(-transform.right * speed * Time.deltaTime);
+        if(normalDir){
+            transform.Translate(transform.right * speed * Time.deltaTime);
         }
         else{
-            transform.Translate(transform.right * speed * Time.deltaTime);
+            transform.Translate(-transform.right * speed * Time.deltaTime);
         }
     }
 

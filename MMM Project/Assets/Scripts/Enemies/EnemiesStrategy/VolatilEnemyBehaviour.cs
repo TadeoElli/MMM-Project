@@ -39,7 +39,7 @@ public class VolatilEnemyBehaviour : EnemyStrategy
     private void CollisionAction(GameObject other, EnemyBehaviour prefab){
         if(other.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy)){
             if(enemy.enemy == prefab.enemy){
-                if(enemy.dirRight != prefab.dirRight){
+                if(enemy.normalDir != prefab.normalDir){
                     CreateExplosion(other);
                 }
             }
