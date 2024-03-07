@@ -59,10 +59,9 @@ public class PowerController : MonoBehaviour
     private void FixedUpdate() {
         if(hasPower && isDraggin){
             if(!powers[currentIndex.Value].BehaviourPerformed()){
-
-                Debug.Log("performed");
-            }
-            
+                Debug.Log("EnemyDestroyed");
+                FinishPower();
+            }  
         }
     }
 
@@ -87,13 +86,16 @@ public class PowerController : MonoBehaviour
                 }
             }
             else if(callbackContext.canceled){
-                powers[currentIndex.Value].BehaviourEnded();
-                isReady[currentIndex.Value] = false;
-                currentCd[currentIndex.Value] = 0;
-                currentIndex.Value = 0;
-
+                FinishPower();
             }
         }
+    }
+    private void FinishPower(){
+        powers[currentIndex.Value].BehaviourEnded();
+        isReady[currentIndex.Value] = false;
+        currentCd[currentIndex.Value] = 0;
+        isDraggin = false;
+        currentIndex.Value = 0;
     }
 
     public void DesactivatePower(){

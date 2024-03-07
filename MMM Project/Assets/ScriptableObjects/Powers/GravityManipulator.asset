@@ -15,3 +15,7 @@ MonoBehaviour:
   id: 1
   energyConsumption: 0
   cooldown: 20
+  enemy: {fileID: 0}
+  level: 2
+  wallTop: 4.5
+  wallBottom: -4.5
