@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PowerController : MonoBehaviour
 {
@@ -14,7 +15,6 @@ public class PowerController : MonoBehaviour
     [SerializeField] private List<float> cooldowns;
     [SerializeField] private List<float> currentCd;
     [SerializeField] private List<bool> isReady;
-
     private void Awake() {
         cam = Camera.main;
     }
@@ -33,6 +33,7 @@ public class PowerController : MonoBehaviour
                 isReady.Add(true);
             }
         }
+
     }
 
     // Update is called once per frame
@@ -51,6 +52,16 @@ public class PowerController : MonoBehaviour
                 }
             }
         }
+        
+    }
+
+    private void FixedUpdate() {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if(!powers[currentIndex.Value].BehaviourPerformed()){
+                Debug.Log("performed");
+            }
+        }
     }
 
     public void SetPowerIndex(int newIndex){
@@ -63,12 +74,23 @@ public class PowerController : MonoBehaviour
             hasPower = true;
         }
     }
-    public void ActivatePower(){
+    public void ActivatePower(InputAction.CallbackContext callbackContext){
         if(hasPower){
-            //CreateTower();
-            currentIndex.Value = 0;
+            if(callbackContext.started){
+                if(!powers[currentIndex.Value].BehaviourStarted()){
+                    DesactivatePower();
+                }
+            }
+            else if(callbackContext.canceled){
+                powers[currentIndex.Value].BehaviourEnded();
+                isReady[currentIndex.Value] = false;
+                currentCd[currentIndex.Value] = 0;
+                currentIndex.Value = 0;
+
+            }
         }
     }
+
     public void DesactivatePower(){
         if(hasPower){
             hasPower = false;

@@ -6,6 +6,8 @@ public abstract class PowerStrategy : ScriptableObject        //Strategy para to
     public float energyConsumption;
     public float cooldown;
 
-    public abstract void Behaviour(Vector3 position);
+    public abstract bool BehaviourStarted();
+    public abstract bool BehaviourPerformed();
+    public abstract void BehaviourEnded();
     
 }
