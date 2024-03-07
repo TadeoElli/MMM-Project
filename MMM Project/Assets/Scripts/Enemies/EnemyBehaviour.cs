@@ -8,7 +8,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private float life;
     private float rotationSpeed, speed;
     private float direction;
-    [SerializeField] private bool canMove = true;
+    [SerializeField] public bool canMove = true;
     [SerializeField] public bool normalDir = false;
     [SerializeField] public bool absorb = false;
 

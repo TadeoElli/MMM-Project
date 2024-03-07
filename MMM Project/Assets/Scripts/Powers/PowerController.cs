@@ -9,6 +9,7 @@ public class PowerController : MonoBehaviour
     public Observer<int> currentIndex = new Observer<int>(0);
     Camera cam;
     [SerializeField] private bool hasPower = false;
+    private bool isDraggin = false;
 
     [SerializeField] private PowerStrategy [] powers;
     
@@ -56,11 +57,12 @@ public class PowerController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if (Input.GetMouseButtonDown(0))
-        {
+        if(hasPower && isDraggin){
             if(!powers[currentIndex.Value].BehaviourPerformed()){
+
                 Debug.Log("performed");
             }
+            
         }
     }
 
@@ -77,7 +79,10 @@ public class PowerController : MonoBehaviour
     public void ActivatePower(InputAction.CallbackContext callbackContext){
         if(hasPower){
             if(callbackContext.started){
-                if(!powers[currentIndex.Value].BehaviourStarted()){
+                if(powers[currentIndex.Value].BehaviourStarted()){
+                    isDraggin = true;
+                }
+                else{
                     DesactivatePower();
                 }
             }
