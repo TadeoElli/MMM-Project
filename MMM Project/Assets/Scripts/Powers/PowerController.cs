@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PowerController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Observer<float> currentEnergy = new Observer<float>(1000f);
     public Observer<int> currentIndex = new Observer<int>(0);
     Camera cam;
     [SerializeField] private bool hasPower = false;
@@ -75,8 +76,13 @@ public class PowerController : MonoBehaviour
             hasPower = true;
         }
     }
+
+    public void SetEnergyValue(float amount){
+        currentEnergy.Value = amount;
+    }
+
     public void ActivatePower(InputAction.CallbackContext callbackContext){
-        if(hasPower){
+        if(hasPower && currentEnergy.Value >= powers[currentIndex.Value].energyConsumption){
             if(callbackContext.started){
                 if(powers[currentIndex.Value].BehaviourStarted()){
                     isDraggin = true;
@@ -94,6 +100,7 @@ public class PowerController : MonoBehaviour
         powers[currentIndex.Value].BehaviourEnded();
         isReady[currentIndex.Value] = false;
         currentCd[currentIndex.Value] = 0;
+        currentEnergy.Value = currentEnergy.Value - powers[currentIndex.Value].energyConsumption;
         isDraggin = false;
         currentIndex.Value = 0;
     }
