@@ -4,12 +4,13 @@ using UnityEngine;
 
 
 
-[CreateAssetMenu(fileName = "New Power", menuName = "ScriptableObject/Power/GravityManipulator", order = 0)]
+[CreateAssetMenu(fileName = "New Power", menuName = "ScriptableObject/Power/MissileManipulator", order = 1)]
 public class MissileManipulatorStrategy : PowerStrategy
 {
     private Rigidbody2D rb;
-    [SerializeField] private MissileBehaviour misile;
-    [SerializeField] private float wallTop, wallBottom;
+    private MissileBehaviour misile;
+    [SerializeField] private float wallTop, wallBottom, maxTime;
+    private float timer = 0;
     public override bool BehaviourStarted(){
         // Convertir la posición del clic del ratón a un rayo en el mundo 2D
         Vector2 rayOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -20,6 +21,7 @@ public class MissileManipulatorStrategy : PowerStrategy
         {
             // Si es un misil, activar el poder que se activa al hacer clic en un enemigo
             Activate(hit.collider.gameObject);
+            timer = 0;
             return true;
         }
         else{
@@ -34,26 +36,37 @@ public class MissileManipulatorStrategy : PowerStrategy
         //enemy.canMove = false;
         Debug.Log("Misile Manipulator");
     }
+    private void Desactivate(){
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = mousePosition - rb.position;
+
+        rb.AddForce(direction.normalized * 20f, ForceMode2D.Impulse);
+    }
     public override bool BehaviourPerformed(){
-        if(rb.gameObject.activeSelf){
-            // Obtener la posición del ratón en el mundo
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if(mousePosition.y > wallTop || mousePosition.y < wallBottom){
-                misile.TakeDamage(5000);
+        if(timer < maxTime){
+            if(rb.gameObject.activeSelf){
+                // Obtener la posición del ratón en el mundo
+                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if(mousePosition.y > wallTop || mousePosition.y < wallBottom){
+                    misile.TakeDamage(5000);
+                }
+                // Actualizar la posición del enemigo al ratón
+                rb.MovePosition(mousePosition);
+                timer = timer + 1 * Time.deltaTime;
+                return true;
             }
-            // Actualizar la posición del enemigo al ratón
-            rb.MovePosition(mousePosition);
-            return true;
+            else{
+                return false;
+            }
         }
         else{
+            Desactivate();
             return false;
         }
     }
     public override void BehaviourEnded(){
         //enemy.canMove = true;
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePosition - rb.position;
-
-        rb.AddForce(direction.normalized * 100f, ForceMode2D.Impulse);
+        Desactivate();
+        
     }
 }

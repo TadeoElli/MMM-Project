@@ -886,7 +886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: damagesOfExplosions.Array.size
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: typesForMissiles.Array.data[0]
@@ -922,6 +922,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
       propertyPath: damagesOfExplosions.Array.data[16]
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
+      propertyPath: damagesOfExplosions.Array.data[17]
       value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 329438036501525743, guid: c776751babd40974daed40024652ce69, type: 3}
@@ -1778,6 +1782,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExplosionPool
       objectReference: {fileID: 0}
+    - target: {fileID: 5721627408118315766, guid: 1589a6b8c7ef86749b25d8012718fe0e, type: 3}
+      propertyPath: explosionPrefab.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721627408118315766, guid: 1589a6b8c7ef86749b25d8012718fe0e, type: 3}
+      propertyPath: explosionPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 1864665300318508979, guid: 935234acd4045ab40a5a9c93e7a225fc, type: 3}
+    - target: {fileID: 5721627408118315766, guid: 1589a6b8c7ef86749b25d8012718fe0e, type: 3}
+      propertyPath: explosionPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 1864665300318508979, guid: 68afaef436148ee45966d204c5400463, type: 3}
     - target: {fileID: 5721627408118315767, guid: 1589a6b8c7ef86749b25d8012718fe0e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1959,19 +1975,19 @@ PrefabInstance:
     - target: {fileID: 6227127630744440516, guid: d47a80926c2155146b2987b76d6af71a, type: 3}
       propertyPath: powers.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 1b8ac6dac774445479d138a4e29de07e, type: 2}
+      objectReference: {fileID: 11400000, guid: 28819ceb126f03344b3603dd1801bdbd, type: 2}
     - target: {fileID: 6227127630744440516, guid: d47a80926c2155146b2987b76d6af71a, type: 3}
       propertyPath: powers.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 1b8ac6dac774445479d138a4e29de07e, type: 2}
+      objectReference: {fileID: 11400000, guid: 28819ceb126f03344b3603dd1801bdbd, type: 2}
     - target: {fileID: 6227127630744440516, guid: d47a80926c2155146b2987b76d6af71a, type: 3}
       propertyPath: powers.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 1b8ac6dac774445479d138a4e29de07e, type: 2}
+      objectReference: {fileID: 11400000, guid: 28819ceb126f03344b3603dd1801bdbd, type: 2}
     - target: {fileID: 6227127630744440516, guid: d47a80926c2155146b2987b76d6af71a, type: 3}
       propertyPath: powers.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 1b8ac6dac774445479d138a4e29de07e, type: 2}
+      objectReference: {fileID: 11400000, guid: 28819ceb126f03344b3603dd1801bdbd, type: 2}
     - target: {fileID: 6227127630744440516, guid: d47a80926c2155146b2987b76d6af71a, type: 3}
       propertyPath: currentIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
