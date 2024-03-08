@@ -8,7 +8,9 @@ public class CursorController : MonoBehaviour
     [SerializeField] private SpriteRenderer missileCursorExt, missileCursorInt;
     [Header("List Of Colors")]
     [SerializeField] private List<Color> colors;
-    private int missileIndex, powerIndex, towerIndex;
+    [Header("List Of PowerCursors")]
+    [SerializeField] private List<GameObject> powers;
+    private int  towerIndex;
     void Start()
     {
         missileCursorExt.color = colors[0];
@@ -19,18 +21,25 @@ public class CursorController : MonoBehaviour
     void Update()
     {
         currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+        transform.position = currentPosition;
     }
 
     public void ChangeMissileCursorColor(int index){
         missileCursorExt.color = colors[index];
         missileCursorInt.color = colors[index];
     }
-    public void SetMissileIndex(int index){
-        missileIndex = index;
+    public void ChangePowerCursor(int index){
+        DesactivateAllCursors();
+        if(index > 0){
+            powers[index].SetActive(true);
+        }
     }
-    public void SetPowerIndex(int index){
-        powerIndex = index;
+    private void DesactivateAllCursors(){
+        for (int i = 1; i < powers.Count; i++)
+        {
+            powers[i].SetActive(false);
+            
+        }
     }
     public void SetTowerIndex(int index){
         towerIndex = index;
