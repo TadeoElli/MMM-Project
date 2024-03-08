@@ -8,19 +8,28 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private float life;
     private float rotationSpeed, speed;
     private float direction;
+    private Collider2D col;
     [SerializeField] public bool canMove = true;
     [HideInInspector] public bool normalDir = false;
     [SerializeField] public bool absorb = false;
 
     private float timer;
 
-
+    private void Awake() {
+        col = GetComponent<Collider2D>();
+    }
     private void OnEnable() {
         life = enemy.maxLife;
         rotationSpeed = enemy.rotationSpeed;
         speed = enemy.velocity;
+        col.enabled = false;
+        StartCoroutine(DelayForActivateCollider());
     }
 
+    IEnumerator DelayForActivateCollider(){
+        yield return new WaitForSeconds(2);
+        col.enabled = true;
+    }
     void Update() {
         direction = normalDir ? 90:270;
         // Aplica la estrategia de movimiento actual

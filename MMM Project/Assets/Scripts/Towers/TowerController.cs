@@ -8,6 +8,8 @@ public class TowerController : MonoBehaviour
     public Observer<int> currentIndex = new Observer<int>(0);
     Camera cam;
     [SerializeField] private bool hasTower = false;
+    [SerializeField] private float distanceFromNexus;
+    private GameObject nexus;
 
     [SerializeField] private TowerStrategy [] towers;
     
@@ -17,6 +19,7 @@ public class TowerController : MonoBehaviour
 
     private void Awake() {
         cam = Camera.main;
+        nexus = FindObjectOfType<Nexus>().gameObject;
     }
     void Start()
     {
@@ -65,8 +68,10 @@ public class TowerController : MonoBehaviour
     }
     public void ActivateTower(){
         if(hasTower){
-            CreateTower();
-            currentIndex.Value = 0;
+            if(CheckDistanceFromNexus()){
+                CreateTower();
+                currentIndex.Value = 0;
+            }
         }
     }
     public void DesactivateTower(){
@@ -76,6 +81,15 @@ public class TowerController : MonoBehaviour
         }
     }
 
+    private bool CheckDistanceFromNexus(){
+        Vector2 currentPosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        if(Vector2.Distance(currentPosition, nexus.transform.position) > distanceFromNexus){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     private void CreateTower(){
         towers[currentIndex.Value].CreateTower(cam.ScreenToWorldPoint(Input.mousePosition));
         hasTower = false;
