@@ -9,7 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
     private float rotationSpeed, speed;
     private float direction;
     [SerializeField] public bool canMove = true;
-    [SerializeField] public bool normalDir = false;
+    [HideInInspector] public bool normalDir = false;
     [SerializeField] public bool absorb = false;
 
     private float timer;

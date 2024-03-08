@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissileBehavior : MonoBehaviour
+public class MissileBehaviour : MonoBehaviour
 {
     [SerializeField] private MissileStrategy missile;
     [SerializeField] private float life;
@@ -11,9 +11,9 @@ public class MissileBehavior : MonoBehaviour
     [SerializeField] private bool isSpecial = false;
     //private int damage;
     private float  minStability, maxStability;
-    public bool hasBeenAtracted = false;
-    public float rotationSpeed = 100f;
-    public float rotationDirection;
+    [HideInInspector] public bool hasBeenAtracted = false;
+    [HideInInspector] public float rotationSpeed = 100f;
+    [HideInInspector] public float rotationDirection;
     private CircleCollider2D circleCollider2D;
     private Rigidbody2D rb2D;
 

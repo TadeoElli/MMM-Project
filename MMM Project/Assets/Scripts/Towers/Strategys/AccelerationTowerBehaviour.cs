@@ -15,7 +15,7 @@ public class AccelerationTowerBehaviour : TowerStrategy
     public override void SpecialBehaviour(GameObject prefab, GameObject other){
         if(other.CompareTag("Missiles")){
             Rigidbody2D projectileRigidbody = other.GetComponent<Rigidbody2D>();
-            MissileBehavior missile = other.GetComponent<MissileBehavior>();
+            MissileBehaviour missile = other.GetComponent<MissileBehaviour>();
             if (projectileRigidbody != null)
             {
                 Vector2 direction = prefab.transform.position - other.transform.position;
