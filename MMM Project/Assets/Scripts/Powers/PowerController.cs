@@ -8,6 +8,7 @@ public class PowerController : MonoBehaviour
     // Start is called before the first frame update
     public Observer<float> currentEnergy = new Observer<float>(1000f);
     public Observer<int> currentIndex = new Observer<int>(0);
+    public Observer<bool> currentState = new Observer<bool>(false);
     Camera cam;
     [SerializeField] private bool hasPower = false;
     private bool isDraggin = false;
@@ -62,7 +63,10 @@ public class PowerController : MonoBehaviour
             if(!powers[currentIndex.Value].BehaviourPerformed()){
                 Debug.Log("EnemyDestroyed");
                 FinishPower();
-            }  
+            }else{
+                currentState.Value = true;
+            }
+
         }
     }
 
@@ -103,6 +107,7 @@ public class PowerController : MonoBehaviour
         currentEnergy.Value = currentEnergy.Value - powers[currentIndex.Value].energyConsumption;
         isDraggin = false;
         currentIndex.Value = 0;
+        currentState.Value = false;
     }
 
     public void DesactivatePower(){
