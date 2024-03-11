@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GravityManipulatorPerformed
-  m_Shader: {fileID: -6465566751694194690, guid: 534832c31dcd77346a90d1e4c5d8fe2f, type: 3}
+  m_Name: MissileManipulatorCursor
+  m_Shader: {fileID: -6465566751694194690, guid: dbda886d05ed6624abaace390811b008, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -38,19 +38,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DotScale: 0.98
+    - _DotScale: 0.9777
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RotationExt: -1
-    - _RotationInt: 2
-    - _Speed: 1
+    - _Rotation: -1
+    - _Speed: 4
     - _StepExt: 0.43
-    - _WaveLenght: 0.01
+    - _WaveLenght: 0.08
     m_Colors:
-    - _Color: {r: 1.7604765, g: 0, b: 14.619609, a: 1}
-    - _Color_1: {r: 31.999996, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.06838988, g: 0.13872218, b: 1.8660661, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &8213752027017246940
+--- !u!114 &1746655380732552554
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

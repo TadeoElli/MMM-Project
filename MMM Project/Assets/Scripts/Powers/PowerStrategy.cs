@@ -5,6 +5,7 @@ public abstract class PowerStrategy : ScriptableObject        //Strategy para to
     public int id;
     public float energyConsumption;
     public float cooldown;
+    public bool hasPerformedCursor;
 
     public abstract bool BehaviourStarted();
     public abstract bool BehaviourPerformed();

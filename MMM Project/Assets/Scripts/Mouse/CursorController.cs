@@ -37,8 +37,8 @@ public class CursorController : MonoBehaviour
         }
     }
     public void ChangePowerState(bool state){
+        DesactivateAllCursors();
         if(state){
-            DesactivateAllCursors();
             RaycastHit2D hit = Physics2D.Raycast(currentPosition, Vector2.zero);
             if(hit.collider != null && hit.collider.CompareTag("Enemy")){
                 if(hit.collider.gameObject.layer == 8 ){

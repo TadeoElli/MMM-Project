@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 1
   energyConsumption: 0
   cooldown: 25
+  hasPerformedCursor: 1
   level: 3
   wallTop: 4.5
   wallBottom: -4.5

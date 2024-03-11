@@ -64,7 +64,9 @@ public class PowerController : MonoBehaviour
                 Debug.Log("EnemyDestroyed");
                 FinishPower();
             }else{
-                currentState.Value = true;
+                if(powers[currentIndex.Value].hasPerformedCursor){
+                    currentState.Value = true;
+                }
             }
 
         }
@@ -106,8 +108,10 @@ public class PowerController : MonoBehaviour
         currentCd[currentIndex.Value] = 0;
         currentEnergy.Value = currentEnergy.Value - powers[currentIndex.Value].energyConsumption;
         isDraggin = false;
+        if(powers[currentIndex.Value].hasPerformedCursor){
+            currentState.Value = false;
+        }
         currentIndex.Value = 0;
-        currentState.Value = false;
     }
 
     public void DesactivatePower(){

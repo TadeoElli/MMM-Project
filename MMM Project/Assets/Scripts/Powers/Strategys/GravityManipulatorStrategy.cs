@@ -67,7 +67,6 @@ public class GravityManipulatorStrategy : PowerStrategy
         enemy.canMove = true;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - rb.position;
-
         rb.AddForce(direction.normalized * 100f, ForceMode2D.Impulse);
     }
 }
