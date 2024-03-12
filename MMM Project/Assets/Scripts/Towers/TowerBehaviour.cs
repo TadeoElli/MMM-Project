@@ -7,6 +7,7 @@ public class TowerBehaviour : MonoBehaviour
     [SerializeField] private TowerStrategy tower;
     [SerializeField] private float energy;
     [SerializeField] private bool hasEnemyInside = false;
+    [SerializeField] private GameObject towerFeedback;
     
 
     private void OnEnable() {
@@ -21,9 +22,15 @@ public class TowerBehaviour : MonoBehaviour
         else{
             if(hasEnemyInside){
                 energy = energy - 3 * Time.deltaTime;
+                if(towerFeedback != null){
+                    towerFeedback.SetActive(true);
+                }
             }
             else{
                 energy = energy - 1 * Time.deltaTime;
+                if(towerFeedback!= null){
+                    towerFeedback.SetActive(false);
+                }
             }
             
         }

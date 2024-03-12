@@ -46,7 +46,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Rotation: 3
-    - _Speed: -0.5
+    - _Speed: -1
     - _StepExt: 0.307
     - _WaveLenght: 0.0044
     m_Colors:
