@@ -63,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
                 GameObject enemy = _pool.RequestEnemy(_waves[_currentWaveCount]._enemyGroups[index].enemyPrefab);
                 enemy.GetComponent<EnemyBehaviour>().normalDir =  _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection;
                 enemy.transform.rotation =  _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection ? Quaternion.Euler(0f, 0f, 90): Quaternion.Euler(0f, 0f, 270);
-                Vector3 offset = _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection ? new Vector3 (12,0,0): new Vector3(-12,0,0);
+                Vector3 offset = _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection ? new Vector3 (13,0,0): new Vector3(-13,0,0);
                 enemy.transform.position = offset + spawn.position; 
                 _waves[_currentWaveCount]._enemyGroups[index]._spawnCount++;
                 if(_waves[_currentWaveCount]._enemyGroups[index]._spawnCount >= _waves[_currentWaveCount]._enemyGroups[index]._enemyCount){
@@ -88,7 +88,7 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemy = _pool.RequestEnemy(_waves[_currentWaveCount]._enemyGroups[index].enemyPrefab);
             enemy.GetComponent<EnemyBehaviour>().normalDir =  _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection;
             enemy.transform.rotation =  _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection ? Quaternion.Euler(0f, 0f, 90): Quaternion.Euler(0f, 0f, 270);
-            Vector3 offset = _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection ? new Vector3 (12,0,0): new Vector3(-12,0,0);
+            Vector3 offset = _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection ? new Vector3 (13,0,0): new Vector3(-13,0,0);
             enemy.transform.position = offset + _basicSpawnPoints[Random.Range(0,_basicSpawnPoints.Count)].position;
             
             _waves[_currentWaveCount]._enemyGroups[index]._spawnCount++;

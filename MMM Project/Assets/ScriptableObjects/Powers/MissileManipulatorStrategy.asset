@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   energyConsumption: 0
-  cooldown: 25
+  cooldown: 5
   hasPerformedCursor: 1
   wallTop: 4.5
   wallBottom: -4.5
