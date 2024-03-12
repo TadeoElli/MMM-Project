@@ -83,6 +83,7 @@ public class PowerController : MonoBehaviour
         }
     }
 
+
     public void SetEnergyValue(float amount){
         currentEnergy.Value = amount;
     }

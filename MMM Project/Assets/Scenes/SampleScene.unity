@@ -2619,11 +2619,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: powerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: missileIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.size
@@ -2635,11 +2635,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: powerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
+      propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: missileIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -2652,11 +2656,15 @@ PrefabInstance:
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: powerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1169710180}
+      objectReference: {fileID: 2139619857}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2139619857}
+    - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
+      propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 469595179}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: missileIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2678,16 +2686,24 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
+      propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: powerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetPowerIndex
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: powerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ChangePowerCursor
+      value: DesactivateTower
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetTowerIndex
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
+      propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: DesactivatePower
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: missileIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -2703,11 +2719,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: powerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: CursorController, Assembly-CSharp
+      value: TowerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TowerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
+      propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PowerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: missileIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -2723,6 +2743,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
+      propertyPath: towerIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}

@@ -66,6 +66,7 @@ public class TowerController : MonoBehaviour
             hasTower = true;
         }
     }
+
     public void ActivateTower(){
         if(hasTower){
             if(CheckDistanceFromNexus()){
