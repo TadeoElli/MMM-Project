@@ -10,8 +10,13 @@ public class CursorController : MonoBehaviour
     [SerializeField] private List<Color> colors;
     [Header("List Of PowerCursors")]
     [SerializeField] private List<GameObject> powers;
+    [Header("List Of TowerCursors")]
+    [SerializeField] private List<GameObject> towers;
+    [SerializeField] private GameObject blockSprite;
+    [SerializeField] private float distanceFromNexus;
+    [SerializeField] private GameObject nexus;
     [SerializeField] private List<GameObject> gravityScale;
-    private int  powerIndex,towerIndex;
+    private int  powerIndex, towerIndex;
     void Start()
     {
         missileCursorExt.color = colors[0];
@@ -23,6 +28,13 @@ public class CursorController : MonoBehaviour
     {
         currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = currentPosition;
+
+        if(towerIndex > 0 && CheckDistanceFromNexus()){
+            blockSprite.SetActive(true);
+        }
+        else{
+            blockSprite.SetActive(false);
+        }
     }
 
     public void ChangeMissileCursorColor(int index){
@@ -34,6 +46,14 @@ public class CursorController : MonoBehaviour
         DesactivateAllCursors();
         if(index > 0){
             powers[powerIndex].SetActive(true);
+        }
+    }
+
+    public void ChangeTowerCursor(int index){
+        towerIndex = index;
+        DesactivateAllCursors();
+        if(index > 0){
+            towers[towerIndex].SetActive(true);
         }
     }
     public void ChangePowerState(bool state){
@@ -65,8 +85,20 @@ public class CursorController : MonoBehaviour
         {
             gravityScale[i].SetActive(false);
         }
+        for (int i = 1; i < towers.Count; i++)
+        {
+            towers[i].SetActive(false);
+        }
+        blockSprite.SetActive(false);
     }
-    public void SetTowerIndex(int index){
-        towerIndex = index;
+
+    private bool CheckDistanceFromNexus(){
+        if(Vector2.Distance(currentPosition, nexus.transform.position) < distanceFromNexus){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
+    
 }
