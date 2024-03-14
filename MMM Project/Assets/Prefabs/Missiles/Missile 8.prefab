@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4889266724974237729}
   - component: {fileID: 8597755011525836896}
   - component: {fileID: 6759015660165343334}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VFX_Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 6883875279142898310}
   - component: {fileID: 4821582071728308293}
   - component: {fileID: 3230979742191088147}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VFX_Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
