@@ -19,7 +19,7 @@ public class Explosion : MonoBehaviour
         foreach (Collider2D collisions in objetos){
 
             if(collisions.CompareTag("Nexus")){
-                collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(creatorId);
+                //collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(creatorId);
             }
             if(collisions.CompareTag("Enemy")){
                 Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
@@ -28,7 +28,7 @@ public class Explosion : MonoBehaviour
                     float distance = 1 + direction.magnitude;
                     float finalForce = force / distance;
                     rb2D.AddForce(direction * finalForce);
-                    collisions.GetComponent<EnemyBehaviour>().TakeDamageForExplosion(creatorId);
+                    //collisions.GetComponent<EnemyBehaviour>().TakeDamageForExplosion(creatorId);
                 }
             }
         }

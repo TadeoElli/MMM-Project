@@ -63,14 +63,14 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public void TakeDamageForExplosion(int creatorId){
-        int damage = DamageTypes.Instance.explosionDictionary[creatorId];
+    public void TakeDamageForExplosion(ExplosionsTypes type){
+        int damage = DamageTypes.Instance.explosionDictionary[type];
         TakeDamage(damage);
     }
 
     private void Death(){
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(enemy.explosion);
-        explosion.GetComponent<Explosion>().creatorId =  enemy.id;
+        //explosion.GetComponent<Explosion>().creatorId =  enemy.id;
         explosion.transform.position = transform.position;
         this.gameObject.SetActive(false);
     }

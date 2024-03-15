@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b28bf6675227c94ca4347e5f0f4e8ce, type: 3}
+  m_Name: ImplosionStrategy
+  m_EditorClassIdentifier: 
+  id: 0
+  radius: 1.7
+  damage: 0
+  prefab: {fileID: 664976639789462718, guid: 09da0e9ff865280498b80c121c91816f, type: 3}
+  explosionType: 6
+  force: 1000
+  implosionRadius: 1.7
