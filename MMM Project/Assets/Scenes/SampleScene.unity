@@ -2517,6 +2517,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7572523458120182794, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572523458120182794, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572523458120182794, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7572523458383033952, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
       propertyPath: m_Name
       value: CursorController

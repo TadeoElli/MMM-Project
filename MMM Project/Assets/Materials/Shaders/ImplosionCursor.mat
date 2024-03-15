@@ -60,5 +60,5 @@ Material:
     - _WaveLenght: 0.01
     - _noiseScale: 15
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1.0890452, g: 0.050195705, b: 3.5471697, a: 1}
   m_BuildTextureStacks: []
