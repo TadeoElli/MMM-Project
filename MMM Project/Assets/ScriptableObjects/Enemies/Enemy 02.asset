@@ -18,4 +18,4 @@ MonoBehaviour:
   collisionForce: 50
   velocity: 0.25
   prefab: {fileID: 1986735698260649205, guid: 227acea95308c1d4da6e6f12cf04e23b, type: 3}
-  explosion: {fileID: 1864665300318508979, guid: 53431b636cb94854d84d4fc688b74055, type: 3}
+  explosion: {fileID: 1449157705920004381, guid: d3f40ccf235b4304bbf624c0f30157a7, type: 3}

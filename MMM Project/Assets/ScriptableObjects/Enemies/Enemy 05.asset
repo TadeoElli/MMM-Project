@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 17
   maxLife: 4500
   rotationSpeed: 1
+  collisionForce: 0
   velocity: 0.25
   prefab: {fileID: 7668285399957107595, guid: a83429a06acf2084389e6f2d0c44d9b8, type: 3}
-  explosion: {fileID: 1864665300318508979, guid: 53431b636cb94854d84d4fc688b74055, type: 3}
+  explosion: {fileID: 6882998788850233722, guid: 62bfd112791e2d64bb9541318f3845a2, type: 3}
   nuclearExplosion: {fileID: 1864665300318508979, guid: 68afaef436148ee45966d204c5400463, type: 3}
