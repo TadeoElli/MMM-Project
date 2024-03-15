@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Explosion", menuName = "ScriptableObject/Explosion/Implosion", order = 2)]
 public class ImplosionExplosionStrategy : ExplosionStrategy
 {
-    [SerializeField] private float force;
-    [SerializeField] private float implosionRadius;
+    [SerializeField] private float implosionForce, explosionForce;
     public override void DealDamage(Transform origin){
         Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
 
@@ -15,6 +14,13 @@ public class ImplosionExplosionStrategy : ExplosionStrategy
             if(collisions.CompareTag("Enemy")){
 
                 collisions.GetComponent<EnemyBehaviour>().TakeDamageForExplosion(explosionType);
+                Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
+                if(rb2D != null){
+                    Vector2 direction = collisions.transform.position - origin.position;
+                    float distance = 1 + direction.magnitude;
+                    float finalForce = explosionForce / distance;
+                    rb2D.AddForce(direction * finalForce);
+                }
             }
         }
     }
@@ -28,7 +34,7 @@ public class ImplosionExplosionStrategy : ExplosionStrategy
                 if(rb2D != null){
                     Vector2 direction = collisions.transform.position - origin.position;
                     float distance = 1 + direction.magnitude;
-                    float finalForce = force / distance;
+                    float finalForce = implosionForce / distance;
                     rb2D.AddForce(-direction * finalForce);
                 }
             }
