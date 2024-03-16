@@ -60,7 +60,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.11666667
     functionName: ANIM_EVENT
-    data: specialBehaviour
+    data: explosion
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

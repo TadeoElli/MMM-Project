@@ -13,6 +13,7 @@ public abstract class ExplosionStrategy : ScriptableObject
         return  explosion;
     } 
     public abstract void DealDamage(Transform origin);
-    public abstract void SpecialBehaviour(Transform origin);
+    public abstract void ExplosionBehaviour(Transform origin);
+    public abstract void ImplosionBehaviour(Transform origin);
     
 }

@@ -53,28 +53,28 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: ANIM_EVENT
-    data: specialBehaviour
+    data: implosion
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.33333334
     functionName: ANIM_EVENT
-    data: specialBehaviour
+    data: implosion
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.6666667
     functionName: ANIM_EVENT
-    data: specialBehaviour
+    data: implosion
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.0833334
     functionName: ANIM_EVENT
-    data: specialBehaviour
+    data: implosion
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
@@ -82,6 +82,13 @@ AnimationClip:
   - time: 2.65
     functionName: ANIM_EVENT
     data: dealDamage
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.6833334
+    functionName: ANIM_EVENT
+    data: explosion
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

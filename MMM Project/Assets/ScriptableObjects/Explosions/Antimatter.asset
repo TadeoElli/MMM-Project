@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180c20a9b13820641bfca1c21c3e90c2, type: 3}
-  m_Name: ShockWaveStrategy 1
+  m_Script: {fileID: 11500000, guid: c62560b0e6006ee4abe00f1085cf1ee8, type: 3}
+  m_Name: Antimatter
   m_EditorClassIdentifier: 
-  id: 3
-  energyConsumption: 600
-  cooldown: 30
-  hasPerformedCursor: 0
-  prefab: {fileID: 774515682413993120, guid: 961bc7494b615f343862ec3c11c81b25, type: 3}
+  id: 0
+  radius: 1.6
+  damage: 0
+  prefab: {fileID: 6996041359996089921, guid: 45c1e4569e879074bbc0c090f1e00cb0, type: 3}
+  explosionType: 7
+  implosionForce: 1000
+  explosionForce: 400

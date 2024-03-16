@@ -4,41 +4,34 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    [SerializeField] private float radius, force;
+    // Start is called before the first frame update
+    [SerializeField] private ExplosionStrategy explosion;
     [SerializeField] public AnimEvents events;
     [SerializeField] public int creatorId;
 
     private void Start() {
         events.ADD_EVENT("dealDamage", DealDamage);
         events.ADD_EVENT("end", DisableObject);
+        events.ADD_EVENT("explosion", ExplosionBehaviour);
+        events.ADD_EVENT("implosion", ImplosionBehaviour);
     }
 
     private void DealDamage(){
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radius);
-
-        foreach (Collider2D collisions in objetos){
-
-            if(collisions.CompareTag("Nexus")){
-                //collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(creatorId);
-            }
-            if(collisions.CompareTag("Enemy")){
-                Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
-                if(rb2D != null){
-                    Vector2 direction = collisions.transform.position - transform.position;
-                    float distance = 1 + direction.magnitude;
-                    float finalForce = force / distance;
-                    rb2D.AddForce(direction * finalForce);
-                    //collisions.GetComponent<EnemyBehaviour>().TakeDamageForExplosion(creatorId);
-                }
-            }
-        }
-    }
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        explosion.DealDamage(transform);
     }
 
+    private void ExplosionBehaviour(){
+        explosion.ExplosionBehaviour(transform);
+    }
+    private void ImplosionBehaviour(){
+        explosion.ImplosionBehaviour(transform);
+    }
     private void DisableObject(){
         this.gameObject.SetActive(false);
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosion.radius);
     }
 }
