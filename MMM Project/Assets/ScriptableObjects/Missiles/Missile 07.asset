@@ -21,5 +21,5 @@ MonoBehaviour:
   minStability: 1
   maxStability: 30
   prefab: {fileID: 2464879535626842570, guid: 3af3060297ed40247948c1b7cc2a2ae5, type: 3}
-  explosion: {fileID: 1864665300318508979, guid: 935234acd4045ab40a5a9c93e7a225fc, type: 3}
-  force: 3
+  explosion: {fileID: 829408856197472404, guid: a5c647f776d44894abb6708fac116924, type: 3}
+  force: 4
