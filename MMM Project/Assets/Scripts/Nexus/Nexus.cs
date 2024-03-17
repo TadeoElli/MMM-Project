@@ -8,7 +8,8 @@ public class Nexus : MonoBehaviour
     [SerializeField] private NexusPosition nexusPosition;
     [SerializeField] private MissileStrategy [] missiles;
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
-    [SerializeField] private int index = 0, baseStability;
+    [SerializeField] public int index = 0;
+    [SerializeField] private int baseStability;
     [SerializeField] private bool haveMissile;
     [SerializeField] private CircleCollider2D collider1;
 
