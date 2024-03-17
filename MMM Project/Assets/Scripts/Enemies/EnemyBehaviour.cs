@@ -55,7 +55,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
-        Debug.Log(gameObject + " recibio "+ damage+ " de dano" );
+        //Debug.Log(gameObject + " recibio "+ damage+ " de dano" );
         life -= damage;
         life = Mathf.Clamp(life, -100f, enemy.maxLife);
         if(life<= 0){
