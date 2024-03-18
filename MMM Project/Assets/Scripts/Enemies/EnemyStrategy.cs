@@ -3,7 +3,6 @@ using UnityEngine;
 
 public abstract class EnemyStrategy : ScriptableObject        //Strategy para todos los tipos de missiles
 {
-    public int id;
     public float maxLife;
     public float rotationSpeed;
     public float collisionForce;
@@ -25,4 +24,6 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
             
         rb2D.AddForce(direction.normalized * collisionForce, ForceMode2D.Force);
     }
+    public abstract GameObject DeathBehaviour();
+    
 }

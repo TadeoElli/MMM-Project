@@ -52,7 +52,10 @@ public class VolatilEnemyBehaviour : EnemyStrategy
         explosion.transform.position = other.transform.position;
     }
 
-
+    public override GameObject DeathBehaviour(){
+        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
+        return explosion;
+    }
     
 }
 

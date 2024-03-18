@@ -7,7 +7,6 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private ExplosionStrategy explosion;
     [SerializeField] public AnimEvents events;
-    [SerializeField] public int creatorId;
 
     private void Start() {
         events.ADD_EVENT("dealDamage", DealDamage);

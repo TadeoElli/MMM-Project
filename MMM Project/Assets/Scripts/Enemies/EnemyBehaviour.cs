@@ -69,10 +69,10 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     private void Death(){
-        GameObject explosion = ExplosionPool.Instance.RequestExplosion(enemy.explosion);
-        //explosion.GetComponent<Explosion>().creatorId =  enemy.id;
+        GameObject explosion = enemy.DeathBehaviour();
         explosion.transform.position = transform.position;
         this.gameObject.SetActive(false);
+        
     }
 
     public void MoveForward() {

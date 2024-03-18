@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Basic", order = 0)]
-public class BasicEnemyStrategy : EnemyStrategy
+[CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Nuclear", order = 2)]
+public class NuclearEnemyBehaviour : EnemyStrategy
 {
-    
+    [SerializeField] private float probability;
+    [SerializeField] private GameObject nuclearExplosion;
     public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){            
         int layer = other.layer;
         int damage;
@@ -38,8 +39,15 @@ public class BasicEnemyStrategy : EnemyStrategy
     }
 
     public override GameObject DeathBehaviour(){
-        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
-        return explosion;
+        float number = Random.Range(0f,100f);
+        if(number < probability){
+            GameObject explosion = ExplosionPool.Instance.RequestExplosion(nuclearExplosion);
+            return explosion;
+        }
+        else{
+            GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
+            return explosion;
+        }
     }
     
 }

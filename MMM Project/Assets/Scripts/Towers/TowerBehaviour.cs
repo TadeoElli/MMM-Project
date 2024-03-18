@@ -38,7 +38,6 @@ public class TowerBehaviour : MonoBehaviour
     }
     private void DestroyTower(){
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(tower.explosion);
-        explosion.GetComponent<Explosion>().creatorId =  tower.id;
         explosion.transform.position = transform.position;
         tower.DestroyTower(this.gameObject);
         this.gameObject.SetActive(false);
