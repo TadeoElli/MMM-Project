@@ -7,14 +7,9 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
     public float rotationSpeed;
     public float collisionForce;
     public float velocity;
-    public GameObject prefab;
     public GameObject explosion;
 
-    public GameObject CreateEnemy(Transform origin){
-        GameObject enemy = MissilePool.Instance.RequestMissile(prefab);
-        enemy.transform.position = origin.position;
-        return  enemy;
-    }
+
     public abstract int CollisionBehaviour(GameObject other,EnemyBehaviour prefab);
     
     public void CollisionForce(GameObject other, EnemyBehaviour prefab){
@@ -25,5 +20,6 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
         rb2D.AddForce(direction.normalized * collisionForce, ForceMode2D.Force);
     }
     public abstract GameObject DeathBehaviour();
+    public abstract void SpecialBehaviour(Transform origin);
     
 }

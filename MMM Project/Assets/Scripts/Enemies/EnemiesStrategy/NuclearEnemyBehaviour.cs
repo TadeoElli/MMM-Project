@@ -49,6 +49,10 @@ public class NuclearEnemyBehaviour : EnemyStrategy
             return explosion;
         }
     }
+
+    public override void SpecialBehaviour(Transform origin){
+
+    }
     
 }
 

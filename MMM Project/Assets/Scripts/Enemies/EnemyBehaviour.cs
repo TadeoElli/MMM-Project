@@ -82,6 +82,7 @@ public class EnemyBehaviour : MonoBehaviour
         else{
             transform.Translate(-transform.right * speed * Time.deltaTime);
         }
+        enemy.SpecialBehaviour(this.transform);
     }
 
     private void Rotate() {

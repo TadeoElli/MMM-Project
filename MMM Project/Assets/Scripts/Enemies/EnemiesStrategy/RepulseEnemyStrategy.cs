@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Basic", order = 0)]
-public class BasicEnemyStrategy : EnemyStrategy
+[CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Repulse", order = 1)]
+public class RepulseEnemyStrategy : EnemyStrategy
 {
-    
+    [SerializeField] private float cooldown;
+    [SerializeField] private GameObject particle;
+    private float timer = 0;
     public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){            
         int layer = other.layer;
         int damage;
@@ -42,8 +44,14 @@ public class BasicEnemyStrategy : EnemyStrategy
         return explosion;
     }
     public override void SpecialBehaviour(Transform origin){
-
+        if(timer > cooldown){
+            timer = 0;
+            GameObject explosion = ExplosionPool.Instance.RequestExplosion(particle);
+            explosion.transform.position = origin.transform.position;
+        }
+        else{
+            timer = timer + 1 * Time.deltaTime;
+        }
     }
     
 }
-

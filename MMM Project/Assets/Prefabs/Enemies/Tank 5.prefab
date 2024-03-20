@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd391319cfc83b498a9c4eb13169b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: 2d19185fcda06014ea92ffe569f241bf, type: 2}
+  enemy: {fileID: 11400000, guid: b4694c447790d5d47a72ac19e094a6a4, type: 2}
   life: 100
   canMove: 1
   normalDir: 0

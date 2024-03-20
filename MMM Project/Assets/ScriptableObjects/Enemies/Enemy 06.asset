@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fa4102d77043cf42a2b36b9cbc25b5f, type: 3}
-  m_Name: Enemy 05
+  m_Script: {fileID: 11500000, guid: c67513bfb623a9e46a5f69f48fb2bc90, type: 3}
+  m_Name: Enemy 06
   m_EditorClassIdentifier: 
-  maxLife: 1800
+  maxLife: 1400
   rotationSpeed: 1
   collisionForce: 50
   velocity: 0.25
+  prefab: {fileID: 7668285399957107595, guid: 718edf6765320514a8b63f5e3095243a, type: 3}
   explosion: {fileID: 1449157705920004381, guid: d3f40ccf235b4304bbf624c0f30157a7, type: 3}
-  cooldown: 2
-  particle: {fileID: 0}

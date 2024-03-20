@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Volatil", order = 0)]
+[CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Volatil", order = 3)]
 public class VolatilEnemyBehaviour : EnemyStrategy
 {
     [SerializeField] GameObject nuclearExplosion;
@@ -55,6 +55,10 @@ public class VolatilEnemyBehaviour : EnemyStrategy
     public override GameObject DeathBehaviour(){
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         return explosion;
+    }
+
+    public override void SpecialBehaviour(Transform origin){
+
     }
     
 }
