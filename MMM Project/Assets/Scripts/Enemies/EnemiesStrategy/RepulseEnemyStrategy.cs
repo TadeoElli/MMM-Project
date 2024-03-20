@@ -43,7 +43,7 @@ public class RepulseEnemyStrategy : EnemyStrategy
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         return explosion;
     }
-    public override void SpecialBehaviour(GameObject specialParticle){
+    public override void ParticleBehaviour(GameObject specialParticle){
         if(timer > cooldown){
             timer = 0;
             specialParticle.SetActive(true);
@@ -51,6 +51,9 @@ public class RepulseEnemyStrategy : EnemyStrategy
         else{
             timer = timer + 1 * Time.deltaTime;
         }
+    }
+    public override void TriggerBehaviour(GameObject other){
+
     }
     
 }

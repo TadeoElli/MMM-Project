@@ -45,7 +45,9 @@ public class EnemyBehaviour : MonoBehaviour
                 }
             }
         }
-        enemy.SpecialBehaviour(specialParticle);
+        if(specialParticle != null){
+            enemy.ParticleBehaviour(specialParticle);
+        }
 
     }
     private void OnCollisionEnter2D(Collision2D other) {
@@ -53,6 +55,11 @@ public class EnemyBehaviour : MonoBehaviour
         timer = 0;
         TakeDamage(damage);
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        enemy.TriggerBehaviour(other.gameObject);
+
     }
 
     public void TakeDamage(float damage){

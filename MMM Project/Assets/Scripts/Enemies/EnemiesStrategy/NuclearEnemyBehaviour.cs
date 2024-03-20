@@ -50,7 +50,10 @@ public class NuclearEnemyBehaviour : EnemyStrategy
         }
     }
 
-    public override void SpecialBehaviour(GameObject prefab){
+    public override void ParticleBehaviour(GameObject prefab){
+
+    }
+    public override void TriggerBehaviour(GameObject other){
 
     }
     
