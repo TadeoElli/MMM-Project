@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67513bfb623a9e46a5f69f48fb2bc90, type: 3}
   m_Name: Enemy 04
   m_EditorClassIdentifier: 
-  id: 16
-  maxLife: 4500
+  maxLife: 1000
   rotationSpeed: 1
-  collisionForce: 100
+  collisionForce: 50
   velocity: 0.25
   prefab: {fileID: 7668285399957107595, guid: 32d594e9f6060c349919f0e1cf68803e, type: 3}
-  explosion: {fileID: 6882998788850233722, guid: 62bfd112791e2d64bb9541318f3845a2, type: 3}
+  explosion: {fileID: 1449157705920004381, guid: d3f40ccf235b4304bbf624c0f30157a7, type: 3}

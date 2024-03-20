@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67513bfb623a9e46a5f69f48fb2bc90, type: 3}
-  m_Name: Enemy 03
+  m_Script: {fileID: 11500000, guid: 105b36b299ab97e4689e2a82f7aa171b, type: 3}
+  m_Name: Enemy 15
   m_EditorClassIdentifier: 
-  maxLife: 1600
+  id: 0
+  maxLife: 3000
   rotationSpeed: 1
-  collisionForce: 50
+  collisionForce: 100
   velocity: 0.25
   prefab: {fileID: 7668285399957107595, guid: 2bff2b397da5a6b4fb5d2c816479f7b6, type: 3}
-  explosion: {fileID: 1449157705920004381, guid: d3f40ccf235b4304bbf624c0f30157a7, type: 3}
+  explosion: {fileID: 6882998788850233722, guid: 62bfd112791e2d64bb9541318f3845a2, type: 3}
+  probability: 65
+  nuclearExplosion: {fileID: 4879983428889027885, guid: 458b80174cb50cc4ea1e53935708ebd0, type: 3}
