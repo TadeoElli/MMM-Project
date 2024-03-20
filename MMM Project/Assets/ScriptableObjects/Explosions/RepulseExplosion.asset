@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1a9593edc019d4294d19c27acaa9b0, type: 3}
   m_Name: RepulseExplosion
   m_EditorClassIdentifier: 
-  radius: 0
-  explosionType: 0
-  explosionForce: 0
+  radius: 1
+  explosionType: 5
+  explosionForce: 1000

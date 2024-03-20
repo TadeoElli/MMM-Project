@@ -41,7 +41,7 @@ public class BasicEnemyStrategy : EnemyStrategy
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         return explosion;
     }
-    public override void SpecialBehaviour(Transform origin){
+    public override void SpecialBehaviour(GameObject prefab){
 
     }
     

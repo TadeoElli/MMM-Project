@@ -57,7 +57,7 @@ public class VolatilEnemyBehaviour : EnemyStrategy
         return explosion;
     }
 
-    public override void SpecialBehaviour(Transform origin){
+    public override void SpecialBehaviour(GameObject prefab){
 
     }
     

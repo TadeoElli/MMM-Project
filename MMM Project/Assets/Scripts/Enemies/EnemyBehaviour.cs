@@ -12,7 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] public bool canMove = true;
     [HideInInspector] public bool normalDir = false;
     [SerializeField] public bool absorb = false;
-
+    [SerializeField] private GameObject specialParticle;
     private float timer;
 
     private void Awake() {
@@ -45,6 +45,7 @@ public class EnemyBehaviour : MonoBehaviour
                 }
             }
         }
+        enemy.SpecialBehaviour(specialParticle);
 
     }
     private void OnCollisionEnter2D(Collision2D other) {
@@ -82,7 +83,7 @@ public class EnemyBehaviour : MonoBehaviour
         else{
             transform.Translate(-transform.right * speed * Time.deltaTime);
         }
-        enemy.SpecialBehaviour(this.transform);
+        
     }
 
     private void Rotate() {

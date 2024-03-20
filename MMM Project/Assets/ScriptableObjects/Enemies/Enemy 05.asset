@@ -18,4 +18,4 @@ MonoBehaviour:
   velocity: 0.25
   explosion: {fileID: 1449157705920004381, guid: d3f40ccf235b4304bbf624c0f30157a7, type: 3}
   cooldown: 2
-  particle: {fileID: 0}
+  particle: {fileID: 3258050191358460465, guid: ed1762eccf2ae8b4794c2d5e0f78d10c, type: 3}

@@ -50,7 +50,7 @@ public class NuclearEnemyBehaviour : EnemyStrategy
         }
     }
 
-    public override void SpecialBehaviour(Transform origin){
+    public override void SpecialBehaviour(GameObject prefab){
 
     }
     

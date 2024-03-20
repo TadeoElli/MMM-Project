@@ -20,6 +20,6 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
         rb2D.AddForce(direction.normalized * collisionForce, ForceMode2D.Force);
     }
     public abstract GameObject DeathBehaviour();
-    public abstract void SpecialBehaviour(Transform origin);
+    public abstract void SpecialBehaviour(GameObject prefab);
     
 }
