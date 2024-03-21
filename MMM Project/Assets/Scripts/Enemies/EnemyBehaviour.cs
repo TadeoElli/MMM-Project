@@ -13,10 +13,12 @@ public class EnemyBehaviour : MonoBehaviour
     [HideInInspector] public bool normalDir = false;
     [SerializeField] public bool absorb = false;
     [SerializeField] private GameObject specialParticle;
+    private PowerUpManager powerUpManager;
     private float timer;
 
     private void Awake() {
         col = GetComponent<Collider2D>();
+        powerUpManager = GetComponent<PowerUpManager>();
     }
     private void OnEnable() {
         life = enemy.maxLife;
@@ -79,6 +81,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void Death(){
         GameObject explosion = enemy.DeathBehaviour();
         explosion.transform.position = transform.position;
+        powerUpManager.Death();
         this.gameObject.SetActive(false);
         
     }
