@@ -38,10 +38,10 @@ public class EnemyPool : MonoBehaviour
         List<GameObject> prefabList = enemyDictionary[prefab];    //Guardo la lista de cantidad de misiles en otra lista
         for (int i = 0; i < amount; i++)
         {
-            GameObject tower = Instantiate(prefab);
-            tower.SetActive(false);
-            prefabList.Add(tower);
-            tower.transform.parent = transform;
+            GameObject enemy = Instantiate(prefab);
+            enemy.SetActive(false);
+            prefabList.Add(enemy);
+            enemy.transform.parent = transform;
         }
     }
 
