@@ -15,6 +15,10 @@ public class NexusStats : MonoBehaviour
     [SerializeField] private int baseEnergy;
     [SerializeField] private int missilesUnlocked;
     [SerializeField] private int maxLives;
+    private int energyRegen = 40;
+    private int structureRegen = 20;
+
+    private int oldEnergyRegen, oldStructureRegen;
     private bool isDestroyed = false;
 
     private void Start() {
@@ -29,7 +33,7 @@ public class NexusStats : MonoBehaviour
         if(!isDestroyed){
             currentStructure.Value = currentStructure.Value + 20 * Time.deltaTime;
             currentStructure.Value = Mathf.Clamp(currentStructure.Value,-500f,maxStructure);
-            currentEnergy.Value = currentEnergy.Value + 40 * Time.deltaTime;
+            currentEnergy.Value = currentEnergy.Value + energyRegen * Time.deltaTime;
             currentEnergy.Value = Mathf.Clamp(currentEnergy.Value,0,maxEnergy);
             if(currentStructure.Value <= 0 ){
                 currentEnergy.RemoveAllListener();
@@ -47,6 +51,29 @@ public class NexusStats : MonoBehaviour
         currentStructure.Value = amount;
     }
 
+    public void EnergyPowerUp(int cooldown){
+        oldEnergyRegen = energyRegen; 
+        energyRegen =  100;
+        Invoke("RestoreEnergy",cooldown);
+    }
+    public void StructurePowerUp(int cooldown){
+        oldStructureRegen = structureRegen; 
+        structureRegen =  100;
+        Invoke("RestoreStructure",cooldown);
+    }
+    public void StabilityPowerUp(int cooldown){
+        currentBaseStability.Value = 35;
+        Invoke("RestoreStability",cooldown);
+    }
+    private void RestoreEnergy(){
+        energyRegen = oldEnergyRegen;
+    }
+    private void RestoreStructure(){
+        structureRegen = oldStructureRegen;
+    }
+    private void RestoreStability(){
+        currentBaseStability.Value = baseStability;
+    }
 
 
 }

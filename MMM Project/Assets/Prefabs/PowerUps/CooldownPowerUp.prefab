@@ -140,10 +140,10 @@ MonoBehaviour:
   callAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4859652181989221988}
-        m_TargetAssemblyTypeName: PowerUp, Assembly-CSharp
-        m_MethodName: Test
-        m_Mode: 1
+      - m_Target: {fileID: 6628989703202322388, guid: 71c9d3be0ffff214d8cf126b40fb9a5b, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
