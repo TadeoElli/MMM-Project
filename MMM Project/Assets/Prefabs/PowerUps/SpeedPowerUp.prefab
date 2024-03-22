@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5815538287379756343}
   - component: {fileID: 5815538287379756341}
   - component: {fileID: 5815538287379756342}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,19 @@ MonoBehaviour:
   callAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6628989703202322388, guid: 71c9d3be0ffff214d8cf126b40fb9a5b, type: 3}
+      - m_Target: {fileID: 813487154259301250}
+        m_TargetAssemblyTypeName: PowerUp, Assembly-CSharp
+        m_MethodName: SpeedPowerUp
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 15
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5815538287952573985}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -315,7 +327,7 @@ GameObject:
   - component: {fileID: 5815538288244249914}
   - component: {fileID: 5815538288244249912}
   - component: {fileID: 5815538288244249913}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SpeedIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

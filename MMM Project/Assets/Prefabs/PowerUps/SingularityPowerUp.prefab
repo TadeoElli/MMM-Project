@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4184700822987153056}
   - component: {fileID: 4184700822987153058}
   - component: {fileID: 4184700822987153057}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 4184700824135433901}
   - component: {fileID: 4184700824135433903}
   - component: {fileID: 4184700824135433902}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SingularityIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

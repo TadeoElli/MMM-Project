@@ -35,6 +35,7 @@ public class PowerUp : MonoBehaviour
         cooldownFeedback.gameObject.SetActive(false);
     }
 
+    #region Actions
     public void EnergyPowerUp(int cooldown){
         NexusStats nexus = FindObjectOfType<NexusStats>();
         nexus.EnergyPowerUp(cooldown);
@@ -49,8 +50,16 @@ public class PowerUp : MonoBehaviour
         NexusStats nexus = FindObjectOfType<NexusStats>();
         nexus.StabilityPowerUp(cooldown);
     }
+    public void SpeedPowerUp(int cooldown){
+        NexusStats nexus = FindObjectOfType<NexusStats>();
+        nexus.SpeedPowerUp(cooldown);
+    }
+    public void NuclearPowerUp(){
+        InputController inputController = FindObjectOfType<InputController>();
+        inputController.SetPowerIndex(6);
+    }
     public void DesactivatePowerUp(){
         this.gameObject.SetActive(false);
     }
-
+    #endregion
 }

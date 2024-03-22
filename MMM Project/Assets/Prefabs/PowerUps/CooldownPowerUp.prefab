@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 1769374699225620700}
   - component: {fileID: 1769374699225620702}
   - component: {fileID: 1769374699225620703}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CooldownIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 1769374700626460881}
   - component: {fileID: 1769374700626460883}
   - component: {fileID: 1769374700626460880}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,10 +8,12 @@ public class NexusStats : MonoBehaviour
     public Observer<float> currentStructure = new Observer<float>(3000f);
     public Observer<int> currentLives = new Observer<int>(35);
     public Observer<int> currentBaseStability = new Observer<int>(0);
+    public Observer<int> currentBaseSpeed = new Observer<int>(0);
     //public float currentEnergy;
     [SerializeField] private float maxEnergy;
     [SerializeField] private float maxStructure;
     [SerializeField] private int baseStability;
+    [SerializeField] private int baseSpeed;
     [SerializeField] private int baseEnergy;
     [SerializeField] private int missilesUnlocked;
     [SerializeField] private int maxLives;
@@ -28,6 +30,8 @@ public class NexusStats : MonoBehaviour
         currentStructure.Invoke();
         currentBaseStability.Value = baseStability;
         currentBaseStability.Invoke();
+        currentBaseSpeed.Value = baseSpeed;
+        currentBaseSpeed.Invoke();
     }
     private void Update() {
         if(!isDestroyed){
@@ -51,6 +55,7 @@ public class NexusStats : MonoBehaviour
         currentStructure.Value = amount;
     }
 
+    #region PowersUp
     public void EnergyPowerUp(int cooldown){
         oldEnergyRegen = energyRegen; 
         energyRegen =  100;
@@ -65,6 +70,12 @@ public class NexusStats : MonoBehaviour
         currentBaseStability.Value = 35;
         Invoke("RestoreStability",cooldown);
     }
+    public void SpeedPowerUp(int cooldown){
+        currentBaseSpeed.Value = 25;
+        Invoke("RestoreSpeed",cooldown);
+    }
+
+
     private void RestoreEnergy(){
         energyRegen = oldEnergyRegen;
     }
@@ -74,6 +85,9 @@ public class NexusStats : MonoBehaviour
     private void RestoreStability(){
         currentBaseStability.Value = baseStability;
     }
-
+    private void RestoreSpeed(){
+        currentBaseSpeed.Value = baseSpeed;
+    }
+    #endregion
 
 }

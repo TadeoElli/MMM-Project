@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6628989702629504194}
   - component: {fileID: 6628989702629504192}
   - component: {fileID: 6628989702629504195}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 6628989702688691407}
   - component: {fileID: 6628989702688691405}
   - component: {fileID: 6628989702688691404}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EnergyIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

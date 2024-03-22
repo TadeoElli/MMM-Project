@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 5337120437471683279}
   - component: {fileID: 5337120437471683277}
   - component: {fileID: 5337120437471683276}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NuclearIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 5337120437798519490}
   - component: {fileID: 5337120437798519488}
   - component: {fileID: 5337120437798519491}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

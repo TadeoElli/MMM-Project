@@ -11,13 +11,22 @@ public class InputController : MonoBehaviour
     //[SerializeField] private int missileIndex;
     public Observer<int> powerIndex = new Observer<int>(0);
 
+    public bool isAvailable = true;
+
     public void SetMissileIndex(int index){
-        missileIndex.Value = index;
+        if(isAvailable){
+            missileIndex.Value = index;
+        }
+        
     }
     public void SetTowerIndex(int index){
-        towerIndex.Value = index;
+        if(isAvailable){
+            towerIndex.Value = index;
+        }
     }
     public void SetPowerIndex(int index){
-        powerIndex.Value = index;
+        if(isAvailable){
+            powerIndex.Value = index;
+        }
     }
 }

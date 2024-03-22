@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 8520137311295828714}
   - component: {fileID: 8520137311295828712}
   - component: {fileID: 8520137311295828713}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: StructureIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 8520137311639933671}
   - component: {fileID: 8520137311639933669}
   - component: {fileID: 8520137311639933670}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

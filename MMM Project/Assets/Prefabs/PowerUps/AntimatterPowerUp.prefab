@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4564287466492529767}
   - component: {fileID: 4564287466492529765}
   - component: {fileID: 4564287466492529764}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AntimatterIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 4564287467372506218}
   - component: {fileID: 4564287467372506216}
   - component: {fileID: 4564287467372506219}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
