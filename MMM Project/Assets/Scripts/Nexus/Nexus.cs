@@ -8,7 +8,7 @@ public class Nexus : MonoBehaviour
     [SerializeField] private NexusPosition nexusPosition;
     [SerializeField] private MissileStrategy [] missiles;
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
-    [SerializeField] public int index = 0;
+    [SerializeField] public int index, powerIndex, towerIndex;
     [SerializeField] private int baseStability,baseSpeed;
     [SerializeField] private bool haveMissile;
     [SerializeField] private CircleCollider2D collider1;
@@ -22,6 +22,7 @@ public class Nexus : MonoBehaviour
 
 
     private void Awake() {
+        index = 0;
         cam = Camera.main;
         tl = GetComponent<TrajectoryLine>();
         nexusPosition = FindObjectOfType<NexusPosition>();
@@ -46,7 +47,7 @@ public class Nexus : MonoBehaviour
     }
 
     private void OnMouseOver() {
-        if(haveMissile){
+        if(haveMissile && powerIndex == 0 && towerIndex == 0){
             mouseOverMissile.SetActive(true);   //Activo el feedback del mouse
             if(Input.GetMouseButtonDown(0)){        //Marco el punto de origen
                 startPoint = transform.position;
@@ -110,6 +111,12 @@ public class Nexus : MonoBehaviour
             missilePrefab = missiles[index].CreateMissile(transform);
             missilePrefab.GetComponent<Collider2D>().enabled = false;
         }
+    }
+    public void SetPowerIndex(int newIndex){
+        powerIndex = newIndex;
+    }
+    public void SetTowerIndex(int newIndex){
+        towerIndex = newIndex;
     }
 
 

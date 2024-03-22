@@ -12,9 +12,10 @@ public class InputController : MonoBehaviour
     public Observer<int> powerIndex = new Observer<int>(0);
 
     public bool isAvailable = true;
+    public bool missileIsAvailable = true;
 
     public void SetMissileIndex(int index){
-        if(isAvailable){
+        if(missileIsAvailable){
             missileIndex.Value = index;
         }
         
@@ -28,5 +29,13 @@ public class InputController : MonoBehaviour
         if(isAvailable){
             powerIndex.Value = index;
         }
+    }
+
+    public void RestoreIndex(int cooldown){
+        Invoke("Restore", cooldown);
+    }
+    private void Restore(){
+        missileIsAvailable = true;
+        missileIndex.Value = 0;
     }
 }

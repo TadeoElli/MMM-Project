@@ -59,6 +59,12 @@ public class PowerUp : MonoBehaviour
         inputController.SetPowerIndex(6);
         inputController.isAvailable = false;
     }
+    public void AntimatterPowerUp(int cooldown){
+        InputController inputController = FindObjectOfType<InputController>();
+        inputController.SetMissileIndex(8);
+        inputController.missileIsAvailable = false;
+        inputController.RestoreIndex(cooldown);
+    }
     public void DesactivatePowerUp(){
         this.gameObject.SetActive(false);
     }

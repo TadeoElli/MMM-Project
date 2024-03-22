@@ -119,6 +119,8 @@ public class PowerController : MonoBehaviour
 
     public void DesactivatePower(){
         if(hasPower){
+            InputController inputController = FindObjectOfType<InputController>();
+            inputController.isAvailable = true;
             hasPower = false;
             currentIndex.Value = 0;
         }

@@ -12,7 +12,7 @@ public class PowerUpManager : MonoBehaviour
         [SerializeField]public PowerUp prefab;
         [SerializeField]public float dropProbability;
     }
-
+    [Header("Will spawn the first prefab on the list")]
     [SerializeField] private List<PowerUpData> availablePowerUps;
 
     public void Death() {
@@ -26,16 +26,15 @@ public class PowerUpManager : MonoBehaviour
     // Genera y devuelve un power-up aleatorio
     private GameObject GenerateRandomPowerUp()
     {
-
-        foreach (var powerUp in availablePowerUps)
+        for (int i = 0; i < availablePowerUps.Count; i++)
         {
-            // Generar un número aleatorio entre 0 y la suma total de las probabilidades
             float randomValue = UnityEngine.Random.Range(0f, 100f);
-            if(randomValue < powerUp.dropProbability){
-                return powerUp.prefab.gameObject;
+            if(randomValue < availablePowerUps[i].dropProbability){
+                return availablePowerUps[i].prefab.gameObject;
                 break;
             }
-        }
+        }            
+        
         return null;
     }
 }
