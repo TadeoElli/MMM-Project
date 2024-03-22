@@ -10,12 +10,13 @@ public class CursorController : MonoBehaviour
     [SerializeField] private List<Color> colors;
     [Header("List Of PowerCursors")]
     [SerializeField] private List<GameObject> powers;
+    [SerializeField] private List<GameObject> gravityScale;
+    [SerializeField] private GameObject missileManipulatorPerformedCursor;
     [Header("List Of TowerCursors")]
     [SerializeField] private List<GameObject> towers;
     [SerializeField] private GameObject blockSprite;
     [SerializeField] private float distanceFromNexus;
     [SerializeField] private GameObject nexus;
-    [SerializeField] private List<GameObject> gravityScale;
     private int  powerIndex, towerIndex;
     void Start()
     {
@@ -72,7 +73,7 @@ public class CursorController : MonoBehaviour
                 }
             }
             else{
-                powers[powerIndex + 2].SetActive(true);
+                missileManipulatorPerformedCursor.SetActive(true);
             }
         }
     }
@@ -90,6 +91,7 @@ public class CursorController : MonoBehaviour
             towers[i].SetActive(false);
         }
         blockSprite.SetActive(false);
+        missileManipulatorPerformedCursor.SetActive(false);
     }
 
     private bool CheckDistanceFromNexus(){

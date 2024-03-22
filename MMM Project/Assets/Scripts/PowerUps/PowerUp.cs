@@ -27,7 +27,7 @@ public class PowerUp : MonoBehaviour
 
     private void OnMouseOver() {
         cooldownFeedback.gameObject.SetActive(true);
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonUp(0)){
             callAction?.Invoke();
         }
     }
