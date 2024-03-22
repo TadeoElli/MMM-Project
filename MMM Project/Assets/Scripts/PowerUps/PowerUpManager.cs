@@ -9,7 +9,7 @@ public class PowerUpManager : MonoBehaviour
     [Serializable] 
     public class PowerUpData
     {
-        [SerializeField]public GameObject prefab;
+        [SerializeField]public PowerUp prefab;
         [SerializeField]public float dropProbability;
     }
 
@@ -32,7 +32,8 @@ public class PowerUpManager : MonoBehaviour
             // Generar un número aleatorio entre 0 y la suma total de las probabilidades
             float randomValue = UnityEngine.Random.Range(0f, 100f);
             if(randomValue < powerUp.dropProbability){
-                return powerUp.prefab;
+                return powerUp.prefab.gameObject;
+                break;
             }
         }
         return null;

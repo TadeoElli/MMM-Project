@@ -57,6 +57,7 @@ public class PowerUp : MonoBehaviour
     public void NuclearPowerUp(){
         InputController inputController = FindObjectOfType<InputController>();
         inputController.SetPowerIndex(6);
+        inputController.isAvailable = false;
     }
     public void DesactivatePowerUp(){
         this.gameObject.SetActive(false);

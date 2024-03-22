@@ -550,6 +550,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &785820881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4507420118881950495, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
+  m_PrefabInstance: {fileID: 7572523457263692290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &814966022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4729852758309879534, guid: 9ecd9dc7a6439d245a6358dedaf674ff, type: 3}
@@ -2799,7 +2804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6227127630744440516, guid: d47a80926c2155146b2987b76d6af71a, type: 3}
       propertyPath: powers.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6227127630744440516, guid: d47a80926c2155146b2987b76d6af71a, type: 3}
       propertyPath: powers.Array.data[1]
@@ -2821,6 +2826,10 @@ PrefabInstance:
       propertyPath: powers.Array.data[5]
       value: 
       objectReference: {fileID: 11400000, guid: 277936680be47f342be53a1a24010e55, type: 2}
+    - target: {fileID: 6227127630744440516, guid: d47a80926c2155146b2987b76d6af71a, type: 3}
+      propertyPath: powers.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: bdd1edc67778aba4c97276908132a5fa, type: 2}
     - target: {fileID: 6227127630744440516, guid: d47a80926c2155146b2987b76d6af71a, type: 3}
       propertyPath: currentIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -2942,25 +2951,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7572523457384823218, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
+    - target: {fileID: 4507420118881950495, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
+      propertyPath: m_Name
+      value: NuclearCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507420118881950495, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572523458120182789, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572523458120182794, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572523458120182794, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572523458120182794, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7572523458383033952, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
       propertyPath: m_Name
@@ -3022,6 +3019,18 @@ PrefabInstance:
       propertyPath: missileCursorInt
       value: 
       objectReference: {fileID: 1177772973}
+    - target: {fileID: 7572523458383033958, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
+      propertyPath: powers.Array.data[6]
+      value: 
+      objectReference: {fileID: 785820881}
+    - target: {fileID: 8049196263304569261, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049196263304569261, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b3bcd1c6559b70438f993a1b1bb07df, type: 3}
 --- !u!1001 &8692608149577548642

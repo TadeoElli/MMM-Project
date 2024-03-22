@@ -114,7 +114,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availablePowerUps:
-  - prefab: {fileID: 6628989703202322388, guid: 71c9d3be0ffff214d8cf126b40fb9a5b, type: 3}
+  - prefab: {fileID: 586682999, guid: 71c9d3be0ffff214d8cf126b40fb9a5b, type: 3}
+    dropProbability: 100
+  - prefab: {fileID: 1292433869990618231, guid: 9fe87328d410731428b2bf08fac91060, type: 3}
     dropProbability: 100
 --- !u!1 &7023359179917588613
 GameObject:

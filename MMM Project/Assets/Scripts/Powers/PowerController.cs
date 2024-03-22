@@ -104,6 +104,8 @@ public class PowerController : MonoBehaviour
         }
     }
     private void FinishPower(){
+        InputController inputController = FindObjectOfType<InputController>();
+        inputController.isAvailable = true;
         powers[currentIndex.Value].BehaviourEnded();
         isReady[currentIndex.Value] = false;
         currentCd[currentIndex.Value] = 0;
