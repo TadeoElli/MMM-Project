@@ -49,24 +49,31 @@ public class GravityManipulatorStrategy : PowerStrategy
         Debug.Log("Gravity Manipulator");
     }
     public override bool BehaviourPerformed(){
-        if(rb.gameObject.activeSelf){
-            // Obtener la posición del ratón en el mundo
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if(mousePosition.y > wallTop || mousePosition.y < wallBottom){
-                enemy.TakeDamage(5000);
+        if(enemy != null){
+            if(rb.gameObject.activeSelf){
+                // Obtener la posición del ratón en el mundo
+                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if(mousePosition.y > wallTop || mousePosition.y < wallBottom){
+                    enemy.TakeDamage(5000);
+                }
+                // Actualizar la posición del enemigo al ratón
+                rb.MovePosition(mousePosition);
+                return true;
             }
-            // Actualizar la posición del enemigo al ratón
-            rb.MovePosition(mousePosition);
-            return true;
+            else{
+                return false;
+            }
         }
         else{
             return false;
         }
     }
     public override void BehaviourEnded(){
-        enemy.canMove = true;
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePosition - rb.position;
-        rb.AddForce(direction.normalized * 100f, ForceMode2D.Impulse);
+        if(enemy != null){
+            enemy.canMove = true;
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = mousePosition - rb.position;
+            rb.AddForce(direction.normalized * 100f, ForceMode2D.Impulse);
+        }
     }
 }

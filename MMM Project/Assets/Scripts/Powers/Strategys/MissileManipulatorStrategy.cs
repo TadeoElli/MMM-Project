@@ -37,30 +37,37 @@ public class MissileManipulatorStrategy : PowerStrategy
         Debug.Log("Misile Manipulator");
     }
     private void Desactivate(){
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePosition - rb.position;
+        if(misile != null){
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = mousePosition - rb.position;
 
-        rb.AddForce(direction.normalized * 20f, ForceMode2D.Impulse);
+            rb.AddForce(direction.normalized * 20f, ForceMode2D.Impulse);
+        }
     }
     public override bool BehaviourPerformed(){
-        if(timer < maxTime){
-            if(rb.gameObject.activeSelf){
-                // Obtener la posición del ratón en el mundo
-                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if(mousePosition.y > wallTop || mousePosition.y < wallBottom){
-                    misile.TakeDamage(5000);
+        if(misile != null){
+            if(timer < maxTime){
+                if(rb.gameObject.activeSelf){
+                    // Obtener la posición del ratón en el mundo
+                    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    if(mousePosition.y > wallTop || mousePosition.y < wallBottom){
+                        misile.TakeDamage(5000);
+                    }
+                    // Actualizar la posición del enemigo al ratón
+                    rb.MovePosition(mousePosition);
+                    timer = timer + 1 * Time.deltaTime;
+                    return true;
                 }
-                // Actualizar la posición del enemigo al ratón
-                rb.MovePosition(mousePosition);
-                timer = timer + 1 * Time.deltaTime;
-                return true;
+                else{
+                    return false;
+                }
             }
             else{
+                Desactivate();
                 return false;
             }
         }
         else{
-            Desactivate();
             return false;
         }
     }

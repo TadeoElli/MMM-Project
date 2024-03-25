@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7712576602456943777}
   - component: {fileID: 7712576602456943711}
   - component: {fileID: 7712576602456943776}
-  - component: {fileID: -6953177960764817961}
   m_Layer: 8
   m_Name: Tank 1
   m_TagString: Enemy
@@ -101,23 +100,6 @@ MonoBehaviour:
   normalDir: 0
   absorb: 0
   specialParticle: {fileID: 0}
---- !u!114 &-6953177960764817961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855174888988566979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5867e47dc6f81c44b9a6615f7d9e26b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  availablePowerUps:
-  - prefab: {fileID: 586682999, guid: 71c9d3be0ffff214d8cf126b40fb9a5b, type: 3}
-    dropProbability: 100
-  - prefab: {fileID: 1292433869990618231, guid: 9fe87328d410731428b2bf08fac91060, type: 3}
-    dropProbability: 100
 --- !u!1 &7023359179917588613
 GameObject:
   m_ObjectHideFlags: 0
