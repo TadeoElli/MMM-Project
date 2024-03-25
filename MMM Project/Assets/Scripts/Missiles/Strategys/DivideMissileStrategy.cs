@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Antimatter", order = 4)]
-public class AntimatterMissileBehaviour : MissileStrategy
+[CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Divide", order = 5)]
+public class DivideMissileStrategy : MissileStrategy
 {
-
+    [SerializeField] GameObject subMissiles;
+    [SerializeField] private float force;
+    [SerializeField] private int cantOfSubmissiles;
     
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         MissileBehaviour missileBehaviour = prefab.GetComponent<MissileBehaviour>();
@@ -43,8 +45,20 @@ public class AntimatterMissileBehaviour : MissileStrategy
 
     }
     public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
-        newExplosion.transform.position = origin.position;
+        for (int i = 0; i < cantOfSubmissiles; i++)
+        {
+            CreateSubmissile(origin);
+        }
+    }
+
+    private void CreateSubmissile(Transform origin){
+        GameObject newMissile =  MissilePool.Instance.RequestMissile(subMissiles);
+        newMissile.transform.position = origin.position;
+        Rigidbody2D rb2D = newMissile.GetComponent<Rigidbody2D>();
+        if(rb2D != null){
+            Vector2 direction = new Vector2(Random.Range(0f,1f), Random.Range(0f,1f));
+            rb2D.AddForce(direction * force);
+        }
     }
 
 }

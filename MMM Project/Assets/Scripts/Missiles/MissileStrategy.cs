@@ -33,6 +33,7 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
             enemy.TakeDamage(damage);
         }
     }
+    public abstract void ExplosionBehaviour(Transform origin);
     
 }
 

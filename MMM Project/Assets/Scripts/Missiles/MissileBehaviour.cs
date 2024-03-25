@@ -28,11 +28,6 @@ public class MissileBehaviour : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    private void CreateExplosion(){
-        GameObject explosion = ExplosionPool.Instance.RequestExplosion(missile.explosion);
-        explosion.transform.position = transform.position;
-        this.gameObject.SetActive(false);
-    }
     public void TakeDamage(float damage){
         life -= damage;
         if(life<= 0 && oneChance){
@@ -40,7 +35,8 @@ public class MissileBehaviour : MonoBehaviour
             life = 1;
         }
         if(life <= 0){
-            CreateExplosion();
+            missile.ExplosionBehaviour(transform);
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -59,7 +55,8 @@ public class MissileBehaviour : MonoBehaviour
             maxProbability = maxProbability + (baseStability * 3.5f);
         }
         if(probability > maxProbability){
-            CreateExplosion();
+            missile.ExplosionBehaviour(transform);
+            this.gameObject.SetActive(false);
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {

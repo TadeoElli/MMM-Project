@@ -157,8 +157,6 @@ GameObject:
   - component: {fileID: 2345792218122456919}
   - component: {fileID: 2345792218122456916}
   - component: {fileID: 2345792218122456917}
-  - component: {fileID: 2345792218122456915}
-  - component: {fileID: 2345792218122456914}
   - component: {fileID: 1890146689}
   m_Layer: 0
   m_Name: Nexus
@@ -220,13 +218,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4371c0a35fb83f24db96205759fb04a3, type: 2}
   - {fileID: 11400000, guid: 277a5ede862234743b8d378af1f25142, type: 2}
   - {fileID: 11400000, guid: 4ebb68ac37c39c2489836fcc2d0d0862, type: 2}
-  - {fileID: 11400000, guid: 4ebb68ac37c39c2489836fcc2d0d0862, type: 2}
-  - {fileID: 11400000, guid: 6f712553cb0e5c141b698498b1bc9f59, type: 2}
+  - {fileID: 11400000, guid: d2fc796096dde5247ac283f5caabd41a, type: 2}
+  - {fileID: 11400000, guid: e6e1c1e121800b241aca8d3f5517443a, type: 2}
   - {fileID: 11400000, guid: 82879ff389c152a4187be8129db01494, type: 2}
   mouseOverMissile: {fileID: 0}
   missilePrefab: {fileID: 0}
   index: 0
+  powerIndex: 0
+  towerIndex: 0
   baseStability: 0
+  baseSpeed: 0
   haveMissile: 1
   collider1: {fileID: 2345792218122456917}
   tl: {fileID: 0}
@@ -248,125 +249,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!120 &2345792218122456915
-LineRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2345792218122456921}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Positions: []
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 0.5
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0.2704398
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 1
-    numCapVertices: 1
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_UseWorldSpace: 1
-  m_Loop: 0
---- !u!114 &2345792218122456914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2345792218122456921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81bc1ce2ffb57ac46a58a6c5e28fd558, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lr: {fileID: 0}
 --- !u!114 &1890146689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,6 +1019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3722753265671589915}
   - component: {fileID: 8252364553922760843}
+  - component: {fileID: 1045039946}
   m_Layer: 0
   m_Name: NexusModel
   m_TagString: Untagged
@@ -1219,6 +1102,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1045039946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655571476650335649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3e1e391709c6d45a3ab906b6f8b212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: cbb4f147cff0cf64da1c0ec84ff519b6, type: 3}
+  - {fileID: 21300000, guid: 803becf2d1ed04146a2409d0f57f83e4, type: 3}
+  - {fileID: 21300000, guid: 41b9ee512cd7c6744b14721786d832c1, type: 3}
+  - {fileID: 21300000, guid: eae4ce1effc43934485e44678fdfe9c0, type: 3}
+  - {fileID: 21300000, guid: db8c9967647968e4aa0540bd7c88f357, type: 3}
+  - {fileID: 21300000, guid: 4adcbbdd71db9bc468ff7f0ab6a2bf4f, type: 3}
+  - {fileID: 21300000, guid: d71d111d187c55649859a88ae45b7f84, type: 3}
+  - {fileID: 21300000, guid: ebe98745057f5d849b49fa65c0502324, type: 3}
+  - {fileID: 21300000, guid: 3840fcb9b45e73c4084f535f072ea25d, type: 3}
+  renderers:
+  - {fileID: 2709282759324652269}
+  - {fileID: 8493947374959329590}
+  - {fileID: 180602615922367288}
+  - {fileID: 6541615124131654478}
+  - {fileID: 6489710429887332682}
+  - {fileID: 4591303510883590232}
+  - {fileID: 4880231341234200940}
+  - {fileID: 3687004897892162206}
+  textures:
+  - {fileID: 2800000, guid: e5fbd6afd9f86534f9e57eda9cc0fc54, type: 3}
+  - {fileID: 2800000, guid: 80223029cfdcd89468ca2d8d3eb46894, type: 3}
+  - {fileID: 2800000, guid: ba7da68fa99644044b8744f9529ce702, type: 3}
+  - {fileID: 2800000, guid: 1d45ee6d9dd96ee48aa7bff48a945980, type: 3}
+  - {fileID: 2800000, guid: dac34824ed700864fbc3a5c42c6fe82f, type: 3}
+  - {fileID: 2800000, guid: 0efbe0c0c4b5b7249b7fc7586030a2fc, type: 3}
+  - {fileID: 2800000, guid: c6cb2428f5a41014aafe408f5b9206cf, type: 3}
+  - {fileID: 2800000, guid: 794c38b7d6f888e439b6417128672ab1, type: 3}
+  - {fileID: 2800000, guid: a84bbbc3d67e2b24583ada08ab25f07a, type: 3}
 --- !u!1 &8778581376760350702
 GameObject:
   m_ObjectHideFlags: 0

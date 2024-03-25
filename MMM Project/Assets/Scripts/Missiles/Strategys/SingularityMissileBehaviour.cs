@@ -29,4 +29,8 @@ public class SingularityMissileBehaviour : MissileStrategy
     }
     public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
     }
+    public override void ExplosionBehaviour(Transform origin){
+        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
+        newExplosion.transform.position = origin.position;
+    }
 }

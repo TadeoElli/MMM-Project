@@ -59,4 +59,8 @@ public class StickyMissileBehaviour : MissileStrategy
             
         }
     }
+    public override void ExplosionBehaviour(Transform origin){
+        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
+        newExplosion.transform.position = origin.position;
+    }
 }

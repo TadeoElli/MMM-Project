@@ -14,7 +14,6 @@ public class Nexus : MonoBehaviour
     [SerializeField] private CircleCollider2D collider1;
 
     [Header("Trail")]
-    public TrajectoryLine tl;
     Camera cam;
     Vector2 force;
     [SerializeField] private Vector2 minPower, maxPower;
@@ -24,7 +23,6 @@ public class Nexus : MonoBehaviour
     private void Awake() {
         index = 0;
         cam = Camera.main;
-        tl = GetComponent<TrajectoryLine>();
         nexusPosition = FindObjectOfType<NexusPosition>();
     }
     void Start()
@@ -59,7 +57,6 @@ public class Nexus : MonoBehaviour
                 missilePrefab.transform.position = curreentPoint;
                 mouseOverMissile.transform.position = curreentPoint;
                 collider1.radius = 1f;
-                tl.RenderLine(startPoint, curreentPoint);       //hago el renderizado del trail
             }
             if(Input.GetMouseButtonUp(0)){      //Marco el punto donde se solto para calcular el disparo
                 float energyConsumption = missiles[index].energyConsumption;
@@ -72,7 +69,6 @@ public class Nexus : MonoBehaviour
                     //Debug.Log((force * (missiles[index].velocity / 3)).magnitude);
                     missilePrefab.GetComponent<MissileBehaviour>().TryToShoot(startPoint,endPoint, baseStability);
                     missilePrefab.GetComponent<Collider2D>().enabled = true;
-                    tl.EndLine();
                     collider1.radius = 0.2f;
                     haveMissile = false;
                     mouseOverMissile.transform.position = transform.position;

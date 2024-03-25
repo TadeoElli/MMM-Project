@@ -51,10 +51,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        int damage = enemy.CollisionBehaviour(other.gameObject, this);
-        timer = 0;
-        TakeDamage(damage);
-        
+        if(!other.gameObject.CompareTag("Missiles")){
+            int damage = enemy.CollisionBehaviour(other.gameObject, this);
+            timer = 0;
+            TakeDamage(damage);
+        }  
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -63,7 +64,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
-        //Debug.Log(gameObject + " recibio "+ damage+ " de dano" );
+        Debug.Log(gameObject + " recibio "+ damage+ " de dano" );
         life -= damage;
         life = Mathf.Clamp(life, -100f, enemy.maxLife);
         if(life<= 0){
