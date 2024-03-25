@@ -59,6 +59,11 @@ public class PowerUp : MonoBehaviour
         inputController.SetPowerIndex(6);
         inputController.isAvailable = false;
     }
+    public void SingularityPowerUp(){
+        InputController inputController = FindObjectOfType<InputController>();
+        inputController.SetPowerIndex(7);
+        inputController.isAvailable = false;
+    }
     public void AntimatterPowerUp(int cooldown){
         InputController inputController = FindObjectOfType<InputController>();
         inputController.SetMissileIndex(8);

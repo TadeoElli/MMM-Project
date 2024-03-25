@@ -43,6 +43,7 @@ Transform:
   - {fileID: 7572523456707364327}
   - {fileID: 7572523457913488530}
   - {fileID: 8049196263304569261}
+  - {fileID: 1467366935611483101}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77,7 +78,8 @@ MonoBehaviour:
   - {fileID: 7572523457473513058}
   - {fileID: 7572523457884704550}
   - {fileID: 7572523458804798216}
-  - {fileID: 7572523457872536923}
+  - {fileID: 4507420118881950495}
+  - {fileID: 5000347545558669679}
   gravityScale:
   - {fileID: 7572523457929275235}
   - {fileID: 7572523458600014959}
@@ -358,6 +360,73 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8662951133289176100, guid: 27af41892e451ed4eb74c60709096837, type: 3}
   m_PrefabInstance: {fileID: 1238487555899382211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2168008264245918368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7572523458383033953}
+    m_Modifications:
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589502507179336655, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+      propertyPath: m_Name
+      value: SingularityCursor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+--- !u!4 &1467366935611483101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 741812404097882493, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+  m_PrefabInstance: {fileID: 2168008264245918368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5000347545558669679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6589502507179336655, guid: 95e96df6132f13d4f8c9bf65f14a91e7, type: 3}
+  m_PrefabInstance: {fileID: 2168008264245918368}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2387883466965831891
 PrefabInstance:
@@ -814,10 +883,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7018885103276332216, guid: 6b53702329fa6be4083544c73416d846, type: 3}
       propertyPath: m_Name
-      value: GravityManipulatorPerformedSmall_1
+      value: NuclearCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7018885103276332216, guid: 6b53702329fa6be4083544c73416d846, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b53702329fa6be4083544c73416d846, type: 3}
+--- !u!1 &4507420118881950495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7018885103276332216, guid: 6b53702329fa6be4083544c73416d846, type: 3}
+  m_PrefabInstance: {fileID: 6910074781915762599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8049196263304569261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3481838030725246474, guid: 6b53702329fa6be4083544c73416d846, type: 3}

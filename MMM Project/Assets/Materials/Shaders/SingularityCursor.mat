@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SingularityMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: a21ed4213292f0340b3856b5b6e60dfa, type: 3}
+  m_Name: SingularityCursor
+  m_Shader: {fileID: -6465566751694194690, guid: b2fb11b43eab2704985d3fa8ceae34c4, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -20,8 +20,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: de49697ff53476e4d9c49fb4f462cda9, type: 3}
+    - _MainText:
+        m_Texture: {fileID: 2800000, guid: 51558fc0f2456f145a8b0164b2cd7d44, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_2e5ebf98bc57418bb8fa2dc1aacfcd69_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 72887f2403c6d30458949232ac5404b6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_e3fb0e30271341148b5c91086fb01212_Texture_1:
+        m_Texture: {fileID: 2800000, guid: ecbd33fb86a31f048823e32c556577ae, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -38,19 +46,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BUILTIN_QueueControl: 0
-    - _BUILTIN_QueueOffset: 0
-    - _DistortionAmount: 0.279
-    - _DistortionScale: 50
-    - _FresnelPower: 1.07
+    - _DotScale: 0.9
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RotationAmount: 1
-    - _TwirlStrenght: 5
+    - _Rotation: -1
+    - _RotationExt: -1
+    - _RotationInt: 4
+    - _Speed: 1
+    - _StepExt: 0.435
+    - _WaveLenght: 0
     m_Colors:
-    - _FresnelColor: {r: 0.7958115, g: 0.08376963, b: 1.3350784, a: 1}
+    - _Color: {r: 4.0156865, g: 0.2312699, b: 0, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &5427117747117741588
+--- !u!114 &3180998424540116428
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,16 +71,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
---- !u!114 &6353987030512169411
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 0
