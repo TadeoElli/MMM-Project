@@ -6,6 +6,7 @@ public class NexusStats : MonoBehaviour
 {
     public Observer<float> currentEnergy = new Observer<float>(1000f);
     public Observer<float> currentStructure = new Observer<float>(3000f);
+    public Observer<float> currentCooldown = new Observer<float>(0f);
     public Observer<int> currentLives = new Observer<int>(35);
     public Observer<int> currentBaseStability = new Observer<int>(0);
     public Observer<int> currentBaseSpeed = new Observer<int>(0);
@@ -21,6 +22,7 @@ public class NexusStats : MonoBehaviour
     private int structureRegen = 20;
 
     private int oldEnergyRegen, oldStructureRegen;
+    private float oldCooldown;
     private bool isDestroyed = false;
 
     private void Start() {
@@ -32,6 +34,7 @@ public class NexusStats : MonoBehaviour
         currentBaseStability.Invoke();
         currentBaseSpeed.Value = baseSpeed;
         currentBaseSpeed.Invoke();
+        currentCooldown.Invoke();
     }
     private void Update() {
         if(!isDestroyed){
@@ -74,6 +77,11 @@ public class NexusStats : MonoBehaviour
         currentBaseSpeed.Value = 25;
         Invoke("RestoreSpeed",cooldown);
     }
+    public void CooldownPowerUp(int cooldown){
+        oldCooldown = currentCooldown.Value;
+        currentCooldown.Value = 50;
+        Invoke("RestoreCooldown",cooldown);
+    }
 
 
     private void RestoreEnergy(){
@@ -87,6 +95,9 @@ public class NexusStats : MonoBehaviour
     }
     private void RestoreSpeed(){
         currentBaseSpeed.Value = baseSpeed;
+    }
+    private void RestoreCooldown(){
+        currentCooldown.Value = oldCooldown;
     }
     #endregion
 

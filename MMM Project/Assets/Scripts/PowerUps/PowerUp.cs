@@ -54,6 +54,10 @@ public class PowerUp : MonoBehaviour
         NexusStats nexus = FindObjectOfType<NexusStats>();
         nexus.SpeedPowerUp(cooldown);
     }
+    public void CooldownPowerUp(int cooldown){
+        NexusStats nexus = FindObjectOfType<NexusStats>();
+        nexus.CooldownPowerUp(cooldown);
+    }
     public void NuclearPowerUp(){
         InputController inputController = FindObjectOfType<InputController>();
         inputController.SetPowerIndex(6);

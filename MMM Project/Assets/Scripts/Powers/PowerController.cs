@@ -12,7 +12,6 @@ public class PowerController : MonoBehaviour
     Camera cam;
     [SerializeField] private bool hasPower = false;
     private bool isDraggin = false;
-
     [SerializeField] private PowerStrategy [] powers;
     
     [SerializeField] private List<float> cooldowns;
@@ -36,7 +35,6 @@ public class PowerController : MonoBehaviour
                 isReady.Add(true);
             }
         }
-
     }
 
     // Update is called once per frame
@@ -69,6 +67,13 @@ public class PowerController : MonoBehaviour
                 }
             }
 
+        }
+    }
+
+    public void SetCooldowns(float baseCooldown){
+        for (int i = 1; i < powers.Length; i++)
+        {
+            cooldowns[i] = (powers[i].cooldown - baseCooldown);
         }
     }
 
