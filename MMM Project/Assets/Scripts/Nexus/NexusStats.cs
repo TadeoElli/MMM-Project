@@ -74,7 +74,7 @@ public class NexusStats : MonoBehaviour
         Invoke("RestoreStability",cooldown);
     }
     public void SpeedPowerUp(int cooldown){
-        currentBaseSpeed.Value = 25;
+        currentBaseSpeed.Value = 10;
         Invoke("RestoreSpeed",cooldown);
     }
     public void CooldownPowerUp(int cooldown){
