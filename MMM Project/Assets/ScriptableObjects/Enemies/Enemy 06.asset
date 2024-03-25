@@ -17,3 +17,14 @@ MonoBehaviour:
   collisionForce: 50
   velocity: 0.25
   explosion: {fileID: 1449157705920004381, guid: d3f40ccf235b4304bbf624c0f30157a7, type: 3}
+  availablePowerUps:
+  - prefab: {fileID: 586682999, guid: 71c9d3be0ffff214d8cf126b40fb9a5b, type: 3}
+    dropProbability: 25
+  - prefab: {fileID: 7253465322589342431, guid: 528e0bb786d7ddc4e968f7b379c0a9e7, type: 3}
+    dropProbability: 20
+  - prefab: {fileID: 8299679788260876597, guid: 217321c1aaefef748a669dd36155b40f, type: 3}
+    dropProbability: 10
+  - prefab: {fileID: 586682999, guid: 71c9d3be0ffff214d8cf126b40fb9a5b, type: 3}
+    dropProbability: 10
+  - prefab: {fileID: 7056555920773560341, guid: 2255aaaf61826e943b6e148b61091e36, type: 3}
+    dropProbability: 4
