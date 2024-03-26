@@ -59,7 +59,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _FresnelColor: {r: 127.999985, g: 6.031413, b: 0, a: 1}
-    - _FrontColor: {r: 0.29803923, g: 0.007843138, b: 0, a: 1}
+    - _FrontColor: {r: 0.29803923, g: 0.13359548, b: 0, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _VertexAmount: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
