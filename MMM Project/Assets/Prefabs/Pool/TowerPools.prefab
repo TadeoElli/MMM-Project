@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerPrefab:
-  - {fileID: 9079249599195923740, guid: b6f99ed29293a2d47a8aaad2ba94bd33, type: 3}
-  - {fileID: 9079249599195923740, guid: 13a58475e52f6a744b218e7f171579cb, type: 3}
-  - {fileID: 9079249599195923740, guid: a6d610d0aa38a874db6394b57b125652, type: 3}
+  - {fileID: 5171903768533079179, guid: a6d610d0aa38a874db6394b57b125652, type: 3}
+  - {fileID: -3835447991770680796, guid: b6f99ed29293a2d47a8aaad2ba94bd33, type: 3}
+  - {fileID: 2158762928102406578, guid: 13a58475e52f6a744b218e7f171579cb, type: 3}
   poolSize: 1

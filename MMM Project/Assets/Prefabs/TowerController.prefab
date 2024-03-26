@@ -61,12 +61,25 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  index: 0
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: CursorController, Assembly-CSharp
+          m_MethodName: ChangeTowerCursor
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  hasTower: 0
+  distanceFromNexus: 3
   towers:
   - {fileID: 0}
+  - {fileID: 11400000, guid: dbed0009ce47f894699566b9434d9ebb, type: 2}
   - {fileID: 11400000, guid: e68fff7ad9b20bd49aa3182cc5f55f18, type: 2}
-  - {fileID: 11400000, guid: e68fff7ad9b20bd49aa3182cc5f55f18, type: 2}
-  - {fileID: 11400000, guid: e68fff7ad9b20bd49aa3182cc5f55f18, type: 2}
+  - {fileID: 11400000, guid: bace137992a7a584ca6c0afeca98c120, type: 2}
   cooldowns: []
+  currentCd: []
   isReady: 
-  towerPrefab: {fileID: 0}

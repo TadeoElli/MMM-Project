@@ -4883,7 +4883,7 @@ GameObject:
   - component: {fileID: 3842028330364804941}
   - component: {fileID: 1387144380160941422}
   m_Layer: 0
-  m_Name: PS_RepulseExplosion
+  m_Name: PS_SmallRepulseExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

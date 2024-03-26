@@ -230,7 +230,6 @@ MonoBehaviour:
   baseSpeed: 0
   haveMissile: 1
   collider1: {fileID: 2345792218122456917}
-  tl: {fileID: 0}
   minPower: {x: -2, y: -2}
   maxPower: {x: 2, y: 2}
 --- !u!58 &2345792218122456917

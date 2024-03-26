@@ -44,15 +44,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b07cc68f8bdd8041a7c4a2dc01bcc2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEnergy:
+    value: 1000
+    onValueChanged:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: NexusStats, Assembly-CSharp
+          m_MethodName: SetEnergyValue
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   currentIndex:
     value: 0
     onValueChanged:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+          m_MethodName: SetPowerIndex
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: CursorController, Assembly-CSharp
+          m_MethodName: ChangePowerCursor
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  currentState:
+    value: 0
+    onValueChanged:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: CursorController, Assembly-CSharp
+          m_MethodName: ChangePowerState
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   hasPower: 0
   powers:
   - {fileID: 0}
+  - {fileID: 11400000, guid: af2eca260812eb749a93e918b27536a2, type: 2}
+  - {fileID: 11400000, guid: 549817853f5543c4d88a2eabd6184ff5, type: 2}
   - {fileID: 11400000, guid: 1b8ac6dac774445479d138a4e29de07e, type: 2}
+  - {fileID: 11400000, guid: 28819ceb126f03344b3603dd1801bdbd, type: 2}
+  - {fileID: 11400000, guid: 277936680be47f342be53a1a24010e55, type: 2}
+  - {fileID: 11400000, guid: bdd1edc67778aba4c97276908132a5fa, type: 2}
+  - {fileID: 11400000, guid: 26fec0f868c584b49a0c1f663564ecc2, type: 2}
   cooldowns: []
   currentCd: []
   isReady: 
