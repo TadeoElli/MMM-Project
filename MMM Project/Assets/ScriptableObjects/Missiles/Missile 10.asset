@@ -20,7 +20,8 @@ MonoBehaviour:
   velocity: 20
   minStability: 100
   maxStability: 100
-  prefab: {fileID: 2464879535626842570, guid: 8a2d239f2144d9c4c90649495ff5c107, type: 3}
+  prefab: {fileID: 2769597986703773441, guid: 8a2d239f2144d9c4c90649495ff5c107, type: 3}
   explosion: {fileID: 0}
-  subMissiles: {fileID: 2464879535626842570, guid: 494f5f57156303047bfbb82b11158edc, type: 3}
+  subMissiles: {fileID: 3251731635788898808, guid: 494f5f57156303047bfbb82b11158edc, type: 3}
   force: 1000
+  cantOfSubmissiles: 5

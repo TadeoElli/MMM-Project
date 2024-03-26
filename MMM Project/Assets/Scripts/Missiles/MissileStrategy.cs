@@ -11,7 +11,7 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
     public float velocity;
     public float minStability;
     public float maxStability;
-    public GameObject prefab;
+    public MissileBehaviour prefab;
     public GameObject explosion;
     public GameObject CreateMissile(Transform origin){
         GameObject missile = MissilePool.Instance.RequestMissile(prefab);

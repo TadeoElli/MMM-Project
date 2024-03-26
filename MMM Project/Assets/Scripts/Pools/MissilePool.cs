@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MissilePool : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> missilePrefab;        //Lista de misiles
+    [SerializeField] private List<MissileBehaviour> missilePrefab;        //Lista de misiles
     [SerializeField] private int poolSize = 5;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> missileDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada
     private static MissilePool instance;
@@ -19,9 +19,9 @@ public class MissilePool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (GameObject prefabs in missilePrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
+        foreach (MissileBehaviour prefabs in missilePrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
         {
-            missileDictionary.Add(prefabs, new List<GameObject>());
+            missileDictionary.Add(prefabs.gameObject, new List<GameObject>());
         }
     }
 
@@ -33,21 +33,21 @@ public class MissilePool : MonoBehaviour
         }
     }
 
-    public void AddMissilesToPool(int amount, GameObject prefab){       //Le mando cuantos genero y cual misil
+    public void AddMissilesToPool(int amount, MissileBehaviour prefab){       //Le mando cuantos genero y cual misil
 
-        List<GameObject> prefabList = missileDictionary[prefab];    //Guardo la lista de cantidad de misiles en otra lista
+        List<GameObject> prefabList = missileDictionary[prefab.gameObject];    //Guardo la lista de cantidad de misiles en otra lista
         for (int i = 0; i < amount; i++)
         {
-            GameObject missile = Instantiate(prefab);
+            GameObject missile = Instantiate(prefab.gameObject);
             missile.SetActive(false);
             prefabList.Add(missile);
             missile.transform.parent = transform;
         }
     }
 
-    public GameObject RequestMissile(GameObject prefab){        //Le mando cual necesito
+    public GameObject RequestMissile(MissileBehaviour prefab){        //Le mando cual necesito
 
-        List<GameObject> prefabList = missileDictionary[prefab];
+        List<GameObject> prefabList = missileDictionary[prefab.gameObject];
         for (int i = 0; i < prefabList.Count; i++)
         {
             if(!prefabList[i].activeSelf){

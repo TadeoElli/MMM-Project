@@ -20,5 +20,5 @@ MonoBehaviour:
   velocity: 20
   minStability: 80
   maxStability: 100
-  prefab: {fileID: 2464879535626842570, guid: f4f420d41b8aca54aa02c7f956027bf1, type: 3}
+  prefab: {fileID: 2769597986703773441, guid: f4f420d41b8aca54aa02c7f956027bf1, type: 3}
   explosion: {fileID: 829408856197472404, guid: 281a9238e8e9a214581070922f72d854, type: 3}

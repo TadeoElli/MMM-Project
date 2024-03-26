@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Divide", order = 5)]
 public class DivideMissileStrategy : MissileStrategy
 {
-    [SerializeField] GameObject subMissiles;
+    [SerializeField] MissileBehaviour subMissiles;
     [SerializeField] private float force;
     [SerializeField] private int cantOfSubmissiles;
     

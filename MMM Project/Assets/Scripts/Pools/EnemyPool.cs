@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPool : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> enemyPrefab;        //Lista de misiles
+    [SerializeField] private List<EnemyBehaviour> enemyPrefab;        //Lista de misiles
     [SerializeField] private int poolSize = 1;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> enemyDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada
     private static EnemyPool instance;
@@ -19,9 +19,9 @@ public class EnemyPool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (GameObject prefabs in enemyPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
+        foreach (EnemyBehaviour prefabs in enemyPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
         {
-            enemyDictionary.Add(prefabs, new List<GameObject>());
+            enemyDictionary.Add(prefabs.gameObject, new List<GameObject>());
         }
     }
 
@@ -33,21 +33,21 @@ public class EnemyPool : MonoBehaviour
         }
     }
 
-    public void AddEnemyToPool(int amount, GameObject prefab){       //Le mando cuantos genero y cual misil
+    public void AddEnemyToPool(int amount, EnemyBehaviour prefab){       //Le mando cuantos genero y cual misil
 
-        List<GameObject> prefabList = enemyDictionary[prefab];    //Guardo la lista de cantidad de misiles en otra lista
+        List<GameObject> prefabList = enemyDictionary[prefab.gameObject];    //Guardo la lista de cantidad de misiles en otra lista
         for (int i = 0; i < amount; i++)
         {
-            GameObject enemy = Instantiate(prefab);
+            GameObject enemy = Instantiate(prefab.gameObject);
             enemy.SetActive(false);
             prefabList.Add(enemy);
             enemy.transform.parent = transform;
         }
     }
 
-    public GameObject RequestEnemy(GameObject prefab){        //Le mando cual necesito
+    public GameObject RequestEnemy(EnemyBehaviour prefab){        //Le mando cual necesito
 
-        List<GameObject> prefabList = enemyDictionary[prefab];
+        List<GameObject> prefabList = enemyDictionary[prefab.gameObject];
         for (int i = 0; i < prefabList.Count; i++)
         {
             if(!prefabList[i].activeSelf){

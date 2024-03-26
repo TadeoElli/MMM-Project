@@ -28,5 +28,5 @@ MonoBehaviour:
     dropProbability: 10
   - prefab: {fileID: 4859652181989221988, guid: fb29e88688852a14ea6e11a2df57128b, type: 3}
     dropProbability: 10
-  probability: 65
+  probability: 50
   nuclearExplosion: {fileID: 4879983428889027885, guid: 458b80174cb50cc4ea1e53935708ebd0, type: 3}
