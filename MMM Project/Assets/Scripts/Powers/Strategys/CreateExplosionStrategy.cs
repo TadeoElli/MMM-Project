@@ -8,7 +8,7 @@ using UnityEngine;
 public class CreateExplosionStrategy : PowerStrategy
 {
     private Rigidbody2D rb;
-    [SerializeField]private GameObject prefab;
+    [SerializeField]private Explosion prefab;
     public override bool BehaviourStarted(){
         return true;
     }

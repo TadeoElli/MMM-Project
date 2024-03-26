@@ -16,4 +16,4 @@ MonoBehaviour:
   energyConsumption: 800
   cooldown: 35
   hasPerformedCursor: 0
-  prefab: {fileID: 664976639789462718, guid: 09da0e9ff865280498b80c121c91816f, type: 3}
+  prefab: {fileID: 4332196422139455912, guid: 09da0e9ff865280498b80c121c91816f, type: 3}

@@ -16,7 +16,7 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
     public float rotationSpeed;
     public float collisionForce;
     public float velocity;
-    public GameObject explosion;
+    public Explosion explosion;
 
     [Header("Will spawn the first prefab on the list")]
     [SerializeField] public List<PowerUpData> availablePowerUps;

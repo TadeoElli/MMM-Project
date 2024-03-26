@@ -7,7 +7,7 @@ using UnityEngine;
 public class NuclearEnemyBehaviour : EnemyStrategy
 {
     [SerializeField] private float probability;
-    [SerializeField] private GameObject nuclearExplosion;
+    [SerializeField] private Explosion nuclearExplosion;
     public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){            
         int layer = other.layer;
         int damage;

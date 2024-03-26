@@ -21,6 +21,6 @@ MonoBehaviour:
   minStability: 15
   maxStability: 50
   prefab: {fileID: -9113666254138274782, guid: 079e59474797ee740b9ef914ce462cdb, type: 3}
-  explosion: {fileID: 829408856197472404, guid: 5fb91f30079b007458fa3155e299c456, type: 3}
+  explosion: {fileID: 4514810246844448130, guid: 5fb91f30079b007458fa3155e299c456, type: 3}
   enemyPierced: {fileID: 0}
   force: 1000

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplosionPool : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> explosionPrefab;        //Lista de misiles      
+    [SerializeField] private List<Explosion> explosionPrefab;        //Lista de misiles      
     [SerializeField] private int poolSize = 5;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> explosionDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada
 
@@ -20,9 +20,9 @@ public class ExplosionPool : MonoBehaviour
             Destroy(gameObject);
         }
         
-        foreach (GameObject prefabs in explosionPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
+        foreach (Explosion prefabs in explosionPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
         {
-            explosionDictionary.Add(prefabs, new List<GameObject>());
+            explosionDictionary.Add(prefabs.gameObject, new List<GameObject>());
         }
     }
 
@@ -34,20 +34,20 @@ public class ExplosionPool : MonoBehaviour
         }
     }
 
-    public void AddExplosionToPool(int amount, GameObject prefab){       
+    public void AddExplosionToPool(int amount, Explosion prefab){       
 
-        List<GameObject> prefabList = explosionDictionary[prefab];    //Guardo la lista de cantidad de misiles en otra lista
+        List<GameObject> prefabList = explosionDictionary[prefab.gameObject];    //Guardo la lista de cantidad de misiles en otra lista
         for (int i = 0; i < amount; i++)
         {
-            GameObject explosion = Instantiate(prefab);
+            GameObject explosion = Instantiate(prefab.gameObject);
             explosion.SetActive(false);
             prefabList.Add(explosion);
             explosion.transform.parent = transform;
         }
     }
 
-    public GameObject RequestExplosion(GameObject prefab){    
-        List<GameObject> prefabList = explosionDictionary[prefab];
+    public GameObject RequestExplosion(Explosion prefab){    
+        List<GameObject> prefabList = explosionDictionary[prefab.gameObject];
         for (int i = 0; i < prefabList.Count; i++)
         {
             if(!prefabList[i].activeSelf){

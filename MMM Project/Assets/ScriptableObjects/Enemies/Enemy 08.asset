@@ -16,7 +16,7 @@ MonoBehaviour:
   rotationSpeed: 1
   collisionForce: 100
   velocity: 0.25
-  explosion: {fileID: 6882998788850233722, guid: 62bfd112791e2d64bb9541318f3845a2, type: 3}
+  explosion: {fileID: 7683184825282260076, guid: 62bfd112791e2d64bb9541318f3845a2, type: 3}
   availablePowerUps:
   - prefab: {fileID: 1292433869990618231, guid: 9fe87328d410731428b2bf08fac91060, type: 3}
     dropProbability: 30
@@ -29,4 +29,4 @@ MonoBehaviour:
   - prefab: {fileID: 4859652181989221988, guid: fb29e88688852a14ea6e11a2df57128b, type: 3}
     dropProbability: 10
   probability: 50
-  nuclearExplosion: {fileID: 4879983428889027885, guid: 458b80174cb50cc4ea1e53935708ebd0, type: 3}
+  nuclearExplosion: {fileID: 8546805254870235195, guid: 458b80174cb50cc4ea1e53935708ebd0, type: 3}

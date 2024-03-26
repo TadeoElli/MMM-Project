@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Volatil", order = 3)]
 public class VolatilEnemyBehaviour : EnemyStrategy
 {
-    [SerializeField] GameObject nuclearExplosion;
+    [SerializeField] Explosion nuclearExplosion;
     public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){            
         int layer = other.layer;
         int damage;
