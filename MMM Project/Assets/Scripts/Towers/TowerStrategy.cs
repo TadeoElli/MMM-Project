@@ -6,7 +6,7 @@ public abstract class TowerStrategy : ScriptableObject        //Strategy para to
     public float energyConsumption;
     public float maxEnergy;
     public float cooldown;
-    public GameObject prefab;
+    public TowerBehaviour prefab;
     public Explosion explosion;
     public void CreateTower(Vector2 origin){
         GameObject tower = TowersPool.Instance.RequestTower(prefab);

@@ -1022,6 +1022,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 288632720796941174, guid: 9fc2035614ba7404e828224b623a5f38, type: 3}
+      propertyPath: towerPrefab.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 288632720796941174, guid: 9fc2035614ba7404e828224b623a5f38, type: 3}
+      propertyPath: towerPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 5171903768533079179, guid: a6d610d0aa38a874db6394b57b125652, type: 3}
+    - target: {fileID: 288632720796941174, guid: 9fc2035614ba7404e828224b623a5f38, type: 3}
+      propertyPath: towerPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: -3835447991770680796, guid: b6f99ed29293a2d47a8aaad2ba94bd33, type: 3}
+    - target: {fileID: 288632720796941174, guid: 9fc2035614ba7404e828224b623a5f38, type: 3}
+      propertyPath: towerPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 2158762928102406578, guid: 13a58475e52f6a744b218e7f171579cb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fc2035614ba7404e828224b623a5f38, type: 3}
 --- !u!1001 &329438037742361558
