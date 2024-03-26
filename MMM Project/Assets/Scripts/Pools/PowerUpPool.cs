@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUpPool : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> powerUpPrefab;        //Lista de misiles
+    [SerializeField] private List<PowerUp> powerUpPrefab;        //Lista de misiles
     [SerializeField] private int poolSize = 1;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> powerUpDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada
     private static PowerUpPool instance;
@@ -19,9 +19,9 @@ public class PowerUpPool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (GameObject prefabs in powerUpPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
+        foreach (PowerUp prefabs in powerUpPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
         {
-            powerUpDictionary.Add(prefabs, new List<GameObject>());
+            powerUpDictionary.Add(prefabs.gameObject, new List<GameObject>());
         }
     }
 
@@ -33,21 +33,21 @@ public class PowerUpPool : MonoBehaviour
         }
     }
 
-    public void AddPowerUpToPool(int amount, GameObject prefab){       //Le mando cuantos genero y cual misil
+    public void AddPowerUpToPool(int amount, PowerUp prefab){       //Le mando cuantos genero y cual misil
 
-        List<GameObject> prefabList = powerUpDictionary[prefab];    //Guardo la lista de cantidad de misiles en otra lista
+        List<GameObject> prefabList = powerUpDictionary[prefab.gameObject];    //Guardo la lista de cantidad de misiles en otra lista
         for (int i = 0; i < amount; i++)
         {
-            GameObject powerUp = Instantiate(prefab);
+            GameObject powerUp = Instantiate(prefab.gameObject);
             powerUp.SetActive(false);
             prefabList.Add(powerUp);
             powerUp.transform.SetParent(transform, false);
         }
     }
 
-    public GameObject RequestPowerUp(GameObject prefab){        //Le mando cual necesito
+    public GameObject RequestPowerUp(PowerUp prefab){        //Le mando cual necesito
 
-        List<GameObject> prefabList = powerUpDictionary[prefab];
+        List<GameObject> prefabList = powerUpDictionary[prefab.gameObject];
         for (int i = 0; i < prefabList.Count; i++)
         {
             if(!prefabList[i].activeSelf){

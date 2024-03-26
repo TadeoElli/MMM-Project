@@ -31,7 +31,7 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
     }
     public abstract GameObject DeathBehaviour();
     public void Death(Transform origin) {
-        GameObject powerUp = GenerateRandomPowerUp();
+        PowerUp powerUp = GenerateRandomPowerUp();
         if(powerUp != null){
             GameObject newPowerUp = PowerUpPool.Instance.RequestPowerUp(powerUp);
             newPowerUp.transform.position = origin.position;
@@ -40,13 +40,13 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
     public abstract void ParticleBehaviour(GameObject particle);
     public abstract void TriggerBehaviour(GameObject other);
 
-    private GameObject GenerateRandomPowerUp()
+    private PowerUp GenerateRandomPowerUp()
     {
         for (int i = 0; i < availablePowerUps.Count; i++)
         {
             float randomValue = UnityEngine.Random.Range(0f, 100f);
             if(randomValue < availablePowerUps[i].dropProbability){
-                return availablePowerUps[i].prefab.gameObject;
+                return availablePowerUps[i].prefab;
                 break;
             }
         }            
