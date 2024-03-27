@@ -67,6 +67,7 @@ public class EnemyBehaviour : MonoBehaviour
         Debug.Log(gameObject + " recibio "+ damage+ " de dano" );
         life -= damage;
         life = Mathf.Clamp(life, -100f, enemy.maxLife);
+        if(absorb && specialParticle != null) {specialParticle.SetActive(true);}
         if(life<= 0){
             Death(); 
         }
