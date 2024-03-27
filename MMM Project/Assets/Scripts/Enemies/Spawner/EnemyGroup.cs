@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyGroup
 {
-    public EnemyBehaviour enemyPrefab;
-    public int _enemyCount;     //the number of enemies to spawn in this wav
-    public int _spawnCount;     //The number of enemies already spawned in this wave
-    public bool _enemyDirection;     //if is true, the enemies go to the left
+    public EnemyBehaviour enemyPrefab;  
+    public int _enemyCount;     //El numero de enemigos que pueden spawnear en la oleada de este tipo
+    public int _spawnCount;     //el numero de enemigos que ya spawnearon en la oleada de este tipo
+    public bool _enemyDirection;     //Laa direccion en la que van a ir, si es True, van hacia la izquierda
 }

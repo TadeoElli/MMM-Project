@@ -6,19 +6,26 @@ using System.Collections.Generic;
 
 public abstract class EnemyStrategy : ScriptableObject        //Strategy para todos los tipos de missiles
 {
+    #region Variables
     [Serializable] 
     public class PowerUpData            // Clase que va a tener el power up y su respectiva probabilidad de dorp
     {
         [SerializeField]public PowerUp prefab;
         [SerializeField]public float dropProbability;
     }
-    public float maxLife;       //Vida del enemigo
-    public float collisionForce;        //Fuerza con la que empuja a las otras unidades al chocar
-    public float velocity;      //Velocidad de movimiento   
-    public Explosion explosion;     //La explosion que va a spawnear al morir
+    [SerializeField] private float maxLife;       //Vida del enemigo
+    [SerializeField] private float collisionForce;        //Fuerza con la que empuja a las otras unidades al chocar
+    [SerializeField] private float velocity;      //Velocidad de movimiento   
+    [SerializeField] private Explosion explosion;     //La explosion que va a spawnear al morir
+    public float MaxLife{get{return maxLife;}}
+    public float Velocity{get{return velocity;}}
+    public Explosion NewExplosion{get{return explosion;}}
 
     [Header("Will spawn the first prefab on the list")]
-    [SerializeField] public List<PowerUpData> availablePowerUps;        //Lista de todos los power up que puede dropear
+    [SerializeField] private List<PowerUpData> availablePowerUps;        //Lista de todos los power up que puede dropear
+
+    #endregion
+    #region Funciones
     public abstract int CollisionBehaviour(GameObject other,EnemyBehaviour prefab);     //Comportamiento al collisionEnter
     
     public void CollisionForce(GameObject other, EnemyBehaviour prefab){        //Empuja al enemigo con el que choco segun la fuerza
@@ -28,7 +35,9 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
             
         rb2D.AddForce(direction.normalized * collisionForce, ForceMode2D.Force);
     }
+
     public abstract GameObject DeathBehaviour();        //Comportamiento al morir
+
     public void DropPowerUp(Transform origin) {       //Funcion que dropea el power Up
         PowerUp powerUp = GenerateRandomPowerUp();      //Llama a la funcion GeneratePowerUp y si devuelve algo lo guarda en la variable
         if(powerUp != null){
@@ -36,8 +45,11 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
             newPowerUp.transform.position = origin.position;
         }
     }
+
     public abstract void ParticleBehaviour(GameObject particle);        //Comportamiento con particulas si es que tiene
+
     public abstract void TriggerBehaviour(GameObject other);        //Comportamiento con TriggerEnter si es que tiene
+    
 
     private PowerUp GenerateRandomPowerUp()     
     {
@@ -52,5 +64,5 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
         
         return null;
     }
-    
+    #endregion
 }

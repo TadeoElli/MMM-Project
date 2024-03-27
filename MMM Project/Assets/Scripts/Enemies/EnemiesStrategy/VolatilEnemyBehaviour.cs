@@ -47,7 +47,7 @@ public class VolatilEnemyBehaviour : EnemyStrategy
     }
 
     public override GameObject DeathBehaviour(){        //Crea la explosion de muerte
-        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
+        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
         return explosion;
     }
 

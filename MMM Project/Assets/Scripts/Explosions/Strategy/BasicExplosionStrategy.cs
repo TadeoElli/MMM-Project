@@ -5,24 +5,25 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Explosion", menuName = "ScriptableObject/Explosion/Basic", order = 0)]
 public class BasicExplosionStrategy : ExplosionStrategy
+///Este tipo de explosiones afecta a los enemigos como al nexo
 {
     [SerializeField] private float implosionForce, explosionForce;
-    public override void DealDamage(Transform origin){
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
+    public override void DealDamage(Transform origin){  //Por cada collider dentro del radio, si es un enemigo o el nexo le hace daño
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, Radius);
 
         foreach (Collider2D collisions in objetos){
 
             if(collisions.CompareTag("Nexus")){
-                collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(explosionType);
+                collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(ExplosionType);
             }
             if(collisions.CompareTag("Enemy")){
 
-                collisions.GetComponent<EnemyBehaviour>().TakeDamageForExplosion(explosionType);
+                collisions.GetComponent<EnemyBehaviour>().TakeDamageForExplosion(ExplosionType);
             }
         }
     }
-    public override void ExplosionBehaviour(Transform origin){
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
+    public override void ExplosionBehaviour(Transform origin){   //Por cada collider dentro del radio, si es enemigo lo empuja
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, Radius);
 
         foreach (Collider2D collisions in objetos){
             if(collisions.CompareTag("Enemy")){
@@ -37,8 +38,8 @@ public class BasicExplosionStrategy : ExplosionStrategy
         }
     }
 
-    public override void ImplosionBehaviour(Transform origin){
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
+    public override void ImplosionBehaviour(Transform origin){   //Por cada collider dentro del radio, si es enemigo lo atrae
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, Radius);
 
         foreach (Collider2D collisions in objetos){
             if(collisions.CompareTag("Enemy")){

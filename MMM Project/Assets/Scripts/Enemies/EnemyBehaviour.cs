@@ -24,8 +24,8 @@ public class EnemyBehaviour : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
     private void OnEnable() {
-        life = enemy.maxLife;
-        speed = enemy.velocity;
+        life = enemy.MaxLife;
+        speed = enemy.Velocity;
         col.enabled = false;
         StartCoroutine(DelayForActivateCollider());
     }
@@ -71,7 +71,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(float damage){       //Le quita la vida correspondiente al enemigo y si es menor a 0 llama a la funcion de muerte
         //Debug.Log(gameObject + " recibio "+ damage+ " de dano" );
         life -= damage;
-        life = Mathf.Clamp(life, -100f, enemy.maxLife);
+        life = Mathf.Clamp(life, -100f, enemy.MaxLife);
         if(absorb && specialParticle != null) {specialParticle.SetActive(true);}
         if(life<= 0){
             Death(); 

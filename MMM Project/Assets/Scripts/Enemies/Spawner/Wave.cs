@@ -5,13 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class Wave
 {
-    public string _waveName;
-    public List<EnemyGroup> _enemyGroups;   //A list of grups of enemies to spawn in this wave
-    public int _waveEnemyQuota;      //The total number of enemies to spawn in this wave
-    public int _waveGroupQuota;
-    public float _spawnIntervalForEnemy;    //The interval at which to spawn enemies random
-    public float _spawnIntervalForGroup;        //The interval at wich spawn a list of enemies in group
-    public int _spawnEnemyCount;     //The number of enemies already spawned in this wave
-    public int _spawnGroupCount;
+    public string _waveName;    //El nombre de la oleada
+    public List<EnemyGroup> _enemyGroups;   //Una lista de los tipos de enemigos en la oleada
+    public int _waveEnemyQuota;      //El total de enemigos que pueden spawnear en la oleada
+    public int _waveGroupQuota;      //El total de grupos de enemigos que pueden spawnear en la oleada
+    public float _spawnIntervalForEnemy;    //El intervalo en el que se spawnean nuevos enemigos
+    public float _spawnIntervalForGroup;        //El intervalo en el que se spawnean nuevos grupos de enemigos
+    public int _spawnEnemyCount;     //el numero de la cantidad de enemigos que ya spawnearon en la oleada
+    public int _spawnGroupCount;     //el numero de la cantidad de grupos de enemigos que ya spawnearon en la oleada
 
 }

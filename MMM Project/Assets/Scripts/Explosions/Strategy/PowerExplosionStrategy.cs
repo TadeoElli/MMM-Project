@@ -4,21 +4,23 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Explosion", menuName = "ScriptableObject/Explosion/Power", order = 1)]
 public class PowerExplosionStrategy : ExplosionStrategy
+///Este tipo de explosiones solo afectan a los enemigos
 {
     [SerializeField] private float implosionForce, explosionForce;
-    public override void DealDamage(Transform origin){
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
+    public override void DealDamage(Transform origin){  //Por cada collider dentro del radio, si es enemigo llama a la funcion de hacer daño
+    //y le manda el tipo de explosion
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, Radius);
 
         foreach (Collider2D collisions in objetos){
 
             if(collisions.CompareTag("Enemy")){
 
-                collisions.GetComponent<EnemyBehaviour>().TakeDamageForExplosion(explosionType);
+                collisions.GetComponent<EnemyBehaviour>().TakeDamageForExplosion(ExplosionType);
             }
         }
     }
-    public override void ExplosionBehaviour(Transform origin){
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
+    public override void ExplosionBehaviour(Transform origin){  //Por cada collider dentro del radio, si es enemigo lo empuja
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, Radius);
 
         foreach (Collider2D collisions in objetos){
             if(collisions.CompareTag("Enemy")){
@@ -33,8 +35,8 @@ public class PowerExplosionStrategy : ExplosionStrategy
         }
     }
 
-    public override void ImplosionBehaviour(Transform origin){
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
+    public override void ImplosionBehaviour(Transform origin){  //Por cada collider dentro del radio, si es enemigo lo atrae
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, Radius);
 
         foreach (Collider2D collisions in objetos){
             if(collisions.CompareTag("Enemy")){
