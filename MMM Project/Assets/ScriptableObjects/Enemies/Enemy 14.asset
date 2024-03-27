@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12931319e3b3b0458efa40acf3340b7, type: 3}
+  m_Name: Enemy 14
+  m_EditorClassIdentifier: 
+  maxLife: 2500
+  rotationSpeed: 1
+  collisionForce: 100
+  velocity: 0.25
+  explosion: {fileID: 7683184825282260076, guid: 62bfd112791e2d64bb9541318f3845a2, type: 3}
+  availablePowerUps:
+  - prefab: {fileID: 1292433869990618231, guid: 9fe87328d410731428b2bf08fac91060, type: 3}
+    dropProbability: 40
+  - prefab: {fileID: 586682999, guid: 71c9d3be0ffff214d8cf126b40fb9a5b, type: 3}
+    dropProbability: 30
+  - prefab: {fileID: 4859652181989221988, guid: fb29e88688852a14ea6e11a2df57128b, type: 3}
+    dropProbability: 20
+  - prefab: {fileID: 8299679788260876597, guid: 217321c1aaefef748a669dd36155b40f, type: 3}
+    dropProbability: 40
+  nuclearExplosion: {fileID: 8546805254870235195, guid: 4a0d7bc19f384ec41a1dad68eda484bd, type: 3}
