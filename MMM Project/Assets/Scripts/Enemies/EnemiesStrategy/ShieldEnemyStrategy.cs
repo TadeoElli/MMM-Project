@@ -5,31 +5,23 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Shield", order = 4)]
 public class ShieldEnemyStrategy : EnemyStrategy
+///Este enemigo tendra un escudo delante suyo que rebota los misiles entrantes, por lo que solo podra ser dañado por los costados
+///o por detras
 {
     
-    public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){            
+    public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){      //Comportamiento de collisiones        
         int layer = other.layer;
         int damage;
-        switch (layer)
+        switch (layer)  //Dependiendo del layer con el choco llama a un LookUpTable de tipos de daño de colisiones
         {
             case 7:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 return damage;
             case 8:
-                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionForce(other, prefab);
-                return damage;
             case 9:
-                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionForce(other, prefab);
-                return damage;
             case 10:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionForce(other, prefab);
-                return damage;
-            case 11:
-                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionForce(other, prefab);
+                CollisionForce(other, prefab);  //Llama a la funcion para empujar al otro enemigo
                 return damage;
             default:
                 damage = 0;
@@ -37,7 +29,7 @@ public class ShieldEnemyStrategy : EnemyStrategy
         }
     }
 
-    public override GameObject DeathBehaviour(){
+    public override GameObject DeathBehaviour(){    //Crea la explosion de muerte
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         return explosion;
     }
@@ -45,9 +37,9 @@ public class ShieldEnemyStrategy : EnemyStrategy
         
     }
 
-    public override void TriggerBehaviour(GameObject other){
+    public override void TriggerBehaviour(GameObject other){    //Si el trigger recibe un enter y es un misil, es porque choco con el trigger del escudo
         if(other.CompareTag("Missiles")){
-            Rigidbody2D rb2D = other.GetComponent<Rigidbody2D>();
+            Rigidbody2D rb2D = other.GetComponent<Rigidbody2D>();       //Por lo que toma el rigidbody del misil y su direccion y lo devuelve en la direccion contraria
             Vector2 bounceDirection = rb2D.velocity;
             bounceDirection.x = bounceDirection.x * -1;
             bounceDirection.y = bounceDirection.y * -1;

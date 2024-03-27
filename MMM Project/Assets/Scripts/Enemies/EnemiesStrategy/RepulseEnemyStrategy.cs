@@ -5,33 +5,25 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Repulse", order = 1)]
 public class RepulseEnemyStrategy : EnemyStrategy
+///Este enemigo creara una onda expansiva cada tantos segundos y si esta onda se produce mientras hay un misil dentro
+///lo rechazara, haciendo que sea mas dificil golpearlo
 {
-    [SerializeField] private float cooldown;
-    [SerializeField] private GameObject particle;
+    [SerializeField] private float cooldown;        //Cooldown para que active la onda expansiva
+    [SerializeField] private GameObject particle;       //Particula de la expansion (solo visual)
     private float timer = 0;
-    public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){            
+    public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){        //Comportamiento de collisiones            
         int layer = other.layer;
         int damage;
-        switch (layer)
+        switch (layer)  //Dependiendo del layer con el choco llama a un LookUpTable de tipos de daño de colisiones
         {
             case 7:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 return damage;
             case 8:
-                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionForce(other, prefab);
-                return damage;
             case 9:
-                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionForce(other, prefab);
-                return damage;
             case 10:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionForce(other, prefab);
-                return damage;
-            case 11:
-                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionForce(other, prefab);
+                CollisionForce(other, prefab);       //Llama a la funcion para empujar al otro enemigo
                 return damage;
             default:
                 damage = 0;
@@ -39,11 +31,11 @@ public class RepulseEnemyStrategy : EnemyStrategy
         }
     }
 
-    public override GameObject DeathBehaviour(){
+    public override GameObject DeathBehaviour(){    //Crea la explosion de muerte
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         return explosion;
     }
-    public override void ParticleBehaviour(GameObject specialParticle){
+    public override void ParticleBehaviour(GameObject specialParticle){     //Comportamiento especial de las particulas
         if(timer > cooldown){
             timer = 0;
             specialParticle.SetActive(true);

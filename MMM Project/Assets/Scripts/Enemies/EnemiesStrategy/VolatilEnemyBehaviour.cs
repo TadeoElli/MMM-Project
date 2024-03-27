@@ -4,31 +4,25 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObject/Enemies/Volatil", order = 3)]
-public class VolatilEnemyBehaviour : EnemyStrategy
+public class VolatilEnemyBehaviour : EnemyStrategy  
+///Este enemigo solo se mueve en una direccion pero si colisiona con otro que sea del mismo tipo
+///y viene en la direccion contraria entonces ambos crearan una explosion nuclear que destruira a todos los objetos del mapa
 {
-    [SerializeField] Explosion nuclearExplosion;
-    public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){            
-        int layer = other.layer;
+    [SerializeField] Explosion nuclearExplosion;        //Explosion que genera al chocar con otro enemigo de su mismo tipo
+    public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){        //Comportamiento de collisiones    
+        int layer = other.layer;    
         int damage;
-        switch (layer)
+        switch (layer)      //Dependiendo del layer con el choco llama a un LookUpTable de tipos de daño de colisiones
         {
-            case 7:
+            case 7:  
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 return damage;
             case 8:
-                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionAction(other, prefab);
-                return damage;
             case 9:
-                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionAction(other, prefab);
-                return damage;
             case 10:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                CollisionAction(other, prefab);
-                return damage;
-            case 11:
-                damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
+                CollisionAction(other, prefab); // Llama al comportamiento de collision si choca con los respectivos layers
+                CollisionForce(other, prefab);  //Llama a la funcion para empujar al otro enemigo
                 return damage;
             default:
                 damage = 0;
@@ -37,22 +31,22 @@ public class VolatilEnemyBehaviour : EnemyStrategy
     }
 
     private void CollisionAction(GameObject other, EnemyBehaviour prefab){
-        if(other.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy)){
-            if(enemy.enemy == prefab.enemy){
+        if(other.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy)){   //si el otro objeto tambien es volatil y su direccion es la opuesta
+            if(enemy.Enemy == prefab.Enemy){
                 if(enemy.normalDir != prefab.normalDir){
-                    CreateExplosion(other);
+                    CreateExplosion(other);     //Crea la explosion nuclear
                 }
             }
         }
         
     }
 
-    private void CreateExplosion(GameObject other){
+    private void CreateExplosion(GameObject other){     //Crea la explosion nuclear
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(nuclearExplosion);
         explosion.transform.position = other.transform.position;
     }
 
-    public override GameObject DeathBehaviour(){
+    public override GameObject DeathBehaviour(){        //Crea la explosion de muerte
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         return explosion;
     }

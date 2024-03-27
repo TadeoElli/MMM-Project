@@ -33,7 +33,6 @@ public class MissileManipulatorStrategy : PowerStrategy
     private void Activate(GameObject other){
         misile = other.GetComponent<MissileBehaviour>();
         rb = other.GetComponent<Rigidbody2D>();
-        //enemy.canMove = false;
         Debug.Log("Misile Manipulator");
     }
     private void Desactivate(){
@@ -72,7 +71,6 @@ public class MissileManipulatorStrategy : PowerStrategy
         }
     }
     public override void BehaviourEnded(){
-        //enemy.canMove = true;
         Desactivate();
         
     }

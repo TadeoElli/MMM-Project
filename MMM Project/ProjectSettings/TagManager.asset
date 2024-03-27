@@ -21,7 +21,7 @@ TagManager:
   - SmallEnemies
   - MediumEnemies
   - BigEnemies
-  - Boss
+  - 
   - Explosion
   - Tower
   - PowerUp

@@ -182,5 +182,5 @@ MonoBehaviour:
   life: 100
   canMove: 1
   normalDir: 0
-  absorb: 1
+  absorb: 0
   specialParticle: {fileID: 0}
