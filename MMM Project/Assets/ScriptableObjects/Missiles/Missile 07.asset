@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cab32ddde7400459ba872d79ece556, type: 3}
   m_Name: Missile 07
   m_EditorClassIdentifier: 
-  id: 7
-  energyConsumption: 1000
+  energyConsumption: 1500
   maxLife: 1000
   minDamage: 0
   maxDamage: 0

@@ -35,7 +35,7 @@ public class BasicMissilesStrategy : MissileStrategy
 
     }
     public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
+        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
         newExplosion.transform.position = origin.position;
     }
         

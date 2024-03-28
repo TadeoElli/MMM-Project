@@ -58,7 +58,6 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
             float randomValue = UnityEngine.Random.Range(0f, 100f);     //genera un numero aleatorio
             if(randomValue < availablePowerUps[i].dropProbability){     //Si es menor a la probavilidad lo retorna, si no no retorna nada
                 return availablePowerUps[i].prefab;
-                break;
             }
         }            
         

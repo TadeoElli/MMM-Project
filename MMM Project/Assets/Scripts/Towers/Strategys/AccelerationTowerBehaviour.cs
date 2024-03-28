@@ -36,15 +36,15 @@ public class AccelerationTowerBehaviour : TowerStrategy
                         missile.hasBeenAtracted = true;
                         projectileRigidbody.AddForce(direction.normalized * repulsionStrength, ForceMode2D.Force);
                         // Determinar el sentido de rotación (horario o antihorario) según la posición local
-                        missile.rotationDirection = (direction.y > 0) ? 1f : -1f;
+                        missile.RotationDirection = (direction.y > 0) ? 1f : -1f;
                     }
                     else{
                         if(distance < radius - 0.1f){
                             // Aplicar fuerza de repulsion
-                            other.transform.RotateAround(prefab.transform.position, Vector3.forward, (missile.rotationSpeed * missile.rotationDirection) * Time.deltaTime);
+                            other.transform.RotateAround(prefab.transform.position, Vector3.forward, (missile.RotationSpeed * missile.RotationDirection) * Time.deltaTime);
                             // Aumentar velocidad angular con el tiempo
-                            missile.rotationSpeed = missile.rotationSpeed + angularAcceleration * Time.deltaTime;
-                            missile.rotationSpeed = Mathf.Clamp(missile.rotationSpeed, 100f, 700f);
+                            missile.RotationSpeed = missile.RotationSpeed + angularAcceleration * Time.deltaTime;
+                            //missile.rotationSpeed = Mathf.Clamp(missile.rotationSpeed, 100f, 700f);
                             float repulsionForce = repulsionStrength * (distance / radius);
 
                             projectileRigidbody.AddForce(direction.normalized * repulsionForce, ForceMode2D.Force);
@@ -61,7 +61,7 @@ public class AccelerationTowerBehaviour : TowerStrategy
                         projectileRigidbody.AddForce(direction.normalized * repulsionStrength * 10f, ForceMode2D.Force);
                     }
                     missile.hasBeenAtracted = false;
-                    missile.rotationSpeed = missile.rotationSpeed / 2;
+                    missile.RotationSpeed = missile.RotationSpeed / 2;
                 }
                 
             }

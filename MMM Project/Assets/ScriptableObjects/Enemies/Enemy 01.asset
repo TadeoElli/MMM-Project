@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Enemy 01
   m_EditorClassIdentifier: 
   maxLife: 1000
-  rotationSpeed: 1
   collisionForce: 50
   velocity: 0.25
   explosion: {fileID: 2393949397171018763, guid: d3f40ccf235b4304bbf624c0f30157a7, type: 3}

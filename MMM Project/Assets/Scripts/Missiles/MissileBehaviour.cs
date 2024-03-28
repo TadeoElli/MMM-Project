@@ -7,22 +7,22 @@ public class MissileBehaviour : MonoBehaviour
     [SerializeField] private MissileStrategy missile;
     [SerializeField] private float life;
     private bool oneChance = true;
-    private int id;
     [SerializeField] private bool isSpecial = false;
     //private int damage;
     private float  minStability, maxStability;
     [HideInInspector] public bool hasBeenAtracted = false;
-    [HideInInspector] public float rotationSpeed = 100f;
-    [HideInInspector] public float rotationDirection;
+    private float rotationSpeed = 100f;
+    public float RotationSpeed{get{return rotationSpeed;} set{ rotationSpeed =  Mathf.Clamp(value, 100f, 700f); }}
+    [HideInInspector] private float rotationDirection;
+    public float RotationDirection{get{return rotationDirection;}set{ rotationDirection =  Mathf.Clamp(value, -1f, 1f);}}
     private CircleCollider2D circleCollider2D;
     private Rigidbody2D rb2D;
 
 
     private void OnEnable() {
-        id = missile.id;
-        life = missile.maxLife;
-        minStability = missile.minStability;
-        maxStability = missile.maxStability;
+        life = missile.MaxLife;
+        minStability = missile.MinStability;
+        maxStability = missile.MaxStability;
         oneChance = true;
         circleCollider2D = GetComponent<CircleCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
