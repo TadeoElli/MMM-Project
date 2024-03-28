@@ -5,9 +5,12 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Angle", order = 1)]
 public class RandomAngleMissileBehaviour : MissileStrategy
+///este tipo de misil crea una direccion aleatoria cada vez que rebota en un enemigo y se mueve en esa direccion
 {
 
-    private void OnEnter(GameObject prefab){
+    //Esta funcion se encarga de que cuando entre en contracto con un collider, genere una nueva direccion
+    //dentro de un rango de 180 grados y se manda en la nueva direccion simulando un rebote aleatorio
+    private void OnEnter(GameObject prefab){    
         Rigidbody2D rigidbody2D = prefab.GetComponent<Rigidbody2D>();
         float actualAngle = Mathf.Atan2(rigidbody2D.velocity.y, rigidbody2D.velocity.x);
         float newAngle = actualAngle + Random.Range(-Mathf.PI / 2f, Mathf.PI / 2f);
@@ -15,6 +18,7 @@ public class RandomAngleMissileBehaviour : MissileStrategy
         //Debug.Log(newDirection);
         rigidbody2D.velocity = newDirection * 5;
     }
+    //El comportamiento de colision
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         int layer = other.layer;
         int damage;
@@ -43,6 +47,7 @@ public class RandomAngleMissileBehaviour : MissileStrategy
     public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
 
     }
+    //Crea la explosion correspondiente cuando se queda sin vida
     public override void ExplosionBehaviour(Transform origin){
         GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
         newExplosion.transform.position = origin.position;

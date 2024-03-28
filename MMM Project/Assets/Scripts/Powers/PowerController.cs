@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PowerController : MonoBehaviour
+
+public class PowerController : MonoBehaviour 
 {
     // Start is called before the first frame update
     public Observer<float> currentEnergy = new Observer<float>(1000f);
@@ -17,6 +18,7 @@ public class PowerController : MonoBehaviour
     [SerializeField] private List<float> cooldowns;
     [SerializeField] private List<float> currentCd;
     [SerializeField] private List<bool> isReady;
+    
     private void Awake() {
         cam = Camera.main;
     }
@@ -85,8 +87,10 @@ public class PowerController : MonoBehaviour
         else{
             currentIndex.Value = newIndex;
             hasPower = true;
+            CursorController.Instance.SetCursor(powers[newIndex].sprite, powers[newIndex].material, powers[newIndex].scale);
         }
     }
+
 
 
     public void SetEnergyValue(float amount){
@@ -98,6 +102,7 @@ public class PowerController : MonoBehaviour
             if(callbackContext.started){
                 if(powers[currentIndex.Value].BehaviourStarted()){
                     isDraggin = true;
+                    
                 }
                 else{
                     DesactivatePower();
@@ -120,6 +125,7 @@ public class PowerController : MonoBehaviour
             currentState.Value = false;
         }
         currentIndex.Value = 0;
+        CursorController.Instance.RestoreCursor();
     }
 
     public void DesactivatePower(){
@@ -128,6 +134,7 @@ public class PowerController : MonoBehaviour
             inputController.isAvailable = true;
             hasPower = false;
             currentIndex.Value = 0;
+            CursorController.Instance.RestoreCursor();
         }
     }
 

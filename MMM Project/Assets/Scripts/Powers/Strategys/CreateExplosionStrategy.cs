@@ -7,6 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Power", menuName = "ScriptableObject/Power/Explosion", order = 2)]
 public class CreateExplosionStrategy : PowerStrategy
 {
+    [Header("Special Properties")]
     private Rigidbody2D rb;
     [SerializeField]private Explosion prefab;
     public override bool BehaviourStarted(){

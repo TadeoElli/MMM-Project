@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObject/Tower/Acceleration", order = 2)]
 public class AccelerationTowerBehaviour : TowerStrategy
 {
+    [Header("Special Properties")]
     [SerializeField] private float attractionStrength;
 
     [SerializeField] private float repulsionStrength;

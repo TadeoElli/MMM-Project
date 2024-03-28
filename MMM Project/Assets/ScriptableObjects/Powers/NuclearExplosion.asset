@@ -16,4 +16,7 @@ MonoBehaviour:
   energyConsumption: 0
   cooldown: 0
   hasPerformedCursor: 0
+  sprite: {fileID: 21300000, guid: ecbd33fb86a31f048823e32c556577ae, type: 3}
+  material: {fileID: 2100000, guid: e56bce730387f254f9f9f636b660a1aa, type: 2}
+  scale: {x: 0.5, y: 0.5, z: 1}
   prefab: {fileID: 8546805254870235195, guid: 458b80174cb50cc4ea1e53935708ebd0, type: 3}

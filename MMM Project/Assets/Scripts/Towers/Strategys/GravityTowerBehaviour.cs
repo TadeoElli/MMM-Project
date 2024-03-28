@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObject/Tower/Gravity", order = 0)]
 public class GravityTowerBehaviour : TowerStrategy
 {
+    [Header("Special Properties")]
     [SerializeField] private float repulsionRadius;
     [SerializeField] private float repulsionStrength;
     [SerializeField] private float attractionStrength;

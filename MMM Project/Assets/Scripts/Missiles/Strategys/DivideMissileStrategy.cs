@@ -5,11 +5,14 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Divide", order = 5)]
 public class DivideMissileStrategy : MissileStrategy
+///Este tipo de misil al chocar con un enemigo se subdivide en nuevos tipos de misiles con direcciones aleatorias
 {
-    [SerializeField] MissileBehaviour subMissiles;
-    [SerializeField] private float force;
-    [SerializeField] private int cantOfSubmissiles;
+    [SerializeField] MissileBehaviour subMissiles;  //Que tipo de misil van a ser los que spawnea
+    [SerializeField] private float force;   //Con que fuerza van a ser disparados
+    [SerializeField] private int cantOfSubmissiles;     //La cantidad de misiles que spawnea
     
+
+    //El comportamiento de colision
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         MissileBehaviour missileBehaviour = prefab.GetComponent<MissileBehaviour>();
             
@@ -17,18 +20,11 @@ public class DivideMissileStrategy : MissileStrategy
         int damage;
         switch (layer)
         {
-            case 7:
-                damage = 0;
-                Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
-                Vector2 bounceDirection = rb2D.velocity;
-                bounceDirection.y = bounceDirection.y * -1;
-
-                rb2D.velocity = bounceDirection;
-                return damage;
             case 8:
             case 9:
             case 10:
-            case 11:
+            case 11:    //Recibe 2 veces daño por el "oneChance" que hace que despues de que se quede  con 0 de vida le 
+                //permite aguantar un rebote mas
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 missileBehaviour.TakeDamage(10);
                 missileBehaviour.TakeDamage(10);
@@ -44,6 +40,7 @@ public class DivideMissileStrategy : MissileStrategy
     public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
 
     }
+    //En vez de crear una explosion cuando se queda sin vida, llama a la funcion CreateSubmissile segun la cantidad de misiles a spawnear
     public override void ExplosionBehaviour(Transform origin){
         for (int i = 0; i < cantOfSubmissiles; i++)
         {
@@ -51,6 +48,7 @@ public class DivideMissileStrategy : MissileStrategy
         }
     }
 
+    //Crea un nuevo misil del tipo guardado y se crea una nueva direccion aleatoria, luego se lo manda en esa direccion
     private void CreateSubmissile(Transform origin){
         GameObject newMissile =  MissilePool.Instance.RequestMissile(subMissiles);
         newMissile.transform.position = origin.position;

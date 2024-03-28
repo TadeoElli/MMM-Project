@@ -3,25 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CursorController : MonoBehaviour
+///Esta clase se encarga de administrar todos los cursores, por eso, todos los cursores deben estar dentro de este objeto, para que 
+///se muevan junto con el mouse
 {
+    public static CursorController Instance { get; private set; }
     Vector2 currentPosition;
-    [SerializeField] private SpriteRenderer missileCursorExt, missileCursorInt;
-    [Header("List Of Colors")]
-    [SerializeField] private List<Color> colors;
-    [Header("List Of PowerCursors")]
-    [SerializeField] private List<GameObject> powers;
-    [SerializeField] private List<GameObject> gravityScale;
-    [SerializeField] private GameObject missileManipulatorPerformedCursor;
-    [Header("List Of TowerCursors")]
-    [SerializeField] private List<GameObject> towers;
-    [SerializeField] private GameObject blockSprite;
-    [SerializeField] private float distanceFromNexus;
-    [SerializeField] private GameObject nexus;
-    private int  powerIndex, towerIndex;
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite mainSprite;
+    [SerializeField] private Material mainMaterial;
+    [SerializeField] private Quaternion mainTransformRotation;
+    [SerializeField] private Vector3 mainTransformScale;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            //DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
-        missileCursorExt.color = colors[0];
-        missileCursorInt.color = colors[0];
+        Cursor.visible = false;
+       
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        RestoreCursor();
     }
 
     // Update is called once per frame
@@ -29,78 +39,20 @@ public class CursorController : MonoBehaviour
     {
         currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = currentPosition;
-
-        if(towerIndex > 0 && CheckDistanceFromNexus()){
-            blockSprite.SetActive(true);
-        }
-        else{
-            blockSprite.SetActive(false);
-        }
     }
 
-    public void ChangeMissileCursorColor(int index){
-        missileCursorExt.color = colors[index];
-        missileCursorInt.color = colors[index];
-    }
-    public void ChangePowerCursor(int index){
-        powerIndex = index;
-        DesactivateAllCursors();
-        if(index > 0){
-            powers[powerIndex].SetActive(true);
-        }
-    }
 
-    public void ChangeTowerCursor(int index){
-        towerIndex = index;
-        DesactivateAllCursors();
-        if(index > 0){
-            towers[towerIndex].SetActive(true);
-        }
+    public void SetCursor(Sprite sprite, Material material, Vector3 scale){
+        spriteRenderer.sprite = sprite;
+        spriteRenderer.material = material;
+        transform.localScale = scale;
+        transform.localRotation = Quaternion.Euler(0f,0f,0f);
     }
-    public void ChangePowerState(bool state){
-        DesactivateAllCursors();
-        if(state){
-            RaycastHit2D hit = Physics2D.Raycast(currentPosition, Vector2.zero);
-            if(hit.collider != null && hit.collider.CompareTag("Enemy")){
-                if(hit.collider.gameObject.layer == 8 ){
-                    gravityScale[0].SetActive(true);
-                }
-                else if(hit.collider.gameObject.layer == 9){
-                    gravityScale[1].SetActive(true);
-                }
-                else if(hit.collider.gameObject.layer == 10 ){
-                    gravityScale[2].SetActive(true);
-                }
-            }
-            else{
-                missileManipulatorPerformedCursor.SetActive(true);
-            }
-        }
+    public void RestoreCursor(){
+        spriteRenderer.sprite = mainSprite;
+        spriteRenderer.material = mainMaterial;
+        transform.localRotation = mainTransformRotation;
+        transform.localScale = mainTransformScale;
     }
-    private void DesactivateAllCursors(){
-        for (int i = 1; i < powers.Count; i++)
-        {
-            powers[i].SetActive(false); 
-        }
-        for (int i = 0; i < gravityScale.Count; i++)
-        {
-            gravityScale[i].SetActive(false);
-        }
-        for (int i = 1; i < towers.Count; i++)
-        {
-            towers[i].SetActive(false);
-        }
-        blockSprite.SetActive(false);
-        missileManipulatorPerformedCursor.SetActive(false);
-    }
-
-    private bool CheckDistanceFromNexus(){
-        if(Vector2.Distance(currentPosition, nexus.transform.position) < distanceFromNexus){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    
+ 
 }

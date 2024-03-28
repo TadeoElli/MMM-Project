@@ -7,10 +7,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Power", menuName = "ScriptableObject/Power/MissileManipulator", order = 1)]
 public class MissileManipulatorStrategy : PowerStrategy
 {
+    [Header("Special Properties")]
     private Rigidbody2D rb;
     private MissileBehaviour misile;
     [SerializeField] private float wallTop, wallBottom, maxTime;
     private float timer = 0;
+    [SerializeField] private Sprite performedSprite;
+    [SerializeField] private Material performedMaterial;
     public override bool BehaviourStarted(){
         // Convertir la posición del clic del ratón a un rayo en el mundo 2D
         Vector2 rayOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -21,6 +24,7 @@ public class MissileManipulatorStrategy : PowerStrategy
         {
             // Si es un misil, activar el poder que se activa al hacer clic en un enemigo
             Activate(hit.collider.gameObject);
+            CursorController.Instance.SetCursor(performedSprite, performedMaterial, scale);
             timer = 0;
             return true;
         }

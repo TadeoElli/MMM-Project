@@ -15,3 +15,7 @@ MonoBehaviour:
   id: 5
   energyConsumption: 0
   cooldown: 35
+  hasPerformedCursor: 0
+  sprite: {fileID: 21300000, guid: ecbd33fb86a31f048823e32c556577ae, type: 3}
+  material: {fileID: 2100000, guid: f3dd4be9bff2a5445a41c5c174677f13, type: 2}
+  scale: {x: 0.25, y: 0.25, z: 1}

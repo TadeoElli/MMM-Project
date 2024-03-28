@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObject/Tower/Shockwave", order = 1)]
 public class ShockwaveTowerBehaviour : TowerStrategy
 {
+    [Header("Special Properties")] 
     [SerializeField] private float force;
     public override void SpecialBehaviour(GameObject prefab, GameObject other){
 

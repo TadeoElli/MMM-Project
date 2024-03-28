@@ -64,6 +64,7 @@ public class TowerController : MonoBehaviour
         else{
             currentIndex.Value = newIndex;
             hasTower = true;
+            CursorController.Instance.SetCursor(towers[newIndex].sprite, towers[newIndex].material, towers[newIndex].scale);
         }
     }
 
@@ -79,6 +80,7 @@ public class TowerController : MonoBehaviour
         if(hasTower){
             hasTower = false;
             currentIndex.Value = 0;
+            CursorController.Instance.RestoreCursor();
         }
     }
 
@@ -96,5 +98,6 @@ public class TowerController : MonoBehaviour
         hasTower = false;
         isReady[currentIndex.Value] = false;
         currentCd[currentIndex.Value] = 0;
+        CursorController.Instance.RestoreCursor();
     }
 }

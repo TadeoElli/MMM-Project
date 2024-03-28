@@ -5,8 +5,10 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Basic", order = 0)]
 public class BasicMissilesStrategy : MissileStrategy
+///Este tipo de misiles no tienen ningun funcionamiento especial, sin embargo pueden variar en daño, velocidad
+///el tipo de material para manejar los rebotes o la masa
 {
-
+    //El comportamiento de colisiones
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         int layer = other.layer;
         int damage;
@@ -34,6 +36,7 @@ public class BasicMissilesStrategy : MissileStrategy
     public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
 
     }
+        //Crea la explosion correspondiente al quedarse sin vida
     public override void ExplosionBehaviour(Transform origin){
         GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
         newExplosion.transform.position = origin.position;

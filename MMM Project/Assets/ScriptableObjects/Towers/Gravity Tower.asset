@@ -18,6 +18,9 @@ MonoBehaviour:
   cooldown: 100
   prefab: {fileID: -3835447991770680796, guid: b6f99ed29293a2d47a8aaad2ba94bd33, type: 3}
   explosion: {fileID: 4332196422139455912, guid: 09da0e9ff865280498b80c121c91816f, type: 3}
+  sprite: {fileID: 21300000, guid: 63956eb4e5c32aa4f9ec5bf6e0fa5a48, type: 3}
+  material: {fileID: 2100000, guid: dbf91f0715438a14bbec60a549020214, type: 2}
+  scale: {x: 0.2, y: 0.2, z: 1}
   repulsionRadius: 1
   repulsionStrength: 50
   attractionStrength: 60

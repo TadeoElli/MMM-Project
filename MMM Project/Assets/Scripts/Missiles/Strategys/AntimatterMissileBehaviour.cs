@@ -5,9 +5,10 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Antimatter", order = 4)]
 public class AntimatterMissileBehaviour : MissileStrategy
+//Este tipo de misil se activara con un power up y lo que hara sera que cuando choque con un enemigo explote
 {
 
-    
+    //El comportamiento de cuando colisiona
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         MissileBehaviour missileBehaviour = prefab.GetComponent<MissileBehaviour>();
             
@@ -26,7 +27,8 @@ public class AntimatterMissileBehaviour : MissileStrategy
             case 8:
             case 9:
             case 10:
-            case 11:
+            case 11:    //Recibe 2 veces daño por el "oneChance" que hace que despues de que se quede  con 0 de vida le 
+                //permite aguantar un rebote mas
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 missileBehaviour.TakeDamage(10);
                 missileBehaviour.TakeDamage(10);
@@ -41,7 +43,8 @@ public class AntimatterMissileBehaviour : MissileStrategy
     }
     public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
 
-    }
+    }  
+    //Crea la explosion correspondiente al quedarse sin vida
     public override void ExplosionBehaviour(Transform origin){
         GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
         newExplosion.transform.position = origin.position;
