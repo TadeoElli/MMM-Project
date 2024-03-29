@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class NexusPosition : MonoBehaviour
 {
-    [SerializeField] public List<GameObject> positions;
+    [SerializeField] private List<Transform> positions;
 
-    public int index;
+    private int index;
 
     public Vector3 SetPosition(){
-        return positions[index].transform.position;
+        return positions[index].position;
     }
 
     public void SetNexusLeft(){

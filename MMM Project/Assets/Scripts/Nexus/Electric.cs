@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Electric : MonoBehaviour
 {
+    /// <summary>
+    /// Esta clase se encarga de simular el movimiento de rayos para el nexo
+    /// </summary>
     private LineRenderer lRend;
     public Transform transformPointA;
     public Transform transformPointB;
