@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a97185f320949e408e2de3368313fbe, type: 3}
   m_Name: Missile 10
   m_EditorClassIdentifier: 
-  id: 10
   energyConsumption: 700
   maxLife: 2
   minDamage: 1
@@ -22,6 +21,7 @@ MonoBehaviour:
   maxStability: 100
   prefab: {fileID: 2769597986703773441, guid: 8a2d239f2144d9c4c90649495ff5c107, type: 3}
   explosion: {fileID: 0}
+  color: {r: 0.764151, g: 0, b: 0, a: 1}
   subMissiles: {fileID: 3251731635788898808, guid: 494f5f57156303047bfbb82b11158edc, type: 3}
   force: 1000
   cantOfSubmissiles: 5

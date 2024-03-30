@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636934f0ba091aa4fb2851db0b40826b, type: 3}
   m_Name: Missile 05
   m_EditorClassIdentifier: 
-  id: 5
   energyConsumption: 500
   maxLife: 1500
   minDamage: 1
@@ -22,5 +21,6 @@ MonoBehaviour:
   maxStability: 50
   prefab: {fileID: -9113666254138274782, guid: 079e59474797ee740b9ef914ce462cdb, type: 3}
   explosion: {fileID: 4514810246844448130, guid: 5fb91f30079b007458fa3155e299c456, type: 3}
+  color: {r: 0.85, g: 1, b: 0, a: 1}
   enemyPierced: {fileID: 0}
   force: 1000

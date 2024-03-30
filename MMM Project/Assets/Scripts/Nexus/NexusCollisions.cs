@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NexusCollisions : MonoBehaviour
+///Esta clase guarda la vida del nexo y maneja sus collisiones, si una explosion surge dentro del area, le manda a esta clase el tipo de explosion
+///y esta calcula y reduce la vida segun el daño correspondiente, si se queda sin vida, se destruye el nexo
 {
     public Observer<float> currentStructure = new Observer<float>(3000);
     [SerializeField] private float damage;
@@ -10,7 +12,7 @@ public class NexusCollisions : MonoBehaviour
 
 
 
-    public void TakeDamageForMissile(ExplosionsTypes type){
+    public void TakeDamageForMissile(ExplosionsTypes type){//Recibe el tipo de daño, pregunta cuanto es y lo resta de la vida del nexo
         damage = DamageTypes.Instance.explosionDictionary[type];
         Debug.Log("Recibi "+ damage+ " de dano" );
         currentStructure.Value -= damage;
@@ -19,7 +21,7 @@ public class NexusCollisions : MonoBehaviour
         }
     }
 
-    public void SetStructureValue(float amount){
+    public void SetStructureValue(float amount){    //Recibe el valor de vida actual del NexusStats y lo guarda en la variable de vida local
         currentStructure.Value = amount;
     }
 

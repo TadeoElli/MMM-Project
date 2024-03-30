@@ -13,6 +13,10 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
     [SerializeField]private float maxStability;     //La estabilidad maxima
     [SerializeField]private MissileBehaviour prefab;    //El prefab del misl
     [SerializeField]private Explosion explosion;        //La explosion que genera al destruirse
+    [Header("Feedback")]
+    [SerializeField] private Color color;
+    [SerializeField] private Sprite sprite;
+    [SerializeField] private Texture texture;
     #endregion
     #region Declaration
     public float EnergyConsumption{get{return energyConsumption;}}
@@ -21,6 +25,9 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
     public float MinStability{get{return minStability;}}
     public float MaxStability{get{return maxStability;}}
     public Explosion NewExplosion{get{return explosion;}}
+    public Color CursorColor {get{return color;}}
+    public Sprite Sprite {get{return sprite;}}
+    public Texture Texture {get{return texture;}}
     #endregion
 
     #region Behaviours

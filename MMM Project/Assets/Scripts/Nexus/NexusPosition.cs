@@ -6,7 +6,7 @@ public class NexusPosition : MonoBehaviour
 {
     [SerializeField] private List<Transform> positions;
 
-    private int index;
+    [SerializeField] private int index;
 
     public Vector3 SetPosition(){
         return positions[index].position;

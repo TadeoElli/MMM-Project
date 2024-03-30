@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f533a09a0e516468a3a41785eb3c3e, type: 3}
   m_Name: Missile 04
   m_EditorClassIdentifier: 
-  id: 4
   energyConsumption: 300
   maxLife: 1500
   minDamage: 300
@@ -22,3 +21,4 @@ MonoBehaviour:
   maxStability: 70
   prefab: {fileID: -9113666254138274782, guid: 3fb246c067f852d4c9cd16cc6333078b, type: 3}
   explosion: {fileID: 4514810246844448130, guid: 17732b97ae9d73c47bff7ab38ef30dcc, type: 3}
+  color: {r: 0, g: 0.0333333, b: 1, a: 1}

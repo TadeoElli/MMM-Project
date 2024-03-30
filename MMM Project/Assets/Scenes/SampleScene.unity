@@ -779,6 +779,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1178496311 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4769762441663198126, guid: bf4dd2f1952fa084da2ec8203faa264f, type: 3}
+  m_PrefabInstance: {fileID: 4769762441209060585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1185403825 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4769762440433258407, guid: bf4dd2f1952fa084da2ec8203faa264f, type: 3}
+  m_PrefabInstance: {fileID: 4769762441209060585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1288587204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1045039946, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
+  m_PrefabInstance: {fileID: 2345792219563539374}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3e1e391709c6d45a3ab906b6f8b212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1304227366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67abcc70e9b85484e89835b9c9ded565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2020657774 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4769762441157076333, guid: bf4dd2f1952fa084da2ec8203faa264f, type: 3}
+  m_PrefabInstance: {fileID: 4769762441209060585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2026206538 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
@@ -1372,6 +1398,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1045039946, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
+      propertyPath: missileCursorExt
+      value: 
+      objectReference: {fileID: 201765351}
+    - target: {fileID: 1045039946, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
+      propertyPath: missileCursorInt
+      value: 
+      objectReference: {fileID: 1177772973}
+    - target: {fileID: 1045039946, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
+      propertyPath: colors.Array.size
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1890146689, guid: 5154665e61638ff478b214bb4a145d3e, type: 3}
       propertyPath: currentStructure.onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1642,14 +1680,14 @@ PrefabInstance:
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: missileIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1169710180}
+      objectReference: {fileID: 1288587204}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: missileIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ChangeMissileCursorColor
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: missileIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: CursorController, Assembly-CSharp
+      value: NexusModel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5749252901835563808, guid: 9e3229f97a008a646b7fe5da7274b81f, type: 3}
       propertyPath: missileIndex.onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1789,6 +1827,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4769762440137203134, guid: bf4dd2f1952fa084da2ec8203faa264f, type: 3}
+      propertyPath: positions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185403825}
+    - target: {fileID: 4769762440137203134, guid: bf4dd2f1952fa084da2ec8203faa264f, type: 3}
+      propertyPath: positions.Array.data[1]
+      value: 
+      objectReference: {fileID: 2020657774}
+    - target: {fileID: 4769762440137203134, guid: bf4dd2f1952fa084da2ec8203faa264f, type: 3}
+      propertyPath: positions.Array.data[2]
+      value: 
+      objectReference: {fileID: 1178496311}
     - target: {fileID: 4769762440137203135, guid: bf4dd2f1952fa084da2ec8203faa264f, type: 3}
       propertyPath: m_Name
       value: NexusPosition
