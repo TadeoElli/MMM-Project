@@ -13,13 +13,10 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
         [SerializeField]public PowerUp prefab;
         [SerializeField]public float dropProbability;
     }
-    [SerializeField] private float maxLife;       //Vida del enemigo
-    [SerializeField] private float collisionForce;        //Fuerza con la que empuja a las otras unidades al chocar
-    [SerializeField] private float velocity;      //Velocidad de movimiento   
-    [SerializeField] private Explosion explosion;     //La explosion que va a spawnear al morir
-    public float MaxLife{get{return maxLife;}}
-    public float Velocity{get{return velocity;}}
-    public Explosion NewExplosion{get{return explosion;}}
+    public float maxLife;       //Vida del enemigo
+    private float collisionForce;        //Fuerza con la que empuja a las otras unidades al chocar
+    [SerializeField] public float velocity;      //Velocidad de movimiento   
+    public Explosion explosion;     //La explosion que va a spawnear al morir
 
     [Header("Will spawn the first prefab on the list")]
     [SerializeField] private List<PowerUpData> availablePowerUps;        //Lista de todos los power up que puede dropear

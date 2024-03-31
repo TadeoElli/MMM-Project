@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ExplosionPool : MonoBehaviour
 {
-    [SerializeField] private List<Explosion> explosionPrefab;        //Lista de misiles      
+     /// <summary>
+    /// Esta es una pool de explosiones, guarda en un diccionario, el tipo de explosion y una lista para guardar varios tipos de ese tipo de explosion
+    /// </summary>
+    [SerializeField] private List<Explosion> explosionPrefab;        //Lista de explosion      
     [SerializeField] private int poolSize = 5;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> explosionDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada
 
@@ -20,7 +23,7 @@ public class ExplosionPool : MonoBehaviour
             Destroy(gameObject);
         }
         
-        foreach (Explosion prefabs in explosionPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
+        foreach (Explosion prefabs in explosionPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de explosion generados como valor a devolver
         {
             explosionDictionary.Add(prefabs.gameObject, new List<GameObject>());
         }
@@ -36,7 +39,7 @@ public class ExplosionPool : MonoBehaviour
 
     public void AddExplosionToPool(int amount, Explosion prefab){       
 
-        List<GameObject> prefabList = explosionDictionary[prefab.gameObject];    //Guardo la lista de cantidad de misiles en otra lista
+        List<GameObject> prefabList = explosionDictionary[prefab.gameObject];    //Guardo la lista de cantidad de explosion en otra lista
         for (int i = 0; i < amount; i++)
         {
             GameObject explosion = Instantiate(prefab.gameObject);

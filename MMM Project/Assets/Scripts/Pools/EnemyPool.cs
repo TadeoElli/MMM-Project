@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class EnemyPool : MonoBehaviour
 {
-    [SerializeField] private List<EnemyBehaviour> enemyPrefab;        //Lista de misiles
+    /// <summary>
+    /// Esta es una pool de enemigos, guarda en un diccionario, el tipo de enemigo y una lista para guardar varios tipos de ese tipo de enemigo
+    /// </summary>
+    [SerializeField] private List<EnemyBehaviour> enemyPrefab;        //Lista de tipos de enemigos
     [SerializeField] private int poolSize = 1;          //Cantidad de la pool al inicializar
-    [SerializeField] private Dictionary<GameObject, List<GameObject>> enemyDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada
+    [SerializeField] private Dictionary<GameObject, List<GameObject>> enemyDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un enemigo y devolver la cantidad generada
     private static EnemyPool instance;
     public static EnemyPool Instance { get {return instance; } }
 
@@ -19,7 +22,7 @@ public class EnemyPool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (EnemyBehaviour prefabs in enemyPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
+        foreach (EnemyBehaviour prefabs in enemyPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de enemigos generados como valor a devolver
         {
             enemyDictionary.Add(prefabs.gameObject, new List<GameObject>());
         }
@@ -35,7 +38,7 @@ public class EnemyPool : MonoBehaviour
 
     public void AddEnemyToPool(int amount, EnemyBehaviour prefab){       //Le mando cuantos genero y cual misil
 
-        List<GameObject> prefabList = enemyDictionary[prefab.gameObject];    //Guardo la lista de cantidad de misiles en otra lista
+        List<GameObject> prefabList = enemyDictionary[prefab.gameObject];    //Guardo la lista de cantidad de enemigos en otra lista
         for (int i = 0; i < amount; i++)
         {
             GameObject enemy = Instantiate(prefab.gameObject);

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PowerUpPool : MonoBehaviour
 {
-    [SerializeField] private List<PowerUp> powerUpPrefab;        //Lista de misiles
+    /// <summary>
+    /// Esta es una pool de PowerUp, guarda en un diccionario, el tipo de PowerUp y una lista para guardar varios tipos de ese tipo de PowerUps
+    /// </summary>
+    [SerializeField] private List<PowerUp> powerUpPrefab;        //Lista de PowerUps
     [SerializeField] private int poolSize = 1;          //Cantidad de la pool al inicializar
-    [SerializeField] private Dictionary<GameObject, List<GameObject>> powerUpDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada
+    [SerializeField] private Dictionary<GameObject, List<GameObject>> powerUpDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un PowerUps y devolver la cantidad generada
     private static PowerUpPool instance;
     public static PowerUpPool Instance { get {return instance; } }
 
@@ -19,7 +22,7 @@ public class PowerUpPool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (PowerUp prefabs in powerUpPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
+        foreach (PowerUp prefabs in powerUpPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de PowerUps generados como valor a devolver
         {
             powerUpDictionary.Add(prefabs.gameObject, new List<GameObject>());
         }
@@ -33,9 +36,9 @@ public class PowerUpPool : MonoBehaviour
         }
     }
 
-    public void AddPowerUpToPool(int amount, PowerUp prefab){       //Le mando cuantos genero y cual misil
+    public void AddPowerUpToPool(int amount, PowerUp prefab){       //Le mando cuantos genero y cual PowerUps
 
-        List<GameObject> prefabList = powerUpDictionary[prefab.gameObject];    //Guardo la lista de cantidad de misiles en otra lista
+        List<GameObject> prefabList = powerUpDictionary[prefab.gameObject];    //Guardo la lista de cantidad de PowerUps en otra lista
         for (int i = 0; i < amount; i++)
         {
             GameObject powerUp = Instantiate(prefab.gameObject);

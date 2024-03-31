@@ -12,10 +12,9 @@ public class EnemyBehaviour : MonoBehaviour
     private float rotationSpeed = 1;
     private Collider2D col;
     private Rigidbody2D rb2D;
-    [SerializeField] public bool canMove = true;       //Variable que maneja si se puede mover o no, para desactivar con habilidades o comportamientos
+    public bool canMove = true;       //Variable que maneja si se puede mover o no, para desactivar con habilidades o comportamientos
     [HideInInspector] public bool normalDir = false;        //si se va a mover en la direccion normal (hacia la izquierda) o no, se setea desde el spawner
-    [SerializeField] private bool absorb = false;       //Si el enemigo tiene la capacidad de absorber misiles
-    public bool Absorb{get{return absorb;}}
+    public bool absorb = false;       //Si el enemigo tiene la capacidad de absorber misiles
     [SerializeField] private GameObject specialParticle;        //La particula que va a tener el enemigo si tiene un comportamiento especial
     private float timer;
 
@@ -24,8 +23,8 @@ public class EnemyBehaviour : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
     private void OnEnable() {
-        life = enemy.MaxLife;
-        speed = enemy.Velocity;
+        life = enemy.maxLife;
+        speed = enemy.velocity;
         col.enabled = false;
         StartCoroutine(DelayForActivateCollider());
     }
@@ -71,7 +70,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(float damage){       //Le quita la vida correspondiente al enemigo y si es menor a 0 llama a la funcion de muerte
         //Debug.Log(gameObject + " recibio "+ damage+ " de dano" );
         life -= damage;
-        life = Mathf.Clamp(life, -100f, enemy.MaxLife);
+        life = Mathf.Clamp(life, -100f, enemy.maxLife);
         if(absorb && specialParticle != null) {specialParticle.SetActive(true);}
         if(life<= 0){
             Death(); 

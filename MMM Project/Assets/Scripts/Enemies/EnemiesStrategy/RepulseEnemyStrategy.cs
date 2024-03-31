@@ -32,7 +32,7 @@ public class RepulseEnemyStrategy : EnemyStrategy
     }
 
     public override GameObject DeathBehaviour(){    //Crea la explosion de muerte
-        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
+        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         return explosion;
     }
     public override void ParticleBehaviour(GameObject specialParticle){     //Comportamiento especial de las particulas

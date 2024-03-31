@@ -46,7 +46,7 @@ public class AntimatterMissileBehaviour : MissileStrategy
     }  
     //Crea la explosion correspondiente al quedarse sin vida
     public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
+        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         newExplosion.transform.position = origin.position;
     }
 

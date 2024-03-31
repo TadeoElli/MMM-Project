@@ -7,6 +7,7 @@ using UnityEngine;
 public class DivideMissileStrategy : MissileStrategy
 ///Este tipo de misil al chocar con un enemigo se subdivide en nuevos tipos de misiles con direcciones aleatorias
 {
+    [Header("Special Properties")]
     [SerializeField] MissileBehaviour subMissiles;  //Que tipo de misil van a ser los que spawnea
     [SerializeField] private float force;   //Con que fuerza van a ser disparados
     [SerializeField] private int cantOfSubmissiles;     //La cantidad de misiles que spawnea

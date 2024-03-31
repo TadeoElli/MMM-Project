@@ -20,9 +20,9 @@ public class MissileBehaviour : MonoBehaviour
 
 
     private void OnEnable() {   //Declaro las estadisticas
-        life = missile.MaxLife;
-        minStability = missile.MinStability;
-        maxStability = missile.MaxStability;
+        life = missile.maxLife;
+        minStability = missile.minStability;
+        maxStability = missile.maxStability;
         oneChance = true;
         circleCollider2D = GetComponent<CircleCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();

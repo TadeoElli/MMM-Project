@@ -7,6 +7,7 @@ public class SingularityMissileBehaviour : MissileStrategy
 ///Este tipo de misil funciona como un agujero negro, atrayendo a todos los enemigos a los que entra en contacto hacia el centro
 ///Y haciendo que se choquen entre si, por eso no hace daño, el daño se produce por los choques
 {
+    [Header("Special Properties")]
     [SerializeField] private float force;       //La fuerza con la que atrae
 
     //si collisiona con una pared, simula el movimiento de rebote y pierde algo de vida
@@ -37,7 +38,7 @@ public class SingularityMissileBehaviour : MissileStrategy
 
     //Crea la explosion correspondiente cuando se queda sin vida
     public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
+        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         newExplosion.transform.position = origin.position;
     }
 }

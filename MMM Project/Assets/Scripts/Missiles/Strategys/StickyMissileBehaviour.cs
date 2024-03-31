@@ -8,6 +8,7 @@ public class StickyMissileBehaviour : MissileStrategy
 ///dirija devuelta en direccion del enemigo, pegandose a el y haciendole daño cada vez que pasa a travez de el.
 ///Si el enemigo muere en el proceso, sigue en la direccion que iba hasta golpear a otro
 {
+    [Header("Special Properties")]
     [SerializeField] private GameObject enemyPierced;   //El enemigo que golpeo
     [SerializeField] private float force;   //La fuerza con la que lo empuja
     private Vector2 direction;      //La direccion hacia donde se tiene que mover
@@ -70,7 +71,7 @@ public class StickyMissileBehaviour : MissileStrategy
 
     //Crea la explosion correspondiente al quedarse sin vida
     public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
+        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         newExplosion.transform.position = origin.position;
     }
 }

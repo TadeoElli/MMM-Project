@@ -37,7 +37,7 @@ public class NuclearEnemyBehaviour : EnemyStrategy
             return explosion;
         }
         else{
-            GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion); //si no devuelve la explosion comun
+            GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion); //si no devuelve la explosion comun
             return explosion;
         }
     }

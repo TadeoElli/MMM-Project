@@ -29,7 +29,7 @@ public class BasicEnemyStrategy : EnemyStrategy
     }
 
     public override GameObject DeathBehaviour(){      //Crea la explosion de muerte
-        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
+        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         return explosion;
     }
     public override void ParticleBehaviour(GameObject prefab){

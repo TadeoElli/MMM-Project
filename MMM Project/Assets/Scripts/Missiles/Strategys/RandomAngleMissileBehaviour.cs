@@ -49,7 +49,7 @@ public class RandomAngleMissileBehaviour : MissileStrategy
     }
     //Crea la explosion correspondiente cuando se queda sin vida
     public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.NewExplosion);
+        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         newExplosion.transform.position = origin.position;
     }
 }

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class TowersPool : MonoBehaviour
 {
-    [SerializeField] private List<TowerBehaviour> towerPrefab;        //Lista de misiles
+    /// <summary>
+    /// Esta es una pool de torres, guarda en un diccionario, el tipo de torres y una lista para guardar varios tipos de ese tipo de torres
+    /// </summary>
+    [SerializeField] private List<TowerBehaviour> towerPrefab;        //Lista de torres
     [SerializeField] private int poolSize = 1;          //Cantidad de la pool al inicializar
-    [SerializeField] private Dictionary<GameObject, List<GameObject>> towerDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada
+    [SerializeField] private Dictionary<GameObject, List<GameObject>> towerDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un torres y devolver la cantidad generada
     private static TowersPool instance;
     public static TowersPool Instance { get {return instance; } }
 
@@ -19,7 +22,7 @@ public class TowersPool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (TowerBehaviour prefabs in towerPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
+        foreach (TowerBehaviour prefabs in towerPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de torres generados como valor a devolver
         {
             towerDictionary.Add(prefabs.gameObject, new List<GameObject>());
         }
@@ -33,9 +36,9 @@ public class TowersPool : MonoBehaviour
         }
     }
 
-    public void AddTowersToPool(int amount, TowerBehaviour prefab){       //Le mando cuantos genero y cual misil
+    public void AddTowersToPool(int amount, TowerBehaviour prefab){       //Le mando cuantos genero y cual torres
 
-        List<GameObject> prefabList = towerDictionary[prefab.gameObject];    //Guardo la lista de cantidad de misiles en otra lista
+        List<GameObject> prefabList = towerDictionary[prefab.gameObject];    //Guardo la lista de cantidad de torres en otra lista
         for (int i = 0; i < amount; i++)
         {
             GameObject tower = Instantiate(prefab.gameObject);

@@ -5,8 +5,8 @@ using UnityEngine;
 public class NexusModel : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private List<LineRenderer> renderers;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private List<LineRenderer> renderers;  //Los LineRenderers de la electricidad
+    private SpriteRenderer spriteRenderer;  //El Sprite del Nexo
     [SerializeField] private SpriteRenderer missileCursorExt, missileCursorInt; //Los cursores para cambiarles los colores
     private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -17,11 +17,11 @@ public class NexusModel : MonoBehaviour
     {
         
     }
-    public void ChangeMissileCursorColor(Color color, Sprite sprite, Texture texture){    //Cambio el color del cursor de los misiles segun el indice de misiles
+    public void ChangeMissileCursorColor(Color color, Sprite sprite, Texture texture){    //Cambio el color del cursor de los misiles 
         missileCursorExt.color = color;
         missileCursorInt.color = color;
-        spriteRenderer.sprite = sprite;
-        foreach (var render in renderers)
+        spriteRenderer.sprite = sprite; //Cambio el sprite por el color adecuado
+        foreach (var render in renderers)   //Cambio los rayos de electricidad por el color adecuado
         {
             render.material.SetTexture("_MainTex", texture);
         }

@@ -48,7 +48,7 @@ public class Nexus : MonoBehaviour
         yield return new WaitForSeconds(2);
         missilePrefab = missiles[index].CreateMissile(transform);
         missilePrefab.GetComponent<Collider2D>().enabled = false;
-        model.ChangeMissileCursorColor(missiles[index].CursorColor,missiles[index].Sprite, missiles[index].Texture);
+        model.ChangeMissileCursorColor(missiles[index].color,missiles[index].sprite, missiles[index].texture);
         haveMissile = true;
     }
     //Cuando el mouse este sobre el nexo
@@ -67,14 +67,14 @@ public class Nexus : MonoBehaviour
                 collider1.radius = 1f;
             }
             if(Input.GetMouseButtonUp(0)){      //Marco el punto donde se solto para calcular el disparo
-                float energyConsumption = missiles[index].EnergyConsumption;    //Guardo cuanta energia me cuesta lanzar el misil
+                float energyConsumption = missiles[index].energyConsumption;    //Guardo cuanta energia me cuesta lanzar el misil
                 if(UseEnergy(energyConsumption)){   //Pregunto si tengo esa energia 
                 //Si la tengo, marco el punto donde se solto y pruebo lanzar el misil, luego activo su collider
                     endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
                     endPoint.z = 0;
                     //Fuerza = distancia entre el punto de inicio y el punto final, clampeado a los valores minimos y maximos de distancia
                     force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
-                    missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * ((missiles[index].Velocity / 3) + baseSpeed), ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
+                    missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * ((missiles[index].velocity / 3) + baseSpeed), ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
                     //Debug.Log((force * (missiles[index].velocity / 3)).magnitude);
                     missilePrefab.GetComponent<MissileBehaviour>().TryToShoot(startPoint,endPoint, baseStability);
                     missilePrefab.GetComponent<Collider2D>().enabled = true;
@@ -123,7 +123,7 @@ public class Nexus : MonoBehaviour
             missilePrefab.SetActive(false);
             missilePrefab = missiles[index].CreateMissile(transform);
             missilePrefab.GetComponent<Collider2D>().enabled = false;
-            model.ChangeMissileCursorColor(missiles[index].CursorColor,missiles[index].Sprite, missiles[index].Texture);
+            model.ChangeMissileCursorColor(missiles[index].color,missiles[index].sprite, missiles[index].texture);
         }
     }
     public void SetPowerIndex(int newIndex){

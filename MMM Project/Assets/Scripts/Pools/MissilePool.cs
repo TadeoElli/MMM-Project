@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MissilePool : MonoBehaviour
 {
+    /// <summary>
+    /// Esta es una pool de misiles, guarda en un diccionario, el tipo de misil y una lista para guardar varios tipos de ese tipo de misil
+    /// </summary>
     [SerializeField] private List<MissileBehaviour> missilePrefab;        //Lista de misiles
     [SerializeField] private int poolSize = 5;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> missileDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada

@@ -9,21 +9,21 @@ public class BasicExplosionStrategy : ExplosionStrategy
 {
     [SerializeField] private float implosionForce, explosionForce;
     public override void DealDamage(Transform origin){  //Por cada collider dentro del radio, si es un enemigo o el nexo le hace daño
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, Radius);
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
 
         foreach (Collider2D collisions in objetos){
 
             if(collisions.CompareTag("Nexus")){
-                collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(ExplosionType);
+                collisions.GetComponent<NexusCollisions>().TakeDamageForMissile(explosionType);
             }
             if(collisions.CompareTag("Enemy")){
 
-                collisions.GetComponent<EnemyBehaviour>().TakeDamageForExplosion(ExplosionType);
+                collisions.GetComponent<EnemyBehaviour>().TakeDamageForExplosion(explosionType);
             }
         }
     }
     public override void ExplosionBehaviour(Transform origin){   //Por cada collider dentro del radio, si es enemigo lo empuja
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, Radius);
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
 
         foreach (Collider2D collisions in objetos){
             if(collisions.CompareTag("Enemy")){
@@ -39,7 +39,7 @@ public class BasicExplosionStrategy : ExplosionStrategy
     }
 
     public override void ImplosionBehaviour(Transform origin){   //Por cada collider dentro del radio, si es enemigo lo atrae
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, Radius);
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
 
         foreach (Collider2D collisions in objetos){
             if(collisions.CompareTag("Enemy")){
