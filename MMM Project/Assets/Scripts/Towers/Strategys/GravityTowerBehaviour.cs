@@ -6,12 +6,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObject/Tower/Gravity", order = 0)]
 public class GravityTowerBehaviour : TowerStrategy
 {
+    /// <summary>
+    /// Esta torre tendra un collider que cuando un enemigo entre, lo atraera y cuando este muy cerca lo alejara, funcionando como un magnetismo
+    /// Que hara que todos los enemigos choquen entre si hasta que salgan del radio de efecto
+    /// </summary>
     [Header("Special Properties")]
-    [SerializeField] private float repulsionRadius;
-    [SerializeField] private float repulsionStrength;
-    [SerializeField] private float attractionStrength;
-    [SerializeField] private float radius;
+    [SerializeField] private float repulsionRadius; //El radio de repulsion
+    [SerializeField] private float repulsionStrength;   //La fuerza de repulsion
+    [SerializeField] private float attractionStrength;  //la fuerza de atraccion
+    [SerializeField] private float radius;  //El radio de atraccion
 
+    //Si un enemigo entra en el radio, toma su rigidbody y su posicion y calcula la distancia
     public override void SpecialBehaviour(GameObject prefab, GameObject other){
 
         if(other.CompareTag("Enemy")){
@@ -22,16 +27,16 @@ public class GravityTowerBehaviour : TowerStrategy
                 Vector2 direction = prefab.transform.position - other.transform.position;
                 float distance = direction.magnitude;
 
-                if (distance > 0)
+                if (distance > 0)   //Si es mayer a 0
                 {
-                    if(distance > repulsionRadius){
+                    if(distance > repulsionRadius){ //y mayer al radio de repulsion
                         // Fuerza de atracción proporcional a la distancia
                         float attractionForce = attractionStrength / distance;
 
                         // Aplicar fuerza de atracción
                         enemyRigidbody.AddForce(direction.normalized * attractionForce, ForceMode2D.Force);
                     }
-                    else{
+                    else{//si no
                         // Fuerza de repulsión proporcional a la distancia
                         float repulsionForce = repulsionStrength / distance;
 
@@ -50,7 +55,7 @@ public class GravityTowerBehaviour : TowerStrategy
         return false;
         
     }
-
+    //El comportamiento de cuando se destruye la torre, toma todos los componentes Enemigos dentro del radio y los envia en la direccion contraria
     public override void DestroyTower(GameObject prefab){
         Collider2D[] objetos = Physics2D.OverlapCircleAll(prefab.transform.position, radius);
 

@@ -4,6 +4,10 @@ using UnityEngine;
 using System;
 public class AnimEvents : MonoBehaviour
 {
+    /// <summary>
+    /// Esta clase es un diccionario de strings con acciones para que se llamen dentro de una animacion y se declaren que funcion debe tener esa action
+    /// en el codigo
+    /// </summary>
     Dictionary<string, Action> events = new Dictionary<string, Action>();
 
     public void ADD_EVENT(string eventname, Action callback)

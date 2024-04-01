@@ -6,13 +6,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObject/Tower/Acceleration", order = 2)]
 public class AccelerationTowerBehaviour : TowerStrategy
 {
+    /// <summary>
+    /// Este tipo de torre toma los misiles entrantes y los hace orbitar al rededor, aumentando su velocidad, y cuando lleguen al radio maximo los
+    /// expulsa violentamente
+    /// </summary>
     [Header("Special Properties")]
-    [SerializeField] private float attractionStrength;
+    [SerializeField] private float attractionStrength;  //la fuerza de atraccion
 
-    [SerializeField] private float repulsionStrength;
-    [SerializeField] private float repulsionRadius;
-    [SerializeField] private float radius;
-    [SerializeField] private float angularAcceleration;
+    [SerializeField] private float repulsionStrength;   //la fuersa de repulsion
+    [SerializeField] private float repulsionRadius; //el radio de repulsion
+    [SerializeField] private float radius;  //el radio de atraccion
+    [SerializeField] private float angularAcceleration; //la aceleracion angular
+
+    //El comportamiento de cuando tiene un misil dentro del collider
     public override void SpecialBehaviour(GameObject prefab, GameObject other){
         if(other.CompareTag("Missiles")){
             Rigidbody2D projectileRigidbody = other.GetComponent<Rigidbody2D>();
@@ -22,25 +28,25 @@ public class AccelerationTowerBehaviour : TowerStrategy
                 Vector2 direction = prefab.transform.position - other.transform.position;
                 float distance = direction.magnitude;
 
-                if (distance < radius)
+                if (distance < radius)  //Calcula la distancia y si esta dentro del radio
                 {
-                    if(distance > repulsionRadius && !missile.hasBeenAtracted){
+                    if(distance > repulsionRadius && !missile.hasBeenAtracted){ //Y es mayor al radio de repulsion y todavia no fue atraido
                         // Fuerza de atracción proporcional a la distancia
                         float attractionForce = attractionStrength / distance;
 
                         // Aplicar fuerza de atracción
                         projectileRigidbody.AddForce(direction.normalized * attractionForce, ForceMode2D.Force);
                     }
-                    else if(distance < repulsionRadius && !missile.hasBeenAtracted){
-                        projectileRigidbody.velocity = Vector2.zero;
+                    else if(distance < repulsionRadius && !missile.hasBeenAtracted){    //Si es menor al radio de repulsion y todavia no fue atraido
+                        projectileRigidbody.velocity = Vector2.zero;    //Lo coloco en el centro de la torre, establezco que ya fue atraido y le empiezo a agregar fuerza
                         other.transform.position = prefab.transform.position;
                         missile.hasBeenAtracted = true;
                         projectileRigidbody.AddForce(direction.normalized * repulsionStrength, ForceMode2D.Force);
                         // Determinar el sentido de rotación (horario o antihorario) según la posición local
                         missile.RotationDirection = (direction.y > 0) ? 1f : -1f;
                     }
-                    else{
-                        if(distance < radius - 0.1f){
+                    else{   //si ya fue atraido
+                        if(distance < radius - 0.1f){   //Y esta dentro del radio
                             // Aplicar fuerza de repulsion
                             other.transform.RotateAround(prefab.transform.position, Vector3.forward, (missile.RotationSpeed * missile.RotationDirection) * Time.deltaTime);
                             // Aumentar velocidad angular con el tiempo
@@ -52,16 +58,16 @@ public class AccelerationTowerBehaviour : TowerStrategy
                         }
                     }
                 }
-                else if(distance >= radius && missile.hasBeenAtracted){
-                    if(direction.x < 0){
-                        Debug.Log("adelante");
+                else if(distance >= radius && missile.hasBeenAtracted){ //Si esta fuera del radio y ya fue atraido
+                    if(direction.x < 0){    //si esta por detras de la torre le aplica una fuerza para atras
+                        //Debug.Log("adelante");
                         projectileRigidbody.AddForce(-direction.normalized * repulsionStrength * 10f, ForceMode2D.Force);
                     }
-                    else{
-                        Debug.Log("atras");
+                    else{   //Si no le aplica una fuerza para adelante
+                        //Debug.Log("atras");
                         projectileRigidbody.AddForce(direction.normalized * repulsionStrength * 10f, ForceMode2D.Force);
                     }
-                    missile.hasBeenAtracted = false;
+                    missile.hasBeenAtracted = false;    //Restablece el flag para que pueda ser atraido devuelta 
                     missile.RotationSpeed = missile.RotationSpeed / 2;
                 }
                 
@@ -77,6 +83,7 @@ public class AccelerationTowerBehaviour : TowerStrategy
         return false;
     }
 
+    //El comportamiento de cuando se destruye la torre, toma todos los componentes misiles dentro del radio y los envia en la direccion contraria
     public override void DestroyTower(GameObject prefab){
         Collider2D[] objetos = Physics2D.OverlapCircleAll(prefab.transform.position, radius);
 

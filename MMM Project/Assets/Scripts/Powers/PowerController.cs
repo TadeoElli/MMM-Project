@@ -7,22 +7,23 @@ using UnityEngine.InputSystem;
 public class PowerController : MonoBehaviour 
 {
     // Start is called before the first frame update
-    public Observer<float> currentEnergy = new Observer<float>(1000f);
-    public Observer<int> currentIndex = new Observer<int>(0);
-    public Observer<bool> currentState = new Observer<bool>(false);
+    public Observer<float> currentEnergy = new Observer<float>(1000f);  //La energia actual que se comparte con el nexusStats
+    public Observer<int> currentIndex = new Observer<int>(0);   //El indice del poder que esta activo
+    public Observer<bool> currentState = new Observer<bool>(false); //El estado en el que se encuentra el poder
     Camera cam;
-    [SerializeField] private bool hasPower = false;
-    private bool isDraggin = false;
-    [SerializeField] private PowerStrategy [] powers;
+    [SerializeField] private bool hasPower = false; //si tiene un poder activo el controllador
+    private bool isDraggin = false; //Si esta activo y presionado
+    [SerializeField] private PowerStrategy [] powers;   //La lista de poderes
     
-    [SerializeField] private List<float> cooldowns;
-    [SerializeField] private List<float> currentCd;
-    [SerializeField] private List<bool> isReady;
+    [SerializeField] private List<float> cooldowns; //la lista de cooldowns
+    [SerializeField] private List<float> currentCd; //la lista de temporizadores para ver si ya se puede volver a usar
+    [SerializeField] private List<bool> isReady;    //La lista de flags para saber si ya se pueden usar o no
     
     private void Awake() {
         cam = Camera.main;
     }
     void Start()
+    //Establezco segun la cantidad de poderes, los cooldowns y flags en las listas (Dejando el del indice 0 vacio)
     {
         for (int i = 0; i < powers.Length; i++)
         {
@@ -39,7 +40,7 @@ public class PowerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    //Por cada uno de los poderes pregunta si no esta listo, y si es asi aumenta el timer hasta que supere el cooldown para que se ponga listo
     void Update()
     {
         for (int i = 1; i < powers.Length; i++)
@@ -57,7 +58,7 @@ public class PowerController : MonoBehaviour
         }
         
     }
-
+    //Si tiene un poder activo y se esta presionando, llama al comportamiento de presionado
     private void FixedUpdate() {
         if(hasPower && isDraggin){
             if(!powers[currentIndex.Value].BehaviourPerformed()){
@@ -71,14 +72,16 @@ public class PowerController : MonoBehaviour
 
         }
     }
-
+    //Se setea los cooldowns restandoles el valor base
     public void SetCooldowns(float baseCooldown){
         for (int i = 1; i < powers.Length; i++)
         {
             cooldowns[i] = (powers[i].cooldown - baseCooldown);
         }
     }
-
+    
+    //Se setea el indice segun si se presiona alguna de las teclas o no, si el indice es mayor a 0 y ese poder esta activo, se activa el cursor
+    //Si no se vuelve el indice a 0
     public void SetPowerIndex(int newIndex){
         if(!isReady[newIndex]){
             currentIndex.Value = 0;
@@ -92,11 +95,14 @@ public class PowerController : MonoBehaviour
     }
 
 
-
+    //Se modifica la energia para notificar a los suscriptores
     public void SetEnergyValue(float amount){
         currentEnergy.Value = amount;
     }
-
+    //Si se tiene un poder activo y se cumple con el requisito de energia, se llama al comportamiento de inicio del poder correspondiente
+    //Si este tiene un comportamiento para cuando se mantiene presionado entonces devuelve true y se establece que se esta activando constantemente
+    //Si no entonces luego del comportamiento de inicio se llama a DesactivatePower
+    //Si se solto el click, se llama al comportamiento FinishPower
     public void ActivatePower(InputAction.CallbackContext callbackContext){
         if(hasPower && currentEnergy.Value >= powers[currentIndex.Value].energyConsumption){
             if(callbackContext.started){
@@ -113,6 +119,9 @@ public class PowerController : MonoBehaviour
             }
         }
     }
+
+    //Se habilita el ingreso de nuevos inputs, se llama al comportamiento de cuando se suelta el click y se resetea los valores de cooldown del poder
+    //Se resetea el indice, se resta la energia correspondiente
     private void FinishPower(){
         InputController inputController = FindObjectOfType<InputController>();
         inputController.isAvailable = true;
@@ -128,6 +137,7 @@ public class PowerController : MonoBehaviour
         CursorController.Instance.RestoreCursor();
     }
 
+    //Se habilita el ingreso de nuevos inputs, se establece que no hay un poder activo y se resetea el indice y el cursor
     public void DesactivatePower(){
         if(hasPower){
             InputController inputController = FindObjectOfType<InputController>();

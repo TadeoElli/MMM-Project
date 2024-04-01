@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
+    /// <summary>
+    /// Esta clase se encarga de administrar todas las torres, spawnearlas y administrar sus cooldowns
+    /// </summary>
     // Start is called before the first frame update
-    public Observer<int> currentIndex = new Observer<int>(0);
+    public Observer<int> currentIndex = new Observer<int>(0);   //el indice de que torreta esta activa
     Camera cam;
-    [SerializeField] private bool hasTower = false;
-    [SerializeField] private float distanceFromNexus;
-    private GameObject nexus;
+    [SerializeField] private bool hasTower = false;     //Si tiene una torre activa en el momento
+    [SerializeField] private float distanceFromNexus;   //La distancia del nexo en donde se puede empezar a colocar torres
+    private GameObject nexus;   //El nexo para calcular la distancia
 
-    [SerializeField] private TowerStrategy [] towers;
+    [SerializeField] private TowerStrategy [] towers;   //Todos los strategys de las torres
     
-    [SerializeField] private List<float> cooldowns;
-    [SerializeField] private List<float> currentCd;
-    [SerializeField] private List<bool> isReady;
+    [SerializeField] private List<float> cooldowns; //La lista de cooldowns
+    [SerializeField] private List<float> currentCd; //la lista de sus temporizadores
+    [SerializeField] private List<bool> isReady;    //La lista de flags de si ya estan disponibles
 
     private void Awake() {
         cam = Camera.main;
         nexus = FindObjectOfType<Nexus>().gameObject;
     }
-    void Start()
+    void Start()    //Creo Las listas de cooldowns, flags y temporizadores, dejando la 0 vacia como default
     {
         for (int i = 0; i < towers.Length; i++)
         {
@@ -38,8 +41,8 @@ public class TowerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    void Update()   //Si uno de las torres de la lista no esta listo, aumento su temporizador hasta que supere su cooldown y ahi lo activo
     {
         for (int i = 1; i < towers.Length; i++)
         {
@@ -56,7 +59,7 @@ public class TowerController : MonoBehaviour
         }
     }
 
-    public void SetTowerIndex(int newIndex){
+    public void SetTowerIndex(int newIndex){    //Cambia el indice de las torres, si el nuevo indice la torre todavia no esta lista, vuelve a 0
         if(!isReady[newIndex]){
             currentIndex.Value = 0;
             hasTower = false;
@@ -68,7 +71,8 @@ public class TowerController : MonoBehaviour
         }
     }
 
-    public void ActivateTower(){
+    //Si tiene una torre activa, chequea si la distancia hacia el nexo es lo suficiente para crearla
+    public void ActivateTower(){ 
         if(hasTower){
             if(CheckDistanceFromNexus()){
                 CreateTower();
@@ -76,6 +80,7 @@ public class TowerController : MonoBehaviour
             }
         }
     }
+    //Si hay una torre activa, la desactiva y vuelve el indice a 0
     public void DesactivateTower(){
         if(hasTower){
             hasTower = false;
@@ -83,7 +88,7 @@ public class TowerController : MonoBehaviour
             CursorController.Instance.RestoreCursor();
         }
     }
-
+    //Chequea la distancia del mouse al nexo y si es menor a la distancia minima devuelve un false, si no un true
     private bool CheckDistanceFromNexus(){
         Vector2 currentPosition = cam.ScreenToWorldPoint(Input.mousePosition);
         if(Vector2.Distance(currentPosition, nexus.transform.position) > distanceFromNexus){
@@ -93,6 +98,7 @@ public class TowerController : MonoBehaviour
             return false;
         }
     }
+    //Llama a la funcion CreateTower de la torre, pone que la torre no esta lista y resetea su cooldown
     private void CreateTower(){
         towers[currentIndex.Value].CreateTower(cam.ScreenToWorldPoint(Input.mousePosition));
         hasTower = false;
