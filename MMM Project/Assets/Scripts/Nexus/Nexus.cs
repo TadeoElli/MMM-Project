@@ -48,7 +48,7 @@ public class Nexus : MonoBehaviour
         yield return new WaitForSeconds(2);
         missilePrefab = missiles[index].CreateMissile(transform);
         missilePrefab.GetComponent<Collider2D>().enabled = false;
-        model.ChangeMissileCursorColor(missiles[index].color,missiles[index].sprite, missiles[index].texture);
+        model.ChangeNexusModel(missiles[index].color,missiles[index].sprite, missiles[index].texture);
         haveMissile = true;
     }
     //Cuando el mouse este sobre el nexo
@@ -123,7 +123,7 @@ public class Nexus : MonoBehaviour
             missilePrefab.SetActive(false);
             missilePrefab = missiles[index].CreateMissile(transform);
             missilePrefab.GetComponent<Collider2D>().enabled = false;
-            model.ChangeMissileCursorColor(missiles[index].color,missiles[index].sprite, missiles[index].texture);
+            model.ChangeNexusModel(missiles[index].color,missiles[index].sprite, missiles[index].texture);
         }
     }
     public void SetPowerIndex(int newIndex){
@@ -138,7 +138,7 @@ public class Nexus : MonoBehaviour
 
     private void OnDisable() {//Desactiva a todos los suscriptores y los objetos
         currentEnergy.RemoveAllListener();
-        missilePrefab.SetActive(false);
+        if(missilePrefab != null){missilePrefab.SetActive(false);}
         mouseOverMissile.SetActive(false);
     }
 }

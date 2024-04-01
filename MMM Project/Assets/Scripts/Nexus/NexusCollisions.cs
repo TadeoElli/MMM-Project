@@ -8,7 +8,7 @@ public class NexusCollisions : MonoBehaviour
 {
     public Observer<float> currentStructure = new Observer<float>(3000);
     [SerializeField] private float damage;
-
+    [SerializeField] private GameObject loseMenu;   //El menu de derrota
 
 
 
@@ -26,6 +26,7 @@ public class NexusCollisions : MonoBehaviour
     }
 
     private void DestroyNexus() {
+        loseMenu.SetActive(true);
         this.gameObject.SetActive(false);
     }
 

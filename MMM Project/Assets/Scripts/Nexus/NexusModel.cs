@@ -17,7 +17,7 @@ public class NexusModel : MonoBehaviour
     {
         
     }
-    public void ChangeMissileCursorColor(Color color, Sprite sprite, Texture texture){    //Cambio el color del cursor de los misiles 
+    public void ChangeNexusModel(Color color, Sprite sprite, Texture texture){    //Cambio el color del cursor de los misiles 
         missileCursorExt.color = color;
         missileCursorInt.color = color;
         spriteRenderer.sprite = sprite; //Cambio el sprite por el color adecuado

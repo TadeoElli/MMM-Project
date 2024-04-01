@@ -24,6 +24,7 @@ public class NexusStats : MonoBehaviour
     [SerializeField] private int baseEnergy;    //La cantidad de energia base
     [SerializeField] private int missilesUnlocked;  //Que misiles estan desbloqueados
     [SerializeField] private int maxLives;  //La cantidad de vida maxima
+    [SerializeField] GameObject loseMenu;   //El menu de derrota
     private int energyRegen = 40;   //La regeneracion de energia
     private int structureRegen = 20;    //La regeneracion de vida
 
@@ -34,6 +35,8 @@ public class NexusStats : MonoBehaviour
 
 //Estableze los valores iniciales y notifica a todos los suscriptores
     private void Start() {
+        currentLives.Value = maxLives;
+        currentLives.Invoke();
         maxEnergy = maxEnergy + (baseEnergy * 35);
         currentEnergy.Value = maxEnergy;
         currentEnergy.Invoke();
@@ -51,7 +54,7 @@ public class NexusStats : MonoBehaviour
             currentStructure.Value = Mathf.Clamp(currentStructure.Value,-500f,maxStructure);
             currentEnergy.Value = currentEnergy.Value + energyRegen * Time.deltaTime;
             currentEnergy.Value = Mathf.Clamp(currentEnergy.Value,0,maxEnergy);
-            if(currentStructure.Value <= 0 ){
+            if(currentStructure.Value <= 0  || currentLives.Value <= 0){
                 currentEnergy.RemoveAllListener();
                 currentStructure.RemoveAllListener();
                 currentBaseCooldown.RemoveAllListener();
@@ -59,6 +62,7 @@ public class NexusStats : MonoBehaviour
                 currentBaseStability.RemoveAllListener();
                 currentBaseSpeed.RemoveAllListener();
                 isDestroyed = true;
+                loseMenu.SetActive(true);
             }
         }
     }
@@ -70,6 +74,11 @@ public class NexusStats : MonoBehaviour
        // Debug.Log(currentStructure.Value);
         currentStructure.Value = amount;
     }
+    public void ReduceLives(){
+       // Debug.Log(currentStructure.Value);
+        currentLives.Value--;
+    }
+
 
     #region PowersUp
     public void EnergyPowerUp(int cooldown){    //guarda la antigua regeneracion de energia y la actual pasa a ser mayor

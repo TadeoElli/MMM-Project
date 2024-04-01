@@ -22,3 +22,5 @@ MonoBehaviour:
   prefab: {fileID: 2769597986703773441, guid: 7f41f57c63a3cd44d8705ac761ca2524, type: 3}
   explosion: {fileID: 6067364125120637783, guid: 45c1e4569e879074bbc0c090f1e00cb0, type: 3}
   color: {r: 0.75, g: 0.2625, b: 0, a: 1}
+  sprite: {fileID: 21300000, guid: 3840fcb9b45e73c4084f535f072ea25d, type: 3}
+  texture: {fileID: 2800000, guid: a84bbbc3d67e2b24583ada08ab25f07a, type: 3}

@@ -14,8 +14,8 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
         [SerializeField]public float dropProbability;
     }
     public float maxLife;       //Vida del enemigo
-    private float collisionForce;        //Fuerza con la que empuja a las otras unidades al chocar
-    [SerializeField] public float velocity;      //Velocidad de movimiento   
+    public float collisionForce;        //Fuerza con la que empuja a las otras unidades al chocar
+    public float velocity;      //Velocidad de movimiento   
     public Explosion explosion;     //La explosion que va a spawnear al morir
 
     [Header("Will spawn the first prefab on the list")]
