@@ -12,15 +12,19 @@ public class EnemyView : MonoBehaviour
 
     public void SetHpImage(bool direction){
         if(direction){
-            hpRight.gameObject.SetActive(false);
             currentBar = hpLeft;
         }else
         {
-            hpLeft.gameObject.SetActive(false);
             currentBar = hpRight;
         }
     }
     public void TakeDamageView(float currentHp, float maxHp){
         currentBar.fillAmount = currentHp / maxHp;
+    }
+    private void OnMouseEnter() {
+        currentBar.gameObject.SetActive(true);
+    }
+    private void OnMouseExit() {
+        currentBar.gameObject.SetActive(false);
     }
 }
