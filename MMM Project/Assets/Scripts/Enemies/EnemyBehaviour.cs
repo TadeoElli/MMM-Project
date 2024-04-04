@@ -17,21 +17,24 @@ public class EnemyBehaviour : MonoBehaviour
     public bool absorb = false;       //Si el enemigo tiene la capacidad de absorber misiles
     [SerializeField] private GameObject specialParticle;        //La particula que va a tener el enemigo si tiene un comportamiento especial
     private float timer;
-
+    private EnemyView view;
     private void Awake() {
         col = GetComponent<Collider2D>();
         rb2D = GetComponent<Rigidbody2D>();
+        view = GetComponent<EnemyView>();
     }
     private void OnEnable() {
         life = enemy.maxLife;
         speed = enemy.velocity;
         col.enabled = false;
+        //view.SetHpImage(normalDir);
         StartCoroutine(DelayForActivateCollider());
     }
 
     IEnumerator DelayForActivateCollider(){     //Desactiva la colisision al spawnear y la activa desp de unos segundo para evitar choques al spawnear
         yield return new WaitForSeconds(2);
         col.enabled = true;
+        view.SetHpImage(normalDir);
     }
     void Update() {
         direction = normalDir ? 90:270;     //Establezco segun normalDir que direccion va a tener el enemigo
@@ -71,6 +74,7 @@ public class EnemyBehaviour : MonoBehaviour
         //Debug.Log(gameObject + " recibio "+ damage+ " de dano" );
         life -= damage;
         life = Mathf.Clamp(life, -100f, enemy.maxLife);
+        view.TakeDamageView(life,enemy.maxLife);
         if(absorb && specialParticle != null) {specialParticle.SetActive(true);}
         if(life<= 0){
             Death(); 

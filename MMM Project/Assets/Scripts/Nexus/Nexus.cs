@@ -139,6 +139,6 @@ public class Nexus : MonoBehaviour
     private void OnDisable() {//Desactiva a todos los suscriptores y los objetos
         currentEnergy.RemoveAllListener();
         if(missilePrefab != null){missilePrefab.SetActive(false);}
-        mouseOverMissile.SetActive(false);
+        if(mouseOverMissile != null){mouseOverMissile.SetActive(false);}
     }
 }

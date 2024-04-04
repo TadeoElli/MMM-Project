@@ -94,6 +94,14 @@ MonoBehaviour:
     m_Localized: "Espa\xF1ol"
     m_Metadata:
       m_Items: []
+  - m_Id: 44383600070656
+    m_Localized: Volver a Intentar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54585246306304
+    m_Localized: Volver al Menu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
