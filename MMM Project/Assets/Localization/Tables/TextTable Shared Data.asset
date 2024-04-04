@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: TextTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: TextTable
+  m_TableCollectionNameGuidString: 95cd84879597a9944b6192f36acba8fb
+  m_Entries:
+  - m_Id: 7793553133568
+    m_Key: newGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14992769765376
+    m_Key: loadGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15633437118464
+    m_Key: settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15739322322944
+    m_Key: credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15847459868672
+    m_Key: exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15959166767104
+    m_Key: volumeOn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17121995608064
+    m_Key: volumeOff
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18737138192384
+    m_Key: scenario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18793325088768
+    m_Key: survival
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18928700444672
+    m_Key: survivalExtreme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19012762685440
+    m_Key: survivalUnlimited
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19153305423872
+    m_Key: countdown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19220988907520
+    m_Key: armageddon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21059285241856
+    m_Key: crossfire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22079763599360
+    m_Key: cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26976827428864
+    m_Key: music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27017487011840
+    m_Key: effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27058243063808
+    m_Key: laguage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27234391248896
+    m_Key: languageDir
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 794851351159635968
+  references:
+    version: 2
+    RefIds:
+    - rid: 794851351159635968
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1712231495745

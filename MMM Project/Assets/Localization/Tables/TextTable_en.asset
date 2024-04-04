@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: TextTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 95cd84879597a9944b6192f36acba8fb, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7793553133568
+    m_Localized: New Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14992769765376
+    m_Localized: Load Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15633437118464
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15739322322944
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15847459868672
+    m_Localized: Exit Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15959166767104
+    m_Localized: Volume On
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17121995608064
+    m_Localized: Volume Off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18737138192384
+    m_Localized: Scenario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18793325088768
+    m_Localized: Survival
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18928700444672
+    m_Localized: Survival Extreme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19012762685440
+    m_Localized: Survival Unlimited
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19153305423872
+    m_Localized: Countdown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19220988907520
+    m_Localized: Armageddon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21059285241856
+    m_Localized: Crossfire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22079763599360
+    m_Localized: '[ Cancel ]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26976827428864
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27017487011840
+    m_Localized: Effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27058243063808
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27234391248896
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
