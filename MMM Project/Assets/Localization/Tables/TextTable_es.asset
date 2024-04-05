@@ -124,7 +124,7 @@ MonoBehaviour:
       m_Items:
       - rid: 794851374009679875
   - m_Id: 375976801816576
-    m_Localized: 'Timepo: {0}'
+    m_Localized: 'Tiempo: {0}'
     m_Metadata:
       m_Items:
       - rid: 794851374009679875
@@ -135,10 +135,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 794851374009679875
+  - m_Id: 487979096690688
+    m_Localized: 'Fps: {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679875
   references:
     version: 2
     RefIds:
     - rid: 794851374009679875
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf255010000503759cb8c0100
+        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf255010000503759cb8c01000050b77cd0bb0100
