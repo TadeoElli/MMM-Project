@@ -17,6 +17,7 @@ public class EnemyView : MonoBehaviour
         {
             currentBar = hpRight;
         }
+        currentBar.fillAmount = 1;
     }
     public void TakeDamageView(float currentHp, float maxHp){
         currentBar.fillAmount = currentHp / maxHp;

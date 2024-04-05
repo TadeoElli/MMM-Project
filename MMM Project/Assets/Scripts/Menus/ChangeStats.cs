@@ -27,8 +27,8 @@ public class ChangeStats : MonoBehaviour
     private void UpdateText(string value){
         textComp.text = value;
     }
-    public void IncreaseAmount(){
-        amount ++;
+    public void IncreaseAmount(int value){
+        amount += value;
         localStringStat.Arguments[0] = amount;
         localStringStat.RefreshString();
     }

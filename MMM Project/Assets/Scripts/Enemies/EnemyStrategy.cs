@@ -17,6 +17,8 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
     public float collisionForce;        //Fuerza con la que empuja a las otras unidades al chocar
     public float velocity;      //Velocidad de movimiento   
     public Explosion explosion;     //La explosion que va a spawnear al morir
+    public int score;   //El puntaje que otroga al morir
+    public int experience;  //la cantidad de experiencia que otorga al morir
 
     [Header("Will spawn the first prefab on the list")]
     [SerializeField] private List<PowerUpData> availablePowerUps;        //Lista de todos los power up que puede dropear

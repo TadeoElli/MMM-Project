@@ -60,6 +60,7 @@ public class NexusStats : MonoBehaviour
             currentEnergy.Value = currentEnergy.Value + energyRegen * Time.deltaTime;
             currentEnergy.Value = Mathf.Clamp(currentEnergy.Value,0,maxEnergy);
             if(currentStructure.Value <= 0  || currentLives.Value <= 0){
+                currentStructure.Value = -1;
                 currentEnergy.RemoveAllListener();
                 currentStructure.RemoveAllListener();
                 currentBaseCooldown.RemoveAllListener();

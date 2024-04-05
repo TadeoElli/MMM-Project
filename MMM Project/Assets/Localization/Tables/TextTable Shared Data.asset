@@ -119,6 +119,10 @@ MonoBehaviour:
     m_Key: time
     m_Metadata:
       m_Items: []
+  - m_Id: 436279979757568
+    m_Key: score
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

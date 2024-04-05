@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Enemy 13
   m_EditorClassIdentifier: 
   maxLife: 1500
-  rotationSpeed: 1
   collisionForce: 100
   velocity: 0.25
   explosion: {fileID: 7683184825282260076, guid: 62bfd112791e2d64bb9541318f3845a2, type: 3}
+  score: 750
+  experience: 0
   availablePowerUps:
   - prefab: {fileID: 7253465322589342431, guid: 528e0bb786d7ddc4e968f7b379c0a9e7, type: 3}
     dropProbability: 30
