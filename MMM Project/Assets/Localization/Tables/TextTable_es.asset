@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: es
   m_SharedData: {fileID: 11400000, guid: 95cd84879597a9944b6192f36acba8fb, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 794851374009679875
   m_TableData:
   - m_Id: 7793553133568
     m_Localized: Nueva Partida
@@ -102,6 +103,35 @@ MonoBehaviour:
     m_Localized: Volver al Menu
     m_Metadata:
       m_Items: []
+  - m_Id: 375708873871360
+    m_Localized: 'Nivel de Tecnologia: {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679875
+  - m_Id: 375827006443520
+    m_Localized: 'Muertes: {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679875
+  - m_Id: 375891175100416
+    m_Localized: 'Vidas: {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679875
+  - m_Id: 375931805323264
+    m_Localized: 'Oleada: {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679875
+  - m_Id: 375976801816576
+    m_Localized: 'Timepo: {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679875
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 794851374009679875
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf2550100

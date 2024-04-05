@@ -14,6 +14,7 @@ public class NexusStats : MonoBehaviour
     public Observer<int> currentLives = new Observer<int>(35);  //La cantidad de vidas
     public Observer<int> currentBaseStability = new Observer<int>(0);   //La estabilidad base
     public Observer<int> currentBaseSpeed = new Observer<int>(0);   //La velocidad base
+    public Observer<int> currentLevel = new Observer<int>(1);   //La velocidad base
     #endregion
     #region Properties
     //public float currentEnergy;
@@ -24,6 +25,7 @@ public class NexusStats : MonoBehaviour
     [SerializeField] private int baseEnergy;    //La cantidad de energia base
     [SerializeField] private int missilesUnlocked;  //Que misiles estan desbloqueados
     [SerializeField] private int maxLives;  //La cantidad de vida maxima
+    [SerializeField] private int startTechLevel;  //el nivel de tecnologia con el que se empieza
     [SerializeField] GameObject loseMenu;   //El menu de derrota
     private int energyRegen = 40;   //La regeneracion de energia
     private int structureRegen = 20;    //La regeneracion de vida
@@ -36,17 +38,20 @@ public class NexusStats : MonoBehaviour
 //Estableze los valores iniciales y notifica a todos los suscriptores
     private void Start() {
         currentLives.Value = maxLives;
-        currentLives.Invoke();
         maxEnergy = maxEnergy + (baseEnergy * 35);
         currentEnergy.Value = maxEnergy;
+        currentBaseStability.Value = baseStability;
+        currentBaseSpeed.Value = baseSpeed;
+        currentLevel.Value = startTechLevel;
+        currentLives.Invoke();
         currentEnergy.Invoke();
         currentStructure.Invoke();
-        currentBaseStability.Value = baseStability;
         currentBaseStability.Invoke();
-        currentBaseSpeed.Value = baseSpeed;
         currentBaseSpeed.Invoke();
         currentBaseCooldown.Invoke();
+        currentLevel.Invoke();
     }
+
     //Si todavia no se destruyo, regenera constantemente la vida y energia y si la vida baja de 0, remueve a todos los suscrptores
     private void Update() {
         if(!isDestroyed){

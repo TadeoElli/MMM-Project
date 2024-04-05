@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class EnemyBehaviour : MonoBehaviour
     [HideInInspector] public bool normalDir = false;        //si se va a mover en la direccion normal (hacia la izquierda) o no, se setea desde el spawner
     public bool absorb = false;       //Si el enemigo tiene la capacidad de absorber misiles
     [SerializeField] private GameObject specialParticle;        //La particula que va a tener el enemigo si tiene un comportamiento especial
+    public delegate void OnEnemyDeath();
+    public OnEnemyDeath _OnEnemyDeath;
     private float timer;
     private EnemyView view;
     private void Awake() {
@@ -89,6 +92,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void Death(){       //Comportamiento de muerte
         GameObject explosion = enemy.DeathBehaviour();      //Llama al comportamiento que tiene que hacer al morir y devuelve una explosion
         explosion.transform.position = transform.position;      //la setea en la posicion del enemigo
+        _OnEnemyDeath?.Invoke();
         enemy.DropPowerUp(transform);       //llama a la funcion que se encarga de generar drops
         this.gameObject.SetActive(false);       //Desactiva este objeto
         

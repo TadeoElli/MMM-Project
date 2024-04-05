@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using System;
 
 public class EnemyPool : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class EnemyPool : MonoBehaviour
     [SerializeField] private List<EnemyBehaviour> enemyPrefab;        //Lista de tipos de enemigos
     [SerializeField] private int poolSize = 1;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> enemyDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un enemigo y devolver la cantidad generada
+    [SerializeField] private ChangeStats killCount;
+    //public event OnEnemyDeath _OnEnemyDeath;
+
     private static EnemyPool instance;
     public static EnemyPool Instance { get {return instance; } }
 
@@ -36,21 +41,22 @@ public class EnemyPool : MonoBehaviour
         }
     }
 
-    public void AddEnemyToPool(int amount, EnemyBehaviour prefab){       //Le mando cuantos genero y cual misil
+    public void AddEnemyToPool(int amount, EnemyBehaviour enemy){       //Le mando cuantos genero y cual misil
 
-        List<GameObject> prefabList = enemyDictionary[prefab.gameObject];    //Guardo la lista de cantidad de enemigos en otra lista
+        List<GameObject> prefabList = enemyDictionary[enemy.gameObject];    //Guardo la lista de cantidad de enemigos en otra lista
         for (int i = 0; i < amount; i++)
         {
-            GameObject enemy = Instantiate(prefab.gameObject);
-            enemy.SetActive(false);
-            prefabList.Add(enemy);
-            enemy.transform.parent = transform;
+            GameObject prefab = Instantiate(enemy.gameObject);
+            prefab.GetComponent<EnemyBehaviour>()._OnEnemyDeath = killCount.IncreaseAmount;
+            prefab.SetActive(false);
+            prefabList.Add(prefab);
+            prefab.transform.parent = transform;
         }
     }
 
-    public GameObject RequestEnemy(EnemyBehaviour prefab){        //Le mando cual necesito
+    public GameObject RequestEnemy(EnemyBehaviour enemy){        //Le mando cual necesito
 
-        List<GameObject> prefabList = enemyDictionary[prefab.gameObject];
+        List<GameObject> prefabList = enemyDictionary[enemy.gameObject];
         for (int i = 0; i < prefabList.Count; i++)
         {
             if(!prefabList[i].activeSelf){
@@ -58,7 +64,7 @@ public class EnemyPool : MonoBehaviour
                 return prefabList[i];
             }
         }
-        AddEnemyToPool(1,prefab);
+        AddEnemyToPool(1,enemy);
         prefabList[prefabList.Count - 1].SetActive(true);
         return prefabList[prefabList.Count - 1];
     }

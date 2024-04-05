@@ -99,6 +99,26 @@ MonoBehaviour:
     m_Key: backToMenu
     m_Metadata:
       m_Items: []
+  - m_Id: 375708873871360
+    m_Key: techLevel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375827006443520
+    m_Key: kills
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375891175100416
+    m_Key: lives
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375931805323264
+    m_Key: wave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375976801816576
+    m_Key: time
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
