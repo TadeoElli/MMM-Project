@@ -7,15 +7,17 @@ using UnityEngine.UI;
 public class EnemyView : MonoBehaviour
 {
     private EnemyBehaviour enemy;
-    [SerializeField] private Image hpLeft,hpRight;
-    private Image currentBar;
+    [SerializeField] private Image hpLeft,hpRight, hpBarLeft, hpBarRight;
+    private Image currentBar, currentHpBar;
 
     public void SetHpImage(bool direction){
         if(direction){
             currentBar = hpLeft;
+            currentHpBar = hpBarLeft;
         }else
         {
             currentBar = hpRight;
+            currentHpBar = hpBarRight;
         }
         currentBar.fillAmount = 1;
     }
@@ -24,8 +26,10 @@ public class EnemyView : MonoBehaviour
     }
     private void OnMouseEnter() {
         currentBar.gameObject.SetActive(true);
+        currentHpBar.gameObject.SetActive(true);
     }
     private void OnMouseExit() {
         currentBar.gameObject.SetActive(false);
+        currentHpBar.gameObject.SetActive(false);
     }
 }
