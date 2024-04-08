@@ -148,6 +148,14 @@ MonoBehaviour:
     m_Localized: 'Estructura:'
     m_Metadata:
       m_Items: []
+  - m_Id: 1573694731669504
+    m_Localized: 'Velocidad:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1573766072586240
+    m_Localized: 'Estabilidad:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

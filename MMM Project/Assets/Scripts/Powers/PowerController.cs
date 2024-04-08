@@ -18,7 +18,7 @@ public class PowerController : MonoBehaviour
     [SerializeField] private List<float> cooldowns; //la lista de cooldowns
     [SerializeField] private List<float> currentCd; //la lista de temporizadores para ver si ya se puede volver a usar
     [SerializeField] private List<bool> isReady;    //La lista de flags para saber si ya se pueden usar o no
-    
+    [SerializeField] private EnergyIndicator indicator;
     private void Awake() {
         cam = Camera.main;
     }
@@ -90,6 +90,8 @@ public class PowerController : MonoBehaviour
         else{
             currentIndex.Value = newIndex;
             hasPower = true;
+            indicator.gameObject.SetActive(true);
+            indicator.SetPosition(powers[newIndex].energyConsumption);
             CursorController.Instance.SetCursor(powers[newIndex].sprite, powers[newIndex].material, powers[newIndex].scale);
         }
     }
@@ -135,6 +137,7 @@ public class PowerController : MonoBehaviour
         }
         currentIndex.Value = 0;
         CursorController.Instance.RestoreCursor();
+        indicator.gameObject.SetActive(false);
     }
 
     //Se habilita el ingreso de nuevos inputs, se establece que no hay un poder activo y se resetea el indice y el cursor
@@ -145,6 +148,7 @@ public class PowerController : MonoBehaviour
             hasPower = false;
             currentIndex.Value = 0;
             CursorController.Instance.RestoreCursor();
+            indicator.gameObject.SetActive(false);
         }
     }
 

@@ -13,11 +13,33 @@ public class NexusHudStats : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textComp;
     [SerializeField] private Image image;
     private float currentAmount, maxAmount;
-
+    [SerializeField] private IndicatorType type;
+    private enum IndicatorType
+    {
+        barBetweenValues,
+        WithPercentage,
+        WithoutAny,
+        Any
+    }
 
     private void Update(){
-        textComp.text = Mathf.FloorToInt(currentAmount).ToString() + "/" + Mathf.FloorToInt(maxAmount).ToString();
-        image.fillAmount = currentAmount / maxAmount;
+        switch (type)
+        {
+            case IndicatorType.barBetweenValues:
+                textComp.text = Mathf.FloorToInt(currentAmount).ToString() + "/" + Mathf.FloorToInt(maxAmount).ToString();
+                break;
+            case IndicatorType.WithPercentage:
+                textComp.text = Mathf.FloorToInt(currentAmount).ToString() + "%";
+                break;
+            case IndicatorType.WithoutAny:
+                textComp.text = currentAmount.ToString();
+                break;
+            case IndicatorType.Any:
+                break;
+            default:
+                break;
+        }
+        if(image!=null){image.fillAmount = currentAmount / maxAmount;}
     }
 
 

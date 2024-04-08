@@ -135,6 +135,14 @@ MonoBehaviour:
     m_Key: structure
     m_Metadata:
       m_Items: []
+  - m_Id: 1573694731669504
+    m_Key: velocity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1573766072586240
+    m_Key: stability
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

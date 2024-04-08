@@ -9,6 +9,8 @@ public class Nexus : MonoBehaviour
     /// correspondiente al misil a las estadisticas generales
     /// </summary>
     public Observer<float> currentEnergy = new Observer<float>(1000f);      //la energia que tiene actualmente el nexo
+    public Observer<float> currentSpeed = new Observer<float>(0.0f);      //la velocidad con la que se va a lanzar el misil
+    public Observer<float> currentDistance = new Observer<float>(0.0f);      //la distancia del mouse con el nexo
     [Header("Misiles")]
     [SerializeField] private MissileStrategy [] missiles;   //La lista de misiles que puede spawnear el nexo
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
@@ -55,42 +57,30 @@ public class Nexus : MonoBehaviour
     //Cuando el mouse este sobre el nexo
     private void OnMouseOver() {
         if(haveMissile && powerIndex == 0 && towerIndex == 0){  //Si tiene un misil activo y ningun poder o torre activo
-            mouseOverMissile.SetActive(true);   //Activo el feedback del mouse
-            indicator.gameObject.SetActive(true);
-            indicator.SetPosition(missiles[index].energyConsumption);
+            ShowFeedback();
             if(Input.GetMouseButtonDown(0)){        //Marco el punto de origen
                 startPoint = transform.position;
                 startPoint.z = 0;
             }
             if(Input.GetMouseButton(0)){        //Muevo el misil y el cursor a donde esta el mouse y agrando el collider del nexo
-                Vector3 curreentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-                curreentPoint.z = 0;
-                missilePrefab.transform.position = curreentPoint;
-                mouseOverMissile.transform.position = curreentPoint;
-                collider1.radius = 1f;
+                Vector3 currentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+                currentPoint.z = 0;
+                MouseHoldBehaviour(currentPoint);
             }
             if(Input.GetMouseButtonUp(0)){      //Marco el punto donde se solto para calcular el disparo
-                float energyConsumption = missiles[index].energyConsumption;    //Guardo cuanta energia me cuesta lanzar el misil
-                if(UseEnergy(energyConsumption)){   //Pregunto si tengo esa energia 
+                if(UseEnergy(missiles[index].energyConsumption)){   //Pregunto si tengo esa energia 
                 //Si la tengo, marco el punto donde se solto y pruebo lanzar el misil, luego activo su collider
                     endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
                     endPoint.z = 0;
-                    //Fuerza = distancia entre el punto de inicio y el punto final, clampeado a los valores minimos y maximos de distancia
-                    force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
-                    missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * ((missiles[index].velocity / 3) + baseSpeed), ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
-                    //Debug.Log((force * (missiles[index].velocity / 3)).magnitude);
-                    missilePrefab.GetComponent<MissileBehaviour>().TryToShoot(startPoint,endPoint, baseStability);
-                    missilePrefab.GetComponent<Collider2D>().enabled = true;
+                    ShootMissile();
                     //Luego restablezco los valores del nexo y creo un nuevo misil desp del delay
-                    collider1.radius = 0.2f;
+                    NexusRestore();
                     haveMissile = false;
-                    mouseOverMissile.transform.position = transform.position;
-                    StartCoroutine(DelayForSpawn());
+                    StartCoroutine(DelayForSpawn());    //Llamo a la couroutina para que cree otro misil despues de determinado tiempo
                 }
                 else{   //Si no tengo la energia para lanzarlo reseteo su posicion
+                    NexusRestore();
                     missilePrefab.transform.position = startPoint;
-                    mouseOverMissile.transform.position = startPoint;
-                    collider1.radius = 0.2f;
                 }
             }
         }
@@ -137,12 +127,41 @@ public class Nexus : MonoBehaviour
         towerIndex = newIndex;
     }
 
+    private void ShowFeedback(){
+        mouseOverMissile.SetActive(true);   //Activo el feedback del mouse
+        indicator.gameObject.SetActive(true);
+        indicator.SetPosition(missiles[index].energyConsumption);
+    }
+    private void MouseHoldBehaviour(Vector3 currentPoint){///Muevo los objetos en donde esta el mouse
+        missilePrefab.transform.position = currentPoint;
+        mouseOverMissile.transform.position = currentPoint;
+        collider1.radius = 1f;          //Agrando el radio del nexo para que pueda alejar el cursor
+        //Calculo la velocidad a la que saldra el proyectil y notifico a los suscriptores
+        force = new Vector2(Mathf.Clamp(startPoint.x - currentPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - currentPoint.y, minPower.y, maxPower.y));
+        currentSpeed.Value = (force * ((missiles[index].velocity / 3) + baseSpeed)).magnitude;
+        currentDistance.Value = Vector2.Distance(currentPoint,startPoint);
+    }
 
-
+    private void ShootMissile(){
+        //Fuerza = distancia entre el punto de inicio y el punto final, clampeado a los valores minimos y maximos de distancia
+        force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
+        missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * ((missiles[index].velocity / 3) + baseSpeed), ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
+        missilePrefab.GetComponent<MissileBehaviour>().TryToShoot(startPoint,endPoint, baseStability);  //Pruebo a lanzar el misil
+        missilePrefab.GetComponent<Collider2D>().enabled = true;    //Y activo su collider
+    }
+    private void NexusRestore(){
+        collider1.radius = 0.2f;    //Vuelvo al collider chico
+        mouseOverMissile.transform.position = transform.position;   //El cursor del misil lo vuelvo a la posicion inicial
+        currentSpeed.Value = 0;     //Vuelvo el valor de la velocidad a 0
+        currentDistance.Value = 0;
+    }
 
     private void OnDisable() {//Desactiva a todos los suscriptores y los objetos
         currentEnergy.RemoveAllListener();
+        currentSpeed.RemoveAllListener();
+        currentDistance.RemoveAllListener();
         if(missilePrefab != null){missilePrefab.SetActive(false);}
         if(mouseOverMissile != null){mouseOverMissile.SetActive(false);}
+        if(indicator != null){indicator.gameObject.SetActive(false);}
     }
 }
