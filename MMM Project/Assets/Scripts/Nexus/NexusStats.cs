@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NexusStats : MonoBehaviour
 {
@@ -8,8 +9,10 @@ public class NexusStats : MonoBehaviour
     /// Esta clase se encarga de manejar las estadisticas del nexo, notificar a los suscriptores de su valor actual y modificarlas si se usa un power up
     /// </summary>
     #region Observers
+    public Observer<float> maxEnergy = new Observer<float>(1000f);  //La energia maximaActual
     public Observer<float> currentEnergy = new Observer<float>(1000f);  //La energia actual
     public Observer<float> currentStructure = new Observer<float>(3000f);   //La vida del nexo actual
+    public Observer<float> maxStructure = new Observer<float>(3000f);   //La cantidad de vida maxima
     public Observer<float> currentBaseCooldown = new Observer<float>(0f);   //la cantidad de tiempo que se reduce de las habilidades
     public Observer<int> currentLives = new Observer<int>(35);  //La cantidad de vidas
     public Observer<int> currentBaseStability = new Observer<int>(0);   //La estabilidad base
@@ -18,8 +21,6 @@ public class NexusStats : MonoBehaviour
     #endregion
     #region Properties
     //public float currentEnergy;
-    [SerializeField] private float maxEnergy;   //La energia maxima
-    [SerializeField] private float maxStructure;    //La cantidad de vida maxima
     [SerializeField] private int baseStability; //La estabilidad base
     [SerializeField] private int baseSpeed; //La velocidad base
     [SerializeField] private int baseEnergy;    //La cantidad de energia base
@@ -38,8 +39,8 @@ public class NexusStats : MonoBehaviour
 //Estableze los valores iniciales y notifica a todos los suscriptores
     private void Start() {
         currentLives.Value = maxLives;
-        maxEnergy = maxEnergy + (baseEnergy * 35);
-        currentEnergy.Value = maxEnergy;
+        maxEnergy.Value = maxEnergy.Value + (baseEnergy * 35);
+        currentEnergy.Value = maxEnergy.Value;
         currentBaseStability.Value = baseStability;
         currentBaseSpeed.Value = baseSpeed;
         currentLevel.Value = startTechLevel;
@@ -50,15 +51,17 @@ public class NexusStats : MonoBehaviour
         currentBaseSpeed.Invoke();
         currentBaseCooldown.Invoke();
         currentLevel.Invoke();
+        maxEnergy.Invoke();
+        maxStructure.Invoke();
     }
 
     //Si todavia no se destruyo, regenera constantemente la vida y energia y si la vida baja de 0, remueve a todos los suscrptores
     private void Update() {
         if(!isDestroyed){
             currentStructure.Value = currentStructure.Value + 20 * Time.deltaTime;
-            currentStructure.Value = Mathf.Clamp(currentStructure.Value,-500f,maxStructure);
+            currentStructure.Value = Mathf.Clamp(currentStructure.Value,-500f,maxStructure.Value);
             currentEnergy.Value = currentEnergy.Value + energyRegen * Time.deltaTime;
-            currentEnergy.Value = Mathf.Clamp(currentEnergy.Value,0,maxEnergy);
+            currentEnergy.Value = Mathf.Clamp(currentEnergy.Value,0,maxEnergy.Value);
             if(currentStructure.Value <= 0  || currentLives.Value <= 0){
                 currentStructure.Value = -1;
                 currentEnergy.RemoveAllListener();

@@ -140,6 +140,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 794851374009679874
+  - m_Id: 1523262646865920
+    m_Localized: 'Energy:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1534690715979776
+    m_Localized: 'Structure:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

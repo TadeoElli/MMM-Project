@@ -18,6 +18,7 @@ public class Nexus : MonoBehaviour
     [SerializeField] private CircleCollider2D collider1;
     private NexusPosition nexusPosition;   //Clase que se encarga de setear en donde va a estar el nexo
     private NexusModel model;   //Clase que se encarga del feedback visual del nexo
+    [SerializeField] private EnergyIndicator indicator;
 
 
     Camera cam;
@@ -55,6 +56,8 @@ public class Nexus : MonoBehaviour
     private void OnMouseOver() {
         if(haveMissile && powerIndex == 0 && towerIndex == 0){  //Si tiene un misil activo y ningun poder o torre activo
             mouseOverMissile.SetActive(true);   //Activo el feedback del mouse
+            indicator.gameObject.SetActive(true);
+            indicator.SetPosition(missiles[index].energyConsumption);
             if(Input.GetMouseButtonDown(0)){        //Marco el punto de origen
                 startPoint = transform.position;
                 startPoint.z = 0;
@@ -115,6 +118,7 @@ public class Nexus : MonoBehaviour
     
     private void OnMouseExit() {
         mouseOverMissile.SetActive(false);
+        indicator.gameObject.SetActive(false);
     }
 
     public void SetMissileIndex(int newIndex){  //Recive el indice del NexusStats y modifica el indice local

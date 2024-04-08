@@ -8,5 +8,6 @@ public enum ExplosionsTypes
     ShockwaveExplosion,
     ImplosionExplosion,
     AntimatterExplosion,
-    NuclearExplosion
+    NuclearExplosion,
+    BigNuclearExplosion
 }

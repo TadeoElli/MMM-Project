@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BigNuclearExplosion
   m_EditorClassIdentifier: 
   radius: 25
-  explosionType: 8
+  explosionType: 9
   implosionForce: 0
   explosionForce: 0

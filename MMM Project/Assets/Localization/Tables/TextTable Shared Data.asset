@@ -127,6 +127,14 @@ MonoBehaviour:
     m_Key: fps
     m_Metadata:
       m_Items: []
+  - m_Id: 1523262646865920
+    m_Key: energy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1534690715979776
+    m_Key: structure
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

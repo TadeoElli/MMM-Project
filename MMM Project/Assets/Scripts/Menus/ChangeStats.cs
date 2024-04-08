@@ -12,10 +12,7 @@ public class ChangeStats : MonoBehaviour
     [SerializeField] private LocalizedString localStringStat;
     [SerializeField] private TextMeshProUGUI textComp;
     private int amount;
-    private void Awake() {
-        localStringStat.Arguments = new object[] {amount};
-        localStringStat.StringChanged += UpdateText;
-    }
+
     private void OnEnable() {
         localStringStat.Arguments = new object[] {amount};
         localStringStat.StringChanged += UpdateText;
@@ -27,6 +24,8 @@ public class ChangeStats : MonoBehaviour
     private void UpdateText(string value){
         textComp.text = value;
     }
+
+    
     public void IncreaseAmount(int value){
         amount += value;
         localStringStat.Arguments[0] = amount;
