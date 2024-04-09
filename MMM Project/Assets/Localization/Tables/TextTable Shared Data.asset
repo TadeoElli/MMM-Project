@@ -143,6 +143,10 @@ MonoBehaviour:
     m_Key: stability
     m_Metadata:
       m_Items: []
+  - m_Id: 1867004624982016
+    m_Key: hotkeys
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
