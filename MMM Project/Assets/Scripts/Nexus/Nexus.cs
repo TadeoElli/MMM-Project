@@ -11,7 +11,7 @@ public class Nexus : MonoBehaviour
     public Observer<float> currentEnergy = new Observer<float>(1000f);      //la energia que tiene actualmente el nexo
     public Observer<float> currentSpeed = new Observer<float>(0.0f);      //la velocidad con la que se va a lanzar el misil
     public Observer<float> currentDistance = new Observer<float>(0.0f);      //la distancia del mouse con el nexo
-    public Observer<float> currentStability = new Observer<float>(100f);      //la distancia del mouse con el nexo
+    public Observer<float> currentStability = new Observer<float>(100f);      //la estabilidad actual con la que se podra lanzar un misil
     [Header("Misiles")]
     [SerializeField] private MissileStrategy [] missiles;   //La lista de misiles que puede spawnear el nexo
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
@@ -156,6 +156,7 @@ public class Nexus : MonoBehaviour
         mouseOverMissile.transform.position = transform.position;   //El cursor del misil lo vuelvo a la posicion inicial
         currentSpeed.Value = 0;     //Vuelvo el valor de la velocidad a 0
         currentDistance.Value = 0;
+        currentStability.Value = 0;
     }
 
     public float CalculateStability(Vector2 currentPoint){   
@@ -178,6 +179,7 @@ public class Nexus : MonoBehaviour
         currentEnergy.RemoveAllListener();
         currentSpeed.RemoveAllListener();
         currentDistance.RemoveAllListener();
+        currentStability.RemoveAllListener();
         if(missilePrefab != null){missilePrefab.SetActive(false);}
         if(mouseOverMissile != null){mouseOverMissile.SetActive(false);}
         if(indicator != null){indicator.gameObject.SetActive(false);}
