@@ -29,7 +29,7 @@ public class NexusHudStats : MonoBehaviour
                 textComp.text = Mathf.FloorToInt(currentAmount).ToString() + "/" + Mathf.FloorToInt(maxAmount).ToString();
                 break;
             case IndicatorType.WithPercentage:
-                textComp.text = Mathf.FloorToInt(currentAmount).ToString() + "%";
+                textComp.text = currentAmount.ToString() + "%";
                 break;
             case IndicatorType.WithoutAny:
                 textComp.text = currentAmount.ToString();

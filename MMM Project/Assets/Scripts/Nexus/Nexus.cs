@@ -11,6 +11,7 @@ public class Nexus : MonoBehaviour
     public Observer<float> currentEnergy = new Observer<float>(1000f);      //la energia que tiene actualmente el nexo
     public Observer<float> currentSpeed = new Observer<float>(0.0f);      //la velocidad con la que se va a lanzar el misil
     public Observer<float> currentDistance = new Observer<float>(0.0f);      //la distancia del mouse con el nexo
+    public Observer<float> currentStability = new Observer<float>(100f);      //la distancia del mouse con el nexo
     [Header("Misiles")]
     [SerializeField] private MissileStrategy [] missiles;   //La lista de misiles que puede spawnear el nexo
     [SerializeField] private GameObject mouseOverMissile, missilePrefab;
@@ -140,6 +141,7 @@ public class Nexus : MonoBehaviour
         force = new Vector2(Mathf.Clamp(startPoint.x - currentPoint.x , minPower.x, maxPower.x),Mathf.Clamp(startPoint.y - currentPoint.y, minPower.y, maxPower.y));
         currentSpeed.Value = (force * ((missiles[index].velocity / 3) + baseSpeed)).magnitude;
         currentDistance.Value = Vector2.Distance(currentPoint,startPoint);
+        currentStability.Value = CalculateStability(currentPoint);
     }
 
     private void ShootMissile(){
@@ -154,6 +156,22 @@ public class Nexus : MonoBehaviour
         mouseOverMissile.transform.position = transform.position;   //El cursor del misil lo vuelvo a la posicion inicial
         currentSpeed.Value = 0;     //Vuelvo el valor de la velocidad a 0
         currentDistance.Value = 0;
+    }
+
+    public float CalculateStability(Vector2 currentPoint){   
+        float distance = Vector2.Distance(startPoint, currentPoint);
+        float maxProbability;
+        if(distance <= 1){
+            maxProbability = missiles[index].maxStability;
+            maxProbability = maxProbability + (baseStability * 3.5f);
+        }
+        else{
+            distance  = distance - 1;
+            maxProbability = missiles[index].maxStability + (missiles[index].minStability - missiles[index].maxStability) * distance;
+            maxProbability = Mathf.Clamp(maxProbability, missiles[index].minStability, missiles[index].maxStability);
+            maxProbability = maxProbability + (baseStability * 3.5f);
+        }
+        return Mathf.Clamp(maxProbability, 0f, 100f);
     }
 
     private void OnDisable() {//Desactiva a todos los suscriptores y los objetos
