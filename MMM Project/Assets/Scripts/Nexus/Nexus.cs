@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Nexus : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Nexus : MonoBehaviour
     private NexusPosition nexusPosition;   //Clase que se encarga de setear en donde va a estar el nexo
     private NexusModel model;   //Clase que se encarga del feedback visual del nexo
     [SerializeField] private EnergyIndicator indicator;
+    public UnityEvent resetCooldownsHud;
 
 
     Camera cam;
@@ -118,8 +120,8 @@ public class Nexus : MonoBehaviour
             missilePrefab.SetActive(false);
             missilePrefab = missiles[index].CreateMissile(transform);
             missilePrefab.GetComponent<Collider2D>().enabled = false;
-            model.ChangeNexusModel(missiles[index].color,missiles[index].sprite, missiles[index].texture);
         }
+        model.ChangeNexusModel(missiles[index].color,missiles[index].sprite, missiles[index].texture);
     }
     public void SetPowerIndex(int newIndex){
         powerIndex = newIndex;
@@ -150,6 +152,7 @@ public class Nexus : MonoBehaviour
         missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * ((missiles[index].velocity / 3) + baseSpeed), ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
         missilePrefab.GetComponent<MissileBehaviour>().TryToShoot(startPoint,endPoint, baseStability);  //Pruebo a lanzar el misil
         missilePrefab.GetComponent<Collider2D>().enabled = true;    //Y activo su collider
+        resetCooldownsHud?.Invoke();
     }
     private void NexusRestore(){
         collider1.radius = 0.2f;    //Vuelvo al collider chico

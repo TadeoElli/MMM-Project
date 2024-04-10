@@ -184,7 +184,7 @@
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "SetMissile1",
                     "isComposite": false,
                     "isPartOfComposite": false
