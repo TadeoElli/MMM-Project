@@ -29,6 +29,10 @@ public class DivideMissileStrategy : MissileStrategy
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 missileBehaviour.TakeDamage(10);
                 missileBehaviour.TakeDamage(10);
+                for (int i = 0; i < cantOfSubmissiles; i++)
+                {
+                    CreateSubmissile(prefab.transform);
+                }
                 return damage;
             default:
                 damage = 0;
@@ -43,10 +47,9 @@ public class DivideMissileStrategy : MissileStrategy
     }
     //En vez de crear una explosion cuando se queda sin vida, llama a la funcion CreateSubmissile segun la cantidad de misiles a spawnear
     public override void ExplosionBehaviour(Transform origin){
-        for (int i = 0; i < cantOfSubmissiles; i++)
-        {
-            CreateSubmissile(origin);
-        }
+        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
+        newExplosion.transform.position = origin.position;
+        
     }
 
     //Crea un nuevo misil del tipo guardado y se crea una nueva direccion aleatoria, luego se lo manda en esa direccion

@@ -160,10 +160,71 @@ MonoBehaviour:
     m_Localized: Hotkeys
     m_Metadata:
       m_Items: []
+  - m_Id: 2212797961687040
+    m_Localized: "Energy Consumption: <color=white>250</color>\tDamage:  <color=white>1-800</color>\tVelocity: 
+      <color=white>15</color>\tStability:  <color=white>70-95%</color>\tElastic Collision: 
+      <color=white>Yes</color>\nSpecial:  <color=white>None</color>"
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679874
+  - m_Id: 2213820755300352
+    m_Localized: "Energy Consumption: <color=white>200</color>\tDamage:  <color=white>200-800</color>\t  
+      Velocity:  <color=white>20</color>       Stability:  <color=white>80-100%</color>   
+      Elastic Collision:  <color=white>No</color>\nSpecial:  <color=white>None</color>"
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679874
+  - m_Id: 2218442261745664
+    m_Localized: "Energy Consumption: <color=white>550</color>\tDamage:  <color=white>1-1000</color>\t  
+      Velocity:  <color=white>30</color>       Stability:  <color=white>50-80%</color>   
+      Elastic Collision:  <color=white>Yes</color>\nSpecial:  <color=white>Acceleration
+      after each collision with wall or unit</color>"
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679874
+  - m_Id: 2219815908888576
+    m_Localized: "Energy Consumption: <color=white>300</color>\tDamage:  <color=white>300-1000</color>\t  
+      Velocity:  <color=white>23</color>       Stability:  <color=white>40-70%</color>   
+      Elastic Collision:  <color=white>No</color>\nSpecial:  <color=white>Random
+      repulsion angle</color>"
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679874
+  - m_Id: 2220525148917760
+    m_Localized: "Energy Consumption: <color=white>500</color>\tDamage:  <color=white>1-700</color>\t  
+      Velocity:  <color=white>10</color>       Stability:  <color=white>15-50%</color>   
+      Elastic Collision:  <color=white>No</color>\nSpecial:  <color=white>Sticks
+      to units</color>"
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679874
+  - m_Id: 2221809704849408
+    m_Localized: "Energy Consumption: <color=white>700</color>\tDamage:  <color=white>3000-4000</color>\t  
+      Velocity:  <color=white>25</color>       Stability:  <color=white>15-35%</color>   
+      Elastic Collision:  <color=white>No</color>\nSpecial:  <color=white>Huge damage</color>"
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679874
+  - m_Id: 2222390594981888
+    m_Localized: "Energy Consumption: <color=white>700</color>\tDamage:  <color=white>0</color>\t  
+      Velocity:  <color=white>5</color>       Stability:  <color=white>1-30%</color>   
+      Elastic Collision:  <color=white>No</color>\nSpecial:  <color=white>Pull units
+      to it</color>"
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679874
+  - m_Id: 2224171211247616
+    m_Localized: "Energy Consumption: <color=white>700</color>\tDamage:  <color=white>1-500</color>\t  
+      Velocity:  <color=white>20</color>       Stability:  <color=white>1-40%</color>   
+      Elastic Collision:  <color=white>No</color>\nSpecial:  <color=white>Split into
+      proyectiles upon collision with units</color>"
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679874
   references:
     version: 2
     RefIds:
     - rid: 794851374009679874
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf255010000503759cb8c01000050b77cd0bb0100
+        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf255010000503759cb8c01000050b77cd0bb01000050b74f75dd07000050772c87dc07000050f756a9e107000050b72ae9e207000050b74c8ee3070000503762b9e407000050f7a140e507000050f736dfe60700

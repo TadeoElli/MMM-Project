@@ -147,6 +147,38 @@ MonoBehaviour:
     m_Key: hotkeys
     m_Metadata:
       m_Items: []
+  - m_Id: 2212797961687040
+    m_Key: missileDescription1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2213820755300352
+    m_Key: missileDescription2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2218442261745664
+    m_Key: missileDescription3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2219815908888576
+    m_Key: missileDescription4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2220525148917760
+    m_Key: missileDescription5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2221809704849408
+    m_Key: missileDescription6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2222390594981888
+    m_Key: missileDescription7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2224171211247616
+    m_Key: missileDescription8
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
