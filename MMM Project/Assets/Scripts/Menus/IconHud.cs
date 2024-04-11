@@ -18,10 +18,12 @@ public abstract class IconHud : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private void Update(){
         if(currentAmount < maxAmount){
             currentAmount = currentAmount + 1 * Time.deltaTime;
+            if(imageComp!= null){imageComp.sprite = cooldownImage;}
             if(imageComp!=null){imageComp.fillAmount = Mathf.Clamp(currentAmount,0,maxAmount) / maxAmount;}
         }
         else{
             if(imageComp!= null){imageComp.sprite = image;}
+            if(imageComp!=null){imageComp.fillAmount = 1;}
             isInteractable = true;
         }
 
@@ -51,7 +53,6 @@ public abstract class IconHud : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void SetCurrentAmount(){
         currentAmount = 0;
-        imageComp.sprite = cooldownImage;
         isInteractable = false;
     }
 }

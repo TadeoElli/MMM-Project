@@ -54,6 +54,7 @@ public class CursorController : MonoBehaviour
 
         if(towerIndex > 0 && CheckDistanceFromNexus()){
             blockCursor.SetActive(true);
+            blockCursor.transform.position = currentPosition;
         }
         else{
             blockCursor.SetActive(false);

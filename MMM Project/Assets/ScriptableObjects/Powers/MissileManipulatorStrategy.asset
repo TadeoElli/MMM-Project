@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2590f9498210be14c985a2d84e23b6ed, type: 3}
   m_Name: MissileManipulatorStrategy
   m_EditorClassIdentifier: 
-  id: 2
   energyConsumption: 0
-  cooldown: 5
+  cooldown: 20
   hasPerformedCursor: 1
   sprite: {fileID: 21300000, guid: ecbd33fb86a31f048823e32c556577ae, type: 3}
   material: {fileID: 2100000, guid: d66d79734a49732488acc96c8f7dd0b0, type: 2}

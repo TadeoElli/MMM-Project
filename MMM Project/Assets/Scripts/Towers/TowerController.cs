@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class TowerController : MonoBehaviour
 {
     /// <summary>
@@ -19,6 +19,7 @@ public class TowerController : MonoBehaviour
     [SerializeField] private List<float> cooldowns; //La lista de cooldowns
     [SerializeField] private List<float> currentCd; //la lista de sus temporizadores
     [SerializeField] private List<bool> isReady;    //La lista de flags de si ya estan disponibles
+    [SerializeField] private List<UnityEvent> changeTowersHud;
 
     private void Awake() {
         cam = Camera.main;
@@ -103,6 +104,7 @@ public class TowerController : MonoBehaviour
         towers[currentIndex.Value].CreateTower(cam.ScreenToWorldPoint(Input.mousePosition));
         hasTower = false;
         isReady[currentIndex.Value] = false;
+        changeTowersHud[currentIndex.Value]?.Invoke();
         currentCd[currentIndex.Value] = 0;
         CursorController.Instance.RestoreCursor();
     }

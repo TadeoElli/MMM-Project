@@ -46,7 +46,7 @@ Material:
     - _StepExt: 0.43
     - _WaveLenght: 0.08
     m_Colors:
-    - _Color: {r: 0.06838988, g: 0.13872218, b: 1.8660661, a: 0}
+    - _Color: {r: 0.087929815, g: 1.0258478, b: 1.8660661, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1746655380732552554
 MonoBehaviour:
