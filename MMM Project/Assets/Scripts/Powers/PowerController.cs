@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 
 public class PowerController : MonoBehaviour 
@@ -19,6 +20,7 @@ public class PowerController : MonoBehaviour
     [SerializeField] private List<float> currentCd; //la lista de temporizadores para ver si ya se puede volver a usar
     [SerializeField] private List<bool> isReady;    //La lista de flags para saber si ya se pueden usar o no
     [SerializeField] private EnergyIndicator indicator;
+    [SerializeField] private List<UnityEvent> changePowersHud;
     private void Awake() {
         cam = Camera.main;
     }
@@ -135,6 +137,7 @@ public class PowerController : MonoBehaviour
         if(powers[currentIndex.Value].hasPerformedCursor){
             currentState.Value = false;
         }
+        changePowersHud[currentIndex.Value]?.Invoke();
         currentIndex.Value = 0;
         CursorController.Instance.RestoreCursor();
         indicator.gameObject.SetActive(false);
