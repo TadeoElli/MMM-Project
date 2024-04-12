@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class EnemyView : MonoBehaviour
 {
-    private EnemyBehaviour enemy;
     [SerializeField] private Image hpLeft,hpRight, hpBarLeft, hpBarRight;
     private Image currentBar, currentHpBar;
 

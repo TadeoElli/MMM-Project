@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class TowerBehaviour : MonoBehaviour
 {
-    [SerializeField] private TowerStrategy tower;   //el strategy de la torre
-    [SerializeField] private float energy;  //la energia que tiene actualmente
-    [SerializeField] private bool hasSomethingInside = false;  //El flag para saber si tiene algo dentro de su collider
+    [SerializeField] protected TowerStrategy tower;   //el strategy de la torre
+    [SerializeField] protected float energy;  //la energia que tiene actualmente
+    [SerializeField] protected bool hasSomethingInside = false;  //El flag para saber si tiene algo dentro de su collider
     [SerializeField] private GameObject towerFeedback;      //El feedback que va a tener cuando esta activo
+    [SerializeField] private TowerView view;
     
 
     private void OnEnable() {   //Se reestablece la energia
         energy = tower.maxEnergy;
+        view.SetMaxAmount(energy);
     }
     // Update is called once per frame
     void Update()
@@ -32,7 +34,7 @@ public class TowerBehaviour : MonoBehaviour
                     towerFeedback.SetActive(false);
                 }
             }
-            
+            view.SetCurrentAmount(energy);
         }
 
     }
