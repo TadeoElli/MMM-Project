@@ -21,23 +21,13 @@ public class GoalLines : MonoBehaviour
 
 //Cuando sale de la linea, si es un enemigo que no estaba en la lista, y la direccion en la que se dirigia es la correcta, reduce la cantidad de vidas
     private void OnTriggerExit2D(Collider2D other) {
-        if(isOnLeft){
-            if(other.gameObject.CompareTag("Enemy") && !enemyList.Contains(other.gameObject)){
-                if(other.GetComponent<EnemyBehaviour>().normalDir){
-                    enemyList.Add(other.gameObject);
-                    nexusStats.ReduceLives();
-                }
-                
+        if(other.gameObject.CompareTag("Enemy") && !enemyList.Contains(other.gameObject)){
+            if((isOnLeft && other.GetComponent<EnemyBehaviour>().normalDir) || !isOnLeft && !other.GetComponent<EnemyBehaviour>().normalDir){
+                enemyList.Add(other.gameObject);
+                nexusStats.ReduceLives();
+                other.gameObject.SetActive(false);
             }
         }
-        else{
-           if(other.gameObject.CompareTag("Enemy") && !enemyList.Contains(other.gameObject)){
-                if(!other.GetComponent<EnemyBehaviour>().normalDir){
-                    enemyList.Add(other.gameObject);
-                    nexusStats.ReduceLives();
-                }
-                
-            }
-        }
+
     }
 }

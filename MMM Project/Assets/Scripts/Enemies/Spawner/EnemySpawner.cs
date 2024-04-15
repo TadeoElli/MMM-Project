@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]private int _enemiesAlive;
     [SerializeField]private int _maxEnemiesAllowed;      //Elk maximo de enemigos que puede haber activos en el mapa
     private bool hasToSpawnAGroup = true;
-
+    [SerializeField] private float _waveInterval;
 
     [Header("Spawn Positions For Enemies")]
     [SerializeField]private  List<Transform> _basicSpawnPoints;        //Una lista para guardar todos los spawn points para spawnear un enemigo
@@ -23,6 +23,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]private  List<GameObject> _prefabSpawnPoints;        //Una lista para guardar objetos que formar grupos de spawn points para spawnear grupos de enemigos
 
     [SerializeField] private EnemyPool _pool;
+    private float timer;
     void Start() 
     {
         CalculateWaveQuota();
@@ -30,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     }
     void Update() 
     {
-
+        timer += Time.deltaTime;
         _spawnTimerForEnemies += Time.deltaTime;
         _spawnTimerForGroup += Time.deltaTime;
         //Chequea si es tiempo para spawnear un siguiente enemigo grupo
@@ -48,8 +49,24 @@ public class EnemySpawner : MonoBehaviour
             SpawnSingleEnemies();     //Spawnea un enemigo
             
         }
+        if(timer >= _waveInterval){
+            StartCoroutine(BeginNextWave());
+            timer = 0;
+        }
     }
 
+    IEnumerator BeginNextWave()
+    {
+        //Wave for "waveInterval" seconds before starting the next wave
+        yield return new WaitForSeconds(3);
+
+        //If there are more waves to start after the current wave, move on to the next wave
+        if(_currentWaveCount < _waves.Count -1)
+        {
+            _currentWaveCount++;
+            CalculateWaveQuota();
+        }
+    }
     void SpawnGroupOfEnemies()      //Spawnea un grupo de enemigos en alguna formacion al azar entre la lista de formaciones
     {
         int groupIndex = Random.Range(0,_prefabSpawnPoints.Count);
