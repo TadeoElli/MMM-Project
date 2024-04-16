@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]private List<Wave> _waves;       //Una lista de todas las oleadas en el juego
-    [SerializeField]private int _currentWaveCount;       //el indice de la oleada actual
-
+    public Observer<int> _currentWaveCount = new Observer<int>(0);  //el indice de la oleada actual
     [Header("Spawner Attributes")]
     float _spawnTimerForEnemies; //timer para determinar cuando spawnea el siguiente enemigo
 
@@ -28,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
     {
         CalculateWaveQuota();
         SpawnGroupOfEnemies();
+        _currentWaveCount.Invoke();
     }
     void Update() 
     {
@@ -35,14 +35,14 @@ public class EnemySpawner : MonoBehaviour
         _spawnTimerForEnemies += Time.deltaTime;
         _spawnTimerForGroup += Time.deltaTime;
         //Chequea si es tiempo para spawnear un siguiente enemigo grupo
-        if(_spawnTimerForGroup >= _waves[_currentWaveCount]._spawnIntervalForGroup && _waves[_currentWaveCount]._spawnGroupCount < _waves[_currentWaveCount]._waveGroupQuota){  
+        if(_spawnTimerForGroup >= _waves[_currentWaveCount.Value]._spawnIntervalForGroup && _waves[_currentWaveCount.Value]._spawnGroupCount < _waves[_currentWaveCount.Value]._waveGroupQuota){  
             //Si el timer supera el cooldown de un spawnGroup y la cuota de spawneo de grupos todavia no se cumplio
             hasToSpawnAGroup = true;
             _spawnTimerForGroup = 0f;
             SpawnGroupOfEnemies();      //Spawnea un grupo de enemigos
         }
         //Chequea si es tiempo para spawnear un siguiente enemigo
-        if(_spawnTimerForEnemies >= _waves[_currentWaveCount]._spawnIntervalForEnemy && !hasToSpawnAGroup)  //Si no tiene que spawnear un grupo y el 
+        if(_spawnTimerForEnemies >= _waves[_currentWaveCount.Value]._spawnIntervalForEnemy && !hasToSpawnAGroup)  //Si no tiene que spawnear un grupo y el 
         //timer supero el del intervalo entre spawn de enemigos
         {
             _spawnTimerForEnemies = 0f;
@@ -61,71 +61,83 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         //If there are more waves to start after the current wave, move on to the next wave
-        if(_currentWaveCount < _waves.Count -1)
+        if(_currentWaveCount.Value < _waves.Count -1)
         {
-            _currentWaveCount++;
+            _currentWaveCount.Value++;
             CalculateWaveQuota();
         }
     }
     void SpawnGroupOfEnemies()      //Spawnea un grupo de enemigos en alguna formacion al azar entre la lista de formaciones
     {
+        if (_waves[_currentWaveCount.Value]._enemyGroups.Count == 0){
+            hasToSpawnAGroup = false;
+            return;
+        }
         int groupIndex = Random.Range(0,_prefabSpawnPoints.Count);
         List<Transform> spawnPoints = new List<Transform>();
         _prefabSpawnPoints[groupIndex].GetComponentsInChildren<Transform>(false, spawnPoints);
-        //Chequea si ya se supero la cuota de grupos spawneados
-        if(_waves[_currentWaveCount]._spawnGroupCount < _waves[_currentWaveCount]._waveGroupQuota)
+       
+        //Spawnea un grupo de enemigos spawneando uno en cada spawnpoint de la lista
+        foreach (var spawn in spawnPoints)
         {
-            //Spawnea un grupo de enemigos spawneando uno en cada spawnpoint de la lista
-            foreach (var spawn in spawnPoints)
+            if(_waves[_currentWaveCount.Value]._enemyGroups.Count == 0){
+                hasToSpawnAGroup = false;
+                _waves[_currentWaveCount.Value]._spawnGroupCount++;   //Aumenta la cantidad de grupos spawneados
+                return;
+            }else
             {
-                int index = Random.Range(0,_waves[_currentWaveCount]._enemyGroups.Count);   //Genera un numero aleatorio entre la cantidad de enemigos en la oleada
+                int index = Random.Range(0,_waves[_currentWaveCount.Value]._enemyGroups.Count);   //Genera un numero aleatorio entre la cantidad de enemigos en la oleada
                 GameObject enemy = CreateEnemy(index);  //Crea un enemigo
-                Vector3 offset = _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection ? new Vector3 (13,0,0): new Vector3(-13,0,0);    //Aplica un offset para que aparezca fuera de camara
+                Vector3 offset = _waves[_currentWaveCount.Value]._enemyGroups[index]._enemyDirection ? new Vector3 (13,0,0): new Vector3(-13,0,0);    //Aplica un offset para que aparezca fuera de camara
                 enemy.transform.position = offset + spawn.position; //Lo coloca en la posicion del spawn point
+                CheckEnemieGroupQuota(index);
             }
-            _waves[_currentWaveCount]._spawnGroupCount++;   //Aumenta la cantidad de grupos spawneados
-            hasToSpawnAGroup = false;
-            _spawnTimerForEnemies = 0f;
         }
+        _waves[_currentWaveCount.Value]._spawnGroupCount++;   //Aumenta la cantidad de grupos spawneados
+        hasToSpawnAGroup = false;
+        _spawnTimerForEnemies = 0f;
+        
     }
     void SpawnSingleEnemies()//Spawnea un solo enemigo aleatorio
     {
-        //Chequea si ya se supero la cuota de enemigos
-        if(_waves[_currentWaveCount]._spawnEnemyCount < _waves[_currentWaveCount]._waveEnemyQuota)
-        {
-            int index = Random.Range(0,_waves[_currentWaveCount]._enemyGroups.Count);   //Genera un numero aleatorio entre la cantidad de enemigos en la oleada
-            GameObject enemy = CreateEnemy(index);
-            Vector3 offset = _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection ? new Vector3 (13,0,0): new Vector3(-13,0,0);    //Aplica un offset para que aparezca fuera de camara
-            enemy.transform.position = offset + _basicSpawnPoints[Random.Range(0,_basicSpawnPoints.Count)].position;  
+        if (_waves[_currentWaveCount.Value]._enemyGroups.Count == 0){
+            return;
         }
-
+        //Chequea si ya se supero la cuota de enemigos
+        int index = Random.Range(0,_waves[_currentWaveCount.Value]._enemyGroups.Count);   //Genera un numero aleatorio entre la cantidad de enemigos en la oleada
+        GameObject enemy = CreateEnemy(index);
+        Vector3 offset = _waves[_currentWaveCount.Value]._enemyGroups[index]._enemyDirection ? new Vector3 (13,0,0): new Vector3(-13,0,0);    //Aplica un offset para que aparezca fuera de camara
+        enemy.transform.position = offset + _basicSpawnPoints[Random.Range(0,_basicSpawnPoints.Count)].position;  
+        CheckEnemieGroupQuota(index);
     }
     private GameObject CreateEnemy(int index){  //Creo un enemigo
-        GameObject enemy = _pool.RequestEnemy(_waves[_currentWaveCount]._enemyGroups[index].enemyPrefab);   //Spawnea un enemigo con ese indice
-        enemy.GetComponent<EnemyBehaviour>().normalDir =  _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection;    //Setea su direccion con la direccion de la oleada
-        enemy.transform.rotation =  _waves[_currentWaveCount]._enemyGroups[index]._enemyDirection ? Quaternion.Euler(0f, 0f, 90): Quaternion.Euler(0f, 0f, 270);    //Setea su rotacion
-        _waves[_currentWaveCount]._enemyGroups[index]._spawnCount++;    //aumenta la cantidad de enemigos de un tipo spawneados
-        //Si ya se cumplio la cuota de spawn de uno de los enemigos, lo quita de la lista para que no siga spawneando de ellos
-        if(_waves[_currentWaveCount]._enemyGroups[index]._spawnCount >= _waves[_currentWaveCount]._enemyGroups[index]._enemyCount){
-            _waves[_currentWaveCount]._enemyGroups.Remove(_waves[_currentWaveCount]._enemyGroups[index]);
-        }             
+        GameObject enemy = _pool.RequestEnemy(_waves[_currentWaveCount.Value]._enemyGroups[index].enemyPrefab);   //Spawnea un enemigo con ese indice
+        enemy.GetComponent<EnemyBehaviour>().normalDir =  _waves[_currentWaveCount.Value]._enemyGroups[index]._enemyDirection;    //Setea su direccion con la direccion de la oleada
+        enemy.transform.rotation =  _waves[_currentWaveCount.Value]._enemyGroups[index]._enemyDirection ? Quaternion.Euler(0f, 0f, 90): Quaternion.Euler(0f, 0f, 270);    //Setea su rotacion
+        _waves[_currentWaveCount.Value]._enemyGroups[index]._spawnCount++;    //aumenta la cantidad de enemigos de un tipo spawneados
+        //Si ya se cumplio la cuota de spawn de uno de los enemigos, lo quita de la lista para que no siga spawneando de ellos    
+        _waves[_currentWaveCount.Value]._spawnEnemyCount++;     
         _enemiesAlive++;    //Aumenta el numero de enemigos vivos
         return enemy;
     }
     void CalculateWaveQuota()       //Calcula la cantidad de enemigos en la oleada
     {
         int _currentWaveQuota = 0;
-        foreach(var enemyGroup in _waves[_currentWaveCount]._enemyGroups)
+        foreach(var enemyGroup in _waves[_currentWaveCount.Value]._enemyGroups)
         {
             _currentWaveQuota += enemyGroup._enemyCount;
         }
 
-        _waves[_currentWaveCount]._waveEnemyQuota = _currentWaveQuota;
+        _waves[_currentWaveCount.Value]._waveEnemyQuota = _currentWaveQuota;
         Debug.Log("Cantidad de enemigos en esta oleada:" + _currentWaveQuota);
     }
-
+    private void CheckEnemieGroupQuota(int index){
+        if(_waves[_currentWaveCount.Value]._enemyGroups[index]._spawnCount >= _waves[_currentWaveCount.Value]._enemyGroups[index]._enemyCount){
+            _waves[_currentWaveCount.Value]._enemyGroups.Remove(_waves[_currentWaveCount.Value]._enemyGroups[index]);
+        }    
+    }
     private void ChangeCurrentWave(int wave){
-        _currentWaveCount = wave;
+        _currentWaveCount.Value = wave;
         CalculateWaveQuota();
     }
 }

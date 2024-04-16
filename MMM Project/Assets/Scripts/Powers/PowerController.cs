@@ -108,7 +108,7 @@ public class PowerController : MonoBehaviour
     //Si no entonces luego del comportamiento de inicio se llama a DesactivatePower
     //Si se solto el click, se llama al comportamiento FinishPower
     public void ActivatePower(InputAction.CallbackContext callbackContext){
-        if(hasPower && currentEnergy.Value >= powers[currentIndex.Value].energyConsumption){
+        if(hasPower && currentEnergy.Value >= powers[currentIndex.Value].energyConsumption && CheckDistance()){
             if(callbackContext.started){
                 if(powers[currentIndex.Value].BehaviourStarted()){
                     isDraggin = true;
@@ -123,7 +123,13 @@ public class PowerController : MonoBehaviour
             }
         }
     }
-
+    private bool CheckDistance(){
+        Vector2 currentPosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        if(currentPosition.y > -3f && currentPosition.y < 4.25f){
+            return true;
+        }
+        else return false;
+    }
     //Se habilita el ingreso de nuevos inputs, se llama al comportamiento de cuando se suelta el click y se resetea los valores de cooldown del poder
     //Se resetea el indice, se resta la energia correspondiente
     private void FinishPower(){

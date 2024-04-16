@@ -56,9 +56,6 @@ public class MissileManipulatorStrategy : PowerStrategy
                 if(rb.gameObject.activeSelf){   
                     // Obtener la posición del ratón en el mundo
                     Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    if(mousePosition.y > wallTop || mousePosition.y < wallBottom){  //Si el misil se mueve por fuera de las paredes explota
-                        misile.TakeDamage(5000);
-                    }
                     // Actualizar la posición del misil al ratón
                     rb.MovePosition(mousePosition);
                     timer = timer + 1 * Time.deltaTime;

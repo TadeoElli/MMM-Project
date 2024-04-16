@@ -41,4 +41,9 @@ public class InputController : MonoBehaviour
         missileIsAvailable = true;
         missileIndex.Value = 0;
     }
+    public void RemoveSubscribers(){
+        missileIndex.RemoveAllListener();
+        towerIndex.RemoveAllListener();
+        powerIndex.RemoveAllListener();
+    }
 }

@@ -179,6 +179,9 @@ public class Nexus : MonoBehaviour
     }
 
     private void OnDisable() {//Desactiva a todos los suscriptores y los objetos
+        DisableNexus();
+    }
+    public void DisableNexus(){
         currentEnergy.RemoveAllListener();
         currentSpeed.RemoveAllListener();
         currentDistance.RemoveAllListener();

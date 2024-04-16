@@ -64,9 +64,6 @@ public class GravityManipulatorStrategy : PowerStrategy
             if(rb.gameObject.activeSelf){   //Si tiene RigidBody
                 // Obtener la posición del ratón en el mundo
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if(mousePosition.y > wallTop || mousePosition.y < wallBottom){  //Si se mueve al enemigo por debajo o encima de las paredes lo destruye
-                    enemy.TakeDamage(5000);
-                }
                 // Actualizar la posición del enemigo al ratón
                 rb.MovePosition(mousePosition);
                 return true;

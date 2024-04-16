@@ -20,7 +20,6 @@ public class TowerController : MonoBehaviour
     [SerializeField] private List<float> currentCd; //la lista de sus temporizadores
     [SerializeField] private List<bool> isReady;    //La lista de flags de si ya estan disponibles
     [SerializeField] private List<UnityEvent> changeTowersHud;
-
     private void Awake() {
         cam = Camera.main;
         nexus = FindObjectOfType<Nexus>().gameObject;
@@ -75,9 +74,8 @@ public class TowerController : MonoBehaviour
     //Si tiene una torre activa, chequea si la distancia hacia el nexo es lo suficiente para crearla
     public void ActivateTower(){ 
         if(hasTower){
-            if(CheckDistanceFromNexus()){
+            if(CheckDistance()){
                 CreateTower();
-                currentIndex.Value = 0;
             }
         }
     }
@@ -90,10 +88,13 @@ public class TowerController : MonoBehaviour
         }
     }
     //Chequea la distancia del mouse al nexo y si es menor a la distancia minima devuelve un false, si no un true
-    private bool CheckDistanceFromNexus(){
+    private bool CheckDistance(){
         Vector2 currentPosition = cam.ScreenToWorldPoint(Input.mousePosition);
         if(Vector2.Distance(currentPosition, nexus.transform.position) > distanceFromNexus){
-            return true;
+            if(currentPosition.y > -3f && currentPosition.y < 4.25f){
+                return true;
+            }
+            else return false;
         }
         else{
             return false;
@@ -107,5 +108,6 @@ public class TowerController : MonoBehaviour
         changeTowersHud[currentIndex.Value]?.Invoke();
         currentCd[currentIndex.Value] = 0;
         CursorController.Instance.RestoreCursor();
+        currentIndex.Value = 0;
     }
 }
