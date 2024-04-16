@@ -34,6 +34,7 @@ public class NexusStats : MonoBehaviour
     private int oldEnergyRegen, oldStructureRegen;  //Variables para guardar la antigua regeneracion
     private float oldCooldown;
     private bool isDestroyed = false;
+    [SerializeField] private UnityEvent antimatterPowerUp, cooldownPowerUp, speedPowerUp, structurePowerUp, energyPowerUp, stabilityPowerUp;
     #endregion
 
 //Estableze los valores iniciales y notifica a todos los suscriptores
