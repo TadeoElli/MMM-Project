@@ -34,7 +34,7 @@ public class NexusStats : MonoBehaviour
     private int oldEnergyRegen, oldStructureRegen;  //Variables para guardar la antigua regeneracion
     private float oldCooldown;
     private bool isDestroyed = false;
-    [SerializeField] private UnityEvent antimatterPowerUp, cooldownPowerUp, speedPowerUp, structurePowerUp, energyPowerUp, stabilityPowerUp;
+    [SerializeField] private UnityEvent<int> cooldownPowerUp, speedPowerUp, structurePowerUp, energyPowerUp, stabilityPowerUp;
     #endregion
 
 //Estableze los valores iniciales y notifica a todos los suscriptores
@@ -94,24 +94,29 @@ public class NexusStats : MonoBehaviour
     public void EnergyPowerUp(int cooldown){    //guarda la antigua regeneracion de energia y la actual pasa a ser mayor
         oldEnergyRegen = energyRegen; 
         energyRegen =  100;
+        energyPowerUp?.Invoke(cooldown);
         Invoke("RestoreEnergy",cooldown);
     }
     public void StructurePowerUp(int cooldown){ //guarda la antigua regeneracion de vida y la actual pasa a ser mayor
         oldStructureRegen = structureRegen; 
         structureRegen =  100;
+        structurePowerUp?.Invoke(cooldown);
         Invoke("RestoreStructure",cooldown);
     }
     public void StabilityPowerUp(int cooldown){ //la actual estabilidad pasa a ser mayor
         currentBaseStability.Value = 35;
+        stabilityPowerUp?.Invoke(cooldown);
         Invoke("RestoreStability",cooldown);
     }
     public void SpeedPowerUp(int cooldown){ //la actual velocidad  pasa a ser mayor
         currentBaseSpeed.Value = 10;
+        speedPowerUp?.Invoke(cooldown);
         Invoke("RestoreSpeed",cooldown);
     }
     public void CooldownPowerUp(int cooldown){   //guarda el antiguo valor que se reduce a los cooldowns y la actual pasa a ser mayor
         oldCooldown = currentBaseCooldown.Value;
         currentBaseCooldown.Value = 50;
+        cooldownPowerUp?.Invoke(cooldown);
         Invoke("RestoreCooldown",cooldown);
     }
 

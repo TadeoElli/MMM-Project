@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 
@@ -16,6 +17,7 @@ public class InputController : MonoBehaviour
 
     public bool isAvailable = true; //si esta disponible para modificar cualquier indice o no
     public bool missileIsAvailable = true;  //Si esta disponible para modificar el indice de los misiles
+    [SerializeField] private UnityEvent<int> antimatterHud;
 
     public void SetMissileIndex(int index){ //Setea el indice de los misiles si esta permitido
         if(missileIsAvailable){
@@ -35,6 +37,7 @@ public class InputController : MonoBehaviour
     }
 
     public void RestoreIndex(int cooldown){ 
+        antimatterHud?.Invoke(cooldown);
         Invoke("Restore", cooldown);
     }
     private void Restore(){ //Restablece el indice de los misiles
