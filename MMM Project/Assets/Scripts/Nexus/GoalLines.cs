@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GoalLines : MonoBehaviour
 {
@@ -9,12 +10,11 @@ public class GoalLines : MonoBehaviour
     /// de vidas, ademas de que guarda ese enemigo en una lista para que si la vuelve a cruzar porque se choco con algo, no cuente para restar una vida
     /// </summary>
     // Start is called before the first frame update
-    NexusStats nexusStats;
     List<GameObject> enemyList; //La lista de enemigos que pasaron la linea
     [SerializeField] private bool isOnLeft; //Si la linea se encuentra del lado izquierdo del mapa entonces esta en true
+    [SerializeField] private UnityEvent reduceLives;
     void Start()
     {
-        nexusStats = FindObjectOfType<NexusStats>();
         enemyList = new List<GameObject>();
         
     }
@@ -24,7 +24,7 @@ public class GoalLines : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy") && !enemyList.Contains(other.gameObject)){
             if((isOnLeft && other.GetComponent<EnemyBehaviour>().normalDir) || !isOnLeft && !other.GetComponent<EnemyBehaviour>().normalDir){
                 enemyList.Add(other.gameObject);
-                nexusStats.ReduceLives();
+                reduceLives?.Invoke();
                 other.gameObject.SetActive(false);
             }
         }

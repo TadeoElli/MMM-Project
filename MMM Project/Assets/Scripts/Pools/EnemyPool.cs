@@ -13,6 +13,7 @@ public class EnemyPool : MonoBehaviour
     [SerializeField] private int poolSize = 1;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> enemyDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un enemigo y devolver la cantidad generada
     [SerializeField] private ChangeStats killCount, score;
+    [SerializeField] private EnemySpawner spawner;
     //public event OnEnemyDeath _OnEnemyDeath;
 
     private static EnemyPool instance;
@@ -49,6 +50,7 @@ public class EnemyPool : MonoBehaviour
             GameObject prefab = Instantiate(enemy.gameObject);
             prefab.GetComponent<EnemyBehaviour>().notifyKillCount = killCount.IncreaseAmount;
             prefab.GetComponent<EnemyBehaviour>().notifyScore += score.IncreaseAmount;
+            prefab.GetComponent<EnemyBehaviour>().notifyKillCount += spawner.ReduceEnemiesAlive;
             prefab.SetActive(false);
             prefabList.Add(prefab);
             prefab.transform.parent = transform;

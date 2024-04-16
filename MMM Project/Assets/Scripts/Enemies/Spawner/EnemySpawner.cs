@@ -6,11 +6,11 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]private List<Wave> _waves;       //Una lista de todas las oleadas en el juego
     public Observer<int> _currentWaveCount = new Observer<int>(0);  //el indice de la oleada actual
+    public Observer<int> _enemiesAlive = new Observer<int>(0);
     [Header("Spawner Attributes")]
     float _spawnTimerForEnemies; //timer para determinar cuando spawnea el siguiente enemigo
 
     float _spawnTimerForGroup; //timer para determinar cuando spawnea el siguiente grupo
-    [SerializeField]private int _enemiesAlive;
     [SerializeField]private int _maxEnemiesAllowed;      //Elk maximo de enemigos que puede haber activos en el mapa
     private bool hasToSpawnAGroup = true;
     [SerializeField] private float _waveInterval;
@@ -117,7 +117,7 @@ public class EnemySpawner : MonoBehaviour
         _waves[_currentWaveCount.Value]._enemyGroups[index]._spawnCount++;    //aumenta la cantidad de enemigos de un tipo spawneados
         //Si ya se cumplio la cuota de spawn de uno de los enemigos, lo quita de la lista para que no siga spawneando de ellos    
         _waves[_currentWaveCount.Value]._spawnEnemyCount++;     
-        _enemiesAlive++;    //Aumenta el numero de enemigos vivos
+        _enemiesAlive.Value++;    //Aumenta el numero de enemigos vivos
         return enemy;
     }
     void CalculateWaveQuota()       //Calcula la cantidad de enemigos en la oleada
@@ -136,8 +136,7 @@ public class EnemySpawner : MonoBehaviour
             _waves[_currentWaveCount.Value]._enemyGroups.Remove(_waves[_currentWaveCount.Value]._enemyGroups[index]);
         }    
     }
-    private void ChangeCurrentWave(int wave){
-        _currentWaveCount.Value = wave;
-        CalculateWaveQuota();
+    public void ReduceEnemiesAlive(int amount){
+        _enemiesAlive.Value -= amount;
     }
 }

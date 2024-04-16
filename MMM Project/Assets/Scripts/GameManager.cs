@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameModes gameModes;
     [SerializeField] private float timeLimit;
     private float timer;
+    private int _enemiesAlive;
     private InputController inputs;
     private Nexus nexus;
     [SerializeField] private GameObject winMenu;
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     {
         inputs = FindObjectOfType<InputController>();
         nexus = FindObjectOfType<Nexus>();
+
     }
 
     // Update is called once per frame
@@ -24,7 +26,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameModes.Crossfire:
                 timer += Time.deltaTime;
-                if(timer > timeLimit){
+                if(timer > timeLimit && _enemiesAlive == 0){
                     EndGame();
                 }
                 break;
@@ -37,5 +39,8 @@ public class GameManager : MonoBehaviour
         inputs.RemoveSubscribers();
         nexus.DisableNexus();
         winMenu.SetActive(true);
+    }
+    public void SetEnemiesAlive(int amount){
+        _enemiesAlive = amount;
     }
 }
