@@ -28,11 +28,13 @@ public class NexusStats : MonoBehaviour
     [SerializeField] private int maxLives;  //La cantidad de vida maxima
     [SerializeField] private int startTechLevel;  //el nivel de tecnologia con el que se empieza
     [SerializeField] GameObject loseMenu;   //El menu de derrota
-    private int energyRegen = 40;   //La regeneracion de energia
-    private int structureRegen = 20;    //La regeneracion de vida
-
-    private int oldEnergyRegen, oldStructureRegen;  //Variables para guardar la antigua regeneracion
-    private float oldCooldown;
+    [SerializeField] private int energyRegen = 40;   //La regeneracion de energia
+    [SerializeField] private int boostEnergyRegen = 100;
+    private bool energyBoost = false;
+    [SerializeField] private int structureRegen = 20;    //La regeneracion de vida
+    [SerializeField] private int boostStructureRegen = 80;
+    private bool structureBoost = false;
+    private float boostCooldown = 50f;
     private bool isDestroyed = false;
     [SerializeField] private UnityEvent<int> cooldownPowerUp, speedPowerUp, structurePowerUp, energyPowerUp, stabilityPowerUp;
     #endregion
@@ -59,9 +61,11 @@ public class NexusStats : MonoBehaviour
     //Si todavia no se destruyo, regenera constantemente la vida y energia y si la vida baja de 0, remueve a todos los suscrptores
     private void Update() {
         if(!isDestroyed){
-            currentStructure.Value = currentStructure.Value + 20 * Time.deltaTime;
-            currentStructure.Value = Mathf.Clamp(currentStructure.Value,-500f,maxStructure.Value);
-            currentEnergy.Value = currentEnergy.Value + energyRegen * Time.deltaTime;
+            if(structureBoost){currentStructure.Value = currentStructure.Value + boostStructureRegen * Time.deltaTime;}
+            else{currentStructure.Value = currentStructure.Value + structureRegen * Time.deltaTime;}
+            currentStructure.Value = Mathf.Clamp(currentStructure.Value,0,maxStructure.Value);
+            if(energyBoost){currentEnergy.Value = currentEnergy.Value + boostEnergyRegen * Time.deltaTime;}
+            else{currentEnergy.Value = currentEnergy.Value + energyRegen * Time.deltaTime;}
             currentEnergy.Value = Mathf.Clamp(currentEnergy.Value,0,maxEnergy.Value);
             if(currentStructure.Value <= 0  || currentLives.Value <= 0){
                 currentStructure.Value = -1;
@@ -92,14 +96,12 @@ public class NexusStats : MonoBehaviour
 
     #region PowersUp
     public void EnergyPowerUp(int cooldown){    //guarda la antigua regeneracion de energia y la actual pasa a ser mayor
-        oldEnergyRegen = energyRegen; 
-        energyRegen =  100;
+        energyBoost = true;
         energyPowerUp?.Invoke(cooldown);
         Invoke("RestoreEnergy",cooldown);
     }
     public void StructurePowerUp(int cooldown){ //guarda la antigua regeneracion de vida y la actual pasa a ser mayor
-        oldStructureRegen = structureRegen; 
-        structureRegen =  100;
+        structureBoost = true;
         structurePowerUp?.Invoke(cooldown);
         Invoke("RestoreStructure",cooldown);
     }
@@ -114,18 +116,17 @@ public class NexusStats : MonoBehaviour
         Invoke("RestoreSpeed",cooldown);
     }
     public void CooldownPowerUp(int cooldown){   //guarda el antiguo valor que se reduce a los cooldowns y la actual pasa a ser mayor
-        oldCooldown = currentBaseCooldown.Value;
-        currentBaseCooldown.Value = 50;
+        currentBaseCooldown.Value = boostCooldown;
         cooldownPowerUp?.Invoke(cooldown);
         Invoke("RestoreCooldown",cooldown);
     }
 
 
     private void RestoreEnergy(){   //Restaura el valor default de regeneracion dew energia
-        energyRegen = oldEnergyRegen;
+        energyBoost = false;
     }
     private void RestoreStructure(){    //Restaura el valor default de regeneracion de vida
-        structureRegen = oldStructureRegen;
+        structureBoost = false;
     }
     private void RestoreStability(){    //Restaura el valor default de estabilidad
         currentBaseStability.Value = baseStability;
@@ -134,7 +135,7 @@ public class NexusStats : MonoBehaviour
         currentBaseSpeed.Value = baseSpeed;
     }
     private void RestoreCooldown(){ //Restaura el valor default de reduccion de cooldown
-        currentBaseCooldown.Value = oldCooldown;
+        currentBaseCooldown.Value = 0f;
     }
     #endregion
 
