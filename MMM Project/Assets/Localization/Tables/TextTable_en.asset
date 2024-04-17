@@ -221,6 +221,70 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 794851374009679874
+  - m_Id: 4559885508759552
+    m_Localized: 'Enemies come from both sides
+
+      Survive for 3 minutes'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4687038414016512
+    m_Localized: 'The original mode
+
+      The gameplay is divided into 30 waves
+
+      Destroy
+      yor enemies, earn experience, upgrade, obtain new abilities
+
+      You can
+      save your progress after each wave'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4693339437223936
+    m_Localized: Main Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4698830812958720
+    m_Localized: '[ Play ]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4704608860983296
+    m_Localized: 'Survive for as long as possible
+
+      There are no waves and no
+      pause, and you will have to upgrade your launcher fast
+
+      Dont play this
+      one if you are new to this game'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4706149063938048
+    m_Localized: Same as Survival but enemiy units will be coming from both sides,
+      left and right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711861135560704
+    m_Localized: Same as survival but no enemy respawn acceleration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4712646732894208
+    m_Localized: 'You have 600 seconds after which your launcher will blow up
+
+
+      Destroy
+      as many enemy units as you can and try not to get killed before the time runs
+      out'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4713835117629440
+    m_Localized: 'Do not let any enemy unit slip through!
+
+      You will be able
+      to use ONLY antimatter ammo
+
+
+      Score is time-based'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

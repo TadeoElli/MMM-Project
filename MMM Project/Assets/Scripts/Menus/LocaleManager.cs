@@ -10,7 +10,7 @@ public class LocaleManager : MonoBehaviour
     ///</summary>
     private bool active = false;
     private int maxLocalesCount = 1;
-    private int localeIndex = 0;
+    private int localeIndex = 1;
 
     private void Start() {
     }

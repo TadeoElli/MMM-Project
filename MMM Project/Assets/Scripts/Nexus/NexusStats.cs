@@ -28,14 +28,16 @@ public class NexusStats : MonoBehaviour
     [SerializeField] private int maxLives;  //La cantidad de vida maxima
     [SerializeField] private int startTechLevel;  //el nivel de tecnologia con el que se empieza
     [SerializeField] GameObject loseMenu;   //El menu de derrota
+    private bool isDestroyed = false;
+    
+    [Header("PowerUpStats")]
     [SerializeField] private int energyRegen = 40;   //La regeneracion de energia
     [SerializeField] private int boostEnergyRegen = 100;
     private bool energyBoost = false;
     [SerializeField] private int structureRegen = 20;    //La regeneracion de vida
     [SerializeField] private int boostStructureRegen = 80;
     private bool structureBoost = false;
-    private float boostCooldown = 50f;
-    private bool isDestroyed = false;
+    [SerializeField] private float boostCooldown = 50f;
     [SerializeField] private UnityEvent<int> cooldownPowerUp, speedPowerUp, structurePowerUp, energyPowerUp, stabilityPowerUp;
     #endregion
 

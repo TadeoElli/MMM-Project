@@ -222,6 +222,69 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 794851374009679875
+  - m_Id: 4559885508759552
+    m_Localized: "Los enemigos vienen por ambos lados\r\nSobrevive por 3 minutos\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4687038414016512
+    m_Localized: 'El modo original
+
+      El juego se divide en 30 oleadas.
+
+      Destruye
+      a tus enemigos, gana experiencia, mejora y obten nuevas habilidades.
+
+      Puedes
+      guardar tu progreso despues de cada oleada.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4693339437223936
+    m_Localized: Menu Principal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4698830812958720
+    m_Localized: '[ Jugar ]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4704608860983296
+    m_Localized: 'Sobrevive el mayor tiempo posible
+
+      No hay oleadas y no hay
+      pausa, tendras que mejorar tus habilidades rapido
+
+      No jueges este modo
+      si eres nuevo en el juego'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4706149063938048
+    m_Localized: Lo mismo que en Supervivencia solo que los enemigos vendran por
+      ambos lados, izquierda y derecha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711861135560704
+    m_Localized: Lo mismo que en supervivencia pero sin aceleracion de aparicion
+      de enemigos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4712646732894208
+    m_Localized: 'Tienes 600 segundos hasta que el nexo explote
+
+
+      Destruye
+      la mayor cantidad de enemigos que puedas e intenta no morir antes de que el
+      tiempo se termine'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4713835117629440
+    m_Localized: 'No dejes que ningun enemigo pase!
+
+      UNICAMENTE se podra usar
+      municion antimateria
+
+
+      El puntaje se basa en el tiempo'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

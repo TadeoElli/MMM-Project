@@ -5,17 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-        public enum EscenasEnum
+    [SerializeField] private Scenes scene;
+
+    public void ChangeScene()
     {
-        MainMenu,
-        Survival,
-    }
-    public void ChangeScene(string scene)
-    {
-        SceneManager.LoadScene(scene);
+        string sceneName = scene.ToString(); // Convierte el valor del enum a una cadena (string).
+        SceneManager.LoadScene(sceneName);
     }  
     
 
-    
+    public enum Scenes
+    {
+        MainMenu,
+        Scenario,
+        Survival,
+        SurvivalExtreme,
+        SurvivalUnlimited,
+        Countdown,
+        Armageddon,
+        Crossfire
+    }
+
 }
 

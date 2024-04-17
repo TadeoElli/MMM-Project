@@ -179,6 +179,46 @@ MonoBehaviour:
     m_Key: missileDescription8
     m_Metadata:
       m_Items: []
+  - m_Id: 4559885508759552
+    m_Key: crossfireDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4687038414016512
+    m_Key: scenarioDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4693339437223936
+    m_Key: mainMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4698830812958720
+    m_Key: play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4704608860983296
+    m_Key: survivalDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4706149063938048
+    m_Key: survivalExtremeDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711861135560704
+    m_Key: survivalUnlimitedDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4712646732894208
+    m_Key: countdownDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4713815156936704
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4713835117629440
+    m_Key: armageddonDescription
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
