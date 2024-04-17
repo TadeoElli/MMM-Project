@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f62a06c04960d41989a840f5581075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene: 0
 --- !u!4 &61309561
 Transform:
   m_ObjectHideFlags: 0
@@ -332,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d86b920e4cdf8b4e8c8008ab87948d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameModes: 1
+  gameMode: 0
   timeLimit: 180
   winMenu: {fileID: 1562134950}
 --- !u!1 &74336900
@@ -20373,7 +20374,7 @@ PrefabInstance:
       objectReference: {fileID: 814966023}
     - target: {fileID: 5858818355326183006, guid: e7aba6af6732ab64c982cecaa0a9551b, type: 3}
       propertyPath: _waveInterval
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5858818355326183006, guid: e7aba6af6732ab64c982cecaa0a9551b, type: 3}
       propertyPath: _waves.Array.size

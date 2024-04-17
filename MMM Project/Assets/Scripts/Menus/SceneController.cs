@@ -9,22 +9,14 @@ public class SceneController : MonoBehaviour
 
     public void ChangeScene()
     {
+        GameManager.Instance.SetGameMode(scene);
         string sceneName = scene.ToString(); // Convierte el valor del enum a una cadena (string).
         SceneManager.LoadScene(sceneName);
     }  
+
     
 
-    public enum Scenes
-    {
-        MainMenu,
-        Scenario,
-        Survival,
-        SurvivalExtreme,
-        SurvivalUnlimited,
-        Countdown,
-        Armageddon,
-        Crossfire
-    }
+    
 
 }
 

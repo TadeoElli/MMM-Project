@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameModes gameModes;
+    public static GameManager Instance { get; private set;}
+    [SerializeField] private Scenes gameMode;
     [SerializeField] private float timeLimit;
     private float timer;
     private int _enemiesAlive;
     private InputController inputs;
     private Nexus nexus;
     [SerializeField] private GameObject winMenu;
+    private void Awake() {
+        if (Instance == null){
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else{
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         inputs = FindObjectOfType<InputController>();
@@ -21,10 +31,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (gameModes){
-            case GameModes.Scenario:
+        switch (gameMode){
+            case Scenes.MainMenu:
                 break;
-            case GameModes.Crossfire:
+            case Scenes.Crossfire:
                 timer += Time.deltaTime;
                 if(timer > timeLimit && _enemiesAlive == 0){
                     EndGame();
@@ -42,5 +52,8 @@ public class GameManager : MonoBehaviour
     }
     public void SetEnemiesAlive(int amount){
         _enemiesAlive = amount;
+    }
+    public void SetGameMode(Scenes scene){
+        gameMode = scene;
     }
 }
