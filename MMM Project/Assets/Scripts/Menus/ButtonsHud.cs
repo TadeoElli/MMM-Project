@@ -8,15 +8,23 @@ public class ButtonsHud : IconHud
     /// Esta clase sirve como base para manejar los botones del hud que cuenten con un temporizador
     /// </summary>
 
+    [SerializeField] private AudioClip hooverEffect, pressedEffect;
+    private Button button;
 
-
+    private void Start(){
+        button = GetComponent<Button>();
+    }
     protected override void Update(){
         base.Update();
-
+        isInteractable = button.interactable;
     }
-    protected override void OnClickDown(){}
+    protected override void OnClickDown(){
+        AudioManager.Instance.PlaySoundEffect(pressedEffect);
+    }
     protected override void OnClickUp(){}
-    protected override void OnClickEnter(){}
+    protected override void OnClickEnter(){
+        AudioManager.Instance.PlaySoundEffect(hooverEffect);
+    }
     protected override void OnClickExit(){}
 
 }

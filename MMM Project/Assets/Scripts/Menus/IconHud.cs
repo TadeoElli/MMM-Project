@@ -10,7 +10,7 @@ public abstract class IconHud : MonoBehaviour, IPointerEnterHandler, IPointerExi
     /// Esta clase sirve como base para manejar los iconos del hud
     /// </summary>
     /// 
-    [SerializeField] protected bool isInteractable,isEnter;
+    protected bool isInteractable,isEnter;
 
 
     protected virtual void Update(){
