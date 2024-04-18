@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class MissilesHud : IconHud
+public class MissilesHud : IconsTimerHud
 {
     /// <summary>
     /// Esta clase se va a encargar de modificar los iconos de los missiles en el hud y sus descripciones

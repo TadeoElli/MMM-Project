@@ -3170,6 +3170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b1ed73008caca4da8add5dbe03974d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: decd36e636f1a5e4d873ff7093cb7269, type: 3}
   cooldownImage: {fileID: 21300000, guid: 06639f57a4b7c9442b8d4c53d5fabae0, type: 3}
   hoverImage: {fileID: 328612496}
@@ -3293,6 +3295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337a82574bb63ec46bad24d5360235e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: f40e8601cb4c8354eae75449a6f81ecf, type: 3}
   cooldownImage: {fileID: 21300000, guid: 06639f57a4b7c9442b8d4c53d5fabae0, type: 3}
   hoverImage: {fileID: 361637991}
@@ -3874,6 +3878,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b1ed73008caca4da8add5dbe03974d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 2d4210ad425c4e34ea50016c171c0fe8, type: 3}
   cooldownImage: {fileID: 21300000, guid: 06639f57a4b7c9442b8d4c53d5fabae0, type: 3}
   hoverImage: {fileID: 712569007}
@@ -4434,6 +4440,7 @@ GameObject:
   - component: {fileID: 492045633}
   - component: {fileID: 492045632}
   - component: {fileID: 492045631}
+  - component: {fileID: 492045635}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -4545,10 +4552,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 61309560}
+      - m_Target: {fileID: 492045635}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: ChangeScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4654,6 +4661,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492045629}
   m_CullTransparentMesh: 1
+--- !u!114 &492045635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492045629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f62a06c04960d41989a840f5581075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: 7
 --- !u!1 &498787487
 GameObject:
   m_ObjectHideFlags: 0
@@ -5158,6 +5178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b1ed73008caca4da8add5dbe03974d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: de3ce8d6b566d6c499392d40d770db8f, type: 3}
   cooldownImage: {fileID: 21300000, guid: 06639f57a4b7c9442b8d4c53d5fabae0, type: 3}
   hoverImage: {fileID: 1146393354}
@@ -5600,6 +5622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1a1fb54879f5844a4d0eeca384210a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 5097483a2556046408ef76263390da50, type: 3}
   cooldownImage: {fileID: 21300000, guid: eb858bead9eecf942aaa2e6436c60295, type: 3}
   hoverImage: {fileID: 963029674}
@@ -5794,10 +5818,10 @@ RectTransform:
   m_Father: {fileID: 466238594}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.9523334}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -20.192505}
-  m_SizeDelta: {x: 0, y: 40.385002}
+  m_AnchoredPosition: {x: 0, y: -45.692505}
+  m_SizeDelta: {x: 0, y: 91.385}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611807689
 MonoBehaviour:
@@ -6824,6 +6848,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1a1fb54879f5844a4d0eeca384210a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 5496f3ed437f00642b1d405914f1e498, type: 3}
   cooldownImage: {fileID: 21300000, guid: eb858bead9eecf942aaa2e6436c60295, type: 3}
   hoverImage: {fileID: 1352658461}
@@ -6938,6 +6964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1a1fb54879f5844a4d0eeca384210a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 6994e258c0a2b284cb7dd54779831588, type: 3}
   cooldownImage: {fileID: 21300000, guid: eb858bead9eecf942aaa2e6436c60295, type: 3}
   hoverImage: {fileID: 1679945065}
@@ -7352,6 +7380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337a82574bb63ec46bad24d5360235e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 3b677f10873da2c419784333b2db6287, type: 3}
   cooldownImage: {fileID: 21300000, guid: 06639f57a4b7c9442b8d4c53d5fabae0, type: 3}
   hoverImage: {fileID: 1082361440}
@@ -8268,6 +8298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1a1fb54879f5844a4d0eeca384210a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 7b21fc631829d6f409fd7fc0a4b46150, type: 3}
   cooldownImage: {fileID: 21300000, guid: eb858bead9eecf942aaa2e6436c60295, type: 3}
   hoverImage: {fileID: 457359314}
@@ -8610,6 +8642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1a1fb54879f5844a4d0eeca384210a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 81437c720a8fff8488ef557336cbcfb0, type: 3}
   cooldownImage: {fileID: 21300000, guid: eb858bead9eecf942aaa2e6436c60295, type: 3}
   hoverImage: {fileID: 74336902}
@@ -9903,6 +9937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1a1fb54879f5844a4d0eeca384210a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 868f703eb4058354db968495326c99ad, type: 3}
   cooldownImage: {fileID: 21300000, guid: eb858bead9eecf942aaa2e6436c60295, type: 3}
   hoverImage: {fileID: 796019665}
@@ -10882,7 +10918,7 @@ GameObject:
   - component: {fileID: 1291074784}
   - component: {fileID: 1291074783}
   m_Layer: 0
-  m_Name: Background_1
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11466,6 +11502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b1ed73008caca4da8add5dbe03974d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 5e769cc39ea00f24f9b3560aefa7bca2, type: 3}
   cooldownImage: {fileID: 21300000, guid: 06639f57a4b7c9442b8d4c53d5fabae0, type: 3}
   hoverImage: {fileID: 2061030833}
@@ -12200,6 +12238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1a1fb54879f5844a4d0eeca384210a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 4d313300b7cc29e47938b1894551099a, type: 3}
   cooldownImage: {fileID: 21300000, guid: eb858bead9eecf942aaa2e6436c60295, type: 3}
   hoverImage: {fileID: 1838087256}
@@ -13000,6 +13040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1a1fb54879f5844a4d0eeca384210a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 63ae6ecde1933c240bd6a08f1c4db303, type: 3}
   cooldownImage: {fileID: 21300000, guid: eb858bead9eecf942aaa2e6436c60295, type: 3}
   hoverImage: {fileID: 1893936768}
@@ -13033,6 +13075,7 @@ GameObject:
   - component: {fileID: 1590753272}
   - component: {fileID: 1590753271}
   - component: {fileID: 1590753270}
+  - component: {fileID: 1590753273}
   m_Layer: 5
   m_Name: QuitIcon
   m_TagString: Untagged
@@ -13055,10 +13098,10 @@ RectTransform:
   m_Father: {fileID: 466238594}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -22.300049, y: -23.599976}
-  m_SizeDelta: {x: 74.34, y: 76.82}
+  m_AnchorMin: {x: 0.9775209, y: 0.95800006}
+  m_AnchorMax: {x: 0.9964792, y: 0.99500006}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 36.9, y: 40.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1590753270
 MonoBehaviour:
@@ -13104,10 +13147,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 61309560}
+      - m_Target: {fileID: 1590753273}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: ChangeScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13154,6 +13197,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590753268}
   m_CullTransparentMesh: 1
+--- !u!114 &1590753273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590753268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f62a06c04960d41989a840f5581075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: 0
 --- !u!1 &1599053591
 GameObject:
   m_ObjectHideFlags: 0
@@ -15608,6 +15664,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337a82574bb63ec46bad24d5360235e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 13e1d4836bebdde4b84fb2bf38b7d5d0, type: 3}
   cooldownImage: {fileID: 21300000, guid: 06639f57a4b7c9442b8d4c53d5fabae0, type: 3}
   hoverImage: {fileID: 377826767}
@@ -15912,6 +15970,7 @@ GameObject:
   - component: {fileID: 1853536966}
   - component: {fileID: 1853536965}
   - component: {fileID: 1853536964}
+  - component: {fileID: 1853536968}
   m_Layer: 5
   m_Name: BacktoMenu
   m_TagString: Untagged
@@ -16023,10 +16082,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 61309560}
+      - m_Target: {fileID: 1853536968}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: ChangeScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16132,6 +16191,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853536962}
   m_CullTransparentMesh: 1
+--- !u!114 &1853536968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853536962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f62a06c04960d41989a840f5581075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: 0
 --- !u!1 &1860087233
 GameObject:
   m_ObjectHideFlags: 0
@@ -18223,6 +18295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b1ed73008caca4da8add5dbe03974d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 0
+  isEnter: 0
   image: {fileID: 21300000, guid: 3cd242bce7d83e943b521e232792b411, type: 3}
   cooldownImage: {fileID: 21300000, guid: 06639f57a4b7c9442b8d4c53d5fabae0, type: 3}
   hoverImage: {fileID: 1413558}
@@ -19104,10 +19178,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 61309560}
+      - m_Target: {fileID: 7048389287324464338}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: ChangeScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19129,6 +19203,7 @@ GameObject:
   - component: {fileID: 6045769054950541703}
   - component: {fileID: 1306056426802866368}
   - component: {fileID: 5771015502514624487}
+  - component: {fileID: 7048389287324464338}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -19930,6 +20005,7 @@ GameObject:
   - component: {fileID: 4809082480469573772}
   - component: {fileID: 8296110141677328181}
   - component: {fileID: 2490114609953028094}
+  - component: {fileID: 8296110141677328182}
   m_Layer: 5
   m_Name: BacktoMenu
   m_TagString: Untagged
@@ -21696,6 +21772,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609029551388739394}
   m_CullTransparentMesh: 1
+--- !u!114 &7048389287324464338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609029551388739394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f62a06c04960d41989a840f5581075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: 7
 --- !u!114 &7365013459737715067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22046,10 +22135,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 61309560}
+      - m_Target: {fileID: 8296110141677328182}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: ChangeScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -22058,6 +22147,19 @@ MonoBehaviour:
           m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8296110141677328182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305219200625743065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f62a06c04960d41989a840f5581075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: 0
 --- !u!1001 &8692608149577548642
 PrefabInstance:
   m_ObjectHideFlags: 0

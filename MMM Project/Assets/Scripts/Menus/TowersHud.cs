@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 
-public class TowersHud : IconHud
+public class TowersHud : IconsTimerHud
 {
     /// <summary>
     /// Esta clase se va a encargar de modificar los iconos de las torres en el hud y sus descripciones

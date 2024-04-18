@@ -39,4 +39,7 @@ public class AudioManager : MonoBehaviour
     public void SetMusicVolume(float amount){
         musicSource.volume = amount;
     }
+    public void SetEffectsVolume(float amount){
+        effectsSource.volume = amount;
+    }
 }

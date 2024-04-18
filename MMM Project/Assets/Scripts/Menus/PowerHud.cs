@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 
-public class PowerHud : IconHud
+public class PowerHud : IconsTimerHud
 {
     /// <summary>
     /// Esta clase se va a encargar de modificar los iconos de los poderes en el hud y sus descripciones
