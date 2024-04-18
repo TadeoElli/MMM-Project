@@ -25,7 +25,7 @@ public class Nexus : MonoBehaviour
     private NexusModel model;   //Clase que se encarga del feedback visual del nexo
     [SerializeField] private EnergyIndicator indicator;
     public UnityEvent resetCooldownsHud;
-
+    [Header("Sounds Effects")]
 
     Camera cam;
     Vector2 force;
@@ -159,6 +159,7 @@ public class Nexus : MonoBehaviour
         missilePrefab.GetComponent<Rigidbody2D>().AddForce(force * ((missiles[index].velocity / 3) + baseSpeed), ForceMode2D.Impulse);     //Tomo el rb del misil y le aplico fuerza
         missilePrefab.GetComponent<MissileBehaviour>().TryToShoot(startPoint,endPoint, baseStability);  //Pruebo a lanzar el misil
         missilePrefab.GetComponent<Collider2D>().enabled = true;    //Y activo su collider
+
         resetCooldownsHud?.Invoke();
     }
     private void NexusRestore(){

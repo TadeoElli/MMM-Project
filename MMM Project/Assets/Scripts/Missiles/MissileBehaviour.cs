@@ -17,7 +17,8 @@ public class MissileBehaviour : MonoBehaviour
     public float RotationDirection{get{return rotationDirection;}set{ rotationDirection =  Mathf.Clamp(value, -1f, 1f);}}
     private CircleCollider2D circleCollider2D;
     private Rigidbody2D rb2D;
-
+    [Header("Sounds Effects")]
+    [SerializeField] private AudioClip launchClip, bounceClip;
 
     private void OnEnable() {   //Declaro las estadisticas
         life = missile.maxLife;
@@ -59,6 +60,9 @@ public class MissileBehaviour : MonoBehaviour
             missile.ExplosionBehaviour(transform);
             this.gameObject.SetActive(false);
         }
+        else{
+            AudioManager.Instance.PlaySoundEffect(launchClip);
+        }
     }
 
     //Comportamiento cuando collisiona con un objeto
@@ -67,6 +71,7 @@ public class MissileBehaviour : MonoBehaviour
         if(damage > 0){
             TakeDamage(damage);
         }
+        AudioManager.Instance.PlaySoundEffect(bounceClip);
         //Debug.Log(rb2D.velocity.magnitude);
     }
     //Comportamiento cuando colisiona con un objeto y el collider del misil es trigger(Debido a algunas funciones)
@@ -74,7 +79,7 @@ public class MissileBehaviour : MonoBehaviour
         if(circleCollider2D.isTrigger){
             float damage = missile.CollisionBehaviour(other.gameObject, this.gameObject);
             TakeDamage(damage);
-
+            AudioManager.Instance.PlaySoundEffect(bounceClip);
         //Debug.Log(rb2D.velocity.magnitude);
         }
     }

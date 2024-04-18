@@ -89,8 +89,8 @@ MonoBehaviour:
   life: 0
   isSpecial: 0
   hasBeenAtracted: 0
-  rotationSpeed: 100
-  rotationDirection: 0
+  launchClip: {fileID: 8300000, guid: 679a6838eb44c8a448e810e0deb5c4ad, type: 3}
+  bounceClip: {fileID: 8300000, guid: a16a579bbf4c0b34cacd86198c5de698, type: 3}
 --- !u!1 &3964432887996953587
 GameObject:
   m_ObjectHideFlags: 0
