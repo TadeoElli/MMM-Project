@@ -9,6 +9,7 @@ public class Nexus : MonoBehaviour
     /// Esta clase se encarga de manejar el nexo, creando los misiles correspondientes al indice, lanzandolos, consumiendo la energia
     /// correspondiente al misil a las estadisticas generales
     /// </summary>
+    public static Nexus Instance { get; private set; }
     public Observer<float> currentEnergy = new Observer<float>(1000f);      //la energia que tiene actualmente el nexo
     public Observer<float> currentSpeed = new Observer<float>(0.0f);      //la velocidad con la que se va a lanzar el misil
     public Observer<float> currentDistance = new Observer<float>(0.0f);      //la distancia del mouse con el nexo
@@ -36,6 +37,12 @@ public class Nexus : MonoBehaviour
         cam = Camera.main;
         nexusPosition = FindObjectOfType<NexusPosition>();
         model = GetComponentInChildren<NexusModel>();
+        if (Instance == null){
+            Instance = this;
+        }
+        else{
+            Destroy(gameObject);
+        }
     }
     //Establece la posicion del nexo y del cursor y luego crea un misil, despues de un delay
     void Start()
@@ -189,5 +196,6 @@ public class Nexus : MonoBehaviour
         if(missilePrefab != null){missilePrefab.SetActive(false);}
         if(mouseOverMissile != null){mouseOverMissile.SetActive(false);}
         if(indicator != null){indicator.gameObject.SetActive(false);}
+        this.gameObject.SetActive(false);
     }
 }

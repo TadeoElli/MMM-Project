@@ -10,6 +10,7 @@ public class InputController : MonoBehaviour
     /// <summary>
     /// esta clase se encarga de manegar los inputs y los indices
     /// </summary>
+    public static InputController Instance { get; private set; }
     public Observer<int> missileIndex = new Observer<int>(0);   //El indice de misiles que notificara al resto
     public Observer<int> towerIndex = new Observer<int>(0);  //El indice de torres que notificara al resto
     //[SerializeField] private int missileIndex;
@@ -19,6 +20,14 @@ public class InputController : MonoBehaviour
     public bool missileIsAvailable = true;  //Si esta disponible para modificar el indice de los misiles
     [SerializeField] private UnityEvent<int> antimatterHud;
 
+    private void Awake() {
+        if (Instance == null){
+            Instance = this;
+        }
+        else{
+            Destroy(gameObject);
+        }
+    }
     public void SetMissileIndex(int index){ //Setea el indice de los misiles si esta permitido
         if(missileIsAvailable){
             missileIndex.Value = index;

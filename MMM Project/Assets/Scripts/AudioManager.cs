@@ -35,4 +35,8 @@ public class AudioManager : MonoBehaviour
     public void PlaySoundEffect(AudioClip effect){
         effectsSource.PlayOneShot(effect);
     }
+
+    public void SetMusicVolume(float amount){
+        musicSource.volume = amount;
+    }
 }

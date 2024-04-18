@@ -117,7 +117,7 @@ public class EnemySpawner : MonoBehaviour
         _waves[_currentWaveCount.Value]._enemyGroups[index]._spawnCount++;    //aumenta la cantidad de enemigos de un tipo spawneados
         //Si ya se cumplio la cuota de spawn de uno de los enemigos, lo quita de la lista para que no siga spawneando de ellos    
         _waves[_currentWaveCount.Value]._spawnEnemyCount++;     
-        _enemiesAlive.Value++;    //Aumenta el numero de enemigos vivos
+        IncreaseEnemiesAlive();
         return enemy;
     }
     void CalculateWaveQuota()       //Calcula la cantidad de enemigos en la oleada
@@ -138,5 +138,10 @@ public class EnemySpawner : MonoBehaviour
     }
     public void ReduceEnemiesAlive(int amount){
         _enemiesAlive.Value -= amount;
+        GameManager.Instance.EnemiesAlive = _enemiesAlive.Value;
+    }
+    public void IncreaseEnemiesAlive(){
+        _enemiesAlive.Value++;    //Aumenta el numero de enemigos vivos
+        GameManager.Instance.EnemiesAlive = _enemiesAlive.Value;
     }
 }

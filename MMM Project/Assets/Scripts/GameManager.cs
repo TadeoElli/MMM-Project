@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timeLimit;
     private float timer;
     private int _enemiesAlive;
-    private InputController inputs;
-    private Nexus nexus;
+    public int EnemiesAlive { get{return _enemiesAlive;}set { _enemiesAlive = value;}}
     [SerializeField] private GameObject winMenu;
     private void Awake() {
         if (Instance == null){
@@ -23,9 +22,6 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        inputs = FindObjectOfType<InputController>();
-        nexus = FindObjectOfType<Nexus>();
-
     }
 
     // Update is called once per frame
@@ -46,9 +42,9 @@ public class GameManager : MonoBehaviour
     }
 
     private void EndGame(){
-        inputs.RemoveSubscribers();
-        nexus.DisableNexus();
-        winMenu.SetActive(true);
+        InputController.Instance.RemoveSubscribers();
+        Nexus.Instance.DisableNexus();
+        //winMenu.SetActive(true);
     }
     public void SetEnemiesAlive(int amount){
         _enemiesAlive = amount;
