@@ -29,5 +29,6 @@ public class CreateExplosionStrategy : PowerStrategy
     private void CreateExplosion(Vector2 origin){   //Crea la explosion correspondiente
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(prefab);
         explosion.transform.position = origin;
+        AudioManager.Instance.PlaySoundEffect(deployEffect);
     }
 }

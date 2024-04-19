@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180c20a9b13820641bfca1c21c3e90c2, type: 3}
   m_Name: SingularityExplosion
   m_EditorClassIdentifier: 
-  id: 7
   energyConsumption: 0
   cooldown: 0
   hasPerformedCursor: 0
   sprite: {fileID: 21300000, guid: ecbd33fb86a31f048823e32c556577ae, type: 3}
   material: {fileID: 2100000, guid: a8757f7a89ff1ae4b993fa056de9a606, type: 2}
   scale: {x: 0.5, y: 0.5, z: 1}
+  invalidEffect: {fileID: 8300000, guid: d86d098c698a5c94e912049fe24ac46b, type: 3}
+  deployEffect: {fileID: 0}
   prefab: {fileID: 9066306634222122411, guid: 603e6dceb8bb52949aa78f005f12e0fc, type: 3}

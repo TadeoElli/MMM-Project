@@ -20,6 +20,8 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 63956eb4e5c32aa4f9ec5bf6e0fa5a48, type: 3}
   material: {fileID: 2100000, guid: dbf91f0715438a14bbec60a549020214, type: 2}
   scale: {x: 0.2, y: 0.2, z: 1}
+  invalidEffect: {fileID: 8300000, guid: d86d098c698a5c94e912049fe24ac46b, type: 3}
+  deployEffect: {fileID: 8300000, guid: 43d0b71a785c5d541bc95960d0384ee1, type: 3}
   repulsionRadius: 1
   repulsionStrength: 50
   attractionStrength: 80

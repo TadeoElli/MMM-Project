@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180c20a9b13820641bfca1c21c3e90c2, type: 3}
   m_Name: ShockWaveStrategy
   m_EditorClassIdentifier: 
-  id: 3
   energyConsumption: 600
   cooldown: 30
   hasPerformedCursor: 0
   sprite: {fileID: 21300000, guid: ecbd33fb86a31f048823e32c556577ae, type: 3}
   material: {fileID: 2100000, guid: 153b38dfba0f7e0498e703560acedc6b, type: 2}
   scale: {x: 0.5, y: 0.5, z: 1}
+  invalidEffect: {fileID: 8300000, guid: d86d098c698a5c94e912049fe24ac46b, type: 3}
+  deployEffect: {fileID: 8300000, guid: c93f2f07a97e20047a1778bdaa5a4f15, type: 3}
   prefab: {fileID: 1358093547784389084, guid: 961bc7494b615f343862ec3c11c81b25, type: 3}
