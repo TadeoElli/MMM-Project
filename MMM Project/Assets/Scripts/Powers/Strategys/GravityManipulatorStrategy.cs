@@ -48,7 +48,8 @@ public class GravityManipulatorStrategy : PowerStrategy
             }
         }
         else{
-            Debug.Log("Invalid Action");
+            //Debug.Log("Invalid Action");
+            AudioManager.Instance.PlaySoundEffect(invalidEffect);
             return false;
         }
     }

@@ -66,7 +66,7 @@ public class CursorController : MonoBehaviour
     }
     private bool CheckDistanceFromNexus(){  //Chequero la distancia entre el mouse y el nexo, el valor "distanceFromNexus" debe ser el mismo 
     //que en el towerController
-        if(Vector2.Distance(currentPosition, nexus.transform.position) < distanceFromNexus){
+        if((Vector2.Distance(currentPosition, nexus.transform.position) < distanceFromNexus) || (currentPosition.y < -3f || currentPosition.y > 4.25f)){
             return true;
         }
         else{

@@ -9,6 +9,8 @@ public abstract class PowerStrategy : ScriptableObject        //Strategy para to
     public Sprite sprite;   //El sprite que tiene que tener el cursor
     public Material material;   //el material que tiene que tener el cursor
     public Vector3 scale;   //la escala que tiene que tener el cursor
+    [Header("Sound Effects")]
+    public AudioClip invalidEffect;
 
     public abstract bool BehaviourStarted();    //El comportamiento cuando se presiona el boton del mouse
     public abstract bool BehaviourPerformed();  //El comportamiento cuando se mantiene presionado el boton del mouse

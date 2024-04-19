@@ -26,7 +26,7 @@ public class Nexus : MonoBehaviour
     [SerializeField] private EnergyIndicator indicator;
     public UnityEvent resetCooldownsHud;
     [Header("Sounds Effects")]
-
+    [SerializeField] private AudioClip invalidEffect;
     Camera cam;
     Vector2 force;
     [SerializeField] private Vector2 minPower, maxPower;
@@ -90,6 +90,7 @@ public class Nexus : MonoBehaviour
                 }
                 else{   //Si no tengo la energia para lanzarlo reseteo su posicion
                     NexusRestore();
+                    AudioManager.Instance.PlaySoundEffect(invalidEffect);
                     missilePrefab.transform.position = startPoint;
                 }
             }

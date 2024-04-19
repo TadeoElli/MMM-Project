@@ -20,6 +20,7 @@ public class TowerController : MonoBehaviour
     [SerializeField] private List<float> currentCd; //la lista de sus temporizadores
     [SerializeField] private List<bool> isReady;    //La lista de flags de si ya estan disponibles
     [SerializeField] private List<UnityEvent> changeTowersHud;
+
     private void Awake() {
         cam = Camera.main;
         nexus = FindObjectOfType<Nexus>().gameObject;
@@ -94,9 +95,13 @@ public class TowerController : MonoBehaviour
             if(currentPosition.y > -3f && currentPosition.y < 4.25f){
                 return true;
             }
-            else return false;
+            else{
+                AudioManager.Instance.PlaySoundEffect(towers[currentIndex.Value].invalidEffect);
+                return false;
+            } 
         }
         else{
+            AudioManager.Instance.PlaySoundEffect(towers[currentIndex.Value].invalidEffect);
             return false;
         }
     }

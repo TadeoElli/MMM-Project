@@ -32,7 +32,8 @@ public class MissileManipulatorStrategy : PowerStrategy
             return true;
         }
         else{
-            Debug.Log("Invalid Action");
+            //Debug.Log("Invalid Action");
+            AudioManager.Instance.PlaySoundEffect(invalidEffect);
             return false;
         }
     }

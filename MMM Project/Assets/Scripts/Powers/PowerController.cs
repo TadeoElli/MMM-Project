@@ -21,6 +21,7 @@ public class PowerController : MonoBehaviour
     [SerializeField] private List<bool> isReady;    //La lista de flags para saber si ya se pueden usar o no
     [SerializeField] private EnergyIndicator indicator;
     [SerializeField] private List<UnityEvent> changePowersHud;
+
     private void Awake() {
         cam = Camera.main;
     }
@@ -108,18 +109,23 @@ public class PowerController : MonoBehaviour
     //Si no entonces luego del comportamiento de inicio se llama a DesactivatePower
     //Si se solto el click, se llama al comportamiento FinishPower
     public void ActivatePower(InputAction.CallbackContext callbackContext){
-        if(hasPower && currentEnergy.Value >= powers[currentIndex.Value].energyConsumption && CheckDistance()){
-            if(callbackContext.started){
-                if(powers[currentIndex.Value].BehaviourStarted()){
-                    isDraggin = true;
-                    
+        if(hasPower){
+            if(currentEnergy.Value >= powers[currentIndex.Value].energyConsumption && CheckDistance()){
+                if(callbackContext.started){
+                    if(powers[currentIndex.Value].BehaviourStarted()){
+                        isDraggin = true;
+                        
+                    }
+                    else{
+                        DesactivatePower();
+                    }
                 }
-                else{
-                    DesactivatePower();
+                else if(callbackContext.canceled){
+                    FinishPower();
                 }
             }
-            else if(callbackContext.canceled){
-                FinishPower();
+            else{
+                AudioManager.Instance.PlaySoundEffect(powers[currentIndex.Value].invalidEffect);
             }
         }
     }
@@ -128,7 +134,10 @@ public class PowerController : MonoBehaviour
         if(currentPosition.y > -3f && currentPosition.y < 4.25f){
             return true;
         }
-        else return false;
+        else{
+            AudioManager.Instance.PlaySoundEffect(powers[currentIndex.Value].invalidEffect);
+            return false;
+        }
     }
     //Se habilita el ingreso de nuevos inputs, se llama al comportamiento de cuando se suelta el click y se resetea los valores de cooldown del poder
     //Se resetea el indice, se resta la energia correspondiente

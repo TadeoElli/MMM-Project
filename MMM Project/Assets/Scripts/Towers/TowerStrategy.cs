@@ -11,9 +11,12 @@ public abstract class TowerStrategy : ScriptableObject        //Strategy para to
     public Sprite sprite;   //La imagen que debe mostrar el cursor
     public Material material;   //El material del cursor
     public Vector3 scale;   //La escala del cursor
+    [Header("Sound Effects")]
+    public AudioClip invalidEffect, deployEffect;
     public void CreateTower(Vector2 origin){        //Esta funcion crea la torreta en el punto donde se presiono
         GameObject tower = TowersPool.Instance.RequestTower(prefab);
         tower.transform.position = origin;
+        AudioManager.Instance.PlaySoundEffect(deployEffect);
     }
     public abstract void SpecialBehaviour(GameObject prefab, GameObject other); //El comportamiento especial que tiene la torre
 
