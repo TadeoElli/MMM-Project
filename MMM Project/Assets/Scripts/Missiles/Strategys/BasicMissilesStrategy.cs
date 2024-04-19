@@ -16,6 +16,7 @@ public class BasicMissilesStrategy : MissileStrategy
         {
             case 7:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+                AudioManager.Instance.PlaySoundEffect(bounceEffect);
                 return damage;
             case 8:
             case 9:
@@ -40,6 +41,7 @@ public class BasicMissilesStrategy : MissileStrategy
     public override void ExplosionBehaviour(Transform origin){
         GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         newExplosion.transform.position = origin.position;
+        AudioManager.Instance.PlaySoundEffect(explosionEffect);
     }
         
     

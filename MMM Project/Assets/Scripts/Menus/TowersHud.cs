@@ -13,6 +13,7 @@ public class TowersHud : IconsTimerHud
     [SerializeField] private Image hoverImage, pressedImage;
     [SerializeField] private TowerStrategy tower;
     [SerializeField] private UnityEvent changeIndex;
+    [SerializeField] private AudioClip readyEffect;
     private void Start() {
         imageComp = GetComponent<Image>();
         maxAmount = tower.cooldown;
@@ -32,6 +33,9 @@ public class TowersHud : IconsTimerHud
     protected override void OnClickUp(){
         if(pressedImage!=null)pressedImage.gameObject.SetActive(false);
         changeIndex?.Invoke();
+    }
+    protected override void OnIconReady(){
+        AudioManager.Instance.PlaySoundEffect(readyEffect);
     }
 
 }

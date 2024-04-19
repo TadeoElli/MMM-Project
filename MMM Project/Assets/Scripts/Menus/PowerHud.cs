@@ -14,6 +14,7 @@ public class PowerHud : IconsTimerHud
     [SerializeField] private EnergyIndicator indicator;
     [SerializeField] private PowerStrategy power;
     [SerializeField] private UnityEvent changeIndex;
+    [SerializeField] private AudioClip readyEffect;
     private void Start() {
         imageComp = GetComponent<Image>();
         maxAmount = power.cooldown;
@@ -36,6 +37,9 @@ public class PowerHud : IconsTimerHud
     protected override void OnClickUp(){
         if(pressedImage!=null)pressedImage.gameObject.SetActive(false);
         changeIndex?.Invoke();
+    }
+    protected override void OnIconReady(){
+        AudioManager.Instance.PlaySoundEffect(readyEffect);
     }
 
     public void SetCooldowns(float baseCooldown){

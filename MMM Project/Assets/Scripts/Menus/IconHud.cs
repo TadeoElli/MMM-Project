@@ -9,7 +9,10 @@ public abstract class IconHud : MonoBehaviour, IPointerEnterHandler, IPointerExi
     /// <summary>
     /// Esta clase sirve como base para manejar los iconos del hud
     /// </summary>
-    /// 
+    [Header("Sound Effects")]
+    
+    [SerializeField] protected AudioClip hooverEffect, pressedEffect; 
+    
     protected bool isInteractable,isEnter;
 
 
@@ -17,6 +20,7 @@ public abstract class IconHud : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if(isEnter){   
             if(Input.GetMouseButtonDown(0)){
                 OnClickDown();
+                AudioManager.Instance.PlaySoundEffect(pressedEffect);
             }
             else if(Input.GetMouseButtonUp(0)){
                 OnClickUp();
@@ -31,6 +35,7 @@ public abstract class IconHud : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if(isInteractable){
             isEnter = true;
             OnClickEnter(); 
+            AudioManager.Instance.PlaySoundEffect(hooverEffect);
         }
     }
     public void OnPointerExit(PointerEventData eventData){

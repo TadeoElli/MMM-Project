@@ -8,7 +8,7 @@ public class ButtonsHud : IconHud
     /// Esta clase sirve como base para manejar los botones del hud que cuenten con un temporizador
     /// </summary>
 
-    [SerializeField] private AudioClip hooverEffect, pressedEffect;
+    
     private Button button;
 
     private void Start(){

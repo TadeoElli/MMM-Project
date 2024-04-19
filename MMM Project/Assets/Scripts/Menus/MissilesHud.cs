@@ -10,8 +10,11 @@ public class MissilesHud : IconsTimerHud
     /// Esta clase se va a encargar de modificar los iconos de los missiles en el hud y sus descripciones
     /// </summary>
     [SerializeField] private Image hoverImage, pressedImage, anim;
+    [Header("Description")]
     [SerializeField] private GameObject description;
+    [Header("Indicator")]
     [SerializeField] private EnergyIndicator indicator;
+    [Header("Strategy")]
     [SerializeField] private MissileStrategy missile;
     private void Start() {
         imageComp = GetComponent<Image>();
@@ -37,5 +40,8 @@ public class MissilesHud : IconsTimerHud
     }
     protected override void OnClickUp(){
         if(pressedImage!=null)pressedImage.gameObject.SetActive(false);
+    }
+    protected override void OnIconReady(){
+        
     }
 }

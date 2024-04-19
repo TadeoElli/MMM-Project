@@ -21,7 +21,7 @@ public class AntimatterMissileBehaviour : MissileStrategy
                 Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
                 Vector2 bounceDirection = rb2D.velocity;
                 bounceDirection.y = bounceDirection.y * -1;
-
+                AudioManager.Instance.PlaySoundEffect(bounceEffect);
                 rb2D.velocity = bounceDirection;
                 return damage;
             case 8:
@@ -48,6 +48,7 @@ public class AntimatterMissileBehaviour : MissileStrategy
     public override void ExplosionBehaviour(Transform origin){
         GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         newExplosion.transform.position = origin.position;
+        AudioManager.Instance.PlaySoundEffect(explosionEffect);
     }
 
 }

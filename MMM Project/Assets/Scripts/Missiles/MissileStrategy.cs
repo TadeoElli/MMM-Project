@@ -17,6 +17,7 @@ public abstract class MissileStrategy : ScriptableObject        //Strategy para 
     public Color color;
     public Sprite sprite;
     public Texture texture;
+    public AudioClip launchEffect, bounceEffect, explosionEffect;
     #endregion
 
 

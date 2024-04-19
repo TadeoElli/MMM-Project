@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class IconsTimerHud : IconHud
+public abstract class IconsTimerHud : IconHud
 {
     /// <summary>
     /// Esta clase sirve como base para manejar los iconos del hud que cuenten con un temporizador
     /// </summary>
+    [Header("Sprites")]
     [SerializeField] private Sprite image, cooldownImage;
     
     protected Image imageComp;
@@ -19,6 +20,7 @@ public class IconsTimerHud : IconHud
             currentAmount = currentAmount + 1 * Time.deltaTime;
             if(imageComp!= null){imageComp.sprite = cooldownImage;}
             if(imageComp!=null){imageComp.fillAmount = Mathf.Clamp(currentAmount,0,maxAmount) / maxAmount;}
+            if(currentAmount >= maxAmount) OnIconReady();
         }
         else{
             if(imageComp!= null){imageComp.sprite = image;}
@@ -32,6 +34,7 @@ public class IconsTimerHud : IconHud
     protected override void OnClickUp(){}
     protected override void OnClickEnter(){}
     protected override void OnClickExit(){}
+    protected abstract void OnIconReady();
 
     public void SetCurrentAmount(){
         currentAmount = 0;
