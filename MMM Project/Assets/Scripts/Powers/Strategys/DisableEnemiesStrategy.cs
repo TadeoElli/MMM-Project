@@ -11,6 +11,7 @@ public class DisableEnemiesStrategy : PowerStrategy
     /// Este tipo de poder Desactiva el movimiento de un enemigo
     /// </summary>
     private EnemyBehaviour enemy;   //El enemigo donde se presiona
+    [SerializeField] private Explosion hackParticle;
     public override bool BehaviourStarted(){    //El comportamiento cuando se presiona
         // Convertir la posición del clic del ratón a un rayo en el mundo 2D
         Vector2 rayOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -31,6 +32,8 @@ public class DisableEnemiesStrategy : PowerStrategy
     }
 
     private void Activate(GameObject other){    //Deshabilita la capacidad de moverse del enemigo
+        Vector2 origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        CreateExplosion(origin);
         enemy = other.GetComponent<EnemyBehaviour>();
         enemy.canMove = false;
         Debug.Log("Navigation Hack");
@@ -39,5 +42,9 @@ public class DisableEnemiesStrategy : PowerStrategy
         return true;
     }
     public override void BehaviourEnded(){
+    }
+    private void CreateExplosion(Vector2 origin){   //Crea la explosion correspondiente
+        GameObject explosion = ExplosionPool.Instance.RequestExplosion(hackParticle);
+        explosion.transform.position = origin;
     }
 }

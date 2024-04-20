@@ -9944,7 +9944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 11400000, guid: 20a76c0853ac1fa4aab54cef930a8e56, type: 2}
   events: {fileID: 7640337581742249409}
-  sound: {fileID: 8300000, guid: c17498b1b23f3ef4d9e74f8d7585251c, type: 3}
+  sound: {fileID: 8300000, guid: eadd4a80ef80e5542962c7fb7b3a6402, type: 3}
 --- !u!114 &7640337581742249409
 MonoBehaviour:
   m_ObjectHideFlags: 0

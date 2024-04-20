@@ -19,4 +19,4 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: f3dd4be9bff2a5445a41c5c174677f13, type: 2}
   scale: {x: 0.25, y: 0.25, z: 1}
   invalidEffect: {fileID: 8300000, guid: d86d098c698a5c94e912049fe24ac46b, type: 3}
-  deployEffect: {fileID: 0}
+  hackParticle: {fileID: 4332196422139455912, guid: 09da0e9ff865280498b80c121c91816f, type: 3}
