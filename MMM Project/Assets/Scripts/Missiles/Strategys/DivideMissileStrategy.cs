@@ -52,7 +52,6 @@ public class DivideMissileStrategy : MissileStrategy
     public override void ExplosionBehaviour(Transform origin){
         GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
         newExplosion.transform.position = origin.position;
-        AudioManager.Instance.PlaySoundEffect(explosionEffect);
     }
 
     //Crea un nuevo misil del tipo guardado y se crea una nueva direccion aleatoria, luego se lo manda en esa direccion

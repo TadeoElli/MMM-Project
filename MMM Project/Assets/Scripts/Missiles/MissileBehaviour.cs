@@ -17,8 +17,6 @@ public class MissileBehaviour : MonoBehaviour
     public float RotationDirection{get{return rotationDirection;}set{ rotationDirection =  Mathf.Clamp(value, -1f, 1f);}}
     private CircleCollider2D circleCollider2D;
     private Rigidbody2D rb2D;
-    [Header("Sounds Effects")]
-    [SerializeField] private AudioClip launchClip, bounceClip;
 
     private void OnEnable() {   //Declaro las estadisticas
         life = missile.maxLife;

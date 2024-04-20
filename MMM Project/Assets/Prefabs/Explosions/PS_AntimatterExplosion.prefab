@@ -14831,7 +14831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 11400000, guid: 5bc159993122ae14b93f8cc7002b9c32, type: 2}
   events: {fileID: 41560396337185556}
-  creatorId: 0
+  sound: {fileID: 8300000, guid: 08a999687d9ffb941b49a1417f4898b8, type: 3}
 --- !u!114 &41560396337185556
 MonoBehaviour:
   m_ObjectHideFlags: 0

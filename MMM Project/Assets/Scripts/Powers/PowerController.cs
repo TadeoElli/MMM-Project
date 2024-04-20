@@ -131,7 +131,7 @@ public class PowerController : MonoBehaviour
     }
     private bool CheckDistance(){
         Vector2 currentPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        if(currentPosition.y > -3f && currentPosition.y < 4.25f){
+        if(currentPosition.y > -3.7f && currentPosition.y < 4.85f){
             return true;
         }
         else{

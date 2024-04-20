@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6945134196455071407}
   - component: {fileID: 6390190738230518907}
   m_Layer: 0
-  m_Name: PS_AbsorbPArticle
+  m_Name: PS_AbsorbParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4948,6 +4948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 11400000, guid: fe41cef1b8febc6479cae55c8e9d51d2, type: 2}
   events: {fileID: 1656235052379844921}
+  sound: {fileID: 0}
 --- !u!114 &1656235052379844921
 MonoBehaviour:
   m_ObjectHideFlags: 0
