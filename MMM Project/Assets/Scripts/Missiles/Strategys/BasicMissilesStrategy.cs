@@ -24,6 +24,8 @@ public class BasicMissilesStrategy : MissileStrategy
             case 11:
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 DealDamage(other, prefab);
+                if(other.GetComponentInChildren<SpriteRenderer>().isVisible)
+                    AudioManager.Instance.PlaySoundEffect(bounceEnemyEffect);
                 return damage;
             default:
                 damage = 0;

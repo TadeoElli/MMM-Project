@@ -35,6 +35,8 @@ public class RandomAngleMissileBehaviour : MissileStrategy
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
                 DealDamage(other, prefab);
+                if(prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
+                    AudioManager.Instance.PlaySoundEffect(bounceEnemyEffect);
                 return damage;
             default:
                 damage = 0;

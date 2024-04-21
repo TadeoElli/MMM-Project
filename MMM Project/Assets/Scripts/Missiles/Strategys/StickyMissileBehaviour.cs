@@ -45,6 +45,8 @@ public class StickyMissileBehaviour : MissileStrategy
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
                 DealDamage(other, prefab);
+                if(prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
+                    AudioManager.Instance.PlaySoundEffect(bounceEnemyEffect);
                 return damage;
             default:
                 damage = 0;
