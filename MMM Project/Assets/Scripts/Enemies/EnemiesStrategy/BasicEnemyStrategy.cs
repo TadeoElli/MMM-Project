@@ -15,12 +15,16 @@ public class BasicEnemyStrategy : EnemyStrategy
         {
             case 7:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
+                if(prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
+                    AudioManager.Instance.PlaySoundEffect(bounceClip);
                 return damage;
             case 8:
             case 9:
             case 10:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 CollisionForce(other, prefab);   //Llama a la funcion para empujar al otro enemigo
+                if(prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
+                    AudioManager.Instance.PlaySoundEffect(bounceClip);
                 return damage;
             default:
                 damage = 0;
