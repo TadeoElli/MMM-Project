@@ -16,8 +16,6 @@ public class VolatilEnemyBehaviour : EnemyStrategy
         {
             case 7:  
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                if(prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
-                    AudioManager.Instance.PlaySoundEffect(bounceClip);
                 return damage;
             case 8:
             case 9:
@@ -25,8 +23,6 @@ public class VolatilEnemyBehaviour : EnemyStrategy
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 CollisionAction(other, prefab); // Llama al comportamiento de collision si choca con los respectivos layers
                 CollisionForce(other, prefab);  //Llama a la funcion para empujar al otro enemigo
-                if(prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
-                    AudioManager.Instance.PlaySoundEffect(bounceClip);
                 return damage;
             default:
                 damage = 0;

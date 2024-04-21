@@ -4920,7 +4920,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 11400000, guid: 04c233c8e2af1b34cb27a1f933a6504f, type: 2}
   events: {fileID: 4467600068110337071}
-  sound: {fileID: 8300000, guid: 0a50f40b570003145b98f5a84a8d75e3, type: 3}
 --- !u!114 &4467600068110337071
 MonoBehaviour:
   m_ObjectHideFlags: 0
