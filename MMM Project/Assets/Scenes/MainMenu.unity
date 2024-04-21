@@ -4094,6 +4094,7 @@ GameObject:
   - component: {fileID: 572217201}
   - component: {fileID: 572217204}
   - component: {fileID: 572217205}
+  - component: {fileID: 572217206}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -4164,7 +4165,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 572217202}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 572217206}
+        m_TargetAssemblyTypeName: QuitButton, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &572217202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4316,6 +4329,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hooverEffect: {fileID: 8300000, guid: 58cd354ebda380340926382837941204, type: 3}
   pressedEffect: {fileID: 8300000, guid: 30e1ef474d75d5e46b018f4d70aec861, type: 3}
+--- !u!114 &572217206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572217199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a69809bdb06fd458e16b0588c3666a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &578024988
 GameObject:
   m_ObjectHideFlags: 0
@@ -4573,7 +4598,6 @@ MonoBehaviour:
   musicSource: {fileID: 578024991}
   effectsSource: {fileID: 578024990}
   menuMusic: {fileID: 8300000, guid: ab5895991a840f84f9b67903c0a8a5b6, type: 3}
-  levelMusic: {fileID: 0}
 --- !u!1 &597938977
 GameObject:
   m_ObjectHideFlags: 0

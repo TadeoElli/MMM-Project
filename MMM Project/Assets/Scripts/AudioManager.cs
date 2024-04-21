@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set;}
     // Start is called before the first frame update
     [SerializeField] private AudioSource musicSource, effectsSource;
-    [SerializeField] private AudioClip menuMusic, levelMusic;
+    [SerializeField] private AudioClip menuMusic;
     private void Awake() {
         if (Instance == null){
             Instance = this;

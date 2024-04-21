@@ -52,4 +52,7 @@ public class GameManager : MonoBehaviour
     public void SetGameMode(Scenes scene){
         gameMode = scene;
     }
+    public void QuitGame(){
+        Application.Quit();
+    }
 }
