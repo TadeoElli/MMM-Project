@@ -14795,6 +14795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 11400000, guid: bd7dbd21b9624854b8ca7217beacbea3, type: 2}
   events: {fileID: 2466960409184161912}
+  sound: {fileID: 8300000, guid: 05be5a7ae83e77b4194394a72678293d, type: 3}
 --- !u!114 &2466960409184161912
 MonoBehaviour:
   m_ObjectHideFlags: 0

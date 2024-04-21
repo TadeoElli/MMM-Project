@@ -23,6 +23,8 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
     [Header("Will spawn the first prefab on the list")]
     [SerializeField] private List<PowerUpData> availablePowerUps;        //Lista de todos los power up que puede dropear
 
+    [Header("Sounds Effect")]
+    public AudioClip bounceClip;        //Lista de todos los power up que puede dropear
     #endregion
     #region Funciones
     public abstract int CollisionBehaviour(GameObject other,EnemyBehaviour prefab);     //Comportamiento al collisionEnter

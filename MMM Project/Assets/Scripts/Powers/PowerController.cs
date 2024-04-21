@@ -80,6 +80,7 @@ public class PowerController : MonoBehaviour
         for (int i = 1; i < powers.Length; i++)
         {
             cooldowns[i] = (powers[i].cooldown - baseCooldown);
+            //currentCd[i] = (powers[i].cooldown);
         }
     }
     
