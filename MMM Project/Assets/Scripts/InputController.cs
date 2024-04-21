@@ -54,8 +54,8 @@ public class InputController : MonoBehaviour
         missileIndex.Value = 0;
     }
     public void RemoveSubscribers(){
-        missileIndex.RemoveAllListener();
-        towerIndex.RemoveAllListener();
-        powerIndex.RemoveAllListener();
+        missileIndex.RemoveAllListeners();
+        towerIndex.RemoveAllListeners();
+        powerIndex.RemoveAllListeners();
     }
 }

@@ -58,7 +58,7 @@ public class Observer<T> {
     }
 
 
-    public void RemoveAllListener(){
+    public void RemoveAllListeners(){
         if(onValueChanged == null) return;
 
 #if UNITY_EDITOR
@@ -66,12 +66,12 @@ public class Observer<T> {
         object value = fieldInfo.GetValue(onValueChanged);
         value.GetType().GetMethod("Clear").Invoke(value,null);
 #else
-        onValueChanged.RemoveAllListener();
+        onValueChanged.RemoveAllListeners();
 #endif
     }
 
     public void Dispose(){
-        RemoveAllListener();
+        RemoveAllListeners();
         onValueChanged = null;
         value = default;
     }

@@ -7572,7 +7572,6 @@ MonoBehaviour:
   musicSource: {fileID: 812083035}
   effectsSource: {fileID: 812083034}
   menuMusic: {fileID: 8300000, guid: 125081195367cb649b008ea899532625, type: 3}
-  levelMusic: {fileID: 0}
 --- !u!82 &812083034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22430,11 +22429,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8692608147653118574, guid: 0b410aaf099d00a49af538da99a67b32, type: 3}
       propertyPath: baseEnergy
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8692608147653118574, guid: 0b410aaf099d00a49af538da99a67b32, type: 3}
       propertyPath: baseStability
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8692608147653118574, guid: 0b410aaf099d00a49af538da99a67b32, type: 3}
       propertyPath: startTechLevel

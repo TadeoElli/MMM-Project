@@ -71,12 +71,12 @@ public class NexusStats : MonoBehaviour
             currentEnergy.Value = Mathf.Clamp(currentEnergy.Value,0,maxEnergy.Value);
             if(currentStructure.Value <= 0  || currentLives.Value <= 0){
                 currentStructure.Value = -1;
-                currentEnergy.RemoveAllListener();
-                currentStructure.RemoveAllListener();
-                currentBaseCooldown.RemoveAllListener();
-                currentLives.RemoveAllListener();
-                currentBaseStability.RemoveAllListener();
-                currentBaseSpeed.RemoveAllListener();
+                currentEnergy.RemoveAllListeners();
+                currentStructure.RemoveAllListeners();
+                currentBaseCooldown.RemoveAllListeners();
+                currentLives.RemoveAllListeners();
+                currentBaseStability.RemoveAllListeners();
+                currentBaseSpeed.RemoveAllListeners();
                 isDestroyed = true;
                 loseMenu.SetActive(true);
             }

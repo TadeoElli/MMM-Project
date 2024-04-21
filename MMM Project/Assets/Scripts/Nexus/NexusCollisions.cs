@@ -31,7 +31,7 @@ public class NexusCollisions : MonoBehaviour
     }
 
     private void OnDisable() {
-        currentStructure.RemoveAllListener();
+        currentStructure.RemoveAllListeners();
     }
         
 }

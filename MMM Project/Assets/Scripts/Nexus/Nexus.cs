@@ -191,10 +191,10 @@ public class Nexus : MonoBehaviour
         DisableNexus();
     }
     public void DisableNexus(){
-        currentEnergy.RemoveAllListener();
-        currentSpeed.RemoveAllListener();
-        currentDistance.RemoveAllListener();
-        currentStability.RemoveAllListener();
+        currentEnergy.RemoveAllListeners();
+        currentSpeed.RemoveAllListeners();
+        currentDistance.RemoveAllListeners();
+        currentStability.RemoveAllListeners();
         if(missilePrefab != null){missilePrefab.SetActive(false);}
         if(mouseOverMissile != null){mouseOverMissile.SetActive(false);}
         if(indicator != null){indicator.gameObject.SetActive(false);}
