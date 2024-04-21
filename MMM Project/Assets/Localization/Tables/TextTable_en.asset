@@ -285,6 +285,14 @@ MonoBehaviour:
       Score is time-based'
     m_Metadata:
       m_Items: []
+  - m_Id: 6298426718769152
+    m_Localized: 'created by:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6298615282094080
+    m_Localized: 'Original creator:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

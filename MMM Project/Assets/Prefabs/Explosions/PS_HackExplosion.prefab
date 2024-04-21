@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 11400000, guid: 6066da7233ca3944c915984e72701278, type: 2}
   events: {fileID: -1675566925596098069}
-  sound: {fileID: 8300000, guid: 635896faf68852542b48517336e91f06, type: 3}
+  sound: {fileID: 8300000, guid: 86dfda47684f9b54d9390bb9a0c9ed0c, type: 3}
 --- !u!114 &-1675566925596098069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +72,7 @@ Animator:
   m_GameObject: {fileID: 664976639789462718}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f6749191eb39b4c4dac3731662cd6e8d, type: 2}
+  m_Controller: {fileID: 9100000, guid: a3f0386a0820f314e8fe4812117e5cdb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

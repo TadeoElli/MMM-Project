@@ -219,6 +219,14 @@ MonoBehaviour:
     m_Key: armageddonDescription
     m_Metadata:
       m_Items: []
+  - m_Id: 6298426718769152
+    m_Key: creditsTadeo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6298615282094080
+    m_Key: creditsOriginal
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
