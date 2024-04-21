@@ -26,4 +26,4 @@ MonoBehaviour:
   texture: {fileID: 2800000, guid: 80223029cfdcd89468ca2d8d3eb46894, type: 3}
   launchEffect: {fileID: 8300000, guid: 679a6838eb44c8a448e810e0deb5c4ad, type: 3}
   bounceEffect: {fileID: 8300000, guid: a16a579bbf4c0b34cacd86198c5de698, type: 3}
-  explosionEffect: {fileID: 8300000, guid: c17498b1b23f3ef4d9e74f8d7585251c, type: 3}
+  bounceEnemyEffect: {fileID: 8300000, guid: 8d6fb889a204d644db0b13d17ae8fe40, type: 3}

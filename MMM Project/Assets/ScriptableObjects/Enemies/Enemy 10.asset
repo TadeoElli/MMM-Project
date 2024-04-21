@@ -25,5 +25,6 @@ MonoBehaviour:
     dropProbability: 20
   - prefab: {fileID: 4859652181989221988, guid: fb29e88688852a14ea6e11a2df57128b, type: 3}
     dropProbability: 15
+  bounceClip: {fileID: 8300000, guid: 8d6fb889a204d644db0b13d17ae8fe40, type: 3}
   cooldown: 2
   particle: {fileID: 5881283508609851310, guid: b627c80c04658d54688dc11abe75a460, type: 3}

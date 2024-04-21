@@ -27,4 +27,5 @@ MonoBehaviour:
     dropProbability: 20
   - prefab: {fileID: 8299679788260876597, guid: 217321c1aaefef748a669dd36155b40f, type: 3}
     dropProbability: 40
+  bounceClip: {fileID: 8300000, guid: 8d6fb889a204d644db0b13d17ae8fe40, type: 3}
   nuclearExplosion: {fileID: 8546805254870235195, guid: 4a0d7bc19f384ec41a1dad68eda484bd, type: 3}

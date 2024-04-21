@@ -21,3 +21,4 @@ MonoBehaviour:
   availablePowerUps:
   - prefab: {fileID: 813487154259301250, guid: 6d5e7b8906c94284cb2ae7f63cb8b997, type: 3}
     dropProbability: 5
+  bounceClip: {fileID: 8300000, guid: 8d6fb889a204d644db0b13d17ae8fe40, type: 3}
