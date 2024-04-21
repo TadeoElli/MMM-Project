@@ -24,8 +24,9 @@ MonoBehaviour:
   color: {r: 0.764151, g: 0, b: 0, a: 1}
   sprite: {fileID: 21300000, guid: ebe98745057f5d849b49fa65c0502324, type: 3}
   texture: {fileID: 2800000, guid: 794c38b7d6f888e439b6417128672ab1, type: 3}
-  launchEffect: {fileID: 8300000, guid: e559fa643b6515849b06beeaf85e7e2c, type: 3}
-  bounceEffect: {fileID: 8300000, guid: ae499e8796ff4ec419f0011e04d86b44, type: 3}
+  launchEffect: {fileID: 8300000, guid: 679a6838eb44c8a448e810e0deb5c4ad, type: 3}
+  bounceEffect: {fileID: 8300000, guid: a16a579bbf4c0b34cacd86198c5de698, type: 3}
+  explosionEffect: {fileID: 8300000, guid: c17498b1b23f3ef4d9e74f8d7585251c, type: 3}
   subMissiles: {fileID: 3251731635788898808, guid: 494f5f57156303047bfbb82b11158edc, type: 3}
   force: 1000
   cantOfSubmissiles: 5
