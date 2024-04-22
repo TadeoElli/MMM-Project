@@ -20,6 +20,7 @@ public class Nexus : MonoBehaviour
     [SerializeField] public int index, powerIndex, towerIndex;  //Toma los indices de los demas controladores para que no puedas lanzar un misil si tenes un poder o torre activo
     [SerializeField] private int baseStability,baseSpeed;   //La estabilidad y velocidad base que aumenta con los niveles
     [SerializeField] private bool haveMissile;  //Si tiene un misil creado
+    private bool isDraggin; //Si el mouse esta encima del nexo
     [SerializeField] private CircleCollider2D collider1;
     private NexusPosition nexusPosition;   //Clase que se encarga de setear en donde va a estar el nexo
     private NexusModel model;   //Clase que se encarga del feedback visual del nexo
@@ -55,7 +56,38 @@ public class Nexus : MonoBehaviour
         StartCoroutine(DelayForSpawn());
     }
 
-    
+    private void Update() {
+        if(isDraggin){
+            if(Input.GetMouseButton(0)){        //Muevo el misil y el cursor a donde esta el mouse y agrando el collider del nexo
+                Vector3 currentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+                currentPoint.z = 0;
+                Vector3 direction = currentPoint - startPoint;
+                if(direction.magnitude > 2f){
+                    direction = direction.normalized * 2f;
+                    currentPoint = startPoint + direction;
+                }
+                MouseHoldBehaviour(currentPoint);
+                ShowFeedback();
+            }
+            if(Input.GetMouseButtonUp(0)){      //Marco el punto donde se solto para calcular el disparo
+                if(UseEnergy(missiles[index].energyConsumption)){   //Pregunto si tengo esa energia 
+                //Si la tengo, marco el punto donde se solto y pruebo lanzar el misil, luego activo su collider
+                    endPoint = missilePrefab.transform.position;
+                    endPoint.z = 0;
+                    ShootMissile();
+                    //Luego restablezco los valores del nexo y creo un nuevo misil desp del delay
+                    NexusRestore();
+                    haveMissile = false;
+                    StartCoroutine(DelayForSpawn());    //Llamo a la couroutina para que cree otro misil despues de determinado tiempo
+                }
+                else{   //Si no tengo la energia para lanzarlo reseteo su posicion
+                    NexusRestore();
+                    AudioManager.Instance.PlaySoundEffect(invalidEffect);
+                    missilePrefab.transform.position = startPoint;
+                }
+            }
+        }
+    }
     //Crea un misil y lo guarda en el missilePrefab, luego toma su collider y lo desactiva para activarlo cuando lo lanze, y cambia el color del cursor
     IEnumerator DelayForSpawn(){
         yield return new WaitForSeconds(2);
@@ -71,28 +103,7 @@ public class Nexus : MonoBehaviour
             if(Input.GetMouseButtonDown(0)){        //Marco el punto de origen
                 startPoint = transform.position;
                 startPoint.z = 0;
-            }
-            if(Input.GetMouseButton(0)){        //Muevo el misil y el cursor a donde esta el mouse y agrando el collider del nexo
-                Vector3 currentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-                currentPoint.z = 0;
-                MouseHoldBehaviour(currentPoint);
-            }
-            if(Input.GetMouseButtonUp(0)){      //Marco el punto donde se solto para calcular el disparo
-                if(UseEnergy(missiles[index].energyConsumption)){   //Pregunto si tengo esa energia 
-                //Si la tengo, marco el punto donde se solto y pruebo lanzar el misil, luego activo su collider
-                    endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-                    endPoint.z = 0;
-                    ShootMissile();
-                    //Luego restablezco los valores del nexo y creo un nuevo misil desp del delay
-                    NexusRestore();
-                    haveMissile = false;
-                    StartCoroutine(DelayForSpawn());    //Llamo a la couroutina para que cree otro misil despues de determinado tiempo
-                }
-                else{   //Si no tengo la energia para lanzarlo reseteo su posicion
-                    NexusRestore();
-                    AudioManager.Instance.PlaySoundEffect(invalidEffect);
-                    missilePrefab.transform.position = startPoint;
-                }
+                isDraggin = true;
             }
         }
     }
@@ -116,8 +127,11 @@ public class Nexus : MonoBehaviour
     public void SetSpeedValue(int amount){  //guardo la velocidad Base del nexusStats
         baseSpeed = amount;
     }
-    
     private void OnMouseExit() {
+        if(!isDraggin)
+            HideFeedback();
+    }
+    private void HideFeedback() {
         mouseOverMissile.SetActive(false);
         indicator.gameObject.SetActive(false);
     }
@@ -169,6 +183,8 @@ public class Nexus : MonoBehaviour
         currentSpeed.Value = 0;     //Vuelvo el valor de la velocidad a 0
         currentDistance.Value = 0;
         currentStability.Value = 0;
+        HideFeedback();
+        isDraggin = false;
     }
 
     public float CalculateStability(Vector2 currentPoint){   
