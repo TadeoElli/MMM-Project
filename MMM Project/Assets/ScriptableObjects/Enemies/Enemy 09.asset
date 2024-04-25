@@ -20,7 +20,7 @@ MonoBehaviour:
   experience: 0
   availablePowerUps:
   - prefab: {fileID: 3297616504829621330, guid: 48fdf4e7e090b49488b616c40f0bd968, type: 3}
-    dropProbability: 15
+    dropProbability: 5
   - prefab: {fileID: 586682999, guid: 71c9d3be0ffff214d8cf126b40fb9a5b, type: 3}
-    dropProbability: 20
+    dropProbability: 10
   bounceClip: {fileID: 8300000, guid: 8d6fb889a204d644db0b13d17ae8fe40, type: 3}

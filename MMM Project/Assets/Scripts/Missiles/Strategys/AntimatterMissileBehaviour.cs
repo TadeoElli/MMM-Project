@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -13,11 +11,11 @@ public class AntimatterMissileBehaviour : MissileStrategy
         MissileBehaviour missileBehaviour = prefab.GetComponent<MissileBehaviour>();
             
         int layer = other.layer;
-        int damage;
+        int damage = 0;
         switch (layer)
         {
             case 7:
-                damage = 0;
+
                 Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
                 Vector2 bounceDirection = rb2D.velocity;
                 bounceDirection.y = bounceDirection.y * -1;
@@ -34,20 +32,8 @@ public class AntimatterMissileBehaviour : MissileStrategy
                 missileBehaviour.TakeDamage(10);
                 return damage;
             default:
-                damage = 0;
                 return damage;
         }
-    }
-    public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
-
-    }
-    public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
-
-    }  
-    //Crea la explosion correspondiente al quedarse sin vida
-    public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
-        newExplosion.transform.position = origin.position;
     }
 
 }

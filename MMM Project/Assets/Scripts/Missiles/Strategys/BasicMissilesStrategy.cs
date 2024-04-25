@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -11,41 +9,21 @@ public class BasicMissilesStrategy : MissileStrategy
     //El comportamiento de colisiones
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         int layer = other.layer;
-        int damage;
-        switch (layer)
+        int damage = 0;
+        
+        if (layer == 7 || (layer >= 8 && layer <= 11))
         {
-            case 7:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+            damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+            if(layer == 7)
                 AudioManager.Instance.PlaySoundEffect(bounceEffect);
-                return damage;
-            case 8:
-            case 9:
-            case 10:
-            case 11:
-                damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
+            else
+            {
                 DealDamage(other, prefab);
                 if(other.GetComponentInChildren<SpriteRenderer>().isVisible)
                     AudioManager.Instance.PlaySoundEffect(bounceEnemyEffect);
-                return damage;
-            default:
-                damage = 0;
-                return damage;
+            }
         }
+        return damage;
     }
-
-    public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
-
-    }
-    public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
-
-    }
-        //Crea la explosion correspondiente al quedarse sin vida
-    public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
-        newExplosion.transform.position = origin.position;
-    }
-        
-    
-
 
 }

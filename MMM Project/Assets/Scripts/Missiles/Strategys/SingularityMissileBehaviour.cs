@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Singularity", order = 3)]
@@ -13,7 +11,7 @@ public class SingularityMissileBehaviour : MissileStrategy
     //si collisiona con una pared, simula el movimiento de rebote y pierde algo de vida
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         int layer = other.layer;
-        int damage;
+        int damage = 0;
         if(layer == 7){
             damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
             Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
@@ -21,24 +19,13 @@ public class SingularityMissileBehaviour : MissileStrategy
             bounceDirection.y = bounceDirection.y * -1;
             AudioManager.Instance.PlaySoundEffect(bounceEffect);
             rb2D.velocity = bounceDirection;
-            return damage;
         }
-        else{
-            return 0;
-        }
+        return damage;
     }
 
     //Mientras este en contacto con un enemigo, genera la direccion a la que se tiene que mover el enemigo y lo atrae constantemente
     public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
         Vector2 direction = (prefab.transform.position - other.transform.position).normalized;
         other.transform.position = Vector2.Lerp(other.transform.position, prefab.transform.position, force * Time.deltaTime);
-    }
-    public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
-    }
-
-    //Crea la explosion correspondiente cuando se queda sin vida
-    public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
-        newExplosion.transform.position = origin.position;
     }
 }

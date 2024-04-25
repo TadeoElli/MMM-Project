@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -50,17 +48,6 @@ public class VolatilEnemyBehaviour : EnemyStrategy
         explosion.transform.position = other.transform.position;
     }
 
-    public override GameObject DeathBehaviour(){        //Crea la explosion de muerte
-        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
-        return explosion;
-    }
-
-    public override void ParticleBehaviour(GameObject prefab){
-
-    }
-    public override void TriggerBehaviour(GameObject other){
-
-    }
     
 }
 

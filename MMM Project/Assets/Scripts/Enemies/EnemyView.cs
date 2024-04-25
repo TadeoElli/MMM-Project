@@ -10,25 +10,25 @@ public class EnemyView : MonoBehaviour
     private Image currentBar, currentHpBar;
 
     public void SetHpImage(bool direction){
-        if(direction){
-            currentBar = hpLeft;
-            currentHpBar = hpBarLeft;
-        }else
-        {
-            currentBar = hpRight;
-            currentHpBar = hpBarRight;
-        }
+        currentBar = direction ? hpLeft : hpRight;
+        currentHpBar = direction ? hpBarLeft : hpBarRight;
         currentBar.fillAmount = 1;
     }
     public void TakeDamageView(float currentHp, float maxHp){
         currentBar.fillAmount = currentHp / maxHp;
     }
-    private void OnMouseEnter() {
-        currentBar.gameObject.SetActive(true);
-        currentHpBar.gameObject.SetActive(true);
+    private void OnMouseEnter()
+    {
+        SetHpBarVisibility(true);
     }
-    private void OnMouseExit() {
-        currentBar.gameObject.SetActive(false);
-        currentHpBar.gameObject.SetActive(false);
+
+    private void OnMouseExit()
+    {
+        SetHpBarVisibility(false);
+    }
+    private void SetHpBarVisibility(bool visible)
+    {
+        currentBar.gameObject.SetActive(visible);
+        currentHpBar.gameObject.SetActive(visible);
     }
 }

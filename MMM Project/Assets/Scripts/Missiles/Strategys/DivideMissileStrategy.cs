@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -18,12 +16,12 @@ public class DivideMissileStrategy : MissileStrategy
         MissileBehaviour missileBehaviour = prefab.GetComponent<MissileBehaviour>();
             
         int layer = other.layer;
-        int damage;
+        int damage = 0;
         switch (layer)
         {
             case 7:
                 AudioManager.Instance.PlaySoundEffect(bounceEffect);
-                return 0;
+                return damage;
             case 8:
             case 9:
             case 10:
@@ -38,21 +36,10 @@ public class DivideMissileStrategy : MissileStrategy
                 }
                 return damage;
             default:
-                damage = 0;
                 return damage;
         }
     }
-    public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
 
-    }
-    public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
-
-    }
-    //En vez de crear una explosion cuando se queda sin vida, llama a la funcion CreateSubmissile segun la cantidad de misiles a spawnear
-    public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
-        newExplosion.transform.position = origin.position;
-    }
 
     //Crea un nuevo misil del tipo guardado y se crea una nueva direccion aleatoria, luego se lo manda en esa direccion
     private void CreateSubmissile(Transform origin){

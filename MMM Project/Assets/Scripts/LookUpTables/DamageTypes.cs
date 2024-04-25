@@ -40,17 +40,11 @@ public class DamageTypes : MonoBehaviour
     
     private void Start() {  //Creo los diccionarios
         explosionList = Enum.GetValues(typeof(ExplosionsTypes)).Cast<ExplosionsTypes>().ToList();
-        for (int i = 0; i < damagesOfExplosions.Count; i++)
-        {
-            explosionDictionary.Add(explosionList[i],damagesOfExplosions[i]);
-        }
-        for (int i = 0; i < damagesOfCollisionsForMissiles.Count; i++)
-        {
-            collisionMissilesDictionary.Add(types[i],damagesOfCollisionsForMissiles[i]);
-        }
-        for (int i = 0; i < damagesOfCollisionsForEnemies.Count; i++)
-        {
-            collisionEnemiesDictionary.Add(types[i],damagesOfCollisionsForEnemies[i]);
-        }
+        // Crear diccionarios utilizando LINQ
+        explosionDictionary = explosionList.Zip(damagesOfExplosions, (explosion, damage) => new { explosion, damage }).ToDictionary(pair => pair.explosion, pair => pair.damage);
+
+        collisionMissilesDictionary = types.Zip(damagesOfCollisionsForMissiles, (type, damage) => new { type, damage }).ToDictionary(pair => pair.type, pair => pair.damage);
+
+        collisionEnemiesDictionary = types.Zip(damagesOfCollisionsForEnemies, (type, damage) => new { type, damage }).ToDictionary(pair => pair.type, pair => pair.damage);
     }
 }

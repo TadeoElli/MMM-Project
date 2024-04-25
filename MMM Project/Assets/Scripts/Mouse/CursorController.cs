@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CursorController : MonoBehaviour
@@ -51,14 +49,11 @@ public class CursorController : MonoBehaviour
     {
         currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = currentPosition;
-
-        if(towerIndex > 0 && CheckDistanceFromNexus()){
-            blockCursor.SetActive(true);
-            blockCursor.transform.position = currentPosition;
-        }
-        else{
-            blockCursor.SetActive(false);
-        }
+        UpdateBlockCursor();
+    }
+    private void UpdateBlockCursor(){
+        blockCursor.SetActive(towerIndex > 0 && CheckDistanceFromNexus());
+        blockCursor.transform.position = currentPosition;
     }
     
     public void ChangeTowerIndex(int index){    //Cambio el indice de la torre para tenerlo
@@ -66,12 +61,7 @@ public class CursorController : MonoBehaviour
     }
     private bool CheckDistanceFromNexus(){  //Chequero la distancia entre el mouse y el nexo, el valor "distanceFromNexus" debe ser el mismo 
     //que en el towerController
-        if((Vector2.Distance(currentPosition, nexus.transform.position) < distanceFromNexus) || (currentPosition.y < -3f || currentPosition.y > 4.25f)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return Vector2.Distance(currentPosition, nexus.transform.position) < distanceFromNexus || currentPosition.y < -3f || currentPosition.y > 4.25f;
     }
     
     public void SetCursor(Sprite sprite, Material material, Vector3 scale){ //Establezco que imagen,material y escala debo poner en el SpriteRenderer

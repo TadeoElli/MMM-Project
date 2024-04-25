@@ -49,7 +49,7 @@ public class EnemyBehaviour : MonoBehaviour
                 timer = timer + 1 * Time.deltaTime;
                 if(timer > 1.5f){
                     Rotate();       //Rota el objeto hacia la direccion establecida
-                    if(transform.eulerAngles.z > (direction - 90) && transform.eulerAngles.z < (direction + 90)){ //Si esta apuntando medianamente a esa dirreccion
+                    if (IsFacingDirection(direction)){ //Si esta apuntando medianamente a esa dirreccion
                         MoveForward();      //Lo mueve hacia adelante
                     }
                 }
@@ -59,6 +59,11 @@ public class EnemyBehaviour : MonoBehaviour
             enemy.ParticleBehaviour(specialParticle);
         }
 
+    }
+    private bool IsFacingDirection(float targetDirection)
+    {
+        float currentAngle = transform.eulerAngles.z;
+        return currentAngle > (targetDirection - 90) && currentAngle < (targetDirection + 90);
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if(!other.gameObject.CompareTag("Missiles")){   //Ya la clase misil se encarga de manejar los daños cuando golpea, por lo que si no es el misil

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "New Explosion", menuName = "ScriptableObject/Explosion/Enemy", order = 2)]
 public class EnemyPowerStrategy : ExplosionStrategy
@@ -11,17 +12,14 @@ public class EnemyPowerStrategy : ExplosionStrategy
 
     }
     public override void ExplosionBehaviour(Transform origin){  //Por cada collider dentro del rango, si es un misil lo empuja
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(origin.position, radius);
-
-        foreach (Collider2D collisions in objetos){
-            if(collisions.CompareTag("Missiles")){
-                Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
-                if(rb2D != null){
-                    Vector2 direction = collisions.transform.position - origin.position;
-                    float distance = 1 + direction.magnitude;
-                    float finalForce = explosionForce / distance;
-                    rb2D.AddForce(direction * finalForce);
-                }
+       Collider2D[] objects = Physics2D.OverlapCircleAll(origin.position, radius).Where(collision => collision.CompareTag("Missiles")).ToArray();
+        foreach (Collider2D collisions in objects){
+            Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
+            if(rb2D != null){
+                Vector2 direction = collisions.transform.position - origin.position;
+                float distance = 1 + direction.magnitude;
+                float finalForce = explosionForce / distance;
+                rb2D.AddForce(direction * finalForce);
             }
         }
     }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 
 
@@ -37,8 +38,10 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
         rb2D.AddForce(direction.normalized * collisionForce, ForceMode2D.Force);
     }
 
-    public abstract GameObject DeathBehaviour();        //Comportamiento al morir
-
+    public virtual GameObject DeathBehaviour()        //Comportamiento al morir
+    {
+        return ExplosionPool.Instance.RequestExplosion(explosion); // Devuelve la explosión basica
+    }
     public void DropPowerUp(Transform origin) {       //Funcion que dropea el power Up
         PowerUp powerUp = GenerateRandomPowerUp();      //Llama a la funcion GeneratePowerUp y si devuelve algo lo guarda en la variable
         if(powerUp != null){
@@ -47,22 +50,19 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
         }
     }
 
-    public abstract void ParticleBehaviour(GameObject particle);        //Comportamiento con particulas si es que tiene
-
-    public abstract void TriggerBehaviour(GameObject other);        //Comportamiento con TriggerEnter si es que tiene
-    
+    public virtual void ParticleBehaviour(GameObject particle)        //Comportamiento con particulas si es que tiene
+    {
+        // Comportamiento de partículas específico del enemigo (si lo hay)
+    }
+    public virtual void TriggerBehaviour(GameObject other)        //Comportamiento con TriggerEnter si es que tiene
+    {
+        // Comportamiento específico del trigger del enemigo (si lo hay)
+    }
 
     private PowerUp GenerateRandomPowerUp()     
     {
-        for (int i = 0; i < availablePowerUps.Count; i++)   //Por Cada drop en la lista
-        {
-            float randomValue = UnityEngine.Random.Range(0f, 100f);     //genera un numero aleatorio
-            if(randomValue < availablePowerUps[i].dropProbability){     //Si es menor a la probavilidad lo retorna, si no no retorna nada
-                return availablePowerUps[i].prefab;
-            }
-        }            
-        
-        return null;
+        float randomValue = UnityEngine.Random.Range(0f, 100f);
+        return availablePowerUps.FirstOrDefault(powerUp => randomValue < powerUp.dropProbability)?.prefab;
     }
     #endregion
 }

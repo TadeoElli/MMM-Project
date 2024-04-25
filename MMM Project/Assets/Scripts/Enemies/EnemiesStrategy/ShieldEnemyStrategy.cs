@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -33,20 +31,11 @@ public class ShieldEnemyStrategy : EnemyStrategy
         }
     }
 
-    public override GameObject DeathBehaviour(){    //Crea la explosion de muerte
-        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
-        return explosion;
-    }
-    public override void ParticleBehaviour(GameObject other){
-        
-    }
 
     public override void TriggerBehaviour(GameObject other){    //Si el trigger recibe un enter y es un misil, es porque choco con el trigger del escudo
         if(other.CompareTag("Missiles")){
             Rigidbody2D rb2D = other.GetComponent<Rigidbody2D>();       //Por lo que toma el rigidbody del misil y su direccion y lo devuelve en la direccion contraria
-            Vector2 bounceDirection = rb2D.velocity;
-            bounceDirection.x = bounceDirection.x * -1;
-            bounceDirection.y = bounceDirection.y * -1;
+            Vector2 bounceDirection = -rb2D.velocity;
 
             rb2D.velocity = bounceDirection;
         }

@@ -36,35 +36,36 @@ public class Electric : MonoBehaviour
 
     private void Update()
     {
-        CalculatePoints();
-    }
-
-    private void CalculatePoints()
-    {
         timer += Time.deltaTime;
 
         if (timer > timerTimeOut)
         {
             timer = 0;
 
-            points[pointIndexA] = transformPointA.position;
-            points[pointIndexE] = transformPointB.position;
-            points[pointIndexC] = GetCenter(points[pointIndexA], points[pointIndexE]);
-            points[pointIndexB] = GetCenter(points[pointIndexA], points[pointIndexC]);
-            points[pointIndexD] = GetCenter(points[pointIndexC], points[pointIndexE]);
-
-            float distance = Vector3.Distance(transformPointA.position, transformPointB.position) / points.Length;
-            mainTextureScale.x = distance;
-            mainTextureOffset.x = Random.Range(-randomness, randomness);
-            lRend.material.SetTextureScale(mainTexture, mainTextureScale);
-            lRend.material.SetTextureOffset(mainTexture, mainTextureOffset);
-
-            randomness = distance / (pointsCount * half);
-
-            SetRandomness();
+            CalculatePoints();
 
             lRend.SetPositions(points);
         }
+    }
+
+
+    private void CalculatePoints()
+    {
+        points[pointIndexA] = transformPointA.position;
+        points[pointIndexE] = transformPointB.position;
+        points[pointIndexC] = GetCenter(points[pointIndexA], points[pointIndexE]);
+        points[pointIndexB] = GetCenter(points[pointIndexA], points[pointIndexC]);
+        points[pointIndexD] = GetCenter(points[pointIndexC], points[pointIndexE]);
+
+        float distance = Vector3.Distance(transformPointA.position, transformPointB.position) / points.Length;
+        mainTextureScale.x = distance;
+        mainTextureOffset.x = Random.Range(-randomness, randomness);
+        lRend.material.SetTextureScale(mainTexture, mainTextureScale);
+        lRend.material.SetTextureOffset(mainTexture, mainTextureOffset);
+
+        randomness = distance / (pointsCount * half);
+
+        SetRandomness();
     }
 
     private void SetRandomness()
@@ -73,9 +74,9 @@ public class Electric : MonoBehaviour
         {
             if (i != pointIndexA && i != pointIndexE)
             {
-                points[i].x += Random.Range(-randomness, randomness);
-                points[i].y += Random.Range(-randomness, randomness);
-                points[i].z += Random.Range(-randomness, randomness);
+                points[i] += new Vector3(Random.Range(-randomness, randomness), 
+                                         Random.Range(-randomness, randomness), 
+                                         Random.Range(-randomness, randomness));
             }
         }
     }

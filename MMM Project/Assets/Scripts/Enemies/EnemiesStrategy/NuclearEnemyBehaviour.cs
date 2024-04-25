@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -41,17 +39,11 @@ public class NuclearEnemyBehaviour : EnemyStrategy
             return explosion;
         }
         else{
-            GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion); //si no devuelve la explosion comun
-            return explosion;
+            return base.DeathBehaviour();
         }
     }
 
-    public override void ParticleBehaviour(GameObject prefab){
 
-    }
-    public override void TriggerBehaviour(GameObject other){
-
-    }
     
 }
 

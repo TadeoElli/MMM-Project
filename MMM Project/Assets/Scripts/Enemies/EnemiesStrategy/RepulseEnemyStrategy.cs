@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -35,21 +33,14 @@ public class RepulseEnemyStrategy : EnemyStrategy
         }
     }
 
-    public override GameObject DeathBehaviour(){    //Crea la explosion de muerte
-        GameObject explosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
-        return explosion;
-    }
     public override void ParticleBehaviour(GameObject specialParticle){     //Comportamiento especial de las particulas
         if(timer > cooldown){
             timer = 0;
             specialParticle.SetActive(true);
         }
         else{
-            timer = timer + 1 * Time.deltaTime;
+            timer += Time.deltaTime;
         }
     }
-    public override void TriggerBehaviour(GameObject other){
 
-    }
-    
 }

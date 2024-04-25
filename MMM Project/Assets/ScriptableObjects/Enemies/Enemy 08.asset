@@ -19,16 +19,16 @@ MonoBehaviour:
   score: 500
   experience: 0
   availablePowerUps:
-  - prefab: {fileID: 1292433869990618231, guid: 9fe87328d410731428b2bf08fac91060, type: 3}
-    dropProbability: 30
-  - prefab: {fileID: 7253465322589342431, guid: 528e0bb786d7ddc4e968f7b379c0a9e7, type: 3}
-    dropProbability: 30
-  - prefab: {fileID: 3297616504829621330, guid: 48fdf4e7e090b49488b616c40f0bd968, type: 3}
-    dropProbability: 37.5
+  - prefab: {fileID: 4859652181989221988, guid: fb29e88688852a14ea6e11a2df57128b, type: 3}
+    dropProbability: 5
   - prefab: {fileID: 7056555920773560341, guid: 2255aaaf61826e943b6e148b61091e36, type: 3}
     dropProbability: 10
-  - prefab: {fileID: 4859652181989221988, guid: fb29e88688852a14ea6e11a2df57128b, type: 3}
-    dropProbability: 10
+  - prefab: {fileID: 1292433869990618231, guid: 9fe87328d410731428b2bf08fac91060, type: 3}
+    dropProbability: 15
+  - prefab: {fileID: 7253465322589342431, guid: 528e0bb786d7ddc4e968f7b379c0a9e7, type: 3}
+    dropProbability: 20
+  - prefab: {fileID: 3297616504829621330, guid: 48fdf4e7e090b49488b616c40f0bd968, type: 3}
+    dropProbability: 25
   bounceClip: {fileID: 8300000, guid: 8d6fb889a204d644db0b13d17ae8fe40, type: 3}
   probability: 50
   nuclearExplosion: {fileID: 8546805254870235195, guid: 458b80174cb50cc4ea1e53935708ebd0, type: 3}

@@ -35,7 +35,7 @@ public class MissileBehaviour : MonoBehaviour
         }
         if(life <= 0){
             missile.ExplosionBehaviour(transform);
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
@@ -43,20 +43,10 @@ public class MissileBehaviour : MonoBehaviour
     public void TryToShoot(Vector2 startPoint, Vector2 endPoint, int baseStability){   
         float distance = Vector2.Distance(startPoint, endPoint);
         float probability = Random.Range(0,100);
-        float maxProbability;
-        if(distance <= 1){
-            maxProbability = maxStability;
-            maxProbability = maxProbability + (baseStability * 3.5f);
-        }
-        else{
-            distance  = distance - 1;
-            maxProbability = maxStability + (minStability - maxStability) * distance;
-            maxProbability = Mathf.Clamp(maxProbability, minStability, maxStability);
-            maxProbability = maxProbability + (baseStability * 3.5f);
-        }
+        float maxProbability = distance <= 1 ? maxStability + (baseStability * 3.5f): Mathf.Clamp(maxStability + (minStability - maxStability) * (distance - 1), minStability, maxStability) + (baseStability * 3.5f);
         if(probability > maxProbability){
             missile.ExplosionBehaviour(transform);
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
         else{
             AudioManager.Instance.PlaySoundEffect(missile.launchEffect);
@@ -81,24 +71,16 @@ public class MissileBehaviour : MonoBehaviour
     }
     //Comportamiento mientras esta colisionando
     private void OnTriggerStay2D(Collider2D other) {
-        if(circleCollider2D.isTrigger){
-            if(isSpecial){
-                if (other.CompareTag("Enemy"))
-                {
-                    missile.SpecialBehaviourStay(other.gameObject, this.gameObject);
-                }
-            }
+        if (circleCollider2D.isTrigger && isSpecial && other.CompareTag("Enemy"))
+        {
+            missile.SpecialBehaviourStay(other.gameObject, gameObject);
         }
     }
     //comportamiento cuando sale del trigger
     private void OnTriggerExit2D(Collider2D other) {
-        if(circleCollider2D.isTrigger){
-            if(isSpecial){
-                if (other.CompareTag("Enemy"))
-                {
-                    missile.SpecialBehaviourExit(other.gameObject, this.gameObject);
-                }
-            }
+        if (circleCollider2D.isTrigger && isSpecial && other.CompareTag("Enemy"))
+        {
+            missile.SpecialBehaviourExit(other.gameObject, gameObject);
         }
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Missile", menuName = "ScriptableObject/Missiles/Sticky", order = 2)]
@@ -26,7 +24,7 @@ public class StickyMissileBehaviour : MissileStrategy
     //Detecta colisiones, si es con una pared, simula un rebote, si es un enemigo, llama a la funcion onEnter y le reduce la vida al misil
     public override int CollisionBehaviour(GameObject other, GameObject prefab){
         int layer = other.layer;
-        int damage;
+        int damage = 0;
         switch (layer)
         {
             case 7:
@@ -45,11 +43,10 @@ public class StickyMissileBehaviour : MissileStrategy
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
                 DealDamage(other, prefab);
-                if(prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
+                if(other.GetComponentInChildren<SpriteRenderer>().isVisible)
                     AudioManager.Instance.PlaySoundEffect(bounceEnemyEffect);
                 return damage;
             default:
-                damage = 0;
                 return damage;
         }
     }
@@ -71,9 +68,5 @@ public class StickyMissileBehaviour : MissileStrategy
         }
     }
 
-    //Crea la explosion correspondiente al quedarse sin vida
-    public override void ExplosionBehaviour(Transform origin){
-        GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(base.explosion);
-        newExplosion.transform.position = origin.position;
-    }
+
 }
