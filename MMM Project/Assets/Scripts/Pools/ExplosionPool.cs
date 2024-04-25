@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ExplosionPool : MonoBehaviour
 {
@@ -23,43 +24,38 @@ public class ExplosionPool : MonoBehaviour
             Destroy(gameObject);
         }
         
-        foreach (Explosion prefabs in explosionPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de explosion generados como valor a devolver
-        {
-            explosionDictionary.Add(prefabs.gameObject, new List<GameObject>());
-        }
+        //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de explosion generados como valor a devolver
+        explosionPrefab.ForEach(prefab => explosionDictionary.Add(prefab.gameObject, new List<GameObject>()));
     }
 
     void Start()
     {
-        for (int i = 0; i < explosionPrefab.Count; i++)       //Creo todos los objectos para la pool(De cada prefab)
-        {
-            AddExplosionToPool(poolSize, explosionPrefab[i]);
-        }
+        //Creo todos los objectos para la pool(De cada prefab)
+        explosionPrefab.ForEach(prefab => AddExplosionToPool(poolSize, prefab));
     }
 
     public void AddExplosionToPool(int amount, Explosion prefab){       
 
         List<GameObject> prefabList = explosionDictionary[prefab.gameObject];    //Guardo la lista de cantidad de explosion en otra lista
-        for (int i = 0; i < amount; i++)
-        {
+        Enumerable.Range(0, amount).ToList().ForEach(_ => {
             GameObject explosion = Instantiate(prefab.gameObject);
             explosion.SetActive(false);
             prefabList.Add(explosion);
             explosion.transform.parent = transform;
-        }
+
+        });
     }
 
     public GameObject RequestExplosion(Explosion prefab){    
         List<GameObject> prefabList = explosionDictionary[prefab.gameObject];
-        for (int i = 0; i < prefabList.Count; i++)
-        {
-            if(!prefabList[i].activeSelf){
-                prefabList[i].SetActive(true);
-                return prefabList[i];
-            }
+        var inactivePrefab = prefabList.FirstOrDefault(prefab => !prefab.activeSelf);
+        if(inactivePrefab != null){
+            inactivePrefab.SetActive(true);
+            return inactivePrefab;
         }
         AddExplosionToPool(1,prefab);
-        prefabList[prefabList.Count - 1].SetActive(true);
-        return prefabList[prefabList.Count - 1];
+        var lastPrefab = prefabList.Last();
+        lastPrefab.SetActive(true);
+        return lastPrefab;
     }
 }

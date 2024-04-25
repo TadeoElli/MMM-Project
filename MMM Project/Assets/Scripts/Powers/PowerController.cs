@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
-
+using System.Linq;
 
 public class PowerController : MonoBehaviour 
 {
@@ -28,19 +27,17 @@ public class PowerController : MonoBehaviour
     void Start()
     //Establezco segun la cantidad de poderes, los cooldowns y flags en las listas (Dejando el del indice 0 vacio)
     {
-        for (int i = 0; i < powers.Length; i++)
+        cooldowns.Add(0);
+        currentCd.Add(0);
+        isReady.Add(false);
+        powers.Skip(1).ToList().ForEach(power => 
         {
-            if(i == 0){
-                cooldowns.Add(0);
-                currentCd.Add(0);
-                isReady.Add(false);
-            }
-            else{
-                cooldowns.Add(powers[i].cooldown);
-                currentCd.Add(powers[i].cooldown);
-                isReady.Add(true);
-            }
-        }
+            float cooldown = power.cooldown;
+            cooldowns.Add(cooldown);
+            currentCd.Add(cooldown);
+            isReady.Add(true);
+        });
+
     }
 
     //Por cada uno de los poderes pregunta si no esta listo, y si es asi aumenta el timer hasta que supere el cooldown para que se ponga listo
@@ -54,8 +51,7 @@ public class PowerController : MonoBehaviour
                 }
                 else
                 {
-                    currentCd[i] = currentCd[i] + 1 * Time.deltaTime;
-                    currentCd[i] = Mathf.Clamp(currentCd[i], 0, cooldowns[i]);
+                    currentCd[i] = Mathf.Clamp(currentCd[i] + 1 * Time.deltaTime, 0, cooldowns[i]);
                 }
             }
         }
@@ -65,7 +61,6 @@ public class PowerController : MonoBehaviour
     private void FixedUpdate() {
         if(hasPower && isDraggin){
             if(!powers[currentIndex.Value].BehaviourPerformed()){
-                Debug.Log("EnemyDestroyed");
                 FinishPower();
             }else{
                 if(powers[currentIndex.Value].hasPerformedCursor){
@@ -132,13 +127,10 @@ public class PowerController : MonoBehaviour
     }
     private bool CheckDistance(){
         Vector2 currentPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        if(currentPosition.y > -3.7f && currentPosition.y < 4.85f){
-            return true;
-        }
-        else{
+        bool isValidDistance = currentPosition.y > -3.7f && currentPosition.y < 4.85f;
+        if (!isValidDistance)
             AudioManager.Instance.PlaySoundEffect(powers[currentIndex.Value].invalidEffect);
-            return false;
-        }
+        return isValidDistance;
     }
     //Se habilita el ingreso de nuevos inputs, se llama al comportamiento de cuando se suelta el click y se resetea los valores de cooldown del poder
     //Se resetea el indice, se resta la energia correspondiente

@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 
 [CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObject/Tower/Acceleration", order = 2)]
@@ -12,7 +11,6 @@ public class AccelerationTowerBehaviour : TowerStrategy
     /// </summary>
     [Header("Special Properties")]
     [SerializeField] private float attractionStrength;  //la fuerza de atraccion
-
     [SerializeField] private float repulsionStrength;   //la fuersa de repulsion
     [SerializeField] private float repulsionRadius; //el radio de repulsion
     [SerializeField] private float radius;  //el radio de atraccion
@@ -59,14 +57,7 @@ public class AccelerationTowerBehaviour : TowerStrategy
                     }
                 }
                 else if(distance >= radius && missile.hasBeenAtracted){ //Si esta fuera del radio y ya fue atraido
-                    if(direction.x < 0){    //si esta por detras de la torre le aplica una fuerza para atras
-                        //Debug.Log("adelante");
-                        projectileRigidbody.AddForce(-direction.normalized * repulsionStrength * 10f, ForceMode2D.Force);
-                    }
-                    else{   //Si no le aplica una fuerza para adelante
-                        //Debug.Log("atras");
-                        projectileRigidbody.AddForce(direction.normalized * repulsionStrength * 10f, ForceMode2D.Force);
-                    }
+                    projectileRigidbody.AddForce((direction.x < 0 ? -direction.normalized : direction.normalized) * repulsionStrength * 10f, ForceMode2D.Force);
                     missile.hasBeenAtracted = false;    //Restablece el flag para que pueda ser atraido devuelta 
                     missile.RotationSpeed = missile.RotationSpeed / 2;
                 }
@@ -77,27 +68,25 @@ public class AccelerationTowerBehaviour : TowerStrategy
     }
 
     public override bool ColliderBehaviour(GameObject prefab, GameObject other){
-        if(other.CompareTag("Missiles")){
-            return true;
-        }
-        return false;
+        return other.CompareTag("Missiles");
     }
 
     //El comportamiento de cuando se destruye la torre, toma todos los componentes misiles dentro del radio y los envia en la direccion contraria
     public override void DestroyTower(GameObject prefab){
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(prefab.transform.position, radius);
-
-        foreach (Collider2D collisions in objetos){
-            if(collisions.CompareTag("Missiles")){
-                Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
-                if(rb2D != null){
-                    Vector2 direction = collisions.transform.position - prefab.transform.position;
-                    float distance = 1 + direction.magnitude;
-                    float finalForce = (repulsionStrength * 100f) / distance;
-                    rb2D.AddForce(direction * finalForce);
-                }
-            }
-        }
+        Collider2D[] objects = Physics2D.OverlapCircleAll(prefab.transform.position, radius);
+        objects.Where(collision => collision.CompareTag("Missiles"))
+               .ToList()
+               .ForEach(collision =>
+               {
+                   Rigidbody2D rb2D = collision.GetComponent<Rigidbody2D>();
+                   if (rb2D != null)
+                   {
+                       Vector2 direction = collision.transform.position - prefab.transform.position;
+                       float distance = 1 + direction.magnitude;
+                       float finalForce = (repulsionStrength * 100f) / distance;
+                       rb2D.AddForce(direction * finalForce);
+                   }
+               });
     }
     
 }

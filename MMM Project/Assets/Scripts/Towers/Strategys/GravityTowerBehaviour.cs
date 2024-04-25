@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 
 [CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObject/Tower/Gravity", order = 0)]
 public class GravityTowerBehaviour : TowerStrategy
@@ -27,23 +25,12 @@ public class GravityTowerBehaviour : TowerStrategy
                 Vector2 direction = prefab.transform.position - other.transform.position;
                 float distance = direction.magnitude;
 
-                if (distance > 0)   //Si es mayer a 0
+                if (distance > 0)
                 {
-                    if(distance > repulsionRadius){ //y mayer al radio de repulsion
-                        // Fuerza de atracción proporcional a la distancia
-                        float attractionForce = attractionStrength / distance;
-
-                        // Aplicar fuerza de atracción
-                        enemyRigidbody.AddForce(direction.normalized * attractionForce, ForceMode2D.Force);
-                    }
-                    else{//si no
-                        // Fuerza de repulsión proporcional a la distancia
-                        float repulsionForce = repulsionStrength / distance;
-
-                        // Aplicar fuerza de repulsión
-                        enemyRigidbody.AddForce(direction.normalized * repulsionForce, ForceMode2D.Force);
-                    }
+                    float force = distance > repulsionRadius ? attractionStrength / distance : repulsionStrength / distance;
+                    enemyRigidbody.AddForce(direction.normalized * force, ForceMode2D.Force);
                 }
+                
             }
         }
     }
@@ -57,19 +44,20 @@ public class GravityTowerBehaviour : TowerStrategy
     }
     //El comportamiento de cuando se destruye la torre, toma todos los componentes Enemigos dentro del radio y los envia en la direccion contraria
     public override void DestroyTower(GameObject prefab){
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(prefab.transform.position, radius);
+        Collider2D[] objects = Physics2D.OverlapCircleAll(prefab.transform.position, radius);
+        objects.Where(collision => collision.CompareTag("Enemy"))
+               .ToList()
+               .ForEach(collision =>
+               {
 
-        foreach (Collider2D collisions in objetos){
-            if(collisions.CompareTag("Enemy")){
-                Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
-                if(rb2D != null){
-                    Vector2 direction = collisions.transform.position - prefab.transform.position;
-                    float distance = 1 + direction.magnitude;
-                    float finalForce = repulsionStrength / distance;
-                    rb2D.AddForce(direction * finalForce);
-                }
-            }
-        }
+                Rigidbody2D rb2D = collision.GetComponent<Rigidbody2D>();
+                    if(rb2D != null){
+                        Vector2 direction = collision.transform.position - prefab.transform.position;
+                        float distance = 1 + direction.magnitude;
+                        float finalForce = repulsionStrength / distance;
+                        rb2D.AddForce(direction * finalForce);
+                    }
+               });
     }
 
     

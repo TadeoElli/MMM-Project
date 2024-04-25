@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -11,12 +9,12 @@ public class MissileManipulatorStrategy : PowerStrategy
     /// Este tipo de poder manipula la posicion de un misil ya lansado, haciendo que choque con los enemigos o relanzandolo a otra posicion
     /// </summary>
     [Header("Special Properties")]
-    private Rigidbody2D rb;
-    private MissileBehaviour misile;
     [SerializeField] private float wallTop, wallBottom, maxTime;    //La posicion de las paredes y el tiempo maximo que se puede controlar a un misil
-    private float timer = 0;    
     [SerializeField] private Sprite performedSprite;    //Imagen del cursor mientras se mantiene apretado
     [SerializeField] private Material performedMaterial;    //Material del cursor mientras se mantiene apretado
+    private Rigidbody2D rb;
+    private MissileBehaviour misile;
+    private float timer = 0;    
     public override bool BehaviourStarted(){    //Comportamiento cuando se presiona
         // Convertir la posición del clic del ratón a un rayo en el mundo 2D
         Vector2 rayOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);

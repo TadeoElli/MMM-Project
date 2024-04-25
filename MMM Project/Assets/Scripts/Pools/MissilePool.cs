@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MissilePool : MonoBehaviour
 {
@@ -22,44 +23,39 @@ public class MissilePool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (MissileBehaviour prefabs in missilePrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
-        {
-            missileDictionary.Add(prefabs.gameObject, new List<GameObject>());
-        }
+        //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de misiles generados como valor a devolver
+        missilePrefab.ForEach(prefab => missileDictionary.Add(prefab.gameObject, new List<GameObject>()));
     }
 
     void Start()
     {
-        for (int i = 0; i < missilePrefab.Count; i++)       //Creo todos los objectos para la pool(De cada prefab)
-        {
-            AddMissilesToPool(poolSize, missilePrefab[i]);
-        }
+        //Creo todos los objectos para la pool(De cada prefab)
+        missilePrefab.ForEach(prefab => AddMissilesToPool(poolSize, prefab));
     }
 
     public void AddMissilesToPool(int amount, MissileBehaviour prefab){       //Le mando cuantos genero y cual misil
 
         List<GameObject> prefabList = missileDictionary[prefab.gameObject];    //Guardo la lista de cantidad de misiles en otra lista
-        for (int i = 0; i < amount; i++)
-        {
+        Enumerable.Range(0, amount).ToList().ForEach(_ => {
             GameObject missile = Instantiate(prefab.gameObject);
             missile.SetActive(false);
             prefabList.Add(missile);
             missile.transform.parent = transform;
-        }
+
+        });
     }
 
     public GameObject RequestMissile(MissileBehaviour prefab){        //Le mando cual necesito
 
         List<GameObject> prefabList = missileDictionary[prefab.gameObject];
-        for (int i = 0; i < prefabList.Count; i++)
-        {
-            if(!prefabList[i].activeSelf){
-                prefabList[i].SetActive(true);
-                return prefabList[i];
-            }
+        var inactivePrefab = prefabList.FirstOrDefault(prefab => !prefab.activeSelf);
+        if(inactivePrefab != null){
+            inactivePrefab.SetActive(true);
+            return inactivePrefab;
         }
         AddMissilesToPool(1,prefab);
-        prefabList[prefabList.Count - 1].SetActive(true);
-        return prefabList[prefabList.Count - 1];
+        var lastPrefab = prefabList.Last();
+        lastPrefab.SetActive(true);
+        return lastPrefab;
     }
 }

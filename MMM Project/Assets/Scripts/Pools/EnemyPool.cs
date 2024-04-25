@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using System.Linq;
 
 public class EnemyPool : MonoBehaviour
 {
@@ -28,25 +29,20 @@ public class EnemyPool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (EnemyBehaviour prefabs in enemyPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de enemigos generados como valor a devolver
-        {
-            enemyDictionary.Add(prefabs.gameObject, new List<GameObject>());
-        }
+        //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de enemigos generados como valor a devolver
+        enemyPrefab.ForEach(prefab => enemyDictionary.Add(prefab.gameObject, new List<GameObject>()));
     }
 
     void Start()
     {
-        for (int i = 0; i < enemyPrefab.Count; i++)       //Creo todos los objectos para la pool(De cada prefab)
-        {
-            AddEnemyToPool(poolSize, enemyPrefab[i]);
-        }
+        //Creo todos los objectos para la pool(De cada prefab)
+        enemyPrefab.ForEach(prefab => AddEnemyToPool(poolSize, prefab));
     }
 
     public void AddEnemyToPool(int amount, EnemyBehaviour enemy){       //Le mando cuantos genero y cual misil
 
         List<GameObject> prefabList = enemyDictionary[enemy.gameObject];    //Guardo la lista de cantidad de enemigos en otra lista
-        for (int i = 0; i < amount; i++)
-        {
+        Enumerable.Range(0, amount).ToList().ForEach(_ => {
             GameObject prefab = Instantiate(enemy.gameObject);
             prefab.GetComponent<EnemyBehaviour>().notifyKillCount = killCount.IncreaseAmount;
             prefab.GetComponent<EnemyBehaviour>().notifyScore += score.IncreaseAmount;
@@ -54,21 +50,21 @@ public class EnemyPool : MonoBehaviour
             prefab.SetActive(false);
             prefabList.Add(prefab);
             prefab.transform.parent = transform;
-        }
+
+        });
     }
 
     public GameObject RequestEnemy(EnemyBehaviour enemy){        //Le mando cual necesito
 
         List<GameObject> prefabList = enemyDictionary[enemy.gameObject];
-        for (int i = 0; i < prefabList.Count; i++)
-        {
-            if(!prefabList[i].activeSelf){
-                prefabList[i].SetActive(true);
-                return prefabList[i];
-            }
+        var inactivePrefab = prefabList.FirstOrDefault(prefab => !prefab.activeSelf);
+        if(inactivePrefab != null){
+            inactivePrefab.SetActive(true);
+            return inactivePrefab;
         }
         AddEnemyToPool(1,enemy);
-        prefabList[prefabList.Count - 1].SetActive(true);
-        return prefabList[prefabList.Count - 1];
+        var lastPrefab = prefabList.Last();
+        lastPrefab.SetActive(true);
+        return lastPrefab;
     }
 }

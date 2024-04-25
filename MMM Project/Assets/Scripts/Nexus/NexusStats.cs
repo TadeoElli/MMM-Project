@@ -43,12 +43,26 @@ public class NexusStats : MonoBehaviour
 
 //Estableze los valores iniciales y notifica a todos los suscriptores
     private void Start() {
+        InitializeStats();
+        InvokeEvents();
+    }
+
+    //Si todavia no se destruyo, regenera constantemente la vida y energia y si la vida baja de 0, remueve a todos los suscrptores
+    private void Update() {
+        RegenerateStats();
+        CheckDestroyCondition();
+    }
+    private void InitializeStats()
+    {
         currentLives.Value = maxLives;
-        maxEnergy.Value = maxEnergy.Value + (baseEnergy * 35);
+        maxEnergy.Value += baseEnergy * 35;
         currentEnergy.Value = maxEnergy.Value;
         currentBaseStability.Value = baseStability;
         currentBaseSpeed.Value = baseSpeed;
         currentLevel.Value = startTechLevel;
+    }
+    private void InvokeEvents()
+    {
         currentLives.Invoke();
         currentEnergy.Invoke();
         currentStructure.Invoke();
@@ -59,28 +73,38 @@ public class NexusStats : MonoBehaviour
         maxEnergy.Invoke();
         maxStructure.Invoke();
     }
+    private void RegenerateStats()
+    {
+        if (!isDestroyed)
+        {
+            currentStructure.Value += structureBoost ? boostStructureRegen * Time.deltaTime : structureRegen * Time.deltaTime;
+            currentStructure.Value = Mathf.Clamp(currentStructure.Value, 0, maxStructure.Value);
 
-    //Si todavia no se destruyo, regenera constantemente la vida y energia y si la vida baja de 0, remueve a todos los suscrptores
-    private void Update() {
-        if(!isDestroyed){
-            if(structureBoost){currentStructure.Value = currentStructure.Value + boostStructureRegen * Time.deltaTime;}
-            else{currentStructure.Value = currentStructure.Value + structureRegen * Time.deltaTime;}
-            currentStructure.Value = Mathf.Clamp(currentStructure.Value,0,maxStructure.Value);
-            if(energyBoost){currentEnergy.Value = currentEnergy.Value + boostEnergyRegen * Time.deltaTime;}
-            else{currentEnergy.Value = currentEnergy.Value + energyRegen * Time.deltaTime;}
-            currentEnergy.Value = Mathf.Clamp(currentEnergy.Value,0,maxEnergy.Value);
-            if(currentStructure.Value <= 0  || currentLives.Value <= 0){
-                currentStructure.Value = -1;
-                currentEnergy.RemoveAllListeners();
-                currentStructure.RemoveAllListeners();
-                currentBaseCooldown.RemoveAllListeners();
-                currentLives.RemoveAllListeners();
-                currentBaseStability.RemoveAllListeners();
-                currentBaseSpeed.RemoveAllListeners();
-                isDestroyed = true;
-                loseMenu.SetActive(true);
-            }
+            currentEnergy.Value += energyBoost ? boostEnergyRegen * Time.deltaTime : energyRegen * Time.deltaTime;
+            currentEnergy.Value = Mathf.Clamp(currentEnergy.Value, 0, maxEnergy.Value);
         }
+    }
+    private void CheckDestroyCondition()
+    {
+        if (!isDestroyed && (currentStructure.Value <= 0 || currentLives.Value <= 0))
+        {
+            DestroyNexus();
+        }
+    }
+    private void DestroyNexus()
+    {
+        isDestroyed = true;
+        loseMenu.SetActive(true);
+        RemoveAllListeners();
+    }
+    private void RemoveAllListeners()
+    {
+        currentEnergy.RemoveAllListeners();
+        currentStructure.RemoveAllListeners();
+        currentBaseCooldown.RemoveAllListeners();
+        currentLives.RemoveAllListeners();
+        currentBaseStability.RemoveAllListeners();
+        currentBaseSpeed.RemoveAllListeners();
     }
     public void SetEnergyValue(float amount){
         currentEnergy.Value = amount;

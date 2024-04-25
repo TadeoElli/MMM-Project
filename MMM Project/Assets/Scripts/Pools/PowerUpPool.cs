@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PowerUpPool : MonoBehaviour
 {
@@ -22,44 +23,39 @@ public class PowerUpPool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (PowerUp prefabs in powerUpPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de PowerUps generados como valor a devolver
-        {
-            powerUpDictionary.Add(prefabs.gameObject, new List<GameObject>());
-        }
+        //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de PowerUps generados como valor a devolver
+        powerUpPrefab.ForEach(prefab => powerUpDictionary.Add(prefab.gameObject, new List<GameObject>()));
     }
 
     void Start()
     {
-        for (int i = 0; i < powerUpPrefab.Count; i++)       //Creo todos los objectos para la pool(De cada prefab)
-        {
-            AddPowerUpToPool(poolSize, powerUpPrefab[i]);
-        }
+        //Creo todos los objectos para la pool(De cada prefab)
+        powerUpPrefab.ForEach(prefab => AddPowerUpToPool(poolSize, prefab));
     }
 
     public void AddPowerUpToPool(int amount, PowerUp prefab){       //Le mando cuantos genero y cual PowerUps
 
         List<GameObject> prefabList = powerUpDictionary[prefab.gameObject];    //Guardo la lista de cantidad de PowerUps en otra lista
-        for (int i = 0; i < amount; i++)
-        {
+        Enumerable.Range(0, amount).ToList().ForEach(_ => {
             GameObject powerUp = Instantiate(prefab.gameObject);
             powerUp.SetActive(false);
             prefabList.Add(powerUp);
-            powerUp.transform.SetParent(transform, false);
-        }
+            powerUp.transform.SetParent(transform);
+
+        });
     }
 
     public GameObject RequestPowerUp(PowerUp prefab){        //Le mando cual necesito
 
         List<GameObject> prefabList = powerUpDictionary[prefab.gameObject];
-        for (int i = 0; i < prefabList.Count; i++)
-        {
-            if(!prefabList[i].activeSelf){
-                prefabList[i].SetActive(true);
-                return prefabList[i];
-            }
+        var inactivePrefab = prefabList.FirstOrDefault(prefab => !prefab.activeSelf);
+        if(inactivePrefab != null){
+            inactivePrefab.SetActive(true);
+            return inactivePrefab;
         }
         AddPowerUpToPool(1,prefab);
-        prefabList[prefabList.Count - 1].SetActive(true);
-        return prefabList[prefabList.Count - 1];
+        var lastPrefab = prefabList.Last();
+        lastPrefab.SetActive(true);
+        return lastPrefab;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class TowersPool : MonoBehaviour
 {
@@ -22,44 +23,39 @@ public class TowersPool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (TowerBehaviour prefabs in towerPrefab)       //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de torres generados como valor a devolver
-        {
-            towerDictionary.Add(prefabs.gameObject, new List<GameObject>());
-        }
+        //Creo el diccionario poniendole a cada prefab en la lista una lista de la cantidad de torres generados como valor a devolver
+        towerPrefab.ForEach(prefab => towerDictionary.Add(prefab.gameObject, new List<GameObject>()));
     }
 
     void Start()
     {
-        for (int i = 0; i < towerPrefab.Count; i++)       //Creo todos los objectos para la pool(De cada prefab)
-        {
-            AddTowersToPool(poolSize, towerPrefab[i]);
-        }
+        //Creo todos los objectos para la pool(De cada prefab)
+        towerPrefab.ForEach(prefab => AddTowersToPool(poolSize, prefab));
     }
 
     public void AddTowersToPool(int amount, TowerBehaviour prefab){       //Le mando cuantos genero y cual torres
 
         List<GameObject> prefabList = towerDictionary[prefab.gameObject];    //Guardo la lista de cantidad de torres en otra lista
-        for (int i = 0; i < amount; i++)
-        {
+        Enumerable.Range(0, amount).ToList().ForEach(_ => {
             GameObject tower = Instantiate(prefab.gameObject);
             tower.SetActive(false);
             prefabList.Add(tower);
             tower.transform.parent = transform;
-        }
+
+        });
     }
 
     public GameObject RequestTower(TowerBehaviour prefab){        //Le mando cual necesito
 
         List<GameObject> prefabList = towerDictionary[prefab.gameObject];
-        for (int i = 0; i < prefabList.Count; i++)
-        {
-            if(!prefabList[i].activeSelf){
-                prefabList[i].SetActive(true);
-                return prefabList[i];
-            }
+        var inactivePrefab = prefabList.FirstOrDefault(prefab => !prefab.activeSelf);
+        if(inactivePrefab != null){
+            inactivePrefab.SetActive(true);
+            return inactivePrefab;
         }
         AddTowersToPool(1,prefab);
-        prefabList[prefabList.Count - 1].SetActive(true);
-        return prefabList[prefabList.Count - 1];
+        var lastPrefab = prefabList.Last();
+        lastPrefab.SetActive(true);
+        return lastPrefab;
     }
 }

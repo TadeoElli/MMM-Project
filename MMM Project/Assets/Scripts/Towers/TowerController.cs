@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
+
 public class TowerController : MonoBehaviour
 {
     /// <summary>
@@ -27,19 +29,17 @@ public class TowerController : MonoBehaviour
     }
     void Start()    //Creo Las listas de cooldowns, flags y temporizadores, dejando la 0 vacia como default
     {
-        for (int i = 0; i < towers.Length; i++)
+        cooldowns.Add(0);
+        currentCd.Add(0);
+        isReady.Add(false);
+        towers.Skip(1).ToList().ForEach(tower => 
         {
-            if(i == 0){
-                cooldowns.Add(0);
-                currentCd.Add(0);
-                isReady.Add(false);
-            }
-            else{
-                cooldowns.Add(towers[i].cooldown);
-                currentCd.Add(towers[i].cooldown);
-                isReady.Add(true);
-            }
-        }
+            float cooldown = tower.cooldown;
+            cooldowns.Add(cooldown);
+            currentCd.Add(cooldown);
+            isReady.Add(true);
+        });
+        
     }
 
     
@@ -74,10 +74,8 @@ public class TowerController : MonoBehaviour
 
     //Si tiene una torre activa, chequea si la distancia hacia el nexo es lo suficiente para crearla
     public void ActivateTower(){ 
-        if(hasTower){
-            if(CheckDistance()){
-                CreateTower();
-            }
+        if(hasTower && CheckDistance()){
+            CreateTower();
         }
     }
     //Si hay una torre activa, la desactiva y vuelve el indice a 0
@@ -90,20 +88,17 @@ public class TowerController : MonoBehaviour
     }
     //Chequea la distancia del mouse al nexo y si es menor a la distancia minima devuelve un false, si no un true
     private bool CheckDistance(){
+        // Check distance to nexus
         Vector2 currentPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        if(Vector2.Distance(currentPosition, nexus.transform.position) > distanceFromNexus){
-            if(currentPosition.y > -3f && currentPosition.y < 4.25f){
-                return true;
-            }
-            else{
-                AudioManager.Instance.PlaySoundEffect(towers[currentIndex.Value].invalidEffect);
-                return false;
-            } 
-        }
-        else{
+        float distanceToNexus = Vector2.Distance(currentPosition, nexus.transform.position);
+        bool isValidPosition = distanceToNexus > distanceFromNexus && currentPosition.y > -3f && currentPosition.y < 4.25f;
+
+        if (!isValidPosition)
+        {
             AudioManager.Instance.PlaySoundEffect(towers[currentIndex.Value].invalidEffect);
-            return false;
         }
+
+        return isValidPosition;
     }
     //Llama a la funcion CreateTower de la torre, pone que la torre no esta lista y resetea su cooldown
     private void CreateTower(){

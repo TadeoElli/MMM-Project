@@ -189,17 +189,9 @@ public class Nexus : MonoBehaviour
 
     public float CalculateStability(Vector2 currentPoint){   
         float distance = Vector2.Distance(startPoint, currentPoint);
-        float maxProbability;
-        if(distance <= 1){
-            maxProbability = missiles[index].maxStability;
-            maxProbability = maxProbability + (baseStability * 3.5f);
-        }
-        else{
-            distance  = distance - 1;
-            maxProbability = missiles[index].maxStability + (missiles[index].minStability - missiles[index].maxStability) * distance;
-            maxProbability = Mathf.Clamp(maxProbability, missiles[index].minStability, missiles[index].maxStability);
-            maxProbability = maxProbability + (baseStability * 3.5f);
-        }
+        float maxProbability = distance <= 1 ? missiles[index].maxStability + (baseStability * 3.5f) :
+            Mathf.Clamp((missiles[index].maxStability + (missiles[index].minStability - missiles[index].maxStability) * (distance - 1)) + (baseStability * 3.5f),
+                missiles[index].minStability, missiles[index].maxStability);
         return Mathf.Clamp(maxProbability, 0f, 100f);
     }
 
@@ -215,5 +207,6 @@ public class Nexus : MonoBehaviour
         if(mouseOverMissile != null){mouseOverMissile.SetActive(false);}
         if(indicator != null){indicator.gameObject.SetActive(false);}
         this.gameObject.SetActive(false);
+        
     }
 }

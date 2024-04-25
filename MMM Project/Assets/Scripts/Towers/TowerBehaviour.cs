@@ -22,18 +22,16 @@ public class TowerBehaviour : MonoBehaviour
             DestroyTower();
         }
         else{   //Si tiene algun objeto dentro del collider, la energia se disminuira 3 veces mas rapido y el componente feedback estara activo
-            if(hasSomethingInside){
-                energy = energy - 3 * Time.deltaTime;
-                if(towerFeedback != null){
-                    towerFeedback.SetActive(true);
-                }
+            // Decrease energy based on whether something is inside the collider
+            float energyConsumptionMultiplier = hasSomethingInside ? 3f : 1f;
+            energy -= energyConsumptionMultiplier * Time.deltaTime;
+
+            // Toggle tower feedback based on whether something is inside
+            if (towerFeedback != null)
+            {
+                towerFeedback.SetActive(hasSomethingInside);
             }
-            else{   //Si no la energia se disminuira y el componente feedback estara desactivado
-                energy = energy - 1 * Time.deltaTime;
-                if(towerFeedback!= null){
-                    towerFeedback.SetActive(false);
-                }
-            }
+
             view.SetCurrentAmount(energy);
         }
 
@@ -42,7 +40,7 @@ public class TowerBehaviour : MonoBehaviour
         GameObject explosion = ExplosionPool.Instance.RequestExplosion(tower.explosion);
         explosion.transform.position = transform.position;
         tower.DestroyTower(this.gameObject);
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
 
     }
     private void OnTriggerEnter2D(Collider2D other) {   //Si un componente entro en su collider
