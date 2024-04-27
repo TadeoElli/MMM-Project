@@ -62,7 +62,7 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
     private PowerUp GenerateRandomPowerUp()     
     {
         float randomValue = UnityEngine.Random.Range(0f, 100f);
-        return availablePowerUps.FirstOrDefault(powerUp => randomValue < powerUp.dropProbability)?.prefab;
+        return availablePowerUps.OrderBy(powerUp => powerUp.dropProbability).FirstOrDefault(powerUp => randomValue < powerUp.dropProbability)?.prefab;
     }
     #endregion
 }

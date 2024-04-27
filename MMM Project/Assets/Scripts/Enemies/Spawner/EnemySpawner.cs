@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -16,10 +17,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _waveInterval;
 
     [Header("Spawn Positions For Enemies")]
-    [SerializeField]private  List<Transform> _basicSpawnPoints;        //Una lista para guardar todos los spawn points para spawnear un enemigo
+    [SerializeField]private  List<Transform> _spawnPoints;        //Una lista para guardar todos los spawn points para spawnear un enemigo
 
     [Header("Spawn Positions For Group of Enemies")]
-    [SerializeField]private  List<GameObject> _prefabSpawnPoints;        //Una lista para guardar objetos que formar grupos de spawn points para spawnear grupos de enemigos
+    [SerializeField]private  List<GameObject> _waveSpawnPoints;        //Una lista para guardar objetos que formar grupos de spawn points para spawnear grupos de enemigos
 
     [SerializeField] private EnemyPool _pool;
     private float timer;
@@ -27,6 +28,7 @@ public class EnemySpawner : MonoBehaviour
     {
         CalculateWaveQuota();
         SpawnGroupOfEnemies();
+        _spawnPoints = _waveSpawnPoints.SelectMany(point => point.GetComponentsInChildren<Transform>()).ToList();
         _currentWaveCount.Invoke();
     }
     void Update() 
@@ -73,9 +75,9 @@ public class EnemySpawner : MonoBehaviour
             hasToSpawnAGroup = false;
             return;
         }
-        int groupIndex = Random.Range(0,_prefabSpawnPoints.Count);
+        int groupIndex = Random.Range(0,_waveSpawnPoints.Count);
         List<Transform> spawnPoints = new List<Transform>();
-        _prefabSpawnPoints[groupIndex].GetComponentsInChildren<Transform>(false, spawnPoints);
+        _waveSpawnPoints[groupIndex].GetComponentsInChildren<Transform>(false, spawnPoints);
        
         //Spawnea un grupo de enemigos spawneando uno en cada spawnpoint de la lista
         foreach (var spawn in spawnPoints)
@@ -107,7 +109,7 @@ public class EnemySpawner : MonoBehaviour
         int index = Random.Range(0,_waves[_currentWaveCount.Value]._enemyGroups.Count);   //Genera un numero aleatorio entre la cantidad de enemigos en la oleada
         GameObject enemy = CreateEnemy(index);
         Vector3 offset = _waves[_currentWaveCount.Value]._enemyGroups[index]._enemyDirection ? new Vector3 (13,0,0): new Vector3(-13,0,0);    //Aplica un offset para que aparezca fuera de camara
-        enemy.transform.position = offset + _basicSpawnPoints[Random.Range(0,_basicSpawnPoints.Count)].position;  
+        enemy.transform.position = offset + _spawnPoints[Random.Range(0,_spawnPoints.Count)].position;  
         CheckEnemieGroupQuota(index);
     }
     private GameObject CreateEnemy(int index){  //Creo un enemigo

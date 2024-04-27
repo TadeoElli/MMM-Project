@@ -29,33 +29,29 @@ public class TowerController : MonoBehaviour
     }
     void Start()    //Creo Las listas de cooldowns, flags y temporizadores, dejando la 0 vacia como default
     {
-        cooldowns.Add(0);
-        currentCd.Add(0);
-        isReady.Add(false);
-        towers.Skip(1).ToList().ForEach(tower => 
-        {
-            float cooldown = tower.cooldown;
-            cooldowns.Add(cooldown);
-            currentCd.Add(cooldown);
-            isReady.Add(true);
-        });
+        cooldowns = towers.SetCooldownsValue(x => x.cooldown - 0).ToList();
+        //cooldowns.Add(0);
+        currentCd = towers.SetCooldownsValue(x => x.cooldown - 0).ToList();
+        //currentCd = cooldowns;
+        isReady = new List<bool> { false }
+        .Concat(towers.Skip(1).Select(tower => true))
+        .ToList();
         
     }
 
     
     void Update()   //Si uno de las torres de la lista no esta listo, aumento su temporizador hasta que supere su cooldown y ahi lo activo
     {
-        for (int i = 1; i < towers.Length; i++)
+        var notReadyIndices = Enumerable.Range(1, towers.Length - 1)
+        .Where(i => !isReady[i])
+        .ToList();
+
+        foreach (var index in notReadyIndices)
         {
-            if(!isReady[i]){
-                if(currentCd[i] >= cooldowns[i]){
-                    isReady[i] = true;
-                }
-                else
-                {
-                    currentCd[i] = currentCd[i] + 1 * Time.deltaTime;
-                    currentCd[i] = Mathf.Clamp(currentCd[i], 0, cooldowns[i]);
-                }
+            currentCd[index] = Mathf.Clamp(currentCd[index] + Time.deltaTime, 0, cooldowns[index]);
+            if (currentCd[index] >= cooldowns[index])
+            {
+                isReady[index] = true;
             }
         }
     }

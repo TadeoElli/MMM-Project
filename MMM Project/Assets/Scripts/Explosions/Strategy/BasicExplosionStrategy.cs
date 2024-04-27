@@ -24,13 +24,15 @@ public class BasicExplosionStrategy : ExplosionStrategy
         }
     }
     public override void ExplosionBehaviour(Transform origin){   //Por cada collider dentro del radio, si es enemigo lo empuja
-        Collider2D[] objects = Physics2D.OverlapCircleAll(origin.position, radius).Where(collision => collision.CompareTag("Enemy")).ToArray();
-        foreach (var collision in objects)
+        var objects = Physics2D.OverlapCircleAll(origin.position, radius)
+            .OfType<Rigidbody2D>().Where(collision => collision.CompareTag("Enemy"))
+            .ToList();
+
+        foreach (var rb2D in objects)
         {
-            Rigidbody2D rb2D = collision.GetComponent<Rigidbody2D>();
             if (rb2D != null)
             {
-                Vector2 direction = collision.transform.position - origin.position;
+                Vector2 direction = rb2D.transform.position - origin.position;
                 float distance = 1 + direction.magnitude;
                 float finalForce = explosionForce / distance;
                 rb2D.AddForce(direction * finalForce);
@@ -39,12 +41,12 @@ public class BasicExplosionStrategy : ExplosionStrategy
     }
 
     public override void ImplosionBehaviour(Transform origin){   //Por cada collider dentro del radio, si es enemigo lo atrae
-        Collider2D[] objects = Physics2D.OverlapCircleAll(origin.position, radius).Where(collision => collision.CompareTag("Enemy")).ToArray();
-
-        foreach (Collider2D collisions in objects){
-            Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
+        var objects = Physics2D.OverlapCircleAll(origin.position, radius)
+            .OfType<Rigidbody2D>().Where(collision => collision.CompareTag("Enemy"))
+            .ToList();
+        foreach (var rb2D in objects){
             if(rb2D != null){
-                Vector2 direction = collisions.transform.position - origin.position;
+                Vector2 direction = rb2D.transform.position - origin.position;
                 float distance = 1 + direction.magnitude;
                 float finalForce = implosionForce / distance;
                 rb2D.AddForce(-direction * finalForce);

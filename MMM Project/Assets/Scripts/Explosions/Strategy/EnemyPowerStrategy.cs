@@ -12,11 +12,12 @@ public class EnemyPowerStrategy : ExplosionStrategy
 
     }
     public override void ExplosionBehaviour(Transform origin){  //Por cada collider dentro del rango, si es un misil lo empuja
-       Collider2D[] objects = Physics2D.OverlapCircleAll(origin.position, radius).Where(collision => collision.CompareTag("Missiles")).ToArray();
-        foreach (Collider2D collisions in objects){
-            Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
+        var objects = Physics2D.OverlapCircleAll(origin.position, radius)
+            .OfType<Rigidbody2D>().Where(collision => collision.CompareTag("Missiles"))
+            .ToList();
+        foreach (var rb2D in objects){
             if(rb2D != null){
-                Vector2 direction = collisions.transform.position - origin.position;
+                Vector2 direction = rb2D.transform.position - origin.position;
                 float distance = 1 + direction.magnitude;
                 float finalForce = explosionForce / distance;
                 rb2D.AddForce(direction * finalForce);

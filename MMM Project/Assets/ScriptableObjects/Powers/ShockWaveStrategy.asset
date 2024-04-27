@@ -19,5 +19,4 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 153b38dfba0f7e0498e703560acedc6b, type: 2}
   scale: {x: 0.5, y: 0.5, z: 1}
   invalidEffect: {fileID: 8300000, guid: d86d098c698a5c94e912049fe24ac46b, type: 3}
-  deployEffect: {fileID: 8300000, guid: c93f2f07a97e20047a1778bdaa5a4f15, type: 3}
   prefab: {fileID: 1358093547784389084, guid: 961bc7494b615f343862ec3c11c81b25, type: 3}

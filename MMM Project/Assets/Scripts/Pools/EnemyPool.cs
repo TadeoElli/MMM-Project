@@ -57,14 +57,12 @@ public class EnemyPool : MonoBehaviour
     public GameObject RequestEnemy(EnemyBehaviour enemy){        //Le mando cual necesito
 
         List<GameObject> prefabList = enemyDictionary[enemy.gameObject];
-        var inactivePrefab = prefabList.FirstOrDefault(prefab => !prefab.activeSelf);
-        if(inactivePrefab != null){
-            inactivePrefab.SetActive(true);
-            return inactivePrefab;
-        }
-        AddEnemyToPool(1,enemy);
-        var lastPrefab = prefabList.Last();
-        lastPrefab.SetActive(true);
-        return lastPrefab;
+        bool hasInactivePrefab = prefabList.Any(prefab => !prefab.activeSelf);
+        if(!hasInactivePrefab) AddEnemyToPool(1,enemy);
+        GameObject prefab = hasInactivePrefab ? prefabList.FirstOrDefault(x => !x.activeSelf) : prefabList.Last();
+        prefab?.SetActive(true);
+        return prefab;
+
+
     }
 }

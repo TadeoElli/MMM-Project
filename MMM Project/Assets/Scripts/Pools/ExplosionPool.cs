@@ -48,14 +48,10 @@ public class ExplosionPool : MonoBehaviour
 
     public GameObject RequestExplosion(Explosion prefab){    
         List<GameObject> prefabList = explosionDictionary[prefab.gameObject];
-        var inactivePrefab = prefabList.FirstOrDefault(prefab => !prefab.activeSelf);
-        if(inactivePrefab != null){
-            inactivePrefab.SetActive(true);
-            return inactivePrefab;
-        }
-        AddExplosionToPool(1,prefab);
-        var lastPrefab = prefabList.Last();
-        lastPrefab.SetActive(true);
-        return lastPrefab;
+        bool hasInactivePrefab = prefabList.Any(prefab => !prefab.activeSelf);
+        if(!hasInactivePrefab) AddExplosionToPool(1,prefab);
+        GameObject prefabToReturn = hasInactivePrefab ? prefabList.FirstOrDefault(x => !x.activeSelf) : prefabList.LastOrDefault();
+        prefabToReturn.SetActive(true);
+        return prefabToReturn;
     }
 }

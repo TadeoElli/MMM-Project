@@ -27,34 +27,31 @@ public class PowerController : MonoBehaviour
     void Start()
     //Establezco segun la cantidad de poderes, los cooldowns y flags en las listas (Dejando el del indice 0 vacio)
     {
-        cooldowns.Add(0);
-        currentCd.Add(0);
-        isReady.Add(false);
-        powers.Skip(1).ToList().ForEach(power => 
-        {
-            float cooldown = power.cooldown;
-            cooldowns.Add(cooldown);
-            currentCd.Add(cooldown);
-            isReady.Add(true);
-        });
-
+        cooldowns = powers.SetCooldownsValue(x => x.cooldown - 0).ToList();
+        //cooldowns.Add(0);
+        currentCd = powers.SetCooldownsValue(x => x.cooldown - 0).ToList();
+        //currentCd = cooldowns;
+        isReady = new List<bool> { false }
+        .Concat(powers.Skip(1).Select(power => true))
+        .ToList();
     }
 
     //Por cada uno de los poderes pregunta si no esta listo, y si es asi aumenta el timer hasta que supere el cooldown para que se ponga listo
     void Update()
     {
-        for (int i = 1; i < powers.Length; i++)
+        var notReadyIndices = Enumerable.Range(1, powers.Length - 1)
+        .Where(i => !isReady[i])
+        .ToList();
+
+        foreach (var index in notReadyIndices)
         {
-            if(!isReady[i]){
-                if(currentCd[i] >= cooldowns[i]){
-                    isReady[i] = true;
-                }
-                else
-                {
-                    currentCd[i] = Mathf.Clamp(currentCd[i] + 1 * Time.deltaTime, 0, cooldowns[i]);
-                }
+            currentCd[index] = Mathf.Clamp(currentCd[index] + Time.deltaTime, 0, cooldowns[index]);
+            if (currentCd[index] >= cooldowns[index])
+            {
+                isReady[index] = true;
             }
         }
+     
         
     }
     //Si tiene un poder activo y se esta presionando, llama al comportamiento de presionado
@@ -72,11 +69,7 @@ public class PowerController : MonoBehaviour
     }
     //Se setea los cooldowns restandoles el valor base
     public void SetCooldowns(float baseCooldown){
-        for (int i = 1; i < powers.Length; i++)
-        {
-            cooldowns[i] = (powers[i].cooldown - baseCooldown);
-            //currentCd[i] = (powers[i].cooldown);
-        }
+        cooldowns = powers.SetCooldownsValue(x => x.cooldown - baseCooldown).ToList();
     }
     
     //Se setea el indice segun si se presiona alguna de las teclas o no, si el indice es mayor a 0 y ese poder esta activo, se activa el cursor
