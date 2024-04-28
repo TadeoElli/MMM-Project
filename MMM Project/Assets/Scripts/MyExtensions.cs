@@ -36,4 +36,33 @@ public static class MyExtensions
 
         return _currentWaveQuota;
     }
+
+    
+    public static IEnumerable<Transform> SetSpawnOffset(this IEnumerable<Transform> sourceList, Direction _direction)
+    {
+        bool directionBool = true; // Flag para indicar si es el primer elemento
+        foreach (var item in sourceList)
+        {
+            // Modifica cada elemento de la lista de origen y resta el valor deseado
+            switch (_direction)
+            {
+                case Direction.Left:
+                    item.position = new Vector3(-13, item.position.y, 0);
+                    yield return item;
+                    break;
+                case Direction.Right:
+                    item.position = new Vector3(13, item.position.y, 0);
+                    yield return item;
+                    break;
+                case Direction.Both:
+                    item.position = directionBool ? new Vector3(13, item.position.y, 0): new Vector3(-13, item.position.y, 0); 
+                    directionBool = !directionBool;
+                    yield return item;
+                    break;
+                default:
+                    yield return default(Transform);
+                    break;
+            }
+        }
+    }
 }
