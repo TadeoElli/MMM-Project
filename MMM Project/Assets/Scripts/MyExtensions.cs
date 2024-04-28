@@ -1,21 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public static class MyExtensions
 {
 
-    /*public static IEnumerable<Dst> SetCooldownsValue<Src, Dst>(this IEnumerable<Src> myCol, Func<Src, Dst> modifyElement)
-    {
-        for (int i = 1; i < yCol.Count(); i++)
-        {
-            var newElement = modifyElement(myCol[i]);
-            yield return newElement;
-        }
-    }*/
+    //Generator que cambia los valores de una lista por otros restandoles una variable y que deja la primera posicion con valor default
     public static IEnumerable<Dst> SetCooldownsValue<Src, Dst>(this IEnumerable<Src> sourceList, Func<Src, Dst> modifyElement)
     {
         bool isFirstElement = true; // Flag para indicar si es el primer elemento
@@ -33,5 +24,16 @@ public static class MyExtensions
                 yield return modifiedElement;   
             }
         }
+    }
+    //generator que selecciona una posicion aleatoria dentro de una lista de posiciones y le suma un offset dependiendo de un bool
+    public static int CantOfEnemiesInWave(this IEnumerable<EnemyGroup> wave)
+    {
+        int _currentWaveQuota = 0;
+        foreach(var enemyGroup in wave)
+        {
+            _currentWaveQuota += enemyGroup._enemyCount;
+        }
+
+        return _currentWaveQuota;
     }
 }

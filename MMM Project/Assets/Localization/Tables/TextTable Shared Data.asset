@@ -227,6 +227,10 @@ MonoBehaviour:
     m_Key: creditsOriginal
     m_Metadata:
       m_Items: []
+  - m_Id: 8551013501325312
+    m_Key: enemiesInWave
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

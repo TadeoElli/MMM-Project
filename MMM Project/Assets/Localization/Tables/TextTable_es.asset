@@ -293,6 +293,10 @@ MonoBehaviour:
     m_Localized: 'Creador original:'
     m_Metadata:
       m_Items: []
+  - m_Id: 8551013501325312
+    m_Localized: 'Enemigos en esta Oleada: {0}'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
