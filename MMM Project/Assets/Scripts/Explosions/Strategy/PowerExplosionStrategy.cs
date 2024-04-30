@@ -17,6 +17,8 @@ public class PowerExplosionStrategy : ExplosionStrategy
         }
     }
     public override void ExplosionBehaviour(Transform origin){  //Por cada collider dentro del radio, si es enemigo lo empuja
+    //IA2-LINQ
+    //Toma todos los objetos dentro de un radio y guardo solo los de tipo rigidbody que tengan el tag correspondiente
         Collider2D[] objects = Physics2D.OverlapCircleAll(origin.position, radius).Where(collision => collision.CompareTag("Enemy")).ToArray();
         foreach (Collider2D collisions in objects){
             Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();
@@ -30,6 +32,8 @@ public class PowerExplosionStrategy : ExplosionStrategy
     }
 
     public override void ImplosionBehaviour(Transform origin){  //Por cada collider dentro del radio, si es enemigo lo atrae
+    //IA2-LINQ
+    //Toma todos los objetos dentro de un radio y guardo solo los de tipo rigidbody que tengan el tag correspondiente
         Collider2D[] objects = Physics2D.OverlapCircleAll(origin.position, radius).Where(collision => collision.CompareTag("Enemy")).ToArray();
         foreach (Collider2D collisions in objects){
             Rigidbody2D rb2D = collisions.GetComponent<Rigidbody2D>();

@@ -38,7 +38,7 @@ public static class MyExtensions
     }
 
     
-    public static IEnumerable<Transform> SetSpawnOffset(this IEnumerable<Transform> sourceList, Direction _direction)
+    public static IEnumerable<(Transform, bool)> SetSpawnOffset(this IEnumerable<Transform> sourceList, Direction _direction)
     {
         bool directionBool = true; // Flag para indicar si es el primer elemento
         foreach (var item in sourceList)
@@ -47,22 +47,32 @@ public static class MyExtensions
             switch (_direction)
             {
                 case Direction.Left:
-                    item.position = new Vector3(-13, item.position.y, 0);
-                    yield return item;
+                    item.position = item.position + new Vector3(-13,0, 0);
+                    yield return (item, false);
                     break;
                 case Direction.Right:
-                    item.position = new Vector3(13, item.position.y, 0);
-                    yield return item;
+                    item.position = item.position + new Vector3(13,0, 0);
+                    yield return (item, true);
                     break;
                 case Direction.Both:
-                    item.position = directionBool ? new Vector3(13, item.position.y, 0): new Vector3(-13, item.position.y, 0); 
+                    item.position = directionBool ? item.position + new Vector3(13,0, 0): item.position + new Vector3(-13,0, 0);
+                    yield return (item, directionBool);
                     directionBool = !directionBool;
-                    yield return item;
                     break;
                 default:
-                    yield return default(Transform);
+                    //yield return default(Transform);
                     break;
             }
+        }
+    }
+
+    public static IEnumerable<Transform> ResetSpawnOffset(this IEnumerable<Transform> sourceList)
+    {
+        foreach (var item in sourceList)
+        {
+            // Se fija de que lado del eje x estaba el spawn y lo resetea
+            item.position = item.position.x > 0 ? item.position + new Vector3(-13,0,0): item.position + new Vector3(13,0,0);
+            yield return item;
         }
     }
 }

@@ -27,10 +27,13 @@ public class PowerController : MonoBehaviour
     void Start()
     //Establezco segun la cantidad de poderes, los cooldowns y flags en las listas (Dejando el del indice 0 vacio)
     {
+        //IA2-LINQ
+        //le envio las listas de cooldowns y currentCd al generator que se encarga de crear la lista con los valores de la lista de poderes
+        //restandole el valor indicado y dejando el primer objeto de la lista como nulo
         cooldowns = powers.SetCooldownsValue(x => x.cooldown - 0).ToList();
-        //cooldowns.Add(0);
         currentCd = powers.SetCooldownsValue(x => x.cooldown - 0).ToList();
-        //currentCd = cooldowns;
+        //de misma forma en la lista isReady se crea una nueva colocando false en el primer indice y luego concatenandola con otra que
+        //por cada poder en la lista de poderes (saltenado la primer posicion que ya se declaro como false) estableciemdolas como true
         isReady = new List<bool> { false }
         .Concat(powers.Skip(1).Select(power => true))
         .ToList();
@@ -39,10 +42,12 @@ public class PowerController : MonoBehaviour
     //Por cada uno de los poderes pregunta si no esta listo, y si es asi aumenta el timer hasta que supere el cooldown para que se ponga listo
     void Update()
     {
+        //IA2-LINQ
+        //creo una nueva lista del mismo tamaño que la de poderes pero guardando solo los indices donde el poder no esta listo
         var notReadyIndices = Enumerable.Range(1, powers.Length - 1)
         .Where(i => !isReady[i])
         .ToList();
-
+        //Y por cada poder con ese indice le sumo al currentCD el valor del tiempo hasta que sea mayor al cooldown y ahi lo establezco como activo
         foreach (var index in notReadyIndices)
         {
             currentCd[index] = Mathf.Clamp(currentCd[index] + Time.deltaTime, 0, cooldowns[index]);
@@ -68,7 +73,11 @@ public class PowerController : MonoBehaviour
         }
     }
     //Se setea los cooldowns restandoles el valor base
+    //sirve para que cuando se utiliza el powerUp de reducir el cooldown, todos los cooldown pasen a menos de 0 para que se puedan usar sin esperar a q este listo
     public void SetCooldowns(float baseCooldown){
+        //IA2-LINQ
+        //le envio la listas de cooldowns al generator que se encarga de crear la lista con los valores de la lista de poderes
+        //restandole el valor indicado y dejando el primer objeto de la lista como nulo
         cooldowns = powers.SetCooldownsValue(x => x.cooldown - baseCooldown).ToList();
     }
     

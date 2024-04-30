@@ -29,10 +29,13 @@ public class TowerController : MonoBehaviour
     }
     void Start()    //Creo Las listas de cooldowns, flags y temporizadores, dejando la 0 vacia como default
     {
+        //IA2-LINQ
+        //le envio las listas de cooldowns y currentCd al generator que se encarga de crear la lista con los valores de la lista de torres
+        //restandole el valor indicado y dejando el primer objeto de la lista como nulo
         cooldowns = towers.SetCooldownsValue(x => x.cooldown - 0).ToList();
-        //cooldowns.Add(0);
         currentCd = towers.SetCooldownsValue(x => x.cooldown - 0).ToList();
-        //currentCd = cooldowns;
+        //de misma forma en la lista isReady se crea una nueva colocando false en el primer indice y luego concatenandola con otra que
+        //por cada torre en la lista de poderes (saltenado la primer posicion que ya se declaro como false) estableciemdolas como true
         isReady = new List<bool> { false }
         .Concat(towers.Skip(1).Select(tower => true))
         .ToList();
@@ -42,10 +45,12 @@ public class TowerController : MonoBehaviour
     
     void Update()   //Si uno de las torres de la lista no esta listo, aumento su temporizador hasta que supere su cooldown y ahi lo activo
     {
+        //IA2-LINQ
+        //creo una nueva lista del mismo tamaño que la de torres pero guardando solo los indices donde el poder no esta listo
         var notReadyIndices = Enumerable.Range(1, towers.Length - 1)
         .Where(i => !isReady[i])
         .ToList();
-
+        //Y por cada torre con ese indice le sumo al currentCD el valor del tiempo hasta que sea mayor al cooldown y ahi lo establezco como activo
         foreach (var index in notReadyIndices)
         {
             currentCd[index] = Mathf.Clamp(currentCd[index] + Time.deltaTime, 0, cooldowns[index]);

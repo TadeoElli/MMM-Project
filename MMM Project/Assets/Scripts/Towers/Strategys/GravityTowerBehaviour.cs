@@ -44,6 +44,8 @@ public class GravityTowerBehaviour : TowerStrategy
     }
     //El comportamiento de cuando se destruye la torre, toma todos los componentes Enemigos dentro del radio y los envia en la direccion contraria
     public override void DestroyTower(GameObject prefab){
+        //IA2-LINQ
+        //Toma todos los objetos dentro de un radio y guardo solo los que tengan el tag correspondiente
         Collider2D[] objects = Physics2D.OverlapCircleAll(prefab.transform.position, radius);
         objects.Where(collision => collision.CompareTag("Enemy"))
                .ToList()

@@ -12,6 +12,8 @@ public class EnemyPowerStrategy : ExplosionStrategy
 
     }
     public override void ExplosionBehaviour(Transform origin){  //Por cada collider dentro del rango, si es un misil lo empuja
+    //IA2-LINQ
+    //Toma todos los objetos dentro de un radio y guardo solo los de tipo rigidbody que tengan el tag correspondiente
         var objects = Physics2D.OverlapCircleAll(origin.position, radius)
             .OfType<Rigidbody2D>().Where(collision => collision.CompareTag("Missiles"))
             .ToList();

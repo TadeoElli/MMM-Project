@@ -61,6 +61,9 @@ public abstract class EnemyStrategy : ScriptableObject        //Strategy para to
 
     private PowerUp GenerateRandomPowerUp()     
     {
+        //IA2-LINQ
+        //Creo un valor aleatorio entre 0 y 100 y tomo de la lista de power ups ordenados de menor probabilidad a mayor probabilidad
+        //cual es el primero en el que el valor aleatorio sea menor a su probabilidad y lo devuelvo, si no no devuelvo nada
         float randomValue = UnityEngine.Random.Range(0f, 100f);
         return availablePowerUps.OrderBy(powerUp => powerUp.dropProbability).FirstOrDefault(powerUp => randomValue < powerUp.dropProbability)?.prefab;
     }

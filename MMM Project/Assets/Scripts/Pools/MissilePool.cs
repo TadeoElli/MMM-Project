@@ -46,7 +46,9 @@ public class MissilePool : MonoBehaviour
     }
 
     public GameObject RequestMissile(MissileBehaviour prefab){        //Le mando cual necesito
-
+        //IA2-LINQ
+        //Cuando se pide el tipo de objeto, se pregunta si ya hay uno en la lista que no este activo y segun eso
+        //Se devuelve el primero de la lista que no este activo o se crea uno nuevo y se devuelve  el ultimo de la lista
         List<GameObject> prefabList = missileDictionary[prefab.gameObject];
         bool hasInactivePrefab = prefabList.Any(prefab => !prefab.activeSelf);
         if(!hasInactivePrefab) AddMissilesToPool(1,prefab);

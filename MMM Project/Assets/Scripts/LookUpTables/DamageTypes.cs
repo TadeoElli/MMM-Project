@@ -40,7 +40,9 @@ public class DamageTypes : MonoBehaviour
     
     private void Start() {  //Creo los diccionarios
         explosionList = Enum.GetValues(typeof(ExplosionsTypes)).Cast<ExplosionsTypes>().ToList();
-        // Crear diccionarios utilizando LINQ
+        //IA2-LINQ
+        //Creo diccionarios de los objetos(explosiones o layers) y su respectivo daño a realizar, utilizando zip para combinar la lista de objetos
+        //con la de daños y transformandolo en un diccionario
         explosionDictionary = explosionList.Zip(damagesOfExplosions, (explosion, damage) => new { explosion, damage }).ToDictionary(pair => pair.explosion, pair => pair.damage);
 
         collisionMissilesDictionary = types.Zip(damagesOfCollisionsForMissiles, (type, damage) => new { type, damage }).ToDictionary(pair => pair.type, pair => pair.damage);

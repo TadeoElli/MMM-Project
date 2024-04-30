@@ -18,20 +18,29 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _waveInterval;
 
     [Header("Spawn Positions For Enemies")]
-    [SerializeField]private  List<Transform> _spawnPoints;        //Una lista para guardar todos los spawn points para spawnear un enemigo
+    [SerializeField]private  List<(Transform, bool)> _spawnPoints;        //Una lista para guardar todos los spawn points para spawnear un enemigo
+    [SerializeField] private List<bool> _spawnDirection;
 
     [Header("Spawn Positions For Group of Enemies")]
     [SerializeField]private  List<GameObject> _waveSpawnPoints;        //Una lista para guardar objetos que formar grupos de spawn points para spawnear grupos de enemigos
-
+    public List<List<Transform>> listOfTransformLists; // lista de listas de Transform
     [SerializeField] private EnemyPool _pool;
     private float timer;
     void Start() 
     {
         CalculateWaveQuota();
-        SpawnGroupOfEnemies();
-        _spawnPoints = _waveSpawnPoints.SelectMany(point => point.GetComponentsInChildren<Transform>()).ToList();
-        _spawnPoints = _spawnPoints.SetSpawnOffset(_waves[_currentWaveCount.Value]._direction).ToList();
+        //IA2-LINQ
+        //Selecciono todos los transform de cada gameObject de la lista _waveSpawnPoints y los guardo en la lista de listas
+        listOfTransformLists = _waveSpawnPoints.Select(obj => obj.transform.OfType<Transform>().ToList()).ToList();
+        //Por cada lista en la lista de listas llamo al generator que setea el offset segun la direccion de donde vendran los enemigos de la oleada
+        //y me devuelve una tupla que contiene la posicion con el offset y la direccion hacia donde se debe dirigir
+        var transformedLists = listOfTransformLists.Select(item => item.SetSpawnOffset(_waves[_currentWaveCount.Value]._direction).ToList()).ToList();
+        //Luego creo una lista que toma todos los transform de todas las listas de transforms para tener una que abarque todo
+        //Esta lista servira para poder spawnear un enemigo en cualquier posicion de entre todas los spawnPoints de manera aleatoria
+        _spawnPoints = transformedLists.SelectMany(point => point).ToList();
+        
 
+        SpawnGroupOfEnemies();
         _currentWaveCount.Invoke();
     }
     void Update() 
@@ -70,8 +79,10 @@ public class EnemySpawner : MonoBehaviour
         {
             _currentWaveCount.Value++;
             CalculateWaveQuota();
-            _spawnPoints = _waveSpawnPoints.SelectMany(point => point.GetComponentsInChildren<Transform>()).ToList();
-            _spawnPoints = _spawnPoints.SetSpawnOffset(_waves[_currentWaveCount.Value]._direction).ToList();
+            //IA2-LINQ
+            //reseteo los valores de transform de los spawn con el generator de Reset y le aplico el nuevo offset con el generator setSpawnOffset
+            var transformedLists = listOfTransformLists.Select(item => item.ResetSpawnOffset().SetSpawnOffset(_waves[_currentWaveCount.Value]._direction).ToList()).ToList();
+            _spawnPoints = transformedLists.SelectMany(point => point).ToList();
         }
     }
     void SpawnGroupOfEnemies()      //Spawnea un grupo de enemigos en alguna formacion al azar entre la lista de formaciones
@@ -80,10 +91,8 @@ public class EnemySpawner : MonoBehaviour
             hasToSpawnAGroup = false;
             return;
         }
-        int groupIndex = Random.Range(0,_waveSpawnPoints.Count);
-        List<Transform> spawnPoints = new List<Transform>();
-        _waveSpawnPoints[groupIndex].GetComponentsInChildren<Transform>(false, spawnPoints);
-        spawnPoints = spawnPoints.SetSpawnOffset(_waves[_currentWaveCount.Value]._direction).ToList();
+        int groupIndex = Random.Range(0,listOfTransformLists.Count);
+        List<Transform> spawnPoints = listOfTransformLists[groupIndex];
        
         //Spawnea un grupo de enemigos spawneando uno en cada spawnpoint de la lista
         foreach (var spawn in spawnPoints)
@@ -115,8 +124,9 @@ public class EnemySpawner : MonoBehaviour
         //Chequea si ya se supero la cuota de enemigos
         int index = Random.Range(0,_waves[_currentWaveCount.Value]._enemyGroups.Count);   //Genera un numero aleatorio entre la cantidad de enemigos en la oleada
         GameObject enemy = CreateEnemy(index);
-        enemy.transform.position = _spawnPoints[Random.Range(0,_spawnPoints.Count)].position;
-        enemy.GetComponent<EnemyBehaviour>().normalDir = enemy.transform.position.x > 0 ? true : false;    //Setea su direccion con la direccion de la oleada
+        int spawnIndex = Random.Range(0,_spawnPoints.Count);
+        enemy.transform.position = _spawnPoints[spawnIndex].Item1.position;
+        enemy.GetComponent<EnemyBehaviour>().normalDir = _spawnPoints[spawnIndex].Item2;    //Setea su direccion con la direccion de la oleada
         enemy.transform.rotation =  enemy.transform.position.x < 0 ? Quaternion.Euler(0f, 0f, 270): Quaternion.Euler(0f, 0f, 90);    //Setea su rotacion  
         CheckEnemieGroupQuota(index);
     }

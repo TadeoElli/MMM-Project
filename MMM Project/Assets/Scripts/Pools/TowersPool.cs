@@ -46,7 +46,9 @@ public class TowersPool : MonoBehaviour
     }
 
     public GameObject RequestTower(TowerBehaviour prefab){        //Le mando cual necesito
-
+        //IA2-LINQ
+        //Cuando se pide el tipo de objeto, se pregunta si ya hay uno en la lista que no este activo y segun eso
+        //Se devuelve el primero de la lista que no este activo o se crea uno nuevo y se devuelve  el ultimo de la lista
         List<GameObject> prefabList = towerDictionary[prefab.gameObject];
         bool hasInactivePrefab = prefabList.Any(prefab => !prefab.activeSelf);
         if(!hasInactivePrefab) AddTowersToPool(1,prefab);
