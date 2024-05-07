@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//IA2-LINQ
+//Generators
 public static class MyExtensions
 {
 
@@ -37,13 +38,13 @@ public static class MyExtensions
         return _currentWaveQuota;
     }
 
-    
+    //generator que recibe una lista de posiciones  y devuelve una tupla de esas posiciones aplicandoles un offset y un bool que indique la direccion que debe tomar el enemigo
     public static IEnumerable<(Transform, bool)> SetSpawnOffset(this IEnumerable<Transform> sourceList, Direction _direction)
     {
         bool directionBool = true; // Flag para indicar si es el primer elemento
         foreach (var item in sourceList)
         {
-            // Modifica cada elemento de la lista de origen y resta el valor deseado
+            // Modifica cada elemento de la lista de origen y sumo  el valor deseado
             switch (_direction)
             {
                 case Direction.Left:
@@ -54,7 +55,7 @@ public static class MyExtensions
                     item.position = item.position + new Vector3(13,0, 0);
                     yield return (item, true);
                     break;
-                case Direction.Both:
+                case Direction.Both:    //Si la direccion de la oleada es que vengan de ambos lados voy variando los offset por cada posicion
                     item.position = directionBool ? item.position + new Vector3(13,0, 0): item.position + new Vector3(-13,0, 0);
                     yield return (item, directionBool);
                     directionBool = !directionBool;
@@ -65,7 +66,7 @@ public static class MyExtensions
             }
         }
     }
-
+    //generator que resetea una lista de posiciones detectando de que lado del eje x se encuentra y restandole el offset deseado
     public static IEnumerable<Transform> ResetSpawnOffset(this IEnumerable<Transform> sourceList)
     {
         foreach (var item in sourceList)

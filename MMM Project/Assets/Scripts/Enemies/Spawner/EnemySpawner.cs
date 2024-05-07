@@ -71,10 +71,10 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator BeginNextWave()
     {
-        //Wave for "waveInterval" seconds before starting the next wave
+        //Espera 3 segundos para empezar la siguiente oleada
         yield return new WaitForSeconds(3);
 
-        //If there are more waves to start after the current wave, move on to the next wave
+        //Si hay mas oleadas despues de la actual, pasa a la siguiente oleada
         if(_currentWaveCount.Value < _waves.Count -1)
         {
             _currentWaveCount.Value++;
@@ -125,8 +125,8 @@ public class EnemySpawner : MonoBehaviour
         int index = Random.Range(0,_waves[_currentWaveCount.Value]._enemyGroups.Count);   //Genera un numero aleatorio entre la cantidad de enemigos en la oleada
         GameObject enemy = CreateEnemy(index);
         int spawnIndex = Random.Range(0,_spawnPoints.Count);
-        enemy.transform.position = _spawnPoints[spawnIndex].Item1.position;
-        enemy.GetComponent<EnemyBehaviour>().normalDir = _spawnPoints[spawnIndex].Item2;    //Setea su direccion con la direccion de la oleada
+        enemy.transform.position = _spawnPoints[spawnIndex].Item1.position; //Utilizo el primer valor de la tupla para establecer su ´posicion
+        enemy.GetComponent<EnemyBehaviour>().normalDir = _spawnPoints[spawnIndex].Item2;    //Utilizo el segundo valor de la tupla para establecer su direccion
         enemy.transform.rotation =  enemy.transform.position.x < 0 ? Quaternion.Euler(0f, 0f, 270): Quaternion.Euler(0f, 0f, 90);    //Setea su rotacion  
         CheckEnemieGroupQuota(index);
     }
