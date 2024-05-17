@@ -13,12 +13,12 @@ public class Wave
     public float _spawnIntervalForGroup;        //El intervalo en el que se spawnean nuevos grupos de enemigos
     public int _spawnEnemyCount;     //el numero de la cantidad de enemigos que ya spawnearon en la oleada
     public int _spawnGroupCount;     //el numero de la cantidad de grupos de enemigos que ya spawnearon en la oleada
-    public Direction _direction;
+    //public Direction _direction;
 }
-
+/*
 public enum Direction{
     Left,
     Right,
     Both
     
-}
+}*/

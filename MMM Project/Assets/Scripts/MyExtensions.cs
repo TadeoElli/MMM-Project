@@ -37,7 +37,7 @@ public static class MyExtensions
 
         return _currentWaveQuota;
     }
-
+/*
     //generator que recibe una lista de posiciones  y devuelve una tupla de esas posiciones aplicandoles un offset y un bool que indique la direccion que debe tomar el enemigo
     public static IEnumerable<(Transform, bool)> SetSpawnOffset(this IEnumerable<Transform> sourceList, Direction _direction)
     {
@@ -76,4 +76,5 @@ public static class MyExtensions
             yield return item;
         }
     }
+    */
 }
