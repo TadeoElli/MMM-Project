@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Spawn Positions For Enemies")]
     [SerializeField]private  List<(Transform, bool)> _spawnPoints;        //Una lista para guardar todos los spawn points para spawnear un enemigo
-    [SerializeField] private List<bool> _spawnDirection;
+
 
     [Header("Spawn Positions For Group of Enemies")]
     [SerializeField]private  List<GameObject> _waveSpawnPoints;        //Una lista para guardar objetos que formar grupos de spawn points para spawnear grupos de enemigos
