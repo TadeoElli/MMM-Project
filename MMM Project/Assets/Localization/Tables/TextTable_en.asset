@@ -318,6 +318,10 @@ MonoBehaviour:
     m_Localized: '[Right]'
     m_Metadata:
       m_Items: []
+  - m_Id: 16200100006547456
+    m_Localized: '[Both]'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
