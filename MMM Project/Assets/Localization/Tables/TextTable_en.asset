@@ -322,6 +322,42 @@ MonoBehaviour:
     m_Localized: '[Both]'
     m_Metadata:
       m_Items: []
+  - m_Id: 16435944713834496
+    m_Localized: 'Objectives and Conditions:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436111902986240
+    m_Localized: 'Prevent Collision:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436362575564800
+    m_Localized: Survive as long as you can
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436625696837632
+    m_Localized: Score is time based
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436903435259904
+    m_Localized: Play Next Wave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437029075636224
+    m_Localized: Upgrades / Abilities
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437150874030080
+    m_Localized: Save Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437268373262336
+    m_Localized: Info / Hints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437362061430784
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -321,6 +321,42 @@ MonoBehaviour:
     m_Localized: '[Ambos]'
     m_Metadata:
       m_Items: []
+  - m_Id: 16435944713834496
+    m_Localized: 'Objetivos y Condiciones:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436111902986240
+    m_Localized: 'No permitas que colisionen:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436362575564800
+    m_Localized: Sobrevive tanto como puedas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436625696837632
+    m_Localized: El puntaje es basado en el tiempo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436903435259904
+    m_Localized: Comenzar Siguiente Oleada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437029075636224
+    m_Localized: Mejoras / Habilidades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437150874030080
+    m_Localized: Guardar Partida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437268373262336
+    m_Localized: Informacion / Pistas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437362061430784
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

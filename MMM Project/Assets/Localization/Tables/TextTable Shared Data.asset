@@ -255,6 +255,42 @@ MonoBehaviour:
     m_Key: Both
     m_Metadata:
       m_Items: []
+  - m_Id: 16435944713834496
+    m_Key: objectivesAndConditions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436111902986240
+    m_Key: preventCollision
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436362575564800
+    m_Key: surviveAsLongAsYouCan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436625696837632
+    m_Key: scoreIsTimeBased
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16436903435259904
+    m_Key: playNextWave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437029075636224
+    m_Key: upgrades/abilities
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437150874030080
+    m_Key: saveGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437268373262336
+    m_Key: info / hints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16437362061430784
+    m_Key: quit
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
