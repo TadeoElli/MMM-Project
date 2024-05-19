@@ -231,6 +231,26 @@ MonoBehaviour:
     m_Key: enemiesInWave
     m_Metadata:
       m_Items: []
+  - m_Id: 16176384035999744
+    m_Key: ChooseLauncherLocation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16176597421215744
+    m_Key: EnemyAdvancement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16177017308794880
+    m_Key: left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16177091875131392
+    m_Key: middle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16177170006626304
+    m_Key: right
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -24,40 +24,50 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]private  List<GameObject> _waveSpawnPoints;        //Una lista para guardar objetos que formar grupos de spawn points para spawnear grupos de enemigos
 
     [SerializeField] private EnemyPool _pool;
+    [SerializeField] private bool pauseState, havePause;
+    [SerializeField] private LevelMainMenu _menu;
     private float timer;
     void Start() 
     {
+        pauseState = true;
+        _menu._direction = _waves[_currentWaveCount.Value]._direction;
+        _menu.ResetMenu();
+    }
+    void Update() 
+    {
+        if(!pauseState){
+            timer += Time.deltaTime;
+            _spawnTimerForEnemies += Time.deltaTime;
+            _spawnTimerForGroup += Time.deltaTime;
+            //Chequea si es tiempo para spawnear un siguiente enemigo grupo
+            if(_spawnTimerForGroup >= _waves[_currentWaveCount.Value]._spawnIntervalForGroup && _waves[_currentWaveCount.Value]._spawnGroupCount < _waves[_currentWaveCount.Value]._waveGroupQuota){  
+                //Si el timer supera el cooldown de un spawnGroup y la cuota de spawneo de grupos todavia no se cumplio
+                hasToSpawnAGroup = true;
+                _spawnTimerForGroup = 0f;
+                SpawnGroupOfEnemies();      //Spawnea un grupo de enemigos
+            }
+            //Chequea si es tiempo para spawnear un siguiente enemigo
+            if(_spawnTimerForEnemies >= _waves[_currentWaveCount.Value]._spawnIntervalForEnemy && !hasToSpawnAGroup)  //Si no tiene que spawnear un grupo y el 
+            //timer supero el del intervalo entre spawn de enemigos
+            {
+                _spawnTimerForEnemies = 0f;
+                SpawnSingleEnemies();     //Spawnea un enemigo
+                
+            }
+            if(timer >= _waveInterval){
+                if(havePause) pauseState = true;
+                StartCoroutine(BeginNextWave());
+                timer = 0;
+            }
+        }
+    }
+    public void StartState(){
+        pauseState = false;
         CalculateWaveQuota();
         SpawnGroupOfEnemies();
         _spawnPoints = _waveSpawnPoints.SelectMany(point => point.GetComponentsInChildren<Transform>()).ToList();
         _currentWaveCount.Invoke();
     }
-    void Update() 
-    {
-        timer += Time.deltaTime;
-        _spawnTimerForEnemies += Time.deltaTime;
-        _spawnTimerForGroup += Time.deltaTime;
-        //Chequea si es tiempo para spawnear un siguiente enemigo grupo
-        if(_spawnTimerForGroup >= _waves[_currentWaveCount.Value]._spawnIntervalForGroup && _waves[_currentWaveCount.Value]._spawnGroupCount < _waves[_currentWaveCount.Value]._waveGroupQuota){  
-            //Si el timer supera el cooldown de un spawnGroup y la cuota de spawneo de grupos todavia no se cumplio
-            hasToSpawnAGroup = true;
-            _spawnTimerForGroup = 0f;
-            SpawnGroupOfEnemies();      //Spawnea un grupo de enemigos
-        }
-        //Chequea si es tiempo para spawnear un siguiente enemigo
-        if(_spawnTimerForEnemies >= _waves[_currentWaveCount.Value]._spawnIntervalForEnemy && !hasToSpawnAGroup)  //Si no tiene que spawnear un grupo y el 
-        //timer supero el del intervalo entre spawn de enemigos
-        {
-            _spawnTimerForEnemies = 0f;
-            SpawnSingleEnemies();     //Spawnea un enemigo
-            
-        }
-        if(timer >= _waveInterval){
-            StartCoroutine(BeginNextWave());
-            timer = 0;
-        }
-    }
-
     IEnumerator BeginNextWave()
     {
         //Wave for "waveInterval" seconds before starting the next wave
@@ -68,6 +78,8 @@ public class EnemySpawner : MonoBehaviour
         {
             _currentWaveCount.Value++;
             CalculateWaveQuota();
+            _menu._direction = _waves[_currentWaveCount.Value]._direction;
+            _menu.ResetMenu();
         }
     }
     void SpawnGroupOfEnemies()      //Spawnea un grupo de enemigos en alguna formacion al azar entre la lista de formaciones

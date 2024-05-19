@@ -20,9 +20,9 @@ public class Nexus : MonoBehaviour
     [SerializeField] public int index, powerIndex, towerIndex;  //Toma los indices de los demas controladores para que no puedas lanzar un misil si tenes un poder o torre activo
     [SerializeField] private int baseStability,baseSpeed;   //La estabilidad y velocidad base que aumenta con los niveles
     [SerializeField] private bool haveMissile;  //Si tiene un misil creado
+    [SerializeField] private bool pauseState;
     private bool isDraggin; //Si el mouse esta encima del nexo
     [SerializeField] private CircleCollider2D collider1;
-    private NexusPosition nexusPosition;   //Clase que se encarga de setear en donde va a estar el nexo
     private NexusModel model;   //Clase que se encarga del feedback visual del nexo
     [SerializeField] private EnergyIndicator indicator;
     public UnityEvent resetCooldownsHud;
@@ -36,7 +36,6 @@ public class Nexus : MonoBehaviour
 
     private void Awake() {  //Empieza con el indice en 0, establece la camara principal y busca los componentes que necesita
         cam = Camera.main;
-        nexusPosition = FindObjectOfType<NexusPosition>();
         model = GetComponentInChildren<NexusModel>();
         if (Instance == null){
             Instance = this;
@@ -48,42 +47,46 @@ public class Nexus : MonoBehaviour
     //Establece la posicion del nexo y del cursor y luego crea un misil, despues de un delay
     void Start()
     {
-        this.transform.position = nexusPosition.SetPosition();
         haveMissile = false;
-        mouseOverMissile.SetActive(false);
-        mouseOverMissile.transform.position = transform.position;
+        pauseState = true;
         index = 0;
+        mouseOverMissile.SetActive(false);
+    }
+    public void StartState(){
+        pauseState = false;
+        mouseOverMissile.transform.position = transform.position;
         StartCoroutine(DelayForSpawn());
     }
-
     private void Update() {
-        if(isDraggin){
-            if(Input.GetMouseButton(0)){        //Muevo el misil y el cursor a donde esta el mouse y agrando el collider del nexo
-                Vector3 currentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-                currentPoint.z = 0;
-                Vector3 direction = currentPoint - startPoint;
-                if(direction.magnitude > 2f){
-                    direction = direction.normalized * 2f;
-                    currentPoint = startPoint + direction;
+        if(!pauseState){
+            if(isDraggin){
+                if(Input.GetMouseButton(0)){        //Muevo el misil y el cursor a donde esta el mouse y agrando el collider del nexo
+                    Vector3 currentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+                    currentPoint.z = 0;
+                    Vector3 direction = currentPoint - startPoint;
+                    if(direction.magnitude > 2f){
+                        direction = direction.normalized * 2f;
+                        currentPoint = startPoint + direction;
+                    }
+                    MouseHoldBehaviour(currentPoint);
+                    ShowFeedback();
                 }
-                MouseHoldBehaviour(currentPoint);
-                ShowFeedback();
-            }
-            if(Input.GetMouseButtonUp(0)){      //Marco el punto donde se solto para calcular el disparo
-                if(UseEnergy(missiles[index].energyConsumption)){   //Pregunto si tengo esa energia 
-                //Si la tengo, marco el punto donde se solto y pruebo lanzar el misil, luego activo su collider
-                    endPoint = missilePrefab.transform.position;
-                    endPoint.z = 0;
-                    ShootMissile();
-                    //Luego restablezco los valores del nexo y creo un nuevo misil desp del delay
-                    NexusRestore();
-                    haveMissile = false;
-                    StartCoroutine(DelayForSpawn());    //Llamo a la couroutina para que cree otro misil despues de determinado tiempo
-                }
-                else{   //Si no tengo la energia para lanzarlo reseteo su posicion
-                    NexusRestore();
-                    AudioManager.Instance.PlaySoundEffect(invalidEffect);
-                    missilePrefab.transform.position = startPoint;
+                if(Input.GetMouseButtonUp(0)){      //Marco el punto donde se solto para calcular el disparo
+                    if(UseEnergy(missiles[index].energyConsumption)){   //Pregunto si tengo esa energia 
+                    //Si la tengo, marco el punto donde se solto y pruebo lanzar el misil, luego activo su collider
+                        endPoint = missilePrefab.transform.position;
+                        endPoint.z = 0;
+                        ShootMissile();
+                        //Luego restablezco los valores del nexo y creo un nuevo misil desp del delay
+                        NexusRestore();
+                        haveMissile = false;
+                        StartCoroutine(DelayForSpawn());    //Llamo a la couroutina para que cree otro misil despues de determinado tiempo
+                    }
+                    else{   //Si no tengo la energia para lanzarlo reseteo su posicion
+                        NexusRestore();
+                        AudioManager.Instance.PlaySoundEffect(invalidEffect);
+                        missilePrefab.transform.position = startPoint;
+                    }
                 }
             }
         }
@@ -98,7 +101,7 @@ public class Nexus : MonoBehaviour
     }
     //Cuando el mouse este sobre el nexo
     private void OnMouseOver() {
-        if(haveMissile && powerIndex == 0 && towerIndex == 0){  //Si tiene un misil activo y ningun poder o torre activo
+        if(haveMissile && powerIndex == 0 && towerIndex == 0 && !pauseState){  //Si tiene un misil activo y ningun poder o torre activo
             ShowFeedback();
             if(Input.GetMouseButtonDown(0)){        //Marco el punto de origen
                 startPoint = transform.position;
@@ -116,6 +119,7 @@ public class Nexus : MonoBehaviour
             return false;
         }
     }
+    
 
     public void SetEnergyValue(float amount){   //Esta funcion recibe el valor de la energia del nexusStats y lo guarda, y al cambiar 
     //el valor de la energia, le manda ese valor al nexusStats para que lo actualize

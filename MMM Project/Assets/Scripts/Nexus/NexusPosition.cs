@@ -7,18 +7,11 @@ public class NexusPosition : MonoBehaviour
     [SerializeField] private List<Transform> positions;
 
     [SerializeField] private int index;
-
-    public Vector3 SetPosition(){
-        return positions[index].position;
+    void Start(){
+        Nexus.Instance.transform.position = positions[index].position;;
+    }
+    public void SetPosition(int index){
+        Nexus.Instance.transform.position = positions[index].position;
     }
 
-    public void SetNexusLeft(){
-        index = 0;
-    }
-    public void SetNexusMiddle(){
-        index = 1;
-    }
-    public void SetNexusRight(){
-        index = 2;
-    }
 }

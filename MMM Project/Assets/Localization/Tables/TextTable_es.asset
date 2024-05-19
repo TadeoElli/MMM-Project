@@ -297,6 +297,26 @@ MonoBehaviour:
     m_Localized: 'Enemigos en esta Oleada: {0}'
     m_Metadata:
       m_Items: []
+  - m_Id: 16176384035999744
+    m_Localized: 'Selecciona la posicion del nexo:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16176597421215744
+    m_Localized: 'Avance Enemigo:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16177017308794880
+    m_Localized: '[Izquierda]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16177091875131392
+    m_Localized: '[Medio]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16177170006626304
+    m_Localized: '[Derecha]'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

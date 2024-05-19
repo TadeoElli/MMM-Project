@@ -298,6 +298,26 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 794851374009679874
+  - m_Id: 16176384035999744
+    m_Localized: 'Chose Launcher Location:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16176597421215744
+    m_Localized: 'Enemy Advancement:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16177017308794880
+    m_Localized: '[Left]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16177091875131392
+    m_Localized: '[Middle]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16177170006626304
+    m_Localized: '[Right]'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
