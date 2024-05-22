@@ -358,10 +358,157 @@ MonoBehaviour:
     m_Localized: Quit
     m_Metadata:
       m_Items: []
+  - m_Id: 16884790124302336
+    m_Localized: Page {0}
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679874
+  - m_Id: 16886103725789184
+    m_Localized: Previus Page
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16886174743744512
+    m_Localized: Next Page
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17021649831809024
+    m_Localized: The nexus works just like a slingshot, grab the missile and pull
+      it back, then release to send the projectile flying. Note that enemy units
+      receive more damage from collisions with each other than from your projectiles
+      (unless you are using special ammo).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17022353505996800
+    m_Localized: Before firing each shot, take a look at the <color=#EC3F04>Stability
+      indicator</color> at the bottom of the screen. The more velocity you give your
+      shots (i.e., the farther back you pull the mouse), the higher the chance that
+      the shot will misfire and explode near the nexus, damaging it in the process.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17032752058028032
+    m_Localized: 'Each time enemy units is destroyed you gain <color=#EC3F04>Experience
+      points</color>, once you have enough you will gain a <color=#EC3F04>Tech level</color>
+      and <color=#EC3F04>5 skills</color> points to upgrade your nexus.
+
+
+      You
+      will be able to increase base stability, energy, obtain new projectiles and
+      abilities.
+
+
+      For more information go to <color=#00FF06>UPGRADES / ABILITIES</color>
+      section.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17074289164898304
+    m_Localized: <color=#00FE01>lives</color> determine how many enemy units may
+      slip through past you, till you lose the game. When <color=#00FE01>lives</color>
+      counter show infinity it either does not matter how may units survive at all
+      or that you only have to destroy certain types of enemies (defined in the objectives).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17074631218778112
+    m_Localized: On the Top is your score. You get points by destroying enemy units,
+      unless the score is based on time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17185084875952128
+    m_Localized: Press <color=#FF4500>Hotkeys</color>  to show or hide the hotkeys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17186062471745536
+    m_Localized: Select the missile type using "1" to "8" or pressing the missile
+      icon on the bottom left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17186431952179200
+    m_Localized: Velocity and Stability bar are next to the missiles (described earlier)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17190361536876544
+    m_Localized: "Next to the <color=#FFFFFF>Velocity</color>  and <color=#FFFFFF>Stability</color>
+      bars are bars with the <color=#35C1FE>Energy</color> and <color=#FF6B00>Structure</color>
+      values.\n<color=#35C1FE>Energy</color> is used each time you shoot or use habilities
+      with energy consumption. \n<color=#FF6B00>Structure</color> is your hit points,
+      when it reaches zero, your nexus will blow up."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17192184666607616
+    m_Localized: Next to it there are the special abilities and on the right side
+      the structure that can be place on the battlefield (see <color=#00FF06>UPGRADES
+      / ABILITIES</color> section for info on both)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17193268164382720
+    m_Localized: Sometimes when you destroy enemy units, powerups will fall out,
+      click them to pick up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17204638620536832
+    m_Localized: Fast nexus repairing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17204973162418176
+    m_Localized: Fast energy regeneration.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17205384095158272
+    m_Localized: 100% stability on all shoots.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17205631135469568
+    m_Localized: Projectile speed amplifier.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17205867463528448
+    m_Localized: Antimatter charges. You cant use any other ammo while this powerup
+      is active
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17206123521593344
+    m_Localized: No delay for all abilities.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17206361388961792
+    m_Localized: Nuke. Drop it wherevwer you want.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17206367604920320
+    m_Localized: Singularity Explosion. Most powerful weapon in the game. Note that
+      sucked in units are not counted as killed, you get no score/exp points for
+      those
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17226135753936896
+    m_Localized: Some enemy units have special abilities.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17227330400768000
+    m_Localized: Create a repulsion wave in a certain frequency that repulse incomming
+      missiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17227512265789440
+    m_Localized: Have a shield in front that block all missiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17227807016308736
+    m_Localized: Have a chance of spawn a nuclear explosion on death
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17228372483985408
+    m_Localized: Absorbs incomming missiles and heal itself
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17229464689135616
+    m_Localized: If you let these two units collide, there will be a huge explosion
+      and shockwave destroying everything, including the nexus.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 794851374009679874
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf255010000503759cb8c01000050b77cd0bb01000050b74f75dd07000050772c87dc07000050f756a9e107000050b72ae9e207000050b74c8ee3070000503762b9e407000050f7a140e507000050f736dfe60700005037fa19611e00
+        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf255010000503759cb8c01000050b77cd0bb01000050b74f75dd07000050772c87dc07000050f756a9e107000050b72ae9e207000050b74c8ee3070000503762b9e407000050f7a140e507000050f736dfe60700005037fa19611e000050778da0fc3b00

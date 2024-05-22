@@ -357,10 +357,173 @@ MonoBehaviour:
     m_Localized: Salir
     m_Metadata:
       m_Items: []
+  - m_Id: 16884790124302336
+    m_Localized: Pagina {0}
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679875
+  - m_Id: 16886103725789184
+    m_Localized: Pagina Anterior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16886174743744512
+    m_Localized: Pagina Siguiente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17021649831809024
+    m_Localized: "El nexo funciona como una resortera: agarra el misil y tira de
+      el hacia atras, luego sueltalo para enviar el proyectil a volar. Ten en cuenta
+      que las unidades enemigas reciben mas da\xF1o por las colisiones entre si que
+      por tus proyectiles (a menos que estes usando municion especial)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17022353505996800
+    m_Localized: "Antes de disparar cada tiro, echa un vistazo al <color=#EC3F04>Indicador
+      de estabilidad</color> en la parte inferior de la pantalla. Cuanta mas velocidad
+      le des a tus disparos (es decir, cuanto mas atras muevas el mouse), mayor sera
+      la probabilidad de que el disparo falle y explote cerca del nexo, da\xF1andolo
+      en el proceso.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17032752058028032
+    m_Localized: 'Cada vez que se destruyen unidades enemigas, ganas <color=#EC3F04>puntos
+      de experiencia</color> una vez que tengas suficientes, obtendras un <color=#EC3F04>nivel
+      de tecnologia</color> y <color=#EC3F04>5 puntos </color> de habilidad para
+      mejorar tu nexo.
+
+      
+
+      Podras aumentar la estabilidad base, la energia,
+      obtener nuevos proyectiles y habilidades.
+
+      
+
+      Para obtener mas
+      informacion, vaya a la seccion <color=#00FF06>ACTUALIZACIONES / HABILIDADES</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17074289164898304
+    m_Localized: Las <color=#00FE01>vidas</color> determinan cuantas unidades enemigas
+      pueden pasar a tu lado hasta que pierdas el juego. Cuando el contador de <color=#00FE01>vidas</color>
+      muestra infinito, no importa cuantas unidades sobrevivan o que solo tengas
+      que destruir ciertos tipos de enemigos (definidos en los objetivos).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17074631218778112
+    m_Localized: 'Arriba esta tu puntuacion. Obtienes puntos al destruir unidades
+      enemigas, a menos que la puntuacion se base en el tiempo.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17185084875952128
+    m_Localized: Presione <color=#FF4500>Atajos</color> para mostrar u ocultar las
+      teclas de acceso rapido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17186062471745536
+    m_Localized: 'Seleccione el tipo de misil usando "1" a "8" o presionando el icono
+      de misil en la parte inferior izquierda
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17186431952179200
+    m_Localized: Las barras de velocidad y estabilidad estan al lado de los misiles
+      (descritos anteriormente)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17190361536876544
+    m_Localized: 'Junto a las barras de <color=#FFFFFF>Velocidad</color> y <color=#FFFFFF>Estabilidad</color>
+      hay barras con los valores de <color=#35C1FE>Energia</color> y <color=#FF6B00>Estructura</color>.
+
+      La
+      <color=#35C1FE>Energia</color> se usa cada vez que disparas o usas habilidades
+      con consumo de energia.
+
+      La <color=#FF6B00>Estructura</color> son tus
+      puntos de vida, cuando llegue a cero, tu nexo explotara.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17192184666607616
+    m_Localized: Al lado estan las habilidades especiales y en el lado derecho las
+      estructuras que se puede colocar en el campo de batalla (consulte la seccion
+      <color=#00FF06>MEJORAS / HABILIDADES</color> para obtener informacion sobre
+      ambas)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17193268164382720
+    m_Localized: A veces, cuando destruyes unidades enemigas, soltaran potenciadores,
+      haz clic en ellos para recogerlos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17204638620536832
+    m_Localized: "\rAumenta la reparacion del nexo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17204973162418176
+    m_Localized: Aumenta la regeneracion de energia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17205384095158272
+    m_Localized: 100% de estabilidad en todos los disparos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17205631135469568
+    m_Localized: Aumenta la velocidad de todos los proyectiles.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17205867463528448
+    m_Localized: Misiles de antimateria. No puedes usar ninguna otra municion mientras
+      este potenciador este activo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17206123521593344
+    m_Localized: No hay demora para lanzar todas las habilidades.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17206361388961792
+    m_Localized: Bomba nuclear. Sueltala donde quieras.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17206367604920320
+    m_Localized: Explosion de singularidad. El arma mas poderosa del juego. Tenga
+      en cuenta que las unidades absorbidas no se cuentan como muertas, no obtiene
+      puntos de puntuacion/exp. por esas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17226135753936896
+    m_Localized: Algunas unidades enemigas tienen habilidades especiales.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17227330400768000
+    m_Localized: Crea una onda de repulsion en una frecuencia determinada que rechaza
+      los misiles entrantes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17227512265789440
+    m_Localized: Tiene un escudo al frente que bloquea todos los misiles.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17227807016308736
+    m_Localized: Tiene una posibilidad de generar una explosion nuclear al morir.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17228372483985408
+    m_Localized: Absorbe los misiles entrantes y se cura a si mismo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17229464689135616
+    m_Localized: Si dejas que estas dos unidades choquen, habra una gran explosion
+      y una onda de choque que destruira todo, incluido el nexo.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 794851374009679875
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf255010000503759cb8c01000050b77cd0bb01000050772c87dc07000050b74f75dd07000050f756a9e107000050b72ae9e207000050b74c8ee3070000503762b9e407000050f7a140e507000050f736dfe60700
+        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf255010000503759cb8c01000050b77cd0bb01000050772c87dc07000050b74f75dd07000050f756a9e107000050b72ae9e207000050b74c8ee3070000503762b9e407000050f7a140e507000050f736dfe607000050778da0fc3b00

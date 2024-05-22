@@ -291,6 +291,118 @@ MonoBehaviour:
     m_Key: quit
     m_Metadata:
       m_Items: []
+  - m_Id: 16884790124302336
+    m_Key: page
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16886103725789184
+    m_Key: previusPage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16886174743744512
+    m_Key: nextPage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17021649831809024
+    m_Key: infoText1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17022353505996800
+    m_Key: infoText2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17032752058028032
+    m_Key: infoText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17074289164898304
+    m_Key: infoText4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17074631218778112
+    m_Key: infoText5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17185084875952128
+    m_Key: infoText6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17186062471745536
+    m_Key: infoText7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17186431952179200
+    m_Key: infoText8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17190361536876544
+    m_Key: infoText9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17192184666607616
+    m_Key: infoText10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17193268164382720
+    m_Key: infoText11
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17204638620536832
+    m_Key: powerUpinfo1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17204973162418176
+    m_Key: powerUpInfo2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17205384095158272
+    m_Key: powerUpInfo3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17205631135469568
+    m_Key: powerUpInfo4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17205867463528448
+    m_Key: powerUpInfo5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17206123521593344
+    m_Key: powerupinfo6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17206361388961792
+    m_Key: powerUpInfo7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17206367604920320
+    m_Key: powerUpInfo8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17226135753936896
+    m_Key: infoTex
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17227330400768000
+    m_Key: infoenemy1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17227512265789440
+    m_Key: infoEnemy2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17227807016308736
+    m_Key: infoEnemy3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17228372483985408
+    m_Key: infoEnemy4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17229464689135616
+    m_Key: infoEnemy5
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
