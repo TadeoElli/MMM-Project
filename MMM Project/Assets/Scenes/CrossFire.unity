@@ -34993,6 +34993,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerUpPool
       objectReference: {fileID: 0}
+    - target: {fileID: 2308028475669396831, guid: d6249119f60c5164e99b7001fdcb974b, type: 3}
+      propertyPath: poolSize
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6249119f60c5164e99b7001fdcb974b, type: 3}
 --- !u!114 &1306056426802866368
@@ -35638,6 +35642,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicMissilePool
       objectReference: {fileID: 0}
+    - target: {fileID: 2453452186401898613, guid: d02f615f06307b2469060f3714cf25ac, type: 3}
+      propertyPath: poolSize
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d02f615f06307b2469060f3714cf25ac, type: 3}
 --- !u!114 &2490114609953028094
@@ -35946,6 +35954,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 398031835}
     - target: {fileID: 4729852758309879535, guid: 9ecd9dc7a6439d245a6358dedaf674ff, type: 3}
+      propertyPath: poolSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729852758309879535, guid: 9ecd9dc7a6439d245a6358dedaf674ff, type: 3}
       propertyPath: killCount
       value: 
       objectReference: {fileID: 1301625176}
@@ -36215,6 +36227,10 @@ PrefabInstance:
     - target: {fileID: 5721627408118315765, guid: 1589a6b8c7ef86749b25d8012718fe0e, type: 3}
       propertyPath: m_Name
       value: ExplosionPool
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721627408118315766, guid: 1589a6b8c7ef86749b25d8012718fe0e, type: 3}
+      propertyPath: poolSize
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5721627408118315766, guid: 1589a6b8c7ef86749b25d8012718fe0e, type: 3}
       propertyPath: explosionPrefab.Array.size

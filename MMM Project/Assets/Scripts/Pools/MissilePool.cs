@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Diagnostics;
 
 public class MissilePool : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class MissilePool : MonoBehaviour
     [SerializeField] private Dictionary<GameObject, List<GameObject>> missileDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un misil y devolver la cantidad generada
     private static MissilePool instance;
     public static MissilePool Instance { get {return instance; } }
-
+    Stopwatch stopwatch = new Stopwatch();
     private void Awake() {
         if(instance == null){
             instance = this;
@@ -30,19 +31,37 @@ public class MissilePool : MonoBehaviour
     void Start()
     {
         //Creo todos los objectos para la pool(De cada prefab)
-        missilePrefab.ForEach(prefab => AddMissilesToPool(poolSize, prefab));
+        //missilePrefab.ForEach(prefab => AddMissilesToPool(poolSize, prefab));
+        //IA2-P4”.
+        StartCoroutine(AddMissileToPoolCoroutine());
     }
 
-    public void AddMissilesToPool(int amount, MissileBehaviour prefab){       //Le mando cuantos genero y cual misil
+    private IEnumerator AddMissileToPoolCoroutine(){
+        stopwatch.Start();
+        foreach (var prefab in missilePrefab)
+        {
+            yield return StartCoroutine(AddMissilesToPool(poolSize, prefab));
+        }
+    }
+    public IEnumerator AddMissilesToPool(int amount, MissileBehaviour prefab){       //Le mando cuantos genero y cual misil
 
         List<GameObject> prefabList = missileDictionary[prefab.gameObject];    //Guardo la lista de cantidad de misiles en otra lista
-        Enumerable.Range(0, amount).ToList().ForEach(_ => {
-            GameObject missile = Instantiate(prefab.gameObject);
-            missile.SetActive(false);
-            prefabList.Add(missile);
-            missile.transform.parent = transform;
-
-        });
+        for (int i = 0; i < amount; i++)
+        {
+            CreateMissile(prefabList, prefab);
+            // Espera un frame antes de continuar con la siguiente instancia
+            if(stopwatch.ElapsedMilliseconds > 1f / 60f ){
+                yield return new WaitForEndOfFrame();
+                stopwatch.Restart();
+                UnityEngine.Debug.Log("Spawnie misiles en un frame");
+            }
+        }
+    }
+    private void CreateMissile(List<GameObject> prefabList, MissileBehaviour prefab){
+        GameObject missile = Instantiate(prefab.gameObject);
+        missile.SetActive(false);
+        prefabList.Add(missile);
+        missile.transform.parent = transform;
     }
 
     public GameObject RequestMissile(MissileBehaviour prefab){        //Le mando cual necesito
@@ -51,7 +70,7 @@ public class MissilePool : MonoBehaviour
         //Se devuelve el primero de la lista que no este activo o se crea uno nuevo y se devuelve  el ultimo de la lista
         List<GameObject> prefabList = missileDictionary[prefab.gameObject];
         bool hasInactivePrefab = prefabList.Any(prefab => !prefab.activeSelf);
-        if(!hasInactivePrefab) AddMissilesToPool(1,prefab);
+        if(!hasInactivePrefab) CreateMissile(prefabList,prefab);
         GameObject prefabToReturn = hasInactivePrefab ? prefabList.FirstOrDefault(x => !x.activeSelf) : prefabList.LastOrDefault();
         prefabToReturn.SetActive(true);
         return prefabToReturn;
