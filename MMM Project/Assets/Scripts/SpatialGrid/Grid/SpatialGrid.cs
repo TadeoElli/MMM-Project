@@ -41,12 +41,21 @@ public class SpatialGrid : MonoBehaviour {
 
     //Una colección vacía a devolver en las queries si no hay nada que devolver
     readonly public IGridEntity[] Empty = new IGridEntity[0];
+    private static SpatialGrid instance;
+    public static SpatialGrid Instance { get {return instance; } }
 
     #endregion
 
     #region Funciones
 
     private void Awake() {
+        if(instance == null){
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         buckets       = new HashSet<IGridEntity>[width, height];
 
         //creamos todos los hashsets

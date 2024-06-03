@@ -4931,6 +4931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 11400000, guid: fe41cef1b8febc6479cae55c8e9d51d2, type: 2}
   events: {fileID: 8102766082554363618}
+  sound: {fileID: 0}
 --- !u!95 &1387144380160941422
 Animator:
   serializedVersion: 4

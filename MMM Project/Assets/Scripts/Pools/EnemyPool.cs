@@ -70,7 +70,11 @@ public class EnemyPool : MonoBehaviour
         prefab.GetComponent<EnemyBehaviour>().notifyKillCount += spawner.ReduceEnemiesAlive;
         prefab.SetActive(false);
         prefabList.Add(prefab);
-        prefab.transform.parent = transform;
+        IGridEntity gridEntity = prefab.GetComponent<IGridEntity>();
+        prefab.transform.parent = SpatialGrid.Instance.transform;
+        if (gridEntity != null) {
+            SpatialGrid.Instance.Add(gridEntity);
+        }
     }
 
     public GameObject RequestEnemy(EnemyBehaviour enemy){        //Le mando cual necesito
@@ -81,7 +85,14 @@ public class EnemyPool : MonoBehaviour
         bool hasInactivePrefab = prefabList.Any(prefab => !prefab.activeSelf);
         if(!hasInactivePrefab) CreateEnemy(prefabList,enemy);
         GameObject prefab = hasInactivePrefab ? prefabList.FirstOrDefault(x => !x.activeSelf) : prefabList.Last();
-        prefab?.SetActive(true);
+        if (prefab != null)
+        {
+            prefab.SetActive(true);
+            IGridEntity gridEntity = prefab.GetComponent<IGridEntity>();
+            if (gridEntity != null) {
+                SpatialGrid.Instance.UpdateEntity(gridEntity);
+            }
+        }
         return prefab;
 
 

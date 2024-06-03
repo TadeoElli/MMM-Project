@@ -31,7 +31,7 @@ public class DisableEnemiesStrategy : PowerStrategy
 
     private void Activate(GameObject other){    //Deshabilita la capacidad de moverse del enemigo
         enemy = other.GetComponent<EnemyBehaviour>();
-        enemy.canMove = false;
+        enemy.DisableEnemy();
         Vector2 origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         CreateExplosion(origin);
         Debug.Log("Navigation Hack");
