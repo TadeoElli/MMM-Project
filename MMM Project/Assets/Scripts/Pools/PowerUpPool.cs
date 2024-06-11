@@ -53,7 +53,7 @@ public class PowerUpPool : MonoBehaviour
             if(stopwatch.ElapsedMilliseconds > 1f / 60f ){
                 yield return new WaitForEndOfFrame();
                 stopwatch.Restart();
-                UnityEngine.Debug.Log("Spawnie powerUps en un frame");
+                //UnityEngine.Debug.Log("Spawnie powerUps en un frame");
             }
         }
     }

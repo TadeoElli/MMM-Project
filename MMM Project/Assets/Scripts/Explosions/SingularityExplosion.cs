@@ -12,6 +12,10 @@ public class SingularityExplosion : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("Enemy")){
             if(spawner != null){spawner.ReduceEnemiesAlive(1);}
+            IGridEntity gridEntity = other.gameObject.GetComponent<IGridEntity>();
+            if (gridEntity != null) {
+                SpatialGrid.Instance.Remove(gridEntity);
+            }
             other.gameObject.SetActive(false);
         }
     }

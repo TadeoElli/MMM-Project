@@ -39,7 +39,7 @@ namespace FSM {
                     var previousState = CurrentState;
                     var transitionParameters = CurrentState.Exit(nextState);
 
-                    Debug.Log("Exiting state '" + CurrentState.Name + "' to state '" + nextState.Name + "'.");
+                    //Debug.Log("Exiting state '" + CurrentState.Name + "' to state '" + nextState.Name + "'.");
                     
                     CurrentState = nextState;
                     CurrentState.Enter(previousState, transitionParameters);

@@ -59,7 +59,7 @@ public class EnemyPool : MonoBehaviour
             if(stopwatch.ElapsedMilliseconds > 1f / 60f ){
                 yield return new WaitForEndOfFrame();
                 stopwatch.Restart();
-                UnityEngine.Debug.Log("Spawnie enemies en un frame");
+                //UnityEngine.Debug.Log("Spawnie enemies en un frame");
             }
         }
     }
@@ -70,11 +70,7 @@ public class EnemyPool : MonoBehaviour
         prefab.GetComponent<EnemyBehaviour>().notifyKillCount += spawner.ReduceEnemiesAlive;
         prefab.SetActive(false);
         prefabList.Add(prefab);
-        IGridEntity gridEntity = prefab.GetComponent<IGridEntity>();
         prefab.transform.parent = SpatialGrid.Instance.transform;
-        if (gridEntity != null) {
-            SpatialGrid.Instance.Add(gridEntity);
-        }
     }
 
     public GameObject RequestEnemy(EnemyBehaviour enemy){        //Le mando cual necesito
@@ -88,10 +84,6 @@ public class EnemyPool : MonoBehaviour
         if (prefab != null)
         {
             prefab.SetActive(true);
-            IGridEntity gridEntity = prefab.GetComponent<IGridEntity>();
-            if (gridEntity != null) {
-                SpatialGrid.Instance.UpdateEntity(gridEntity);
-            }
         }
         return prefab;
 

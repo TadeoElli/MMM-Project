@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class MissileBehaviour : MonoBehaviour
-{
+public class MissileBehaviour : MonoBehaviour, IGridEntity
+{//IA2-P2”.
     [SerializeField] private MissileStrategy missile;   //El Strategy de los misiles
     [SerializeField] private float life;    //La vida del misil
     private bool oneChance = true;  //Este bool sirve para que cuando baje de 0 la vida se quede con 1 asi puede llegar a un rebote mas
@@ -17,6 +18,7 @@ public class MissileBehaviour : MonoBehaviour
     public float RotationDirection{get{return rotationDirection;}set{ rotationDirection =  Mathf.Clamp(value, -1f, 1f);}}
     private CircleCollider2D circleCollider2D;
     private Rigidbody2D rb2D;
+    public event Action<IGridEntity> OnMove;
 
     private void OnEnable() {   //Declaro las estadisticas
         life = missile.maxLife;
@@ -25,6 +27,10 @@ public class MissileBehaviour : MonoBehaviour
         oneChance = true;
         circleCollider2D = GetComponent<CircleCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
+        IGridEntity gridEntity = GetComponent<IGridEntity>();
+        if (gridEntity != null) {
+            SpatialGrid.Instance.Add(gridEntity);
+        }
     }
 
     public void TakeDamage(float damage){   //Funcion que toma el daño y si es menor a 0 crea la explosion
@@ -36,13 +42,17 @@ public class MissileBehaviour : MonoBehaviour
         if(life <= 0){
             missile.ExplosionBehaviour(transform);
             gameObject.SetActive(false);
+            IGridEntity gridEntity = GetComponent<IGridEntity>();
+            if (gridEntity != null) {
+                SpatialGrid.Instance.Remove(gridEntity);
+            }
         }
     }
 
      //Calcula la probabilidad de exito de que se dispare el misil, en funcion de cuanto se estira, si falla, explota el misil
     public void TryToShoot(Vector2 startPoint, Vector2 endPoint, int baseStability){   
         float distance = Vector2.Distance(startPoint, endPoint);
-        float probability = Random.Range(0,100);
+        float probability = UnityEngine.Random.Range(0,100);
         float maxProbability = distance <= 1 ? maxStability + (baseStability * 3.5f): Mathf.Clamp(maxStability + (minStability - maxStability) * (distance - 1), minStability, maxStability) + (baseStability * 3.5f);
         if(probability > maxProbability){
             missile.ExplosionBehaviour(transform);
@@ -51,6 +61,9 @@ public class MissileBehaviour : MonoBehaviour
         else{
             AudioManager.Instance.PlaySoundEffect(missile.launchEffect);
         }
+    }
+    private void Update() {
+        OnMove?.Invoke(this);
     }
 
     //Comportamiento cuando collisiona con un objeto
@@ -84,7 +97,10 @@ public class MissileBehaviour : MonoBehaviour
         }
     }
 
-
+    public Vector3 Position {
+        get => transform.position;
+        set => transform.position = value;
+    }
 
 
 }

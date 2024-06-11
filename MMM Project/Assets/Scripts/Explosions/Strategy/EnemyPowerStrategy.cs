@@ -6,7 +6,7 @@ using System.Linq;
 [CreateAssetMenu(fileName = "New Explosion", menuName = "ScriptableObject/Explosion/Enemy", order = 2)]
 public class EnemyPowerStrategy : ExplosionStrategy
 ///Este tipo de explosiones no afectan a los enemigos, solo a los misiles
-{
+{//IA2-P2”.
     [SerializeField] private float explosionForce;  //Fuerza de explosion
     public override void DealDamage(Transform origin){
 
@@ -14,10 +14,19 @@ public class EnemyPowerStrategy : ExplosionStrategy
     public override void ExplosionBehaviour(Transform origin){  //Por cada collider dentro del rango, si es un misil lo empuja
     //IA2-LINQ
     //Toma todos los objetos dentro de un radio y guardo solo los de tipo rigidbody que tengan el tag correspondiente
-        var objects = Physics2D.OverlapCircleAll(origin.position, radius)
-            .OfType<Rigidbody2D>().Where(collision => collision.CompareTag("Missiles"))
-            .ToList();
-        foreach (var rb2D in objects){
+        var objects = Query(origin).OfType<MissileBehaviour>().ToList();
+        List<Rigidbody2D> rigidbodies = new List<Rigidbody2D>();
+
+        foreach (var missile in objects)
+        {
+            var rb = missile.gameObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rigidbodies.Add(rb);
+            }
+        }
+
+        foreach (var rb2D in rigidbodies){
             if(rb2D != null){
                 Vector2 direction = rb2D.transform.position - origin.position;
                 float distance = 1 + direction.magnitude;

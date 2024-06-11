@@ -33,7 +33,7 @@ public class EnemyIdleState : MonoBaseState
     {
         base.Enter(from, transitionParameters);
         timer = 0;
-        Debug.Log("Entre al idle");
+        //Debug.Log("Entre al idle");
     }
 
     public override void UpdateLoop()

@@ -17,7 +17,7 @@ public class EnemyBehaviour : MonoBehaviour, IGridEntity
     #endregion¨
 
     #region Components
-    private Collider2D col;
+    public Collider2D col;
     private Rigidbody2D rb2D;
     [SerializeField] private GameObject specialParticle;        //La particula que va a tener el enemigo si tiene un comportamiento especial
     private EnemyView view;
@@ -67,9 +67,17 @@ public class EnemyBehaviour : MonoBehaviour, IGridEntity
         life = enemy.maxLife;
         speed = enemy.velocity;
         col.enabled = false;
+        IGridEntity gridEntity = GetComponent<IGridEntity>();
+        if (gridEntity != null) {
+            SpatialGrid.Instance.Add(gridEntity);
+        }
         //view.TakeDamageView(life, enemy.maxLife);
         StartCoroutine(DelayForActivateCollider());
     }
+    private void OnDisable(){
+        
+    }
+
 
     IEnumerator DelayForActivateCollider(){     //Desactiva la colisision al spawnear y la activa desp de unos segundo para evitar choques al spawnear
         yield return new WaitForSeconds(2);
@@ -91,7 +99,7 @@ public class EnemyBehaviour : MonoBehaviour, IGridEntity
                 }
             }
         }*/
-        
+        OnMove?.Invoke(this);
 
     }
     public void ChangeState(IState newState)
@@ -153,6 +161,10 @@ public class EnemyBehaviour : MonoBehaviour, IGridEntity
         notifyKillCount?.Invoke(1);
         notifyScore?.Invoke(enemy.score);
         enemy.DropPowerUp(transform);       //llama a la funcion que se encarga de generar drops
+        IGridEntity gridEntity = GetComponent<IGridEntity>();
+        if (gridEntity != null) {
+            SpatialGrid.Instance.Remove(gridEntity);
+        }
         this.gameObject.SetActive(false);       //Desactiva este objeto
         
     }
@@ -164,7 +176,6 @@ public class EnemyBehaviour : MonoBehaviour, IGridEntity
         else{
             transform.Translate(-transform.right * speed * Time.deltaTime);
         }
-        OnMove?.Invoke(this);
     }
 
     public void Rotate() {

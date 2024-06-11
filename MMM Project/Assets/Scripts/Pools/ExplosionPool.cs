@@ -55,7 +55,7 @@ public class ExplosionPool : MonoBehaviour
             if(stopwatch.ElapsedMilliseconds > 1f / 60f ){
                 yield return new WaitForEndOfFrame();
                 stopwatch.Restart();
-                UnityEngine.Debug.Log("Spawnie explosions en un frame");
+                //UnityEngine.Debug.Log("Spawnie explosions en un frame");
             }
         }
     }

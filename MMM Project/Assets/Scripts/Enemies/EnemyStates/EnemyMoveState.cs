@@ -18,7 +18,7 @@ public class EnemyMoveState : MonoBaseState
     public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)
     {
         base.Enter(from, transitionParameters);
-        Debug.Log("Entre al MoveForward");
+        //Debug.Log("Entre al MoveForward");
     }
 
     public override void UpdateLoop()

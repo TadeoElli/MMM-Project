@@ -11,7 +11,7 @@ public class SpatialGrid : MonoBehaviour {
     public float x;
 
     //punto de inicio de la grilla en Z
-    public float z;
+    public float y;
 
     //ancho de las celdas
     public float cellWidth;
@@ -77,6 +77,7 @@ public class SpatialGrid : MonoBehaviour {
 
     public void Add(IGridEntity entity) {
         entity.OnMove += UpdateEntity;
+        //Debug.Log($"Adding entity {entity} at position {entity.Position}");
         UpdateEntity(entity);
     }
 
@@ -85,14 +86,14 @@ public class SpatialGrid : MonoBehaviour {
         
         UpdateEntity(entity);
         var currentPos = GetPositionInGrid(entity.Position);
-        buckets[currentPos.Item1, currentPos.Item2].Remove(entity);
+        buckets[currentPos.Item1, currentPos.Item2]?.Remove(entity);
         lastPositions.Remove(entity);
     }
 
     public void UpdateEntity(IGridEntity entity) {
         var lastPos    = lastPositions.ContainsKey(entity) ? lastPositions[entity] : Outside;
         var currentPos = GetPositionInGrid(entity.Position);
-
+        //Debug.Log($"Updating entity {entity}: from {lastPos} to {currentPos}");
         //Misma posición, no necesito hacer nada
         if (lastPos.Equals(currentPos))
             return;
@@ -100,20 +101,23 @@ public class SpatialGrid : MonoBehaviour {
         //Lo "sacamos" de la posición anterior
         if (IsInsideGrid(lastPos)) {
             buckets[lastPos.Item1, lastPos.Item2].Remove(entity);
+            //Debug.Log($"Removed entity {entity} from bucket {lastPos}");
         }
 
         //Lo "metemos" a la celda nueva, o lo sacamos si salio de la grilla
         if (IsInsideGrid(currentPos)) {
             buckets[currentPos.Item1, currentPos.Item2].Add(entity);
             lastPositions[entity] = currentPos;
+            //Debug.Log($"Added entity {entity} to bucket {currentPos}");
         }
         else
             lastPositions.Remove(entity);
     }
 
     public IEnumerable<IGridEntity> Query(Vector3 aabbFrom, Vector3 aabbTo, Func<Vector3, bool> filterByPosition) {
-        var from = new Vector3(Mathf.Min(aabbFrom.x, aabbTo.x), 0, Mathf.Min(aabbFrom.z, aabbTo.z));
-        var to   = new Vector3(Mathf.Max(aabbFrom.x, aabbTo.x), 0, Mathf.Max(aabbFrom.z, aabbTo.z));
+        //Debug.Log($"Querying from {aabbFrom} to {aabbTo}");
+        var from = new Vector3(Mathf.Min(aabbFrom.x, aabbTo.x), Mathf.Min(aabbFrom.y, aabbTo.y), 0);
+        var to   = new Vector3(Mathf.Max(aabbFrom.x, aabbTo.x), Mathf.Max(aabbFrom.y, aabbTo.y), 0);
 
         var fromCoord = GetPositionInGrid(from);
         var toCoord   = GetPositionInGrid(to);
@@ -142,7 +146,7 @@ public class SpatialGrid : MonoBehaviour {
               .SelectMany(cell => buckets[cell.Item1, cell.Item2])
               .Where(e =>
                          from.x <= e.Position.x && e.Position.x <= to.x &&
-                         from.z <= e.Position.z && e.Position.z <= to.z
+                         from.y <= e.Position.y && e.Position.y <= to.y
                     )
               .Where(n => filterByPosition(n.Position));
     }
@@ -150,7 +154,7 @@ public class SpatialGrid : MonoBehaviour {
     public Tuple<int, int> GetPositionInGrid(Vector3 pos) {
         //quita la diferencia, divide segun las celdas y floorea
         return Tuple.Create(Mathf.FloorToInt((pos.x - x) / cellWidth),
-                            Mathf.FloorToInt((pos.z - z) / cellHeight));
+                            Mathf.FloorToInt((pos.y - y) / cellHeight));
     }
 
     public bool IsInsideGrid(Tuple<int, int> position) {
@@ -187,9 +191,9 @@ public class SpatialGrid : MonoBehaviour {
     public bool showLogs = true;
 
     private void OnDrawGizmos() {
-        var rows = Util.Generate(z, curr => curr + cellHeight)
-                       .Select(row => Tuple.Create(new Vector3(x,                     0, row),
-                                                   new Vector3(x + cellWidth * width, 0, row)));
+        var rows = Util.Generate(y, curr => curr + cellHeight)
+                       .Select(row => Tuple.Create(new Vector3(x,                     row, 0),
+                                                   new Vector3(x + cellWidth * width, row, 0)));
 
         //equivalente de rows
         /*for (int i = 0; i <= height; i++)
@@ -198,8 +202,8 @@ public class SpatialGrid : MonoBehaviour {
         }*/
 
         var cols = Util.Generate(x, curr => curr + cellWidth)
-                       .Select(col => Tuple.Create(new Vector3(col, 0, z),
-                                                   new Vector3(col, 0, z + cellHeight * height)));
+                       .Select(col => Tuple.Create(new Vector3(col, y, 0),
+                                                   new Vector3(col, y + cellHeight * height , 0)));
 
         var allLines = rows.Take(width + 1).Concat(cols.Take(height + 1));
 

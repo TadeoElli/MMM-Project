@@ -20,7 +20,7 @@ public class EnemyRotateState : MonoBaseState
     public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)
     {
         base.Enter(from, transitionParameters);
-        Debug.Log("Entre al Rotate");
+        //Debug.Log("Entre al Rotate");
     }
 
 
