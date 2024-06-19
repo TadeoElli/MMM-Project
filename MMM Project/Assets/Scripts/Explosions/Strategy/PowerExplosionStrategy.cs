@@ -19,51 +19,43 @@ public class PowerExplosionStrategy : ExplosionStrategy
     }
     public override void ExplosionBehaviour(Transform origin){  //Por cada collider dentro del radio, si es enemigo lo empuja
     //IA2-LINQ
+    //IA2-P1"
     //Toma todos los objetos dentro de un radio y guardo solo los de tipo rigidbody que tengan el tag correspondiente
         var enemyBehaviours = Query(origin).OfType<EnemyBehaviour>().Where(x => x.col.enabled == true).ToList();
-        List<Rigidbody2D> rigidbodies = new List<Rigidbody2D>();
 
-        foreach (var enemy in enemyBehaviours)
-        {
-            var rb = enemy.gameObject.GetComponent<Rigidbody2D>();
-            if (rb != null)
+        // Usar Aggregate para reducir objects a una lista de Rigidbody2D
+        var rigidbodies = enemyBehaviours.Aggregate(new List<Rigidbody2D>(), (list, enemy) =>
             {
-                rigidbodies.Add(rb);
-            }
-        }
-        foreach (var rb2D in rigidbodies){
-            if(rb2D != null){
-                Vector2 direction = rb2D.transform.position - origin.position;
-                float distance = 1 + direction.magnitude;
-                float finalForce = explosionForce / distance;
-                rb2D.AddForce(direction * finalForce);
-            }
-        }
+                var rb = enemy.gameObject.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    Vector2 direction = rb.transform.position - origin.position;
+                    float distance = 1 + direction.magnitude;
+                    float finalForce = explosionForce / distance;
+                    rb.AddForce(direction * finalForce);
+                }
+                return list;
+            });
     }
 
     public override void ImplosionBehaviour(Transform origin){  //Por cada collider dentro del radio, si es enemigo lo atrae
     //IA2-LINQ
+    //IA2-P1"
     //Toma todos los objetos dentro de un radio y guardo solo los de tipo rigidbody que tengan el tag correspondiente
         var enemyBehaviours = Query(origin).OfType<EnemyBehaviour>().Where(x => x.col.enabled == true).ToList();
-        List<Rigidbody2D> rigidbodies = new List<Rigidbody2D>();
-
-        foreach (var enemy in enemyBehaviours)
-        {
-            var rb = enemy.gameObject.GetComponent<Rigidbody2D>();
-            if (rb != null)
+        // Usar Aggregate para reducir objects a una lista de Rigidbody2D
+        var rigidbodies = enemyBehaviours.Aggregate(new List<Rigidbody2D>(), (list, enemy) =>
             {
-                rigidbodies.Add(rb);
-            }
-        }
-        foreach (var rb2D in rigidbodies){
-
-            if(rb2D != null){
-                Vector2 direction = rb2D.transform.position - origin.position;
-                float distance = 1 + direction.magnitude;
-                float finalForce = implosionForce / distance;
-                rb2D.AddForce(-direction * finalForce);
-            }
-        }
+                var rb = enemy.gameObject.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    Vector2 direction = rb.transform.position - origin.position;
+                    float distance = 1 + direction.magnitude;
+                    float finalForce = implosionForce / distance;
+                    rb.AddForce(-direction * finalForce);
+                }
+                return list;
+            });
     }
 
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public abstract class TowerStrategy : ScriptableObject        //Strategy para todos los tipos de torretas
 {
@@ -23,7 +24,6 @@ public abstract class TowerStrategy : ScriptableObject        //Strategy para to
     public abstract bool ColliderBehaviour(GameObject prefab, GameObject other);    //El comportamiento por colision que tiene la torre
 
     public abstract void DestroyTower(GameObject prefab);   //El comportamiento que tiene al destruirse
-    
 
     
 }

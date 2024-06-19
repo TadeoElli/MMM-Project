@@ -13,27 +13,22 @@ public class EnemyPowerStrategy : ExplosionStrategy
     }
     public override void ExplosionBehaviour(Transform origin){  //Por cada collider dentro del rango, si es un misil lo empuja
     //IA2-LINQ
+    //IA2-P1"
     //Toma todos los objetos dentro de un radio y guardo solo los de tipo rigidbody que tengan el tag correspondiente
         var objects = Query(origin).OfType<MissileBehaviour>().ToList();
-        List<Rigidbody2D> rigidbodies = new List<Rigidbody2D>();
-
-        foreach (var missile in objects)
-        {
-            var rb = missile.gameObject.GetComponent<Rigidbody2D>();
-            if (rb != null)
+        // Usar Aggregate para reducir objects a una lista de Rigidbody2D
+        var rigidbodies = objects.Aggregate(new List<Rigidbody2D>(), (list, missile) =>
             {
-                rigidbodies.Add(rb);
-            }
-        }
-
-        foreach (var rb2D in rigidbodies){
-            if(rb2D != null){
-                Vector2 direction = rb2D.transform.position - origin.position;
-                float distance = 1 + direction.magnitude;
-                float finalForce = explosionForce / distance;
-                rb2D.AddForce(direction * finalForce);
-            }
-        }
+                var rb = missile.gameObject.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    Vector2 direction = rb.transform.position - origin.position;
+                    float distance = 1 + direction.magnitude;
+                    float finalForce = explosionForce / distance;
+                    rb.AddForce(direction * finalForce);
+                }
+                return list;
+            });
     }
 
     public override void ImplosionBehaviour(Transform origin){

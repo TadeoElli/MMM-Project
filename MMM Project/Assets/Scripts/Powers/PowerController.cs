@@ -43,19 +43,22 @@ public class PowerController : MonoBehaviour
     void Update()
     {
         //IA2-LINQ
+        //IA2-P1"
         //creo una nueva lista del mismo tamaño que la de poderes pero guardando solo los indices donde el poder no esta listo
         var notReadyIndices = Enumerable.Range(1, powers.Length - 1)
         .Where(i => !isReady[i])
         .ToList();
         //Y por cada poder con ese indice le sumo al currentCD el valor del tiempo hasta que sea mayor al cooldown y ahi lo establezco como activo
-        foreach (var index in notReadyIndices)
+        // Usar Aggregate para actualizar los valores de currentCd y establecer isReady en true si el poder está listo
+        notReadyIndices.Aggregate((List<int>)null, (acc, index) =>
         {
             currentCd[index] = Mathf.Clamp(currentCd[index] + Time.deltaTime, 0, cooldowns[index]);
             if (currentCd[index] >= cooldowns[index])
             {
                 isReady[index] = true;
             }
-        }
+            return acc;
+        });
      
         
     }
