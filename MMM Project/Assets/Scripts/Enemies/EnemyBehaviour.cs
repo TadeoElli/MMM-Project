@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using FSM;
 
-public class EnemyBehaviour : MonoBehaviour, IGridEntity
+public class EnemyBehaviour : MonoBehaviour
 {
     #region Stats
     [SerializeField] private EnemyStrategy enemy;        //El Strategy
@@ -31,7 +31,6 @@ public class EnemyBehaviour : MonoBehaviour, IGridEntity
     #region Events
     public delegate void OnEnemyDeath(int amount);
     public OnEnemyDeath notifyKillCount, notifyScore;
-    public event Action<IGridEntity> OnMove;
     #endregion
 
     #region FSM
@@ -67,10 +66,6 @@ public class EnemyBehaviour : MonoBehaviour, IGridEntity
         life = enemy.maxLife;
         speed = enemy.velocity;
         col.enabled = false;
-        IGridEntity gridEntity = GetComponent<IGridEntity>();
-        if (gridEntity != null) {
-            SpatialGrid.Instance.Add(gridEntity);
-        }
         //view.TakeDamageView(life, enemy.maxLife);
         StartCoroutine(DelayForActivateCollider());
     }
@@ -84,24 +79,7 @@ public class EnemyBehaviour : MonoBehaviour, IGridEntity
         col.enabled = true;
         view.SetHpImage(normalDir);
     }
-    void Update() {
-        // Aplica la estrategia de movimiento actual
-        //Debug.Log(transform.eulerAngles.z);
-        /*if(canMove){        //Si puede moverse
-            if(rb2D.velocity.magnitude < 0.2){  //Si la velocidad del objeto es lo suficiente mente chica, procede a moverse, esto sirve para que 
-            //cuando la velocidad aumente debido a una colision o un comportamiento, espere a que se detenga para retomar el movimiento, desp de un tiempo
-                timer = timer + 1 * Time.deltaTime;
-                if(timer > 1.5f){
-                    Rotate();       //Rota el objeto hacia la direccion establecida
-                    if (IsFacingDirection()){ //Si esta apuntando medianamente a esa dirreccion
-                        MoveForward();      //Lo mueve hacia adelante
-                    }
-                }
-            }
-        }*/
-        OnMove?.Invoke(this);
 
-    }
     public void ChangeState(IState newState)
     {
         var transitionParameters = fsm.CurrentState.Exit(newState);
@@ -110,10 +88,6 @@ public class EnemyBehaviour : MonoBehaviour, IGridEntity
     }
     public void DisableEnemy(){
         fsm.Active = false;
-    }
-    public Vector3 Position {
-        get => transform.position;
-        set => transform.position = value;
     }
     #region Checks
     public bool IsFacingDirection()
@@ -161,10 +135,6 @@ public class EnemyBehaviour : MonoBehaviour, IGridEntity
         notifyKillCount?.Invoke(1);
         notifyScore?.Invoke(enemy.score);
         enemy.DropPowerUp(transform);       //llama a la funcion que se encarga de generar drops
-        IGridEntity gridEntity = GetComponent<IGridEntity>();
-        if (gridEntity != null) {
-            SpatialGrid.Instance.Remove(gridEntity);
-        }
         this.gameObject.SetActive(false);       //Desactiva este objeto
         
     }

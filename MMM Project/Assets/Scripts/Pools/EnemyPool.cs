@@ -70,7 +70,6 @@ public class EnemyPool : MonoBehaviour
         prefab.GetComponent<EnemyBehaviour>().notifyKillCount += spawner.ReduceEnemiesAlive;
         prefab.SetActive(false);
         prefabList.Add(prefab);
-        prefab.transform.parent = SpatialGrid.Instance.transform;
     }
 
     public GameObject RequestEnemy(EnemyBehaviour enemy){        //Le mando cual necesito

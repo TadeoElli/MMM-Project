@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MissileBehaviour : MonoBehaviour, IGridEntity
+public class MissileBehaviour : MonoBehaviour
 {//IA2-P2”.
     [SerializeField] private MissileStrategy missile;   //El Strategy de los misiles
     [SerializeField] private float life;    //La vida del misil
@@ -18,7 +18,6 @@ public class MissileBehaviour : MonoBehaviour, IGridEntity
     public float RotationDirection{get{return rotationDirection;}set{ rotationDirection =  Mathf.Clamp(value, -1f, 1f);}}
     private CircleCollider2D circleCollider2D;
     private Rigidbody2D rb2D;
-    public event Action<IGridEntity> OnMove;
 
     private void OnEnable() {   //Declaro las estadisticas
         life = missile.maxLife;
@@ -27,10 +26,6 @@ public class MissileBehaviour : MonoBehaviour, IGridEntity
         oneChance = true;
         circleCollider2D = GetComponent<CircleCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
-        IGridEntity gridEntity = GetComponent<IGridEntity>();
-        if (gridEntity != null) {
-            SpatialGrid.Instance.Add(gridEntity);
-        }
     }
 
     public void TakeDamage(float damage){   //Funcion que toma el daño y si es menor a 0 crea la explosion
@@ -42,10 +37,6 @@ public class MissileBehaviour : MonoBehaviour, IGridEntity
         if(life <= 0){
             missile.ExplosionBehaviour(transform);
             gameObject.SetActive(false);
-            IGridEntity gridEntity = GetComponent<IGridEntity>();
-            if (gridEntity != null) {
-                SpatialGrid.Instance.Remove(gridEntity);
-            }
         }
     }
 
@@ -61,9 +52,6 @@ public class MissileBehaviour : MonoBehaviour, IGridEntity
         else{
             AudioManager.Instance.PlaySoundEffect(missile.launchEffect);
         }
-    }
-    private void Update() {
-        OnMove?.Invoke(this);
     }
 
     //Comportamiento cuando collisiona con un objeto
@@ -95,11 +83,6 @@ public class MissileBehaviour : MonoBehaviour, IGridEntity
         {
             missile.SpecialBehaviourExit(other.gameObject, gameObject);
         }
-    }
-
-    public Vector3 Position {
-        get => transform.position;
-        set => transform.position = value;
     }
 
 
