@@ -16,6 +16,7 @@ public class EnemyPool : MonoBehaviour
     [SerializeField] private Dictionary<GameObject, List<GameObject>> enemyDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un enemigo y devolver la cantidad generada
     [SerializeField] private ChangeStats killCount, score;
     [SerializeField] private EnemySpawner spawner;
+    [SerializeField] private NexusStats stats;
     Stopwatch stopwatch = new Stopwatch();
     //public event OnEnemyDeath _OnEnemyDeath;
 
@@ -65,9 +66,11 @@ public class EnemyPool : MonoBehaviour
     }
     private void CreateEnemy(List<GameObject> prefabList, EnemyBehaviour enemy){
         GameObject prefab = Instantiate(enemy.gameObject);
-        prefab.GetComponent<EnemyBehaviour>().notifyKillCount = killCount.IncreaseAmount;
-        prefab.GetComponent<EnemyBehaviour>().notifyScore += score.IncreaseAmount;
-        prefab.GetComponent<EnemyBehaviour>().notifyKillCount += spawner.ReduceEnemiesAlive;
+        var behaviourComponent = prefab.GetComponent<EnemyBehaviour>();
+        behaviourComponent.notifyKillCount = killCount.IncreaseAmount;
+        behaviourComponent.notifyScore += score.IncreaseAmount;
+        behaviourComponent.notifyScore += stats.AddExp;
+        behaviourComponent.notifyKillCount += spawner.ReduceEnemiesAlive;
         prefab.SetActive(false);
         prefabList.Add(prefab);
     }

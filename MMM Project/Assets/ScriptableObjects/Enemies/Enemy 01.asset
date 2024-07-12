@@ -17,6 +17,6 @@ MonoBehaviour:
   velocity: 0.25
   explosion: {fileID: 2393949397171018763, guid: d3f40ccf235b4304bbf624c0f30157a7, type: 3}
   score: 100
-  experience: 0
+  experience: 100
   availablePowerUps: []
   bounceClip: {fileID: 8300000, guid: 8d6fb889a204d644db0b13d17ae8fe40, type: 3}

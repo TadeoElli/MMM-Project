@@ -16,8 +16,9 @@ public class NexusStats : MonoBehaviour
     public Observer<float> currentBaseCooldown = new Observer<float>(0f);   //la cantidad de tiempo que se reduce de las habilidades
     public Observer<int> currentLives = new Observer<int>(35);  //La cantidad de vidas
     public Observer<int> currentBaseStability = new Observer<int>(0);   //La estabilidad base
-    public Observer<int> currentBaseSpeed = new Observer<int>(0);   //La velocidad base
-    public Observer<int> currentLevel = new Observer<int>(1);   //La velocidad base
+    public Observer<int> currentBaseSpeed = new Observer<int>(0);   //La velocidad base.0
+    public Observer<int> currentSkillPoints = new Observer<int>(0); //Los puntos de habilidad con los que se empieza
+    public Observer<int> currentLevel = new Observer<int>(0);   //El nivel Con el que se empieza
     #endregion
     #region Properties
     //public float currentEnergy;
@@ -27,6 +28,9 @@ public class NexusStats : MonoBehaviour
     [SerializeField] private int missilesUnlocked;  //Que misiles estan desbloqueados
     [SerializeField] private int maxLives;  //La cantidad de vida maxima
     [SerializeField] private int startTechLevel;  //el nivel de tecnologia con el que se empieza
+    [SerializeField] private int currentExp; //la cantidad de exp actualmente
+    [SerializeField] private int expToNextLevel; //la cantidad de exp necesaria para pasar al siguiente nivel
+
     [SerializeField] GameObject loseMenu;   //El menu de derrota
     private bool isDestroyed = false;
     
@@ -118,7 +122,24 @@ public class NexusStats : MonoBehaviour
        // Debug.Log(currentStructure.Value);
         currentLives.Value--;
     }
+    #region ExpManagment
+    public void AddExp(int amount)
+    {
+        currentExp += amount;
+        CheckLevelUp();
+    }
 
+    private void CheckLevelUp()
+    {
+        if (currentExp >= expToNextLevel)
+        {
+            currentExp -= expToNextLevel;
+            currentLevel.Value++;
+            expToNextLevel = Mathf.CeilToInt(expToNextLevel * 1.5f); // Incrementa la cantidad de EXP necesaria para el siguiente nivel
+            currentSkillPoints.Value += 5;
+        }
+    }
+#endregion
 
     #region PowersUp
     public void EnergyPowerUp(int cooldown){    //guarda la antigua regeneracion de energia y la actual pasa a ser mayor

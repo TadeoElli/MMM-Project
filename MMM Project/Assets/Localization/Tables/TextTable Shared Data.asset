@@ -403,6 +403,10 @@ MonoBehaviour:
     m_Key: infoEnemy5
     m_Metadata:
       m_Items: []
+  - m_Id: 35624633612324864
+    m_Key: unusedSkillpoints
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

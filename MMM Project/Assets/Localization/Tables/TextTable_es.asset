@@ -391,15 +391,15 @@ MonoBehaviour:
       de tecnologia</color> y <color=#EC3F04>5 puntos </color> de habilidad para
       mejorar tu nexo.
 
-      
+
 
       Podras aumentar la estabilidad base, la energia,
       obtener nuevos proyectiles y habilidades.
 
-      
 
-      Para obtener mas
-      informacion, vaya a la seccion <color=#00FF06>ACTUALIZACIONES / HABILIDADES</color>'
+
+      Para obtener mas informacion,
+      vaya a la seccion <color=#00FF06>ACTUALIZACIONES / HABILIDADES</color>'
     m_Metadata:
       m_Items: []
   - m_Id: 17074289164898304
@@ -520,10 +520,15 @@ MonoBehaviour:
       y una onda de choque que destruira todo, incluido el nexo.
     m_Metadata:
       m_Items: []
+  - m_Id: 35624633612324864
+    m_Localized: 'Puntos sin usar: {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 794851374009679875
   references:
     version: 2
     RefIds:
     - rid: 794851374009679875
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf255010000503759cb8c01000050b77cd0bb01000050772c87dc07000050b74f75dd07000050f756a9e107000050b72ae9e207000050b74c8ee3070000503762b9e407000050f7a140e507000050f736dfe607000050778da0fc3b00
+        m_Entries: 0050f789b45501000050370bd05501000050f7fbde5501000050b771e85501000050b7ebf255010000503759cb8c01000050b77cd0bb01000050772c87dc07000050b74f75dd07000050f756a9e107000050b72ae9e207000050b74c8ee3070000503762b9e407000050f7a140e507000050f736dfe607000050778da0fc3b000050b75f6a907e00

@@ -17,7 +17,7 @@ MonoBehaviour:
   velocity: 0.25
   explosion: {fileID: 7683184825282260076, guid: 62bfd112791e2d64bb9541318f3845a2, type: 3}
   score: 500
-  experience: 0
+  experience: 500
   availablePowerUps:
   - prefab: {fileID: 4859652181989221988, guid: fb29e88688852a14ea6e11a2df57128b, type: 3}
     dropProbability: 5
