@@ -525,6 +525,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 794851374009679875
+  - m_Id: 35631255168438272
+    m_Localized: Subir de nivel
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

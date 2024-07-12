@@ -64,6 +64,7 @@ public class NexusStats : MonoBehaviour
         currentBaseStability.Value = baseStability;
         currentBaseSpeed.Value = baseSpeed;
         currentLevel.Value = startTechLevel;
+        currentSkillPoints.Value = (startTechLevel * 5);
     }
     private void InvokeEvents()
     {
@@ -74,6 +75,7 @@ public class NexusStats : MonoBehaviour
         currentBaseSpeed.Invoke();
         currentBaseCooldown.Invoke();
         currentLevel.Invoke();
+        currentSkillPoints.Invoke();
         maxEnergy.Invoke();
         maxStructure.Invoke();
     }
@@ -113,7 +115,6 @@ public class NexusStats : MonoBehaviour
     public void SetEnergyValue(float amount){
         currentEnergy.Value = amount;
     }
-
     public void SetStructureValue(float amount){
        // Debug.Log(currentStructure.Value);
         currentStructure.Value = amount;
@@ -138,6 +139,10 @@ public class NexusStats : MonoBehaviour
             expToNextLevel = Mathf.CeilToInt(expToNextLevel * 1.5f); // Incrementa la cantidad de EXP necesaria para el siguiente nivel
             currentSkillPoints.Value += 5;
         }
+    }
+    public void SetSkillPointValue(int amount)
+    {
+        currentSkillPoints.Value = amount;
     }
 #endregion
 

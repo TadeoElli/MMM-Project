@@ -8,13 +8,35 @@ public class UpgradeIcon : IconHud
     /// <summary>
     /// Esta clase sirve como base para manejar los iconos del menu de mejoras
     /// </summary>
-    [SerializeField] private Image image, blockImage,hoverImage, pressedImage;
+    [SerializeField] private Image image, hoverImage, pressedImage;
     [Header("Description")]
     [SerializeField] private GameObject description;
     [Header("Requisites")]
+    [SerializeField] private List<UpgradeIcon> previousSkills;
+    [SerializeField] private List<int> previousLevel;
+    [Header("Stats")]
+    public Observer<int> availableSkillPoints = new Observer<int>(0); //Los puntos de habilidad con los que se empieza
     [SerializeField] private int points; 
-    [SerializeField] private int pointsToComplete, currentLevel, maxLevel;
+    [SerializeField] private int pointsToComplete, maxLevel;
+    public int currentLevel;
 
+    protected override void Update()
+    {
+        base.Update();
+        if (previousSkills != null)
+        {
+            for (int i = 0; i < previousSkills.Count; i++)
+            {
+                if (previousSkills[i].currentLevel < previousLevel[i])
+                    return;
+            }
+
+        }
+        if(currentLevel < maxLevel)
+            isInteractable = true;
+        else
+            isInteractable = false;
+    }
 
     protected override void OnClickEnter()
     {
@@ -34,5 +56,28 @@ public class UpgradeIcon : IconHud
     protected override void OnClickUp()
     {
         if (pressedImage != null) pressedImage.gameObject.SetActive(false);
+        IncreasePoints();
     }
+    private void IncreasePoints()
+    {
+        if(availableSkillPoints.Value > 0)
+        {
+            points++;
+            availableSkillPoints.Value--;
+            CheckForNextLevel();
+        }
+    }
+    private void CheckForNextLevel()
+    {
+        if(points >= pointsToComplete)
+        {
+            points = 0;
+            currentLevel++;
+        }
+    }
+    public void SetAvailablePointsValue(int amount)
+    {
+        availableSkillPoints.Value = amount;
+    }
+
 }

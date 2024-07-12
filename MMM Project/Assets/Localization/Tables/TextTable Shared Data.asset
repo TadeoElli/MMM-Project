@@ -407,6 +407,10 @@ MonoBehaviour:
     m_Key: unusedSkillpoints
     m_Metadata:
       m_Items: []
+  - m_Id: 35631255168438272
+    m_Key: levelUp
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

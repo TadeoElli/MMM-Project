@@ -27,4 +27,5 @@ public class AnimEvents : MonoBehaviour
         events[parameters].Invoke();
     }
     
+    
 }

@@ -510,6 +510,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 794851374009679874
+  - m_Id: 35631255168438272
+    m_Localized: Level Up
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
