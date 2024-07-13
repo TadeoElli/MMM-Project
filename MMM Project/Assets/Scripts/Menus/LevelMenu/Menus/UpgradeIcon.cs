@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UpgradeIcon : IconHud
 {
@@ -9,6 +10,7 @@ public class UpgradeIcon : IconHud
     /// Esta clase sirve como base para manejar los iconos del menu de mejoras
     /// </summary>
     [SerializeField] private Image image, hoverImage, pressedImage;
+    [SerializeField] private UnityEvent onLevelUp;
     [Header("Description")]
     [SerializeField] private GameObject description;
     [Header("Requisites")]
@@ -17,8 +19,10 @@ public class UpgradeIcon : IconHud
     [Header("Stats")]
     public Observer<int> availableSkillPoints = new Observer<int>(0); //Los puntos de habilidad con los que se empieza
     [SerializeField] private int points; 
-    [SerializeField] private int pointsToComplete, maxLevel;
+    [SerializeField] private int pointsToComplete, maxLevel, currentTechLevel;
     public int currentLevel;
+    [SerializeField] private bool requireTechLevel;
+
 
     protected override void Update()
     {
@@ -62,9 +66,22 @@ public class UpgradeIcon : IconHud
     {
         if(availableSkillPoints.Value > 0)
         {
-            points++;
-            availableSkillPoints.Value--;
-            CheckForNextLevel();
+            if (requireTechLevel)
+            {
+                if(currentTechLevel > 0)
+                {
+                    points++;
+                    currentTechLevel--;
+                    availableSkillPoints.Value--;
+                    CheckForNextLevel();
+                }
+            }
+            else
+            {
+                points++;
+                availableSkillPoints.Value--;
+                CheckForNextLevel();
+            }
         }
     }
     private void CheckForNextLevel()
@@ -73,11 +90,16 @@ public class UpgradeIcon : IconHud
         {
             points = 0;
             currentLevel++;
+            onLevelUp?.Invoke();
         }
     }
     public void SetAvailablePointsValue(int amount)
     {
         availableSkillPoints.Value = amount;
+    }
+    public void IncreaseTechLevelPoints()
+    {
+        currentTechLevel++;
     }
 
 }

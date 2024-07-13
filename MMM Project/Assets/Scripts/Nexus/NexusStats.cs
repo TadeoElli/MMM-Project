@@ -144,8 +144,19 @@ public class NexusStats : MonoBehaviour
     {
         currentSkillPoints.Value = amount;
     }
-#endregion
+    #endregion
 
+    #region Upgrades
+    public void MaxEnergyLevelUp()
+    {
+        
+        maxEnergy.Value += 35;
+    }
+    public void MaxStabilityLevelUp()
+    {
+        currentBaseStability.Value++;
+    }
+    #endregion
     #region PowersUp
     public void EnergyPowerUp(int cooldown){    //guarda la antigua regeneracion de energia y la actual pasa a ser mayor
         energyBoost = true;

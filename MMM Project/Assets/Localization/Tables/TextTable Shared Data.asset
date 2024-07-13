@@ -411,6 +411,14 @@ MonoBehaviour:
     m_Key: levelUp
     m_Metadata:
       m_Items: []
+  - m_Id: 36053913936809984
+    m_Key: 'level:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36053923659206656
+    m_Key: New Entry 2
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
