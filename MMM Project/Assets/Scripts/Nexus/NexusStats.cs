@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,7 +31,7 @@ public class NexusStats : MonoBehaviour
 
     [SerializeField] GameObject loseMenu;   //El menu de derrota
     private bool isDestroyed = false;
-    
+
     [Header("PowerUpStats")]
     [SerializeField] private int energyRegen = 40;   //La regeneracion de energia
     [SerializeField] private int boostEnergyRegen = 100;
@@ -45,14 +43,16 @@ public class NexusStats : MonoBehaviour
     [SerializeField] private UnityEvent<int> cooldownPowerUp, speedPowerUp, structurePowerUp, energyPowerUp, stabilityPowerUp;
     #endregion
 
-//Estableze los valores iniciales y notifica a todos los suscriptores
-    private void Start() {
+    //Estableze los valores iniciales y notifica a todos los suscriptores
+    private void Start()
+    {
         InitializeStats();
         InvokeEvents();
     }
 
     //Si todavia no se destruyo, regenera constantemente la vida y energia y si la vida baja de 0, remueve a todos los suscrptores
-    private void Update() {
+    private void Update()
+    {
         RegenerateStats();
         CheckDestroyCondition();
     }
@@ -112,15 +112,18 @@ public class NexusStats : MonoBehaviour
         currentBaseStability.RemoveAllListeners();
         currentBaseSpeed.RemoveAllListeners();
     }
-    public void SetEnergyValue(float amount){
+    public void SetEnergyValue(float amount)
+    {
         currentEnergy.Value = amount;
     }
-    public void SetStructureValue(float amount){
-       // Debug.Log(currentStructure.Value);
+    public void SetStructureValue(float amount)
+    {
+        // Debug.Log(currentStructure.Value);
         currentStructure.Value = amount;
     }
-    public void ReduceLives(){
-       // Debug.Log(currentStructure.Value);
+    public void ReduceLives()
+    {
+        // Debug.Log(currentStructure.Value);
         currentLives.Value--;
     }
     #region ExpManagment
@@ -149,7 +152,7 @@ public class NexusStats : MonoBehaviour
     #region Upgrades
     public void MaxEnergyLevelUp()
     {
-        
+
         maxEnergy.Value += 35;
     }
     public void MaxStabilityLevelUp()
@@ -158,46 +161,56 @@ public class NexusStats : MonoBehaviour
     }
     #endregion
     #region PowersUp
-    public void EnergyPowerUp(int cooldown){    //guarda la antigua regeneracion de energia y la actual pasa a ser mayor
+    public void EnergyPowerUp(int cooldown)
+    {    //guarda la antigua regeneracion de energia y la actual pasa a ser mayor
         energyBoost = true;
         energyPowerUp?.Invoke(cooldown);
-        Invoke("RestoreEnergy",cooldown);
+        Invoke("RestoreEnergy", cooldown);
     }
-    public void StructurePowerUp(int cooldown){ //guarda la antigua regeneracion de vida y la actual pasa a ser mayor
+    public void StructurePowerUp(int cooldown)
+    { //guarda la antigua regeneracion de vida y la actual pasa a ser mayor
         structureBoost = true;
         structurePowerUp?.Invoke(cooldown);
-        Invoke("RestoreStructure",cooldown);
+        Invoke("RestoreStructure", cooldown);
     }
-    public void StabilityPowerUp(int cooldown){ //la actual estabilidad pasa a ser mayor
+    public void StabilityPowerUp(int cooldown)
+    { //la actual estabilidad pasa a ser mayor
         currentBaseStability.Value = 35;
         stabilityPowerUp?.Invoke(cooldown);
-        Invoke("RestoreStability",cooldown);
+        Invoke("RestoreStability", cooldown);
     }
-    public void SpeedPowerUp(int cooldown){ //la actual velocidad  pasa a ser mayor
+    public void SpeedPowerUp(int cooldown)
+    { //la actual velocidad  pasa a ser mayor
         currentBaseSpeed.Value = 10;
         speedPowerUp?.Invoke(cooldown);
-        Invoke("RestoreSpeed",cooldown);
+        Invoke("RestoreSpeed", cooldown);
     }
-    public void CooldownPowerUp(int cooldown){   //guarda el antiguo valor que se reduce a los cooldowns y la actual pasa a ser mayor
+    public void CooldownPowerUp(int cooldown)
+    {   //guarda el antiguo valor que se reduce a los cooldowns y la actual pasa a ser mayor
         currentBaseCooldown.Value = boostCooldown;
         cooldownPowerUp?.Invoke(cooldown);
-        Invoke("RestoreCooldown",cooldown);
+        Invoke("RestoreCooldown", cooldown);
     }
 
 
-    private void RestoreEnergy(){   //Restaura el valor default de regeneracion dew energia
+    private void RestoreEnergy()
+    {   //Restaura el valor default de regeneracion dew energia
         energyBoost = false;
     }
-    private void RestoreStructure(){    //Restaura el valor default de regeneracion de vida
+    private void RestoreStructure()
+    {    //Restaura el valor default de regeneracion de vida
         structureBoost = false;
     }
-    private void RestoreStability(){    //Restaura el valor default de estabilidad
+    private void RestoreStability()
+    {    //Restaura el valor default de estabilidad
         currentBaseStability.Value = baseStability;
     }
-    private void RestoreSpeed(){    //Restaura el valor default de velocidad
+    private void RestoreSpeed()
+    {    //Restaura el valor default de velocidad
         currentBaseSpeed.Value = baseSpeed;
     }
-    private void RestoreCooldown(){ //Restaura el valor default de reduccion de cooldown
+    private void RestoreCooldown()
+    { //Restaura el valor default de reduccion de cooldown
         currentBaseCooldown.Value = 0f;
     }
     #endregion

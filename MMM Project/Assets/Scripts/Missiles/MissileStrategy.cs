@@ -28,10 +28,12 @@ public abstract class MissileStrategy : ScriptableObject
     }
 
     // Comportamientos especiales
-    public virtual void SpecialBehaviourStay(GameObject other, GameObject prefab){
+    public virtual void SpecialBehaviourStay(GameObject other, GameObject prefab)
+    {
         //Comportamiento especial mientras esta dentro
     }
-    public virtual void SpecialBehaviourExit(GameObject other, GameObject prefab){
+    public virtual void SpecialBehaviourExit(GameObject other, GameObject prefab)
+    {
         //Comportamiento especial cuando sale
     }
 
@@ -39,7 +41,8 @@ public abstract class MissileStrategy : ScriptableObject
     public abstract int CollisionBehaviour(GameObject other, GameObject prefab);
 
     // Comportamiento de la explosión
-    public virtual void ExplosionBehaviour(Transform origin){
+    public virtual void ExplosionBehaviour(Transform origin)
+    {
         GameObject newExplosion = ExplosionPool.Instance.RequestExplosion(explosion);
         newExplosion.transform.position = origin.position;
     }

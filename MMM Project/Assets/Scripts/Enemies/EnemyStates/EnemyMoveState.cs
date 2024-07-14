@@ -1,7 +1,6 @@
-using System.Collections;
+using FSM;
 using System.Collections.Generic;
 using UnityEngine;
-using FSM;
 //IA2-P3”.
 public class EnemyMoveState : MonoBaseState
 {
@@ -11,7 +10,7 @@ public class EnemyMoveState : MonoBaseState
 
     public override IState ProcessInput()
     {
-        if(!owner.canMove && Transitions.ContainsKey(EnemyStateTransitions.ToDesactivate))
+        if (!owner.canMove && Transitions.ContainsKey(EnemyStateTransitions.ToDesactivate))
             return Transitions[EnemyStateTransitions.ToDesactivate];
         return this;
     }

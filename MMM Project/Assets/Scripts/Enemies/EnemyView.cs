@@ -1,20 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class EnemyView : MonoBehaviour
 {
-    [SerializeField] private Image hpLeft,hpRight, hpBarLeft, hpBarRight;
+    [SerializeField] private Image hpLeft, hpRight, hpBarLeft, hpBarRight;
     private Image currentBar, currentHpBar;
 
-    public void SetHpImage(bool direction){
+    public void SetHpImage(bool direction)
+    {
         currentBar = direction ? hpLeft : hpRight;
         currentHpBar = direction ? hpBarLeft : hpBarRight;
         currentBar.fillAmount = 1;
     }
-    public void TakeDamageView(float currentHp, float maxHp){
+    public void TakeDamageView(float currentHp, float maxHp)
+    {
         currentBar.fillAmount = currentHp / maxHp;
     }
     private void OnMouseEnter()

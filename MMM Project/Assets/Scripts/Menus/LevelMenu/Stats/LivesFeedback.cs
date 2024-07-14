@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class LivesFeedback : MonoBehaviour
 {
@@ -10,13 +8,16 @@ public class LivesFeedback : MonoBehaviour
     private int amount = 1;
     [SerializeField] private Animator anim;
 
-    public void OnLivesChange(){
-        if(!anim.GetCurrentAnimatorStateInfo(0).IsName("LivesFeedback")){
+    public void OnLivesChange()
+    {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("LivesFeedback"))
+        {
             amount = 1;
             textComp.text = "-" + amount;
             anim.SetTrigger("ShowFeedback");
         }
-        else{
+        else
+        {
             amount++;
             textComp.text = "-" + amount;
         }

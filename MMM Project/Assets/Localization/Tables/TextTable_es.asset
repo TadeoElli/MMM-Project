@@ -534,6 +534,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 794851374009679875
+  - m_Id: 36053923659206656
+    m_Localized: Mejoras
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36357550374342656
+    m_Localized: Poderes
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

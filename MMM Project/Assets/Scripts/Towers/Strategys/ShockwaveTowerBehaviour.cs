@@ -7,17 +7,21 @@ public class ShockwaveTowerBehaviour : TowerStrategy
     /// <summary>
     /// Este tipo de torre tendra un collider que cuando un enemigo lo toque, sera disparado segun la fuerza
     /// </summary>
-    [Header("Special Properties")] 
+    [Header("Special Properties")]
     [SerializeField] private float force;   //La fuerza con la que sera disparado
-    public override void SpecialBehaviour(GameObject prefab, GameObject other){
+    public override void SpecialBehaviour(GameObject prefab, GameObject other)
+    {
 
     }
 
     //Si toca a un enemigo, toma el Rigidbody de este enemigo y lo manda en la direccion contraria con la fuerza establecida
-    public override bool ColliderBehaviour(GameObject prefab, GameObject other){
-        if(other.CompareTag("Enemy")){
+    public override bool ColliderBehaviour(GameObject prefab, GameObject other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
             Rigidbody2D rb2D = other.GetComponent<Rigidbody2D>();
-            if(rb2D != null){
+            if (rb2D != null)
+            {
                 Vector2 direction = other.transform.position - prefab.transform.position;
                 float distance = 1 + direction.magnitude;
                 float finalForce = force / distance;
@@ -30,9 +34,10 @@ public class ShockwaveTowerBehaviour : TowerStrategy
         return false;
     }
 
-    public override void DestroyTower(GameObject prefab){
-        
+    public override void DestroyTower(GameObject prefab)
+    {
+
     }
 
-    
+
 }

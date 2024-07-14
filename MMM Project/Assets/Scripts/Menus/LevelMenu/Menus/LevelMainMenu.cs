@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class LevelMainMenu : MonoBehaviour
 {
@@ -35,8 +34,8 @@ public class LevelMainMenu : MonoBehaviour
     public void ResetMenu()
     {
         triangles.ForEach(x => x.color = Color.gray);
-        waveDirections.ForEach(x=> x.color = Color.gray);
-        StartState();    
+        waveDirections.ForEach(x => x.color = Color.gray);
+        StartState();
     }
 
 

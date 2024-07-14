@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 public class LevelInfoMenu : MonoBehaviour
 {
@@ -23,23 +21,28 @@ public class LevelInfoMenu : MonoBehaviour
         content.ForEach(x => x.SetActive(false));
         previusButton.interactable = true;
         nextButton.interactable = true;
-        content[index].SetActive(true);  
+        content[index].SetActive(true);
     }
-    public void NextPage(){
+    public void NextPage()
+    {
         index++;
         ResetContent();
-        if(index == content.Count - 1){
+        if (index == content.Count - 1)
+        {
             nextButton.interactable = false;
         }
     }
-    public void PreviusPage(){
+    public void PreviusPage()
+    {
         index--;
         ResetContent();
-        if(index == 0){
+        if (index == 0)
+        {
             previusButton.interactable = false;
         }
     }
-    public void StartPage(){
+    public void StartPage()
+    {
         index = 0;
         ResetContent();
         previusButton.interactable = false;

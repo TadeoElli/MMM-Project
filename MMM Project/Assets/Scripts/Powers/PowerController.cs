@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Events;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
-public class PowerController : MonoBehaviour 
+public class PowerController : MonoBehaviour
 {
     // Start is called before the first frame update
     public Observer<float> currentEnergy = new Observer<float>(1000f);  //La energia actual que se comparte con el nexusStats
@@ -13,15 +13,19 @@ public class PowerController : MonoBehaviour
     Camera cam;
     [SerializeField] private bool hasPower = false; //si tiene un poder activo el controllador
     private bool isDraggin = false; //Si esta activo y presionado
-    [SerializeField] private PowerStrategy [] powers;   //La lista de poderes
-    
+    [SerializeField] private PowerStrategy[] powers;   //La lista de poderes
+
     [SerializeField] private List<float> cooldowns; //la lista de cooldowns
     [SerializeField] private List<float> currentCd; //la lista de temporizadores para ver si ya se puede volver a usar
     [SerializeField] private List<bool> isReady;    //La lista de flags para saber si ya se pueden usar o no
+    [SerializeField] private bool[] isUnlocked;     //La lista de flags para saber si ya se desbloqueo este poder
+    [SerializeField] private GameObject[] powerIcons;
+    [SerializeField] private int[] levels;
     [SerializeField] private EnergyIndicator indicator;
     [SerializeField] private List<UnityEvent> changePowersHud;
 
-    private void Awake() {
+    private void Awake()
+    {
         cam = Camera.main;
     }
     void Start()
@@ -59,16 +63,22 @@ public class PowerController : MonoBehaviour
             }
             return acc;
         });
-     
-        
+
+
     }
     //Si tiene un poder activo y se esta presionando, llama al comportamiento de presionado
-    private void FixedUpdate() {
-        if(hasPower && isDraggin){
-            if(!powers[currentIndex.Value].BehaviourPerformed()){
+    private void FixedUpdate()
+    {
+        if (hasPower && isDraggin)
+        {
+            if (!powers[currentIndex.Value].BehaviourPerformed())
+            {
                 FinishPower();
-            }else{
-                if(powers[currentIndex.Value].hasPerformedCursor){
+            }
+            else
+            {
+                if (powers[currentIndex.Value].hasPerformedCursor)
+                {
                     currentState.Value = true;
                 }
             }
@@ -77,21 +87,25 @@ public class PowerController : MonoBehaviour
     }
     //Se setea los cooldowns restandoles el valor base
     //sirve para que cuando se utiliza el powerUp de reducir el cooldown, todos los cooldown pasen a menos de 0 para que se puedan usar sin esperar a q este listo
-    public void SetCooldowns(float baseCooldown){
+    public void SetCooldowns(float baseCooldown)
+    {
         //IA2-LINQ
         //le envio la listas de cooldowns al generator que se encarga de crear la lista con los valores de la lista de poderes
         //restandole el valor indicado y dejando el primer objeto de la lista como nulo
         cooldowns = powers.SetCooldownsValue(x => x.cooldown - baseCooldown).ToList();
     }
-    
+
     //Se setea el indice segun si se presiona alguna de las teclas o no, si el indice es mayor a 0 y ese poder esta activo, se activa el cursor
     //Si no se vuelve el indice a 0
-    public void SetPowerIndex(int newIndex){
-        if(!isReady[newIndex]){
+    public void SetPowerIndex(int newIndex)
+    {
+        if (!isReady[newIndex] || !isUnlocked[newIndex])
+        {
             currentIndex.Value = 0;
             hasPower = false;
         }
-        else{
+        else
+        {
             currentIndex.Value = newIndex;
             hasPower = true;
             indicator.gameObject.SetActive(true);
@@ -100,37 +114,56 @@ public class PowerController : MonoBehaviour
         }
     }
 
+    public void UnlockNewPower(int index)
+    {
+        isUnlocked[index] = true;
+        powerIcons[index]?.SetActive(true);
+    }
+    public void SetLevelPower(int index)
+    {
+        levels[index]++;
+    }
 
     //Se modifica la energia para notificar a los suscriptores
-    public void SetEnergyValue(float amount){
+    public void SetEnergyValue(float amount)
+    {
         currentEnergy.Value = amount;
     }
     //Si se tiene un poder activo y se cumple con el requisito de energia, se llama al comportamiento de inicio del poder correspondiente
     //Si este tiene un comportamiento para cuando se mantiene presionado entonces devuelve true y se establece que se esta activando constantemente
     //Si no entonces luego del comportamiento de inicio se llama a DesactivatePower
     //Si se solto el click, se llama al comportamiento FinishPower
-    public void ActivatePower(InputAction.CallbackContext callbackContext){
-        if(hasPower){
-            if(currentEnergy.Value >= powers[currentIndex.Value].energyConsumption && CheckDistance()){
-                if(callbackContext.started){
-                    if(powers[currentIndex.Value].BehaviourStarted()){
+    public void ActivatePower(InputAction.CallbackContext callbackContext)
+    {
+        if (hasPower)
+        {
+            if (currentEnergy.Value >= powers[currentIndex.Value].energyConsumption && CheckDistance())
+            {
+                if (callbackContext.started)
+                {
+                    if (powers[currentIndex.Value].BehaviourStarted(levels[currentIndex.Value]))
+                    {
                         isDraggin = true;
-                        
+
                     }
-                    else{
+                    else
+                    {
                         DesactivatePower();
                     }
                 }
-                else if(callbackContext.canceled){
+                else if (callbackContext.canceled)
+                {
                     FinishPower();
                 }
             }
-            else{
+            else
+            {
                 AudioManager.Instance.PlaySoundEffect(powers[currentIndex.Value].invalidEffect);
             }
         }
     }
-    private bool CheckDistance(){
+    private bool CheckDistance()
+    {
         Vector2 currentPosition = cam.ScreenToWorldPoint(Input.mousePosition);
         bool isValidDistance = currentPosition.y > -3.7f && currentPosition.y < 4.85f;
         if (!isValidDistance)
@@ -139,7 +172,8 @@ public class PowerController : MonoBehaviour
     }
     //Se habilita el ingreso de nuevos inputs, se llama al comportamiento de cuando se suelta el click y se resetea los valores de cooldown del poder
     //Se resetea el indice, se resta la energia correspondiente
-    private void FinishPower(){
+    private void FinishPower()
+    {
         InputController inputController = FindObjectOfType<InputController>();
         inputController.isAvailable = true;
         powers[currentIndex.Value].BehaviourEnded();
@@ -147,7 +181,8 @@ public class PowerController : MonoBehaviour
         currentCd[currentIndex.Value] = 0;
         currentEnergy.Value = currentEnergy.Value - powers[currentIndex.Value].energyConsumption;
         isDraggin = false;
-        if(powers[currentIndex.Value].hasPerformedCursor){
+        if (powers[currentIndex.Value].hasPerformedCursor)
+        {
             currentState.Value = false;
         }
         changePowersHud[currentIndex.Value]?.Invoke();
@@ -157,8 +192,10 @@ public class PowerController : MonoBehaviour
     }
 
     //Se habilita el ingreso de nuevos inputs, se establece que no hay un poder activo y se resetea el indice y el cursor
-    public void DesactivatePower(){
-        if(hasPower){
+    public void DesactivatePower()
+    {
+        if (hasPower)
+        {
             InputController inputController = FindObjectOfType<InputController>();
             inputController.isAvailable = true;
             hasPower = false;

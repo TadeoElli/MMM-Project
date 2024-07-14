@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -22,7 +20,8 @@ public class NexusHudStats : MonoBehaviour
         Any
     }
 
-    private void Update(){
+    private void Update()
+    {
         switch (type)
         {
             case IndicatorType.barBetweenValues:
@@ -39,14 +38,16 @@ public class NexusHudStats : MonoBehaviour
             default:
                 break;
         }
-        if(image!=null){image.fillAmount = currentAmount / maxAmount;}
+        if (image != null) { image.fillAmount = currentAmount / maxAmount; }
     }
 
 
-    public void SetMaxAmount(float amount){
+    public void SetMaxAmount(float amount)
+    {
         maxAmount = amount;
     }
-    public void SetCurrentAmount(float amount){
+    public void SetCurrentAmount(float amount)
+    {
         currentAmount = amount;
     }
 }

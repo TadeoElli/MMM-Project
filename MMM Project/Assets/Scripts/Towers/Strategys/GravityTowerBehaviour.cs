@@ -1,6 +1,6 @@
-using UnityEngine;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObject/Tower/Gravity", order = 0)]
 public class GravityTowerBehaviour : TowerStrategy
@@ -16,9 +16,11 @@ public class GravityTowerBehaviour : TowerStrategy
     [SerializeField] private float radius;  //El radio de atraccion
 
     //Si un enemigo entra en el radio, toma su rigidbody y su posicion y calcula la distancia
-    public override void SpecialBehaviour(GameObject prefab, GameObject other){
+    public override void SpecialBehaviour(GameObject prefab, GameObject other)
+    {
 
-        if(other.CompareTag("Enemy")){
+        if (other.CompareTag("Enemy"))
+        {
             Rigidbody2D enemyRigidbody = other.GetComponent<Rigidbody2D>();
 
             if (enemyRigidbody != null)
@@ -31,20 +33,23 @@ public class GravityTowerBehaviour : TowerStrategy
                     float force = distance > repulsionRadius ? attractionStrength / distance : repulsionStrength / distance;
                     enemyRigidbody.AddForce(direction.normalized * force, ForceMode2D.Force);
                 }
-                
+
             }
         }
     }
 
-    public override bool ColliderBehaviour(GameObject prefab, GameObject other){
-        if(other.CompareTag("Enemy")){
+    public override bool ColliderBehaviour(GameObject prefab, GameObject other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
             return true;
         }
         return false;
-        
+
     }
     //El comportamiento de cuando se destruye la torre, toma todos los componentes Enemigos dentro del radio y los envia en la direccion contraria
-    public override void DestroyTower(GameObject prefab){
+    public override void DestroyTower(GameObject prefab)
+    {
         //IA2-LINQ
         //IA2-P1"
         //Toma todos los objetos dentro de un radio y guardo solo los que tengan el tag correspondiente
@@ -65,5 +70,5 @@ public class GravityTowerBehaviour : TowerStrategy
             });
     }
 
-    
+
 }

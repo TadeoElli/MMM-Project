@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 //IA2-P3”.
 public class EnemyStateTransitions
 {

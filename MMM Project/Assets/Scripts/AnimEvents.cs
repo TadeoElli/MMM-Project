@@ -1,7 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 public class AnimEvents : MonoBehaviour
 {
     /// <summary>
@@ -26,6 +25,6 @@ public class AnimEvents : MonoBehaviour
     {
         events[parameters].Invoke();
     }
-    
-    
+
+
 }

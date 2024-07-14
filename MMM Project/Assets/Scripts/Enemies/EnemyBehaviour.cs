@@ -1,16 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
 using FSM;
+using System.Collections;
+using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
     #region Stats
     [SerializeField] private EnemyStrategy enemy;        //El Strategy
-    public EnemyStrategy Enemy{get{return enemy;}}
-    [SerializeField] private float life;        
+    public EnemyStrategy Enemy { get { return enemy; } }
+    [SerializeField] private float life;
     private float speed;
     private float direction;        //La direccion en la que se mueve
     private float rotationSpeed = 1;
@@ -42,7 +39,8 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] EnemyDesactiveState desactiveState;
     #endregion
 
-    private void Awake() {
+    private void Awake()
+    {
         col = GetComponent<Collider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         view = GetComponent<EnemyView>();
@@ -50,7 +48,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void Start()
     {//IA2-P3”.
         fsm = new FiniteStateMachine(idleState, StartCoroutine);
-        direction = normalDir ? 90:270;     //Establezco segun normalDir que direccion va a tener el enemigo
+        direction = normalDir ? 90 : 270;     //Establezco segun normalDir que direccion va a tener el enemigo
 
         fsm.AddTransition(EnemyStateTransitions.ToRotate, idleState, rotateState);
         fsm.AddTransition(EnemyStateTransitions.ToMoveForward, idleState, moveState);
@@ -62,19 +60,22 @@ public class EnemyBehaviour : MonoBehaviour
 
         fsm.Active = true;
     }
-    private void OnEnable() {
+    private void OnEnable()
+    {
         life = enemy.maxLife;
         speed = enemy.velocity;
         col.enabled = false;
         //view.TakeDamageView(life, enemy.maxLife);
         StartCoroutine(DelayForActivateCollider());
     }
-    private void OnDisable(){
-        
+    private void OnDisable()
+    {
+
     }
 
 
-    IEnumerator DelayForActivateCollider(){     //Desactiva la colisision al spawnear y la activa desp de unos segundo para evitar choques al spawnear
+    IEnumerator DelayForActivateCollider()
+    {     //Desactiva la colisision al spawnear y la activa desp de unos segundo para evitar choques al spawnear
         yield return new WaitForSeconds(2);
         col.enabled = true;
         view.SetHpImage(normalDir);
@@ -86,7 +87,8 @@ public class EnemyBehaviour : MonoBehaviour
         fsm.CurrentState = newState;
         fsm.CurrentState.Enter(fsm.CurrentState, transitionParameters);
     }
-    public void DisableEnemy(){
+    public void DisableEnemy()
+    {
         fsm.Active = false;
     }
     #region Checks
@@ -97,64 +99,77 @@ public class EnemyBehaviour : MonoBehaviour
     }
     #endregion
     #region Collisions
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(!other.gameObject.CompareTag("Missiles")){   //Ya la clase misil se encarga de manejar los daños cuando golpea, por lo que si no es el misil
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!other.gameObject.CompareTag("Missiles"))
+        {   //Ya la clase misil se encarga de manejar los daños cuando golpea, por lo que si no es el misil
             int damage = enemy.CollisionBehaviour(other.gameObject, this);  //Se encarga del comportamiento al colisionar
             TakeDamage(damage);     //Llama a la funcion que hace el daño
-        }  
+        }
         ChangeState(idleState);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {       //si el enemigo tiene un trigger, llama al comportamiento que se encarga del trigger enter
+    private void OnTriggerEnter2D(Collider2D other)
+    {       //si el enemigo tiene un trigger, llama al comportamiento que se encarga del trigger enter
         enemy.TriggerBehaviour(other.gameObject);
-        if(other.gameObject.CompareTag("Missiles"))
+        if (other.gameObject.CompareTag("Missiles"))
             ChangeState(idleState);
     }
     #endregion
     #region TakeDamage
-    public void TakeDamage(float damage){       //Le quita la vida correspondiente al enemigo y si es menor a 0 llama a la funcion de muerte
+    public void TakeDamage(float damage)
+    {       //Le quita la vida correspondiente al enemigo y si es menor a 0 llama a la funcion de muerte
         //Debug.Log(gameObject + " recibio "+ damage+ " de dano" );
         life -= damage;
         life = Mathf.Clamp(life, -100f, enemy.maxLife);
-        view.TakeDamageView(life,enemy.maxLife);
-        if(absorb && specialParticle != null) {specialParticle.SetActive(true);}
-        if(life<= 0){
-            Death(); 
+        view.TakeDamageView(life, enemy.maxLife);
+        if (absorb && specialParticle != null) { specialParticle.SetActive(true); }
+        if (life <= 0)
+        {
+            Death();
         }
     }
 
-    public void TakeDamageForExplosion(ExplosionsTypes type){       //Funcion que es llamada por una explosion para calcular el daño que recibe
+    public void TakeDamageForExplosion(ExplosionsTypes type)
+    {       //Funcion que es llamada por una explosion para calcular el daño que recibe
         int damage = DamageTypes.Instance.explosionDictionary[type];  //Le manda el tipo de explosion a un LookUpTable y este le devuelve que daño hace
         TakeDamage(damage);
     }
     #endregion
     #region States
-    private void Death(){       //Comportamiento de muerte
+    private void Death()
+    {       //Comportamiento de muerte
         GameObject explosion = enemy.DeathBehaviour();      //Llama al comportamiento que tiene que hacer al morir y devuelve una explosion
         explosion.transform.position = transform.position;      //la setea en la posicion del enemigo
         notifyKillCount?.Invoke(1);
         notifyScore?.Invoke(enemy.score);
         enemy.DropPowerUp(transform);       //llama a la funcion que se encarga de generar drops
         this.gameObject.SetActive(false);       //Desactiva este objeto
-        
+
     }
 
-    public void MoveForward() {
-        if(normalDir){
+    public void MoveForward()
+    {
+        if (normalDir)
+        {
             transform.Translate(transform.right * speed * Time.deltaTime);
         }
-        else{
+        else
+        {
             transform.Translate(-transform.right * speed * Time.deltaTime);
         }
     }
 
-    public void Rotate() {
+    public void Rotate()
+    {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, direction), rotationSpeed * Time.deltaTime);
         //Debug.Log(transform.rotation);
     }
 
-    public void UpdateParticle(){
-        if(specialParticle != null){        //si hay una particula es porque tiene un comportamiento especial por lo que llama al comportamiento
+    public void UpdateParticle()
+    {
+        if (specialParticle != null)
+        {        //si hay una particula es porque tiene un comportamiento especial por lo que llama al comportamiento
             enemy.ParticleBehaviour(specialParticle);
         }
     }

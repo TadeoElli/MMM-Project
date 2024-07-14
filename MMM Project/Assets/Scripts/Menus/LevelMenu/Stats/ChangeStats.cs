@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
-using TMPro;
 
 public class ChangeStats : MonoBehaviour
 {
@@ -13,31 +11,37 @@ public class ChangeStats : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textComp;
     private int amount;
 
-    private void OnEnable() {
-        localStringStat.Arguments = new object[] {amount};
+    private void OnEnable()
+    {
+        localStringStat.Arguments = new object[] { amount };
         localStringStat.StringChanged += UpdateText;
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         localStringStat.StringChanged -= UpdateText;
     }
-    private void UpdateText(string value){
+    private void UpdateText(string value)
+    {
         textComp.text = value;
     }
 
-    
-    public void IncreaseAmount(int value){
+
+    public void IncreaseAmount(int value)
+    {
         amount += value;
         localStringStat.Arguments[0] = amount;
         localStringStat.RefreshString();
     }
-    public void DecreaseAmount(int value){
+    public void DecreaseAmount(int value)
+    {
         amount -= value;
         Debug.Log(amount);
         localStringStat.Arguments[0] = amount;
         localStringStat.RefreshString();
     }
-    public void SetAmount(int value){
+    public void SetAmount(int value)
+    {
         amount = value;
         localStringStat.Arguments[0] = amount;
         localStringStat.RefreshString();

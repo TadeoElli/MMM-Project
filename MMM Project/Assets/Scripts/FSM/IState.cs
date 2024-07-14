@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FSM {
+namespace FSM
+{
 
-    public interface IState {
+    public interface IState
+    {
 
-        event Action     OnNeedsReplan;
+        event Action OnNeedsReplan;
 
         event StateEvent OnEnter;
         event StateEvent OnExit;
 
-        FiniteStateMachine FSM        { get; }
-        string             Name       { get; }
-        bool               HasStarted { get; set; }
-        
-        Dictionary<string, IState>     Transitions        { get; set; }
+        FiniteStateMachine FSM { get; }
+        string Name { get; }
+        bool HasStarted { get; set; }
+
+        Dictionary<string, IState> Transitions { get; set; }
 
         IState Configure(FiniteStateMachine fsm);
 
-        void                       Enter(IState from, Dictionary<string, object> transitionParameters);
-        void                       UpdateLoop();
+        void Enter(IState from, Dictionary<string, object> transitionParameters);
+        void UpdateLoop();
         Dictionary<string, object> Exit(IState to);
 
         IState ProcessInput();

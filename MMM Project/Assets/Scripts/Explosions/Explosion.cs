@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
@@ -8,31 +6,38 @@ public class Explosion : MonoBehaviour
     [SerializeField] private ExplosionStrategy explosion;   //El strategy de la explosion
     [SerializeField] private AnimEvents events;     //El controlador de eventos de las animaciones
     [SerializeField] private AudioClip sound;
-    private void Start() {  
-        events.ADD_EVENT("dealDamage", DealDamage);     
+    private void Start()
+    {
+        events.ADD_EVENT("dealDamage", DealDamage);
         events.ADD_EVENT("end", DisableObject);
         events.ADD_EVENT("explosion", ExplosionBehaviour);
         events.ADD_EVENT("implosion", ImplosionBehaviour);
         events.ADD_EVENT("sound", ReproduceSound);
     }
 
-    private void DealDamage(){  //Funcion para hacer daño
+    private void DealDamage()
+    {  //Funcion para hacer daño
         explosion.DealDamage(transform);
     }
-    private void ReproduceSound(){
+    private void ReproduceSound()
+    {
         AudioManager.Instance.PlaySoundEffect(sound);
     }
-    private void ExplosionBehaviour(){      //Comportamiento de explosion (empuje)
+    private void ExplosionBehaviour()
+    {      //Comportamiento de explosion (empuje)
         explosion.ExplosionBehaviour(transform);
     }
-    private void ImplosionBehaviour(){   //Comportamiento de implosion (atraccion)
+    private void ImplosionBehaviour()
+    {   //Comportamiento de implosion (atraccion)
         explosion.ImplosionBehaviour(transform);
     }
-    private void DisableObject(){    //Desactiva el objeto
+    private void DisableObject()
+    {    //Desactiva el objeto
         this.gameObject.SetActive(false);
     }
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos()
+    {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosion.radius);
     }

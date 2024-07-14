@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 
 
-public class InputController : MonoBehaviour 
+public class InputController : MonoBehaviour
 {
     /// <summary>
     /// esta clase se encarga de manegar los inputs y los indices
@@ -19,43 +17,62 @@ public class InputController : MonoBehaviour
     public bool isAvailable = true; //si esta disponible para modificar cualquier indice o no
     public bool missileIsAvailable = true;  //Si esta disponible para modificar el indice de los misiles
     [SerializeField] private UnityEvent<int> antimatterHud;
+    [SerializeField] private int unlockedMissiles = 0;
+    [SerializeField] private GameObject[] lockedIcons;
 
-    private void Awake() {
-        if (Instance == null){
+    private void Awake()
+    {
+        if (Instance == null)
+        {
             Instance = this;
         }
-        else{
+        else
+        {
             Destroy(gameObject);
         }
     }
-    public void SetMissileIndex(int index){ //Setea el indice de los misiles si esta permitido
-        if(missileIsAvailable){
+    public void SetMissileIndex(int index)
+    { //Setea el indice de los misiles si esta permitido
+        if (missileIsAvailable && index <= unlockedMissiles)
+        {
             missileIndex.Value = index;
         }
-        
+
     }
-    public void SetTowerIndex(int index){   //Setea el indice de los torres si esta permitido
-        if(isAvailable){
+    public void SetTowerIndex(int index)
+    {   //Setea el indice de los torres si esta permitido
+        if (isAvailable)
+        {
             towerIndex.Value = index;
         }
     }
-    public void SetPowerIndex(int index){   //Setea el indice de los poderes si esta permitido
-        if(isAvailable){
+    public void SetPowerIndex(int index)
+    {   //Setea el indice de los poderes si esta permitido
+        if (isAvailable)
+        {
             powerIndex.Value = index;
         }
     }
 
-    public void RestoreIndex(int cooldown){ 
+    public void RestoreIndex(int cooldown)
+    {
         antimatterHud?.Invoke(cooldown);
         Invoke("Restore", cooldown);
     }
-    private void Restore(){ //Restablece el indice de los misiles
+    private void Restore()
+    { //Restablece el indice de los misiles
         missileIsAvailable = true;
         missileIndex.Value = 0;
     }
-    public void RemoveSubscribers(){
+    public void RemoveSubscribers()
+    {
         missileIndex.RemoveAllListeners();
         towerIndex.RemoveAllListeners();
         powerIndex.RemoveAllListeners();
+    }
+    public void UnlockNewMissile()
+    {
+        unlockedMissiles++;
+        lockedIcons[unlockedMissiles].SetActive(true);
     }
 }

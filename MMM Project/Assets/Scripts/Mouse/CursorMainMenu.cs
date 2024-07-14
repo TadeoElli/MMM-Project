@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CursorMainMenu : MonoBehaviour
@@ -15,10 +13,10 @@ public class CursorMainMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()   
+    void Update()
     {
         currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = currentPosition;
     }
- 
+
 }

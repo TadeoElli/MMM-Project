@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class TowersPool : MonoBehaviour
 {
@@ -12,10 +11,12 @@ public class TowersPool : MonoBehaviour
     [SerializeField] private int poolSize = 1;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> towerDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un torres y devolver la cantidad generada
     private static TowersPool instance;
-    public static TowersPool Instance { get {return instance; } }
+    public static TowersPool Instance { get { return instance; } }
 
-    private void Awake() {
-        if(instance == null){
+    private void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
         }
         else
@@ -33,10 +34,12 @@ public class TowersPool : MonoBehaviour
         towerPrefab.ForEach(prefab => AddTowersToPool(poolSize, prefab));
     }
 
-    public void AddTowersToPool(int amount, TowerBehaviour prefab){       //Le mando cuantos genero y cual torres
+    public void AddTowersToPool(int amount, TowerBehaviour prefab)
+    {       //Le mando cuantos genero y cual torres
 
         List<GameObject> prefabList = towerDictionary[prefab.gameObject];    //Guardo la lista de cantidad de torres en otra lista
-        Enumerable.Range(0, amount).ToList().ForEach(_ => {
+        Enumerable.Range(0, amount).ToList().ForEach(_ =>
+        {
             GameObject tower = Instantiate(prefab.gameObject);
             tower.SetActive(false);
             prefabList.Add(tower);
@@ -45,13 +48,14 @@ public class TowersPool : MonoBehaviour
         });
     }
 
-    public GameObject RequestTower(TowerBehaviour prefab){        //Le mando cual necesito
+    public GameObject RequestTower(TowerBehaviour prefab)
+    {        //Le mando cual necesito
         //IA2-LINQ
         //Cuando se pide el tipo de objeto, se pregunta si ya hay uno en la lista que no este activo y segun eso
         //Se devuelve el primero de la lista que no este activo o se crea uno nuevo y se devuelve  el ultimo de la lista
         List<GameObject> prefabList = towerDictionary[prefab.gameObject];
         bool hasInactivePrefab = prefabList.Any(prefab => !prefab.activeSelf);
-        if(!hasInactivePrefab) AddTowersToPool(1,prefab);
+        if (!hasInactivePrefab) AddTowersToPool(1, prefab);
         GameObject prefabToReturn = hasInactivePrefab ? prefabList.FirstOrDefault(x => !x.activeSelf) : prefabList.LastOrDefault();
         prefabToReturn.SetActive(true);
         return prefabToReturn;

@@ -1,7 +1,6 @@
-using System.Collections;
+using FSM;
 using System.Collections.Generic;
 using UnityEngine;
-using FSM;
 //IA2-P3”.
 public class EnemyIdleState : MonoBaseState
 {
@@ -11,22 +10,25 @@ public class EnemyIdleState : MonoBaseState
 
     public override IState ProcessInput()
     {
-        if(!owner.canMove && Transitions.ContainsKey(EnemyStateTransitions.ToDesactivate))
+        if (!owner.canMove && Transitions.ContainsKey(EnemyStateTransitions.ToDesactivate))
             return Transitions[EnemyStateTransitions.ToDesactivate];
-        if(rb2D.velocity.magnitude < 0.2){  //Si la velocidad del objeto es lo suficiente mente chica, procede a moverse, esto sirve para que 
-        //cuando la velocidad aumente debido a una colision o un comportamiento, espere a que se detenga para pasar al estado que se encarga de rotar, desp de un tiempo
+        if (rb2D.velocity.magnitude < 0.2)
+        {  //Si la velocidad del objeto es lo suficiente mente chica, procede a moverse, esto sirve para que 
+           //cuando la velocidad aumente debido a una colision o un comportamiento, espere a que se detenga para pasar al estado que se encarga de rotar, desp de un tiempo
             timer = timer + 1 * Time.deltaTime;
-            if(timer > 1.5f){
-                if(owner.IsFacingDirection() && Transitions.ContainsKey(EnemyStateTransitions.ToMoveForward))
+            if (timer > 1.5f)
+            {
+                if (owner.IsFacingDirection() && Transitions.ContainsKey(EnemyStateTransitions.ToMoveForward))
                     return Transitions[EnemyStateTransitions.ToMoveForward];       //Paso al estado de moverse
-                else if(Transitions.ContainsKey(EnemyStateTransitions.ToRotate)){
+                else if (Transitions.ContainsKey(EnemyStateTransitions.ToRotate))
+                {
                     return Transitions[EnemyStateTransitions.ToRotate];       //Paso al estado de rotar
                 }
             }
         }
-        
+
         return this;
-        
+
     }
 
     public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)

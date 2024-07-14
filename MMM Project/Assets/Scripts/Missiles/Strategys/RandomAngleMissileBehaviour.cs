@@ -20,14 +20,16 @@ public class RandomAngleMissileBehaviour : MissileStrategy
         return new Vector2(Mathf.Cos(newAngle), Mathf.Sin(newAngle));
     }
 
-    private void OnEnter(GameObject prefab){    
+    private void OnEnter(GameObject prefab)
+    {
         Rigidbody2D rigidbody2D = prefab.GetComponent<Rigidbody2D>();
         Vector2 newDirection = GenerateRandomDirection();
         //Debug.Log(newDirection);
         rigidbody2D.velocity = newDirection * rigidbody2D.velocity.magnitude;
     }
     //El comportamiento de colision
-    public override int CollisionBehaviour(GameObject other, GameObject prefab){
+    public override int CollisionBehaviour(GameObject other, GameObject prefab)
+    {
         int layer = other.layer;
         int damage = 0;
         switch (layer)
@@ -43,7 +45,7 @@ public class RandomAngleMissileBehaviour : MissileStrategy
                 damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
                 OnEnter(prefab);
                 DealDamage(other, prefab);
-                if(other.GetComponentInChildren<SpriteRenderer>().isVisible)
+                if (other.GetComponentInChildren<SpriteRenderer>().isVisible)
                     AudioManager.Instance.PlaySoundEffect(bounceEnemyEffect);
                 return damage;
             default:

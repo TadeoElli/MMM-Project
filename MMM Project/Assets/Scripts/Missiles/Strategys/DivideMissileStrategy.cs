@@ -9,12 +9,13 @@ public class DivideMissileStrategy : MissileStrategy
     [SerializeField] MissileBehaviour subMissiles;  //Que tipo de misil van a ser los que spawnea
     [SerializeField] private float force;   //Con que fuerza van a ser disparados
     [SerializeField] private int cantOfSubmissiles;     //La cantidad de misiles que spawnea
-    
+
 
     //El comportamiento de colision
-    public override int CollisionBehaviour(GameObject other, GameObject prefab){
+    public override int CollisionBehaviour(GameObject other, GameObject prefab)
+    {
         MissileBehaviour missileBehaviour = prefab.GetComponent<MissileBehaviour>();
-            
+
         int layer = other.layer;
         int damage = 0;
         switch (layer)
@@ -42,12 +43,14 @@ public class DivideMissileStrategy : MissileStrategy
 
 
     //Crea un nuevo misil del tipo guardado y se crea una nueva direccion aleatoria, luego se lo manda en esa direccion
-    private void CreateSubmissile(Transform origin){
-        GameObject newMissile =  MissilePool.Instance.RequestMissile(subMissiles);
+    private void CreateSubmissile(Transform origin)
+    {
+        GameObject newMissile = MissilePool.Instance.RequestMissile(subMissiles);
         newMissile.transform.position = origin.position;
         Rigidbody2D rb2D = newMissile.GetComponent<Rigidbody2D>();
-        if(rb2D != null){
-            Vector2 direction = new Vector2(Random.Range(0f,1f), Random.Range(0f,1f));
+        if (rb2D != null)
+        {
+            Vector2 direction = new Vector2(Random.Range(0f, 1f), Random.Range(0f, 1f));
             rb2D.AddForce(direction * force);
         }
     }

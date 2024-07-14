@@ -7,9 +7,10 @@ public class AntimatterMissileBehaviour : MissileStrategy
 {
 
     //El comportamiento de cuando colisiona
-    public override int CollisionBehaviour(GameObject other, GameObject prefab){
+    public override int CollisionBehaviour(GameObject other, GameObject prefab)
+    {
         MissileBehaviour missileBehaviour = prefab.GetComponent<MissileBehaviour>();
-            
+
         int layer = other.layer;
         int damage = 0;
         switch (layer)

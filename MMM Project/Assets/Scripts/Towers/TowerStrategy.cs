@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public abstract class TowerStrategy : ScriptableObject        //Strategy para todos los tipos de torretas
 {
@@ -14,7 +13,8 @@ public abstract class TowerStrategy : ScriptableObject        //Strategy para to
     public Vector3 scale;   //La escala del cursor
     [Header("Sound Effects")]
     public AudioClip invalidEffect, deployEffect;
-    public void CreateTower(Vector2 origin){        //Esta funcion crea la torreta en el punto donde se presiono
+    public void CreateTower(Vector2 origin)
+    {        //Esta funcion crea la torreta en el punto donde se presiono
         GameObject tower = TowersPool.Instance.RequestTower(prefab);
         tower.transform.position = origin;
         AudioManager.Instance.PlaySoundEffect(deployEffect);
@@ -25,5 +25,5 @@ public abstract class TowerStrategy : ScriptableObject        //Strategy para to
 
     public abstract void DestroyTower(GameObject prefab);   //El comportamiento que tiene al destruirse
 
-    
+
 }

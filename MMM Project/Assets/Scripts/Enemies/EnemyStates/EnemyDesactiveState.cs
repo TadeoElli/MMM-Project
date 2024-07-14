@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using FSM;
+using UnityEngine;
 //IA2-P3”.
 public class EnemyDesactiveState : MonoBaseState
 {
@@ -10,7 +8,7 @@ public class EnemyDesactiveState : MonoBaseState
 
     public override IState ProcessInput()
     {
-        if(owner.canMove && Transitions.ContainsKey(EnemyStateTransitions.ToIdle))
+        if (owner.canMove && Transitions.ContainsKey(EnemyStateTransitions.ToIdle))
             return Transitions[EnemyStateTransitions.ToIdle];
         return this;
     }

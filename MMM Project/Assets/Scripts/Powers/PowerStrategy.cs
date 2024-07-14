@@ -12,8 +12,8 @@ public abstract class PowerStrategy : ScriptableObject        //Strategy para to
     [Header("Sound Effects")]
     public AudioClip invalidEffect;
 
-    public abstract bool BehaviourStarted();    //El comportamiento cuando se presiona el boton del mouse
+    public abstract bool BehaviourStarted(int level);    //El comportamiento cuando se presiona el boton del mouse
     public abstract bool BehaviourPerformed();  //El comportamiento cuando se mantiene presionado el boton del mouse
     public abstract void BehaviourEnded();  //El comportamiento cuando se suelta el boton del mouse
-    
+
 }

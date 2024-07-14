@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-using System;
 using System.Diagnostics;
 using System.Linq;
+using UnityEngine;
 
 public class EnemyPool : MonoBehaviour
 {
@@ -21,10 +19,12 @@ public class EnemyPool : MonoBehaviour
     //public event OnEnemyDeath _OnEnemyDeath;
 
     private static EnemyPool instance;
-    public static EnemyPool Instance { get {return instance; } }
+    public static EnemyPool Instance { get { return instance; } }
 
-    private void Awake() {
-        if(instance == null){
+    private void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
         }
         else
@@ -43,45 +43,51 @@ public class EnemyPool : MonoBehaviour
         //IA2-P4”.
         StartCoroutine(AddEnemiesToPoolCoroutine());
     }
-    private IEnumerator AddEnemiesToPoolCoroutine(){
+    private IEnumerator AddEnemiesToPoolCoroutine()
+    {
         stopwatch.Start();
         foreach (var prefab in enemyPrefab)
         {
             yield return StartCoroutine(AddEnemyToPool(poolSize, prefab));
         }
     }
-    private IEnumerator AddEnemyToPool(int amount, EnemyBehaviour enemy){       //Le mando cuantos genero y cual misil
+    private IEnumerator AddEnemyToPool(int amount, EnemyBehaviour enemy)
+    {       //Le mando cuantos genero y cual misil
 
         List<GameObject> prefabList = enemyDictionary[enemy.gameObject];    //Guardo la lista de cantidad de enemigos en otra lista
         for (int i = 0; i < amount; i++)
         {
             CreateEnemy(prefabList, enemy);
             // Espera un frame antes de continuar con la siguiente instancia
-            if(stopwatch.ElapsedMilliseconds > 1f / 60f ){
+            if (stopwatch.ElapsedMilliseconds > 1f / 60f)
+            {
                 yield return new WaitForEndOfFrame();
                 stopwatch.Restart();
                 //UnityEngine.Debug.Log("Spawnie enemies en un frame");
             }
         }
     }
-    private void CreateEnemy(List<GameObject> prefabList, EnemyBehaviour enemy){
+    private void CreateEnemy(List<GameObject> prefabList, EnemyBehaviour enemy)
+    {
         GameObject prefab = Instantiate(enemy.gameObject);
         var behaviourComponent = prefab.GetComponent<EnemyBehaviour>();
         behaviourComponent.notifyKillCount = killCount.IncreaseAmount;
         behaviourComponent.notifyScore += score.IncreaseAmount;
         behaviourComponent.notifyScore += stats.AddExp;
         behaviourComponent.notifyKillCount += spawner.ReduceEnemiesAlive;
+        prefab.transform.parent = transform;
         prefab.SetActive(false);
         prefabList.Add(prefab);
     }
 
-    public GameObject RequestEnemy(EnemyBehaviour enemy){        //Le mando cual necesito
+    public GameObject RequestEnemy(EnemyBehaviour enemy)
+    {        //Le mando cual necesito
         //IA2-LINQ
         //Cuando se pide el tipo de objeto, se pregunta si ya hay uno en la lista que no este activo y segun eso
         //Se devuelve el primero de la lista que no este activo o se crea uno nuevo y se devuelve  el ultimo de la lista
         List<GameObject> prefabList = enemyDictionary[enemy.gameObject];
         bool hasInactivePrefab = prefabList.Any(prefab => !prefab.activeSelf);
-        if(!hasInactivePrefab) CreateEnemy(prefabList,enemy);
+        if (!hasInactivePrefab) CreateEnemy(prefabList, enemy);
         GameObject prefab = hasInactivePrefab ? prefabList.FirstOrDefault(x => !x.activeSelf) : prefabList.Last();
         if (prefab != null)
         {

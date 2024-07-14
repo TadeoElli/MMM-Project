@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 [System.Serializable]
 public class Wave
@@ -16,9 +14,10 @@ public class Wave
     public Direction _direction;
 }
 
-public enum Direction{
+public enum Direction
+{
     Left,
     Right,
     Both
-    
+
 }

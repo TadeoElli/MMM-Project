@@ -11,9 +11,11 @@ public class StickyMissileBehaviour : MissileStrategy
     [SerializeField] private float force;   //La fuerza con la que lo empuja
     private Vector2 direction;      //La direccion hacia donde se tiene que mover
 
-    private void OnEnter(GameObject other, GameObject prefab){      //Guarda la posicion del enemigo y se mueve en esa direccion, mientras que lo empuja
+    private void OnEnter(GameObject other, GameObject prefab)
+    {      //Guarda la posicion del enemigo y se mueve en esa direccion, mientras que lo empuja
         Rigidbody2D rb2D = other.GetComponent<Rigidbody2D>();
-        if(rb2D != null){
+        if (rb2D != null)
+        {
             Vector2 direction = other.transform.position - prefab.transform.position;
             float distance = 1 + direction.magnitude;
             float finalForce = force / distance;
@@ -22,7 +24,8 @@ public class StickyMissileBehaviour : MissileStrategy
     }
 
     //Detecta colisiones, si es con una pared, simula un rebote, si es un enemigo, llama a la funcion onEnter y le reduce la vida al misil
-    public override int CollisionBehaviour(GameObject other, GameObject prefab){
+    public override int CollisionBehaviour(GameObject other, GameObject prefab)
+    {
         int layer = other.layer;
         int damage = 0;
         switch (layer)
@@ -43,7 +46,7 @@ public class StickyMissileBehaviour : MissileStrategy
                 enemyPierced = other.gameObject;
                 OnEnter(other.gameObject, prefab.gameObject);
                 DealDamage(other, prefab);
-                if(other.GetComponentInChildren<SpriteRenderer>().isVisible)
+                if (other.GetComponentInChildren<SpriteRenderer>().isVisible)
                     AudioManager.Instance.PlaySoundEffect(bounceEnemyEffect);
                 return damage;
             default:
@@ -51,7 +54,8 @@ public class StickyMissileBehaviour : MissileStrategy
         }
     }
     //mientras este dentro del enemigo y es el que entro, se mueve en la direccion correspondiente
-    public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
+    public override void SpecialBehaviourStay(GameObject other, GameObject prefab)
+    {
         if (other.gameObject == enemyPierced)
         {
             direction = ((Vector2)other.transform.position - (Vector2)prefab.transform.position).normalized;
@@ -59,12 +63,13 @@ public class StickyMissileBehaviour : MissileStrategy
     }
 
     //Cuando sale del enemigo y es al que habia entrado, guarda la nueva posicion del enemigo para moverse en la nueva direccion
-    public override void SpecialBehaviourExit(GameObject other,GameObject prefab){
+    public override void SpecialBehaviourExit(GameObject other, GameObject prefab)
+    {
         if (other.gameObject == enemyPierced)
         {
             enemyPierced = null;
             prefab.GetComponent<Rigidbody2D>().velocity = direction * 5;
-            
+
         }
     }
 

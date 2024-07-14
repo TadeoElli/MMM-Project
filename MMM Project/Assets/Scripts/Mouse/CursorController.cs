@@ -18,7 +18,7 @@ public class CursorController : MonoBehaviour
     [SerializeField] private GameObject blockCursor;
     [SerializeField] private Nexus nexus;
     [SerializeField] private float distanceFromNexus;
-    private int  towerIndex;
+    private int towerIndex;
 
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class CursorController : MonoBehaviour
 
 
         Cursor.visible = false; //Desactivo el mouse
-       
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         RestoreCursor();    //Activo el MainCursor
     }
@@ -51,30 +51,35 @@ public class CursorController : MonoBehaviour
         transform.position = currentPosition;
         UpdateBlockCursor();
     }
-    private void UpdateBlockCursor(){
+    private void UpdateBlockCursor()
+    {
         blockCursor.SetActive(towerIndex > 0 && CheckDistanceFromNexus());
         blockCursor.transform.position = currentPosition;
     }
-    
-    public void ChangeTowerIndex(int index){    //Cambio el indice de la torre para tenerlo
+
+    public void ChangeTowerIndex(int index)
+    {    //Cambio el indice de la torre para tenerlo
         towerIndex = index;
     }
-    private bool CheckDistanceFromNexus(){  //Chequero la distancia entre el mouse y el nexo, el valor "distanceFromNexus" debe ser el mismo 
-    //que en el towerController
+    private bool CheckDistanceFromNexus()
+    {  //Chequero la distancia entre el mouse y el nexo, el valor "distanceFromNexus" debe ser el mismo 
+       //que en el towerController
         return Vector2.Distance(currentPosition, nexus.transform.position) < distanceFromNexus || currentPosition.y < -3f || currentPosition.y > 4.25f;
     }
-    
-    public void SetCursor(Sprite sprite, Material material, Vector3 scale){ //Establezco que imagen,material y escala debo poner en el SpriteRenderer
+
+    public void SetCursor(Sprite sprite, Material material, Vector3 scale)
+    { //Establezco que imagen,material y escala debo poner en el SpriteRenderer
         spriteRenderer.sprite = sprite;
         spriteRenderer.material = material;
         transform.localScale = scale;
-        transform.localRotation = Quaternion.Euler(0f,0f,0f);
+        transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
-    public void RestoreCursor(){    //Establezco el SpriteRenderer para que muestre el MainCursor
+    public void RestoreCursor()
+    {    //Establezco el SpriteRenderer para que muestre el MainCursor
         spriteRenderer.sprite = mainSprite;
         spriteRenderer.material = mainMaterial;
         transform.localRotation = mainTransformRotation;
         transform.localScale = mainTransformScale;
     }
- 
+
 }

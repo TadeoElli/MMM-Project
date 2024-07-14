@@ -9,14 +9,15 @@ public class RepulseEnemyStrategy : EnemyStrategy
     [SerializeField] private float cooldown;        //Cooldown para que active la onda expansiva
     [SerializeField] private GameObject particle;       //Particula de la expansion (solo visual)
     private float timer = 0;
-    public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab){        //Comportamiento de collisiones            
+    public override int CollisionBehaviour(GameObject other, EnemyBehaviour prefab)
+    {        //Comportamiento de collisiones            
         int layer = other.layer;
         int damage;
         switch (layer)  //Dependiendo del layer con el choco llama a un LookUpTable de tipos de daño de colisiones
         {
             case 7:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
-                if(prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
+                if (prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
                     AudioManager.Instance.PlaySoundEffect(bounceClip);
                 return damage;
             case 8:
@@ -24,7 +25,7 @@ public class RepulseEnemyStrategy : EnemyStrategy
             case 10:
                 damage = DamageTypes.Instance.collisionEnemiesDictionary[layer];
                 CollisionForce(other, prefab);       //Llama a la funcion para empujar al otro enemigo
-                if(prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
+                if (prefab.GetComponentInChildren<SpriteRenderer>().isVisible)
                     AudioManager.Instance.PlaySoundEffect(bounceClip);
                 return damage;
             default:
@@ -33,12 +34,15 @@ public class RepulseEnemyStrategy : EnemyStrategy
         }
     }
 
-    public override void ParticleBehaviour(GameObject specialParticle){     //Comportamiento especial de las particulas
-        if(timer > cooldown){
+    public override void ParticleBehaviour(GameObject specialParticle)
+    {     //Comportamiento especial de las particulas
+        if (timer > cooldown)
+        {
             timer = 0;
             specialParticle.SetActive(true);
         }
-        else{
+        else
+        {
             timer += Time.deltaTime;
         }
     }

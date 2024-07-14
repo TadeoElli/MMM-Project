@@ -9,10 +9,12 @@ public class SingularityMissileBehaviour : MissileStrategy
     [SerializeField] private float force;       //La fuerza con la que atrae
 
     //si collisiona con una pared, simula el movimiento de rebote y pierde algo de vida
-    public override int CollisionBehaviour(GameObject other, GameObject prefab){
+    public override int CollisionBehaviour(GameObject other, GameObject prefab)
+    {
         int layer = other.layer;
         int damage = 0;
-        if(layer == 7){
+        if (layer == 7)
+        {
             damage = DamageTypes.Instance.collisionMissilesDictionary[layer];
             Rigidbody2D rb2D = prefab.GetComponent<Rigidbody2D>();
             Vector2 bounceDirection = rb2D.velocity;
@@ -24,7 +26,8 @@ public class SingularityMissileBehaviour : MissileStrategy
     }
 
     //Mientras este en contacto con un enemigo, genera la direccion a la que se tiene que mover el enemigo y lo atrae constantemente
-    public override void SpecialBehaviourStay(GameObject other,GameObject prefab){
+    public override void SpecialBehaviourStay(GameObject other, GameObject prefab)
+    {
         Vector2 direction = (prefab.transform.position - other.transform.position).normalized;
         other.transform.position = Vector2.Lerp(other.transform.position, prefab.transform.position, force * Time.deltaTime);
     }

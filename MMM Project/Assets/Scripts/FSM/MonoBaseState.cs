@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FSM {
+namespace FSM
+{
 
-    public abstract class MonoBaseState : MonoBehaviour, IState {
+    public abstract class MonoBaseState : MonoBehaviour, IState
+    {
 
-        public event Action     OnNeedsReplan;
+        public event Action OnNeedsReplan;
         public event StateEvent OnEnter;
         public event StateEvent OnExit;
-        
+
         public virtual string Name => GetType().Name;
 
         public virtual bool HasStarted { get; set; }
@@ -21,19 +23,22 @@ namespace FSM {
         private FiniteStateMachine _fsm;
 
 
-        public IState Configure(FiniteStateMachine fsm) {
-            _fsm            =  fsm;
-            _fsm.OnActive   += OnActive;
+        public IState Configure(FiniteStateMachine fsm)
+        {
+            _fsm = fsm;
+            _fsm.OnActive += OnActive;
             _fsm.OnUnActive += OnUnActive;
             return this;
         }
 
-        public virtual void Enter(IState from, Dictionary<string, object> transitionParameters = null) {
+        public virtual void Enter(IState from, Dictionary<string, object> transitionParameters = null)
+        {
             OnEnter?.Invoke(from, this);
             HasStarted = true;
         }
 
-        public virtual Dictionary<string, object> Exit(IState to) {
+        public virtual Dictionary<string, object> Exit(IState to)
+        {
             OnExit?.Invoke(this, to);
             HasStarted = false;
             return null;
@@ -41,9 +46,9 @@ namespace FSM {
 
         public abstract void UpdateLoop();
 
-        protected virtual void OnActive() {}
+        protected virtual void OnActive() { }
 
-        protected virtual void OnUnActive() {}
+        protected virtual void OnUnActive() { }
 
         public abstract IState ProcessInput();
     }

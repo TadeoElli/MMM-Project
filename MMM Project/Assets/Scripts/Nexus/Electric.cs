@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Electric : MonoBehaviour
 {
@@ -27,7 +26,7 @@ public class Electric : MonoBehaviour
     private float timer;
     private float timerTimeOut = 0.05f;
 
-    private void Start ()
+    private void Start()
     {
         lRend = GetComponent<LineRenderer>();
         points = new Vector3[pointsCount];
@@ -74,8 +73,8 @@ public class Electric : MonoBehaviour
         {
             if (i != pointIndexA && i != pointIndexE)
             {
-                points[i] += new Vector3(Random.Range(-randomness, randomness), 
-                                         Random.Range(-randomness, randomness), 
+                points[i] += new Vector3(Random.Range(-randomness, randomness),
+                                         Random.Range(-randomness, randomness),
                                          Random.Range(-randomness, randomness));
             }
         }

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 
 public class PowerUpHud : MonoBehaviour
@@ -14,20 +11,24 @@ public class PowerUpHud : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
     private float timer;
     private bool isActive = false;
-    private void Update() {
-        if (timer > 0 && isActive){
+    private void Update()
+    {
+        if (timer > 0 && isActive)
+        {
             timer -= Time.deltaTime;
             text.text = timer.ToString();
         }
-        else if( timer <= 0 && isActive){
+        else if (timer <= 0 && isActive)
+        {
             isActive = false;
-            anim.SetBool("Show",false);
+            anim.SetBool("Show", false);
         }
     }
-    public void ShowHud(int cooldown){
+    public void ShowHud(int cooldown)
+    {
         timer = (float)cooldown;
         isActive = true;
-        anim.SetBool("Show",true);
+        anim.SetBool("Show", true);
     }
 
 }

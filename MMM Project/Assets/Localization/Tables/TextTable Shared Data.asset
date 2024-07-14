@@ -416,7 +416,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 36053923659206656
-    m_Key: New Entry 2
+    m_Key: upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36357550374342656
+    m_Key: powers
     m_Metadata:
       m_Items: []
   m_Metadata:

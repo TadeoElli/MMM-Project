@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
 using System.Diagnostics;
+using System.Linq;
+using UnityEngine;
 
 public class PowerUpPool : MonoBehaviour
 {
@@ -13,11 +13,13 @@ public class PowerUpPool : MonoBehaviour
     [SerializeField] private int poolSize = 1;          //Cantidad de la pool al inicializar
     [SerializeField] private Dictionary<GameObject, List<GameObject>> powerUpDictionary = new Dictionary<GameObject, List<GameObject>>();   //Diccionario para entregar un PowerUps y devolver la cantidad generada
     private static PowerUpPool instance;
-    public static PowerUpPool Instance { get {return instance; } }
-    Stopwatch stopwatch= new Stopwatch();
+    public static PowerUpPool Instance { get { return instance; } }
+    Stopwatch stopwatch = new Stopwatch();
 
-    private void Awake() {
-        if(instance == null){
+    private void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
         }
         else
@@ -36,41 +38,46 @@ public class PowerUpPool : MonoBehaviour
         //IA2-P4”.
         StartCoroutine(AddPowerUpToPoolCoroutine());
     }
-    private IEnumerator AddPowerUpToPoolCoroutine(){
+    private IEnumerator AddPowerUpToPoolCoroutine()
+    {
         stopwatch.Start();
         foreach (var prefab in powerUpPrefab)
         {
             yield return StartCoroutine(AddPowerUpToPool(poolSize, prefab));
         }
     }
-    public IEnumerator AddPowerUpToPool(int amount, PowerUp prefab){       //Le mando cuantos genero y cual PowerUps
+    public IEnumerator AddPowerUpToPool(int amount, PowerUp prefab)
+    {       //Le mando cuantos genero y cual PowerUps
 
         List<GameObject> prefabList = powerUpDictionary[prefab.gameObject];    //Guardo la lista de cantidad de PowerUps en otra lista
         for (int i = 0; i < amount; i++)
         {
             CreatePowerUp(prefabList, prefab);
             // Espera un frame antes de continuar con la siguiente instancia
-            if(stopwatch.ElapsedMilliseconds > 1f / 60f ){
+            if (stopwatch.ElapsedMilliseconds > 1f / 60f)
+            {
                 yield return new WaitForEndOfFrame();
                 stopwatch.Restart();
                 //UnityEngine.Debug.Log("Spawnie powerUps en un frame");
             }
         }
     }
-    private void CreatePowerUp(List<GameObject> prefabList, PowerUp prefab){
+    private void CreatePowerUp(List<GameObject> prefabList, PowerUp prefab)
+    {
         GameObject powerUp = Instantiate(prefab.gameObject);
         powerUp.SetActive(false);
         prefabList.Add(powerUp);
         powerUp.transform.SetParent(transform);
     }
 
-    public GameObject RequestPowerUp(PowerUp prefab){        //Le mando cual necesito
+    public GameObject RequestPowerUp(PowerUp prefab)
+    {        //Le mando cual necesito
         //IA2-LINQ
         //Cuando se pide el tipo de objeto, se pregunta si ya hay uno en la lista que no este activo y segun eso
         //Se devuelve el primero de la lista que no este activo o se crea uno nuevo y se devuelve  el ultimo de la lista
         List<GameObject> prefabList = powerUpDictionary[prefab.gameObject];
         bool hasInactivePrefab = prefabList.Any(prefab => !prefab.activeSelf);
-        if(!hasInactivePrefab) CreatePowerUp(prefabList,prefab);
+        if (!hasInactivePrefab) CreatePowerUp(prefabList, prefab);
         GameObject prefabToReturn = hasInactivePrefab ? prefabList.FirstOrDefault(x => !x.activeSelf) : prefabList.LastOrDefault();
         prefabToReturn.SetActive(true);
         return prefabToReturn;
