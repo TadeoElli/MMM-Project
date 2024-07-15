@@ -20,6 +20,8 @@ public class TowerController : MonoBehaviour
     [SerializeField] private List<float> cooldowns; //La lista de cooldowns
     [SerializeField] private List<float> currentCd; //la lista de sus temporizadores
     [SerializeField] private List<bool> isReady;    //La lista de flags de si ya estan disponibles
+    [SerializeField] private bool[] isUnlocked;     //La lista de flags para saber si ya se desbloqueo este torre
+    [SerializeField] private GameObject[] towerIcons;
     [SerializeField] private List<UnityEvent> changeTowersHud;
 
     private void Awake()
@@ -66,7 +68,7 @@ public class TowerController : MonoBehaviour
 
     public void SetTowerIndex(int newIndex)
     {    //Cambia el indice de las torres, si el nuevo indice la torre todavia no esta lista, vuelve a 0
-        if (!isReady[newIndex])
+        if (!isReady[newIndex] || !isUnlocked[newIndex])
         {
             currentIndex.Value = 0;
             hasTower = false;
@@ -78,7 +80,11 @@ public class TowerController : MonoBehaviour
             CursorController.Instance.SetCursor(towers[newIndex].sprite, towers[newIndex].material, towers[newIndex].scale);
         }
     }
-
+    public void UnlockNewTower(int index)
+    {
+        isUnlocked[index] = true;
+        towerIcons[index]?.SetActive(true);
+    }
     //Si tiene una torre activa, chequea si la distancia hacia el nexo es lo suficiente para crearla
     public void ActivateTower()
     {

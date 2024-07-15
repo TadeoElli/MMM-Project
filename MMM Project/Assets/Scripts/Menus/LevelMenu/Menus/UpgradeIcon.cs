@@ -9,6 +9,7 @@ public class UpgradeIcon : IconHud
     /// <summary>
     /// Esta clase sirve como base para manejar los iconos del menu de mejoras
     /// </summary>
+    [SerializeField] private Sprite unlockedIcon, lockedIcon;
     [SerializeField] private Image image, hoverImage, pressedImage;
     [SerializeField] private UnityEvent onLevelUp;
     [Header("Description")]
@@ -21,26 +22,43 @@ public class UpgradeIcon : IconHud
     [SerializeField] private int points;
     [SerializeField] private int pointsToComplete, maxLevel, currentTechLevel;
     public int currentLevel;
-    [SerializeField] private bool requireTechLevel;
+    [SerializeField] private bool requireTechLevel, isAvailable;
     [SerializeField] private TextMeshProUGUI textComp;
 
-
+    private void Start()
+    {
+        CheckIconStatus();
+        isInteractable = true;
+    }
     protected override void Update()
     {
         base.Update();
+    }
+    public void CheckIconStatus()
+    {
         if (previousSkills != null)
         {
             for (int i = 0; i < previousSkills.Count; i++)
             {
                 if (previousSkills[i].currentLevel < previousLevel[i])
+                {
+                    image.sprite = lockedIcon;
                     return;
+                }
             }
 
         }
-        if (currentLevel < maxLevel)
-            isInteractable = true;
+        if (currentLevel <= maxLevel)
+        {
+            isAvailable = true;
+            image.sprite = unlockedIcon;
+        }
         else
-            isInteractable = false;
+        {
+            isAvailable=false;
+            image.sprite = lockedIcon;
+        }
+
     }
 
     protected override void OnClickEnter()
@@ -61,7 +79,8 @@ public class UpgradeIcon : IconHud
     protected override void OnClickUp()
     {
         if (pressedImage != null) pressedImage.gameObject.SetActive(false);
-        IncreasePoints();
+        if(isAvailable)
+            IncreasePoints();
     }
     private void IncreasePoints()
     {
@@ -83,16 +102,17 @@ public class UpgradeIcon : IconHud
                 availableSkillPoints.Value--;
                 CheckForNextLevel();
             }
-            if (textComp != null)
-                textComp.text = points + "/" + pointsToComplete;
         }
     }
     private void CheckForNextLevel()
     {
+        if (textComp != null)
+            textComp.text = points + "/" + pointsToComplete;
         if (points >= pointsToComplete)
         {
             points = 0;
             currentLevel++;
+            SetObtained();
             onLevelUp?.Invoke();
         }
     }
@@ -108,6 +128,14 @@ public class UpgradeIcon : IconHud
     public void SetNextPointsToLevelUp()
     {
         pointsToComplete = pointsToComplete * 2;
+    }
+    public void SetObtained()
+    {
+        if(textComp != null && currentLevel >= maxLevel)
+        {
+            textComp.text = pointsToComplete + "/" + pointsToComplete;
+            textComp.color = Color.green;
+        }
     }
 
 }

@@ -423,6 +423,10 @@ MonoBehaviour:
     m_Key: powers
     m_Metadata:
       m_Items: []
+  - m_Id: 36473968302444544
+    m_Key: points
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
