@@ -13,7 +13,7 @@ public class UpgradeIcon : IconHud
     [SerializeField] private Image image, hoverImage, pressedImage;
     [SerializeField] private UnityEvent onLevelUp;
     [Header("Description")]
-    [SerializeField] private GameObject description;
+    [SerializeField] private GameObject description, generalInfo;
     [Header("Requisites")]
     [SerializeField] private List<UpgradeIcon> previousSkills;
     [SerializeField] private List<int> previousLevel;
@@ -34,6 +34,7 @@ public class UpgradeIcon : IconHud
     {
         base.Update();
     }
+    
     public void CheckIconStatus()
     {
         if (previousSkills != null)
@@ -65,12 +66,14 @@ public class UpgradeIcon : IconHud
     {
         if (hoverImage != null) hoverImage.gameObject.SetActive(true);
         if (description != null) { description.SetActive(true); }
+        if(generalInfo != null) generalInfo.SetActive(false);
     }
     protected override void OnClickExit()
     {
         if (hoverImage != null) hoverImage.gameObject.SetActive(false);
         if (pressedImage != null) pressedImage.gameObject.SetActive(false);
         if (description != null) { description.SetActive(false); }
+        if (generalInfo != null) generalInfo.SetActive(true);
     }
     protected override void OnClickDown()
     {
