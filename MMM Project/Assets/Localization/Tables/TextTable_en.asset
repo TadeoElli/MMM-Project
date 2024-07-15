@@ -532,6 +532,237 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 794851374009679874
+  - m_Id: 37021931441442816
+    m_Localized: Energy Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37022148161130496
+    m_Localized: 'Type:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37022300422754304
+    m_Localized: 'Target:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37022403300642816
+    m_Localized: 'Requirements:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37024626847993856
+    m_Localized: Passive Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37024820922634240
+    m_Localized: Nexus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37025034765029376
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37025335714729984
+    m_Localized: General Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37025772048175104
+    m_Localized: 'Description:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37026478452854784
+    m_Localized: Increase your maximum energy by 3.5% per skillpoint, slightly increases
+      energy replenish rate as well.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37027264524144640
+    m_Localized: Stability Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37028298789179392
+    m_Localized: Increases base stability by 3.5% per skillpoint.Before firing each
+      shot, take a look at the Stability Indicator at the bottom of the screen. The
+      more velocity you give your shoots (the fartger back you pull the mouse), the
+      higher the chance that the projectile will explode near the nexus, damaging
+      it in the process. By upgrading stability you can get 100% at any velocity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37037860283961344
+    m_Localized: Projectile Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37038014269444096
+    m_Localized: Can be upgraded once per 2 levels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37038582790574080
+    m_Localized: Enables you to use new projectile types
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37056045058052096
+    m_Localized: Gravity Manipulator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37056430476840960
+    m_Localized: Active ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37057861183295488
+    m_Localized: Enemy Unit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37059417102307328
+    m_Localized: 'Enables you to pick up and throw your enemies. There are 3 levels
+      of this ability. The first is reached at 5 spend skillpoints, the second requires
+      10 more and the third one is kinda expensive :p
+
+      lvl 1 - lift small enemy
+      units
+
+      lvl 2 - lift medium enemy units
+
+      lvl 3- lift HUGE war machines'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37060912367489024
+    m_Localized: Shockwave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37061214437068800
+    m_Localized: Small Area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37067298405044224
+    m_Localized: Repels enemy from the point where it is applied with great force,
+      hurling them away at great speed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37067973914480640
+    m_Localized: Navigation Hack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37068208061501440
+    m_Localized: Energy upgrade at lvl 10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37068398046695424
+    m_Localized: Damages the navigation system of enemy unit preventing it from reaching
+      the destination
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37069728249237504
+    m_Localized: Gravity Manipulator (Second modification)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37070081992642560
+    m_Localized: Projectile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37070205493923840
+    m_Localized: Gravity Manipulator at lvl 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37070355654201344
+    m_Localized: Catch and throw launched projectiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37071002923388928
+    m_Localized: Huge Area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37071103364386816
+    m_Localized: Shockwave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37071247824605184
+    m_Localized: Creates a gravity anomaly that sucks in enemy units with great power.
+      Use it agains a group of enemy units and they will be crushed against each
+      other
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37072802510491648
+    m_Localized: Gravity Trap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073133810176000
+    m_Localized: Structure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073517081481216
+    m_Localized: Passing by units
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073645041307648
+    m_Localized: 'Shockwave
+
+      Gravity Manipulator at lvl 1'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073875501535232
+    m_Localized: 'Works as a magnet trap, holding units that pass by.
+
+      Has
+      a limited energy reserve, that deplenishes with time.
+
+      Move the cursor
+      over it to see the indicator.
+
+      Detonates when the energy runs out'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37076540298055680
+    m_Localized: Shockwave Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37077264134262784
+    m_Localized: 'Shockwave
+
+      Gravity Manipulator at lvl 2'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37077459580440576
+    m_Localized: 'Draws passing by targets and as they get close activates shockwave
+      drive.
+
+      Has a limited energy reserve, that deplenishes with time.
+
+      Move
+      the cursor over it to see the indicator.
+
+      Detonates when the energy runs
+      out'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37078337989332992
+    m_Localized: Acceleration Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37078622136651776
+    m_Localized: 'Energy upgrade at lvl 5
+
+      Stability upgrade at lvl 10
+
+      Shockwave'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37078866882678784
+    m_Localized: 'Generates an energy field that affects your projectiles. Making
+      them orbit the tower and accelerating them.
+
+      Has a limited energy reserve,
+      that deplenishes when any projectiles are in effect.
+
+      Move the cursor
+      over it to see the indicator.
+
+      Detonates when the energy runs out'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37080829754036224
+    m_Localized: Each time you destroy enemy unit you gain experience points. Once
+      you have enoght, your <color=#EC3F04>Tech Level</color> rises and you receive
+      <color=#EC3F04>5 skill points</color> to upgrade your <color=#EC3F04>Nexus</color>
+      and obtain new abilities
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

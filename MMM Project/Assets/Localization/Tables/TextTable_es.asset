@@ -547,6 +547,235 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 794851374009679875
+  - m_Id: 37021931441442816
+    m_Localized: Mejora de Energia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37022148161130496
+    m_Localized: 'Tipo:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37022300422754304
+    m_Localized: 'Objetivo:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37022403300642816
+    m_Localized: 'Requisitos:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37024626847993856
+    m_Localized: Mejora Pasiva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37024820922634240
+    m_Localized: Nexo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37025034765029376
+    m_Localized: Ninguno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37025335714729984
+    m_Localized: Informacion General
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37025772048175104
+    m_Localized: 'Descripcion:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37026478452854784
+    m_Localized: Aumenta tu energia maxima en un 3,5% por punto de habilidad, y tambien
+      aumenta ligeramente la tasa de reposicion de energia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37027264524144640
+    m_Localized: Mejora de Estabilidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37028298789179392
+    m_Localized: Aumenta la estabilidad de la base en un 3,5 % por punto de habilidad.
+      Antes de disparar cada tiro, echa un vistazo al indicador de estabilidad en
+      la parte inferior de la pantalla. Cuanta mas velocidad le des a tus disparos
+      (cuanto mas lejos este el mouse), mayor sera la probabilidad de que el proyectil
+      explote cerca del nexo, danandolo en el proceso. Al mejorar la estabilidad,
+      puedes obtener el 100 % a cualquier velocidad.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37037860283961344
+    m_Localized: Mejora de Proyectiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37038014269444096
+    m_Localized: Puede ser mejorado una vez cada 2 niveles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37038582790574080
+    m_Localized: Te permite utilizar nuevos tipos de proyectiles.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37056045058052096
+    m_Localized: Manipulador de Gravedad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37056430476840960
+    m_Localized: Mejora Activa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37057861183295488
+    m_Localized: Unidad Enemiga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37059417102307328
+    m_Localized: 'Te permite recoger y lanzar a tus enemigos. Hay 3 niveles de esta
+      habilidad. El primero se alcanza con 5 puntos de habilidad, el segundo requiere
+      10 mas y el tercero es un poco caro :p
+
+      lvl 1: levanta pequenas unidades
+      enemigas
+
+      lvl 2: levanta unidades enemigas medianas
+
+      lvl 3- levanta
+      ENORMES maquinas de guerra'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37060912367489024
+    m_Localized: Onda de choque
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37061214437068800
+    m_Localized: Area chica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37067298405044224
+    m_Localized: Repele al enemigo desde el punto donde se presiona con gran fuerza,
+      arrojandolo a gran velocidad.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37067973914480640
+    m_Localized: Hack de Navegacion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37068208061501440
+    m_Localized: Mejora de energia al nivel 10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37068398046695424
+    m_Localized: Dana el sistema de navegacion de la unidad enemiga impidiendole
+      llegar al destino.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37069728249237504
+    m_Localized: Manipulador de gravedad (segunda modificacion)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37070081992642560
+    m_Localized: Proyectiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37070205493923840
+    m_Localized: Manipulador de gravedad al nivel 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37070355654201344
+    m_Localized: Atrapa y vuelve a lanzar los proyectiles lanzados.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37071002923388928
+    m_Localized: Area grande
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37071103364386816
+    m_Localized: Onda de choque
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37071247824605184
+    m_Localized: "Crea una anomalia de gravedad que absorbe a las unidades enemigas
+      con gran poder. Usalo contra un grupo de unidades enemigas y seran aplastadas
+      entre s\xED."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37072802510491648
+    m_Localized: Trampa de Gravedad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073133810176000
+    m_Localized: Estructura
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073517081481216
+    m_Localized: Unidades cercanas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073645041307648
+    m_Localized: 'Onda de choque
+
+      Manipulador de Gravedad al nivel 1'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073875501535232
+    m_Localized: 'Funciona como una trampa magnetica que retiene las unidades que
+      pasan.
+
+      Tiene una reserva de energia limitada, que se va agotando con
+      el tiempo.
+
+      Mueva el cursor sobre el para ver el indicador.
+
+      Detona
+      cuando se acaba la energia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37076540298055680
+    m_Localized: Torre de Choque
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37077264134262784
+    m_Localized: 'Onda de choque
+
+      Manipulador de gravedad al nivel 2'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37077459580440576
+    m_Localized: 'Agarra a los objetivos que pasan y, a medida que se acercan, activa
+      el impulso de choque.
+
+      Tiene una reserva de energia limitada, que se
+      va agotando con el tiempo.
+
+      Mueva el cursor sobre el para ver el indicador.
+
+      Detona
+      cuando se acaba la energia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37078337989332992
+    m_Localized: Torre de aceleracion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37078622136651776
+    m_Localized: 'Mejora de energia al nivel 5
+
+      Mejora de estabilidad al nivel
+      10
+
+      Onda de choque'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37078866882678784
+    m_Localized: "Genera un campo de energia que afecta a tus proyectiles. Haciendolos
+      orbitar la torre y acelerandolos.\r\nTiene una reserva de energia limitada,
+      que se agota cuando alg\xFAn proyectil esta en efecto.\r\nMueva el cursor sobre
+      el para ver el indicador.\r\nDetona cuando se acaba la energia."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37080829754036224
+    m_Localized: Cada vez que destruyes una unidad enemiga ganas puntos de experiencia.
+      Una vez que tengas suficiente, tu <color=#EC3F04>Nivel de Tecnologia</color>
+      aumentara y recibiras <color=#EC3F04>5 puntos de habilidad</color> para mejorar
+      tu <color=#EC3F04>Nexus</color> y obtener nuevas habilidades
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -427,6 +427,182 @@ MonoBehaviour:
     m_Key: points
     m_Metadata:
       m_Items: []
+  - m_Id: 37021931441442816
+    m_Key: energyUpgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37022148161130496
+    m_Key: type
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37022300422754304
+    m_Key: target
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37022403300642816
+    m_Key: requirements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37024626847993856
+    m_Key: passiveUpgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37024820922634240
+    m_Key: nexo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37025034765029376
+    m_Key: none
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37025335714729984
+    m_Key: generalInfo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37025772048175104
+    m_Key: description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37026478452854784
+    m_Key: upgrade1Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37027264524144640
+    m_Key: stabilityUpgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37028298789179392
+    m_Key: upgrade2Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37037860283961344
+    m_Key: projectileUpgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37038014269444096
+    m_Key: upgrade3Requirements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37038582790574080
+    m_Key: upgrade3Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37056045058052096
+    m_Key: gravityManipulator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37056430476840960
+    m_Key: activeAbility
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37057861183295488
+    m_Key: enemyUnit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37059417102307328
+    m_Key: upgrade4Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37060912367489024
+    m_Key: shockwave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37061214437068800
+    m_Key: smallArea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37067298405044224
+    m_Key: upgrade5Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37067973914480640
+    m_Key: navigationHack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37068208061501440
+    m_Key: upgrade6Requirements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37068398046695424
+    m_Key: upgrade6Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37069728249237504
+    m_Key: gravityManipulator(second)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37070081992642560
+    m_Key: projectile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37070205493923840
+    m_Key: upgrade7Requirements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37070355654201344
+    m_Key: upgrade7Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37071002923388928
+    m_Key: hugeArea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37071103364386816
+    m_Key: upgrade8Requerimens
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37071247824605184
+    m_Key: upgrade8Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37072802510491648
+    m_Key: gravityTrap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073133810176000
+    m_Key: structureTittle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073517081481216
+    m_Key: passingByUnits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073645041307648
+    m_Key: upgrade9Requirements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37073875501535232
+    m_Key: upgrade9Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37076540298055680
+    m_Key: shockwaveTower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37077264134262784
+    m_Key: upgrade10Requirements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37077459580440576
+    m_Key: upgrade10Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37078337989332992
+    m_Key: accelerationTower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37078622136651776
+    m_Key: upgrade11Requirements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37078866882678784
+    m_Key: upgrade11Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37080829754036224
+    m_Key: generalInfoText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
