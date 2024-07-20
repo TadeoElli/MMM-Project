@@ -82,7 +82,7 @@ public class UpgradeIcon : IconHud
     protected override void OnClickUp()
     {
         if (pressedImage != null) pressedImage.gameObject.SetActive(false);
-        if(isAvailable)
+        if(isAvailable && currentLevel < maxLevel)
             IncreasePoints();
     }
     private void IncreasePoints()
@@ -91,10 +91,9 @@ public class UpgradeIcon : IconHud
         {
             if (requireTechLevel)
             {
-                if (currentTechLevel > 0)
+                if (currentTechLevel >= (currentLevel * 2) )
                 {
                     points++;
-                    currentTechLevel--;
                     availableSkillPoints.Value--;
                     CheckForNextLevel();
                 }
@@ -124,9 +123,10 @@ public class UpgradeIcon : IconHud
     {
         availableSkillPoints.Value = amount;
     }
-    public void IncreaseTechLevelPoints()
+    public void IncreaseTechLevelPoints(int level)
     {
-        currentTechLevel++;
+        currentTechLevel = level;
+
     }
     public void SetNextPointsToLevelUp()
     {

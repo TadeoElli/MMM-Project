@@ -17,6 +17,8 @@ public class NexusStats : MonoBehaviour
     public Observer<int> currentBaseSpeed = new Observer<int>(0);   //La velocidad base.0
     public Observer<int> currentSkillPoints = new Observer<int>(0); //Los puntos de habilidad con los que se empieza
     public Observer<int> currentLevel = new Observer<int>(0);   //El nivel Con el que se empieza
+    public Observer<float> currentExp = new Observer<float>(0);   //la cantidad de exp actualmente
+    public Observer<float> expToNextLevel = new Observer<float>(2000);   //la cantidad de exp necesaria para pasar al siguiente nivel
     #endregion
     #region Properties
     //public float currentEnergy;
@@ -26,8 +28,7 @@ public class NexusStats : MonoBehaviour
     [SerializeField] private int missilesUnlocked;  //Que misiles estan desbloqueados
     [SerializeField] private int maxLives;  //La cantidad de vida maxima
     [SerializeField] private int startTechLevel;  //el nivel de tecnologia con el que se empieza
-    [SerializeField] private int currentExp; //la cantidad de exp actualmente
-    [SerializeField] private int expToNextLevel; //la cantidad de exp necesaria para pasar al siguiente nivel
+
 
     [SerializeField] GameObject loseMenu;   //El menu de derrota
     private bool isDestroyed = false;
@@ -78,6 +79,8 @@ public class NexusStats : MonoBehaviour
         currentSkillPoints.Invoke();
         maxEnergy.Invoke();
         maxStructure.Invoke();
+        currentExp.Invoke();
+        expToNextLevel.Invoke();
     }
     private void RegenerateStats()
     {
@@ -129,17 +132,17 @@ public class NexusStats : MonoBehaviour
     #region ExpManagment
     public void AddExp(int amount)
     {
-        currentExp += amount;
+        currentExp.Value += amount;
         CheckLevelUp();
     }
 
     private void CheckLevelUp()
     {
-        if (currentExp >= expToNextLevel)
+        if (currentExp.Value >= expToNextLevel.Value)
         {
-            currentExp -= expToNextLevel;
+            currentExp.Value -= expToNextLevel.Value;
             currentLevel.Value++;
-            expToNextLevel = Mathf.CeilToInt(expToNextLevel * 1.5f); // Incrementa la cantidad de EXP necesaria para el siguiente nivel
+            expToNextLevel.Value = Mathf.CeilToInt(expToNextLevel.Value * 1.5f); // Incrementa la cantidad de EXP necesaria para el siguiente nivel
             currentSkillPoints.Value += 5;
         }
     }

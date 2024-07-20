@@ -33,7 +33,7 @@ public class InputController : MonoBehaviour
     }
     public void SetMissileIndex(int index)
     { //Setea el indice de los misiles si esta permitido
-        if (missileIsAvailable && index <= unlockedMissiles)
+        if (missileIsAvailable && (index <= unlockedMissiles || index > 7))
         {
             missileIndex.Value = index;
         }
