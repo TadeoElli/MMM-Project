@@ -32,6 +32,7 @@ public class Nexus : MonoBehaviour
     Vector2 force;
     [SerializeField] private Vector2 minPower, maxPower;
     Vector3 startPoint, endPoint;
+    [SerializeField] private GameObject winMenu;
 
 
     private void Awake() {  //Empieza con el indice en 0, establece la camara principal y busca los componentes que necesita
@@ -47,6 +48,7 @@ public class Nexus : MonoBehaviour
     //Establece la posicion del nexo y del cursor y luego crea un misil, despues de un delay
     void Start()
     {
+        GameManager.Instance.winMenu = winMenu;
         haveMissile = false;
         pauseState = true;
         index = 0;

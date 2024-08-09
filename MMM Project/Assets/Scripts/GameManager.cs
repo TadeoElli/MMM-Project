@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private float timer;
     private int _enemiesAlive;
     public int EnemiesAlive { get{return _enemiesAlive;}set { _enemiesAlive = value;}}
-    [SerializeField] private GameObject winMenu;
+    [SerializeField] public GameObject winMenu;
     private void Awake() {
         if (Instance == null){
             Instance = this;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Scenes.Crossfire:
                 timer += Time.deltaTime;
-                if(timer > timeLimit && _enemiesAlive == 0){
+                if(timer > timeLimit){
                     EndGame();
                 }
                 break;
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     private void EndGame(){
         InputController.Instance.RemoveSubscribers();
         Nexus.Instance.DisableNexus();
-        //winMenu.SetActive(true);
+        winMenu.SetActive(true);
     }
     public void SetEnemiesAlive(int amount){
         _enemiesAlive = amount;
