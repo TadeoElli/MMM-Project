@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Scenes.Crossfire:
                 timer += Time.deltaTime;
-                if (timer > timeLimit && _enemiesAlive == 0)
+                if (timer > timeLimit)
                 {
                     EndGame();
                 }
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void EndGame()
+    public void EndGame()
     {
         InputController.Instance.RemoveSubscribers();
         Nexus.Instance.DisableNexus();
