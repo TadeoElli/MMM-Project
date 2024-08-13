@@ -113,6 +113,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -166,8 +178,8 @@ TextureImporter:
         y: 639
         width: 177
         height: 177
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -442,7 +454,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      88216-blue-animation-portal-sprite-point-free-png-hq_13: -524406373
+      88216-blue-animation-portal-sprite-point-free-png-hq_3: 1304471354
       88216-blue-animation-portal-sprite-point-free-png-hq_9: -63978657
       88216-blue-animation-portal-sprite-point-free-png-hq_7: 1674951985
       88216-blue-animation-portal-sprite-point-free-png-hq_8: 73568330
@@ -454,7 +466,7 @@ TextureImporter:
       88216-blue-animation-portal-sprite-point-free-png-hq_12: -220914934
       88216-blue-animation-portal-sprite-point-free-png-hq_6: 1484089864
       88216-blue-animation-portal-sprite-point-free-png-hq_14: 1658617063
-      88216-blue-animation-portal-sprite-point-free-png-hq_3: 1304471354
+      88216-blue-animation-portal-sprite-point-free-png-hq_13: -524406373
       88216-blue-animation-portal-sprite-point-free-png-hq_1: 743619183
       88216-blue-animation-portal-sprite-point-free-png-hq_2: -471875020
   spritePackingTag: 
